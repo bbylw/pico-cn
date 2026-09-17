@@ -1,0 +1,589 @@
+---
+import { getCollection } from "astro:content";
+import { Search, X, CornerDownLeft, FileText, ArrowRight, Hash } from "lucide-astro";
+
+const docs = await getCollection("docs");
+const searchIndex = docs.map((doc) => ({
+  id: doc.id,
+  title: doc.data.title,
+  chapter: doc.data.chapter,
+  lead: doc.data.lead
+    ?.replace(/<[^>]+>/g, "")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, "&") || "",
+  url: doc.id === "quickstart" ? `${import.meta.env.BASE_URL}docs/` : `${import.meta.env.BASE_URL}docs/${doc.id}/`,
+  toc: (doc.data.toc || []).map((t) => ({
+    id: t.id,
+    text: t.text,
+  })),
+}));
+---
+
+<div id="search-modal-backdrop" class="search-backdrop" aria-hidden="true">
+  <div class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文档">
+    <div class="search-input-wrap">
+      <Search class="search-icon" size={20} />
+      <input
+        type="search"
+        id="doc-search-input"
+        class="search-input"
+        placeholder="搜索文档、组件、CSS 变量与属性..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button type="button" class="search-close-btn" id="search-close-btn" aria-label="关闭搜索">
+        <kbd>ESC</kbd>
+      </button>
+    </div>
+
+    <div class="search-results-area" id="search-results-list">
+      <!-- 动态结果渲染区 -->
+      <div class="search-empty-state" id="search-empty-prompt">
+        <p>键入关键词检索 39 篇官方中文文档与组件</p>
+        <div class="search-quick-tags">
+          <span class="tag" data-search-term="button">按钮 button</span>
+          <span class="tag" data-search-term="modal">模态框 modal</span>
+          <span class="tag" data-search-term="forms">表单 forms</span>
+          <span class="tag" data-search-term="grid">栅格 grid</span>
+          <span class="tag" data-search-term="colors">调色板 colors</span>
+          <span class="tag" data-search-term="classless">无类版本 classless</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-footer">
+      <div class="search-hints">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> 导航</span>
+        <span><kbd>↵</kbd> 访问</span>
+        <span><kbd>ESC</kbd> 关闭</span>
+      </div>
+      <span class="search-meta">Pico CSS v2.1.1 中文文档</span>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ searchIndex }}>
+  window.__PICO_SEARCH_INDEX__ = searchIndex;
+</script>
+
+<script>
+  interface SearchItem {
+    id: string;
+    title: string;
+    chapter: string;
+    lead: string;
+    url: string;
+    toc?: Array<{ id: string; text: string }>;
+  }
+
+  declare global {
+    interface Window {
+      __PICO_SEARCH_INDEX__: SearchItem[];
+    }
+  }
+
+  const backdrop = document.getElementById("search-modal-backdrop");
+  const input = document.getElementById("doc-search-input") as HTMLInputElement | null;
+  const resultsContainer = document.getElementById("search-results-list");
+  const closeBtn = document.getElementById("search-close-btn");
+  const emptyPrompt = document.getElementById("search-empty-prompt");
+
+  let activeIndex = -1;
+  let currentResults: Array<{ title: string; chapter: string; desc: string; url: string; isAnchor?: boolean }> = [];
+
+  function openSearch() {
+    if (!backdrop || !input) return;
+    backdrop.classList.add("is-open");
+    backdrop.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      input.focus();
+      input.select();
+    }, 50);
+  }
+
+  function closeSearch() {
+    if (!backdrop || !input) return;
+    backdrop.classList.remove("is-open");
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    input.value = "";
+    renderResults([]);
+  }
+
+  // 绑定全局快捷键 ⌘K / Ctrl+K / /
+  window.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      if (backdrop?.classList.contains("is-open")) closeSearch();
+      else openSearch();
+    } else if (e.key === "Escape" && backdrop?.classList.contains("is-open")) {
+      e.preventDefault();
+      closeSearch();
+    } else if (e.key === "/" && !["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) {
+      if (!backdrop?.classList.contains("is-open")) {
+        e.preventDefault();
+        openSearch();
+      }
+    }
+  });
+
+  // 搜索触发按钮（顶栏或其他地方带有 [data-open-search]）
+  document.querySelectorAll("[data-open-search]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openSearch();
+    });
+  });
+
+  closeBtn?.addEventListener("click", closeSearch);
+  backdrop?.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeSearch();
+  });
+
+  // 搜索逻辑
+  function performSearch(query: string) {
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      currentResults = [];
+      renderResults([]);
+      return;
+    }
+
+    const items = window.__PICO_SEARCH_INDEX__ || [];
+    const matched: typeof currentResults = [];
+
+    for (const item of items) {
+      const matchTitle = item.title.toLowerCase().includes(q);
+      const matchChapter = item.chapter.toLowerCase().includes(q);
+      const matchId = item.id.toLowerCase().includes(q);
+      const matchLead = item.lead.toLowerCase().includes(q);
+
+      if (matchTitle || matchId || matchChapter || matchLead) {
+        matched.push({
+          title: item.title,
+          chapter: item.chapter,
+          desc: item.lead || item.chapter,
+          url: item.url,
+        });
+      }
+
+      // 匹配内部 TOC 锚点
+      if (item.toc) {
+        for (const t of item.toc) {
+          if (t.text.toLowerCase().includes(q) || t.id.toLowerCase().includes(q)) {
+            matched.push({
+              title: `${item.title} › ${t.text}`,
+              chapter: item.chapter,
+              desc: `锚点 #${t.id}`,
+              url: `${item.url}#${t.id}`,
+              isAnchor: true,
+            });
+          }
+        }
+      }
+
+      if (matched.length >= 20) break;
+    }
+
+    currentResults = matched;
+    renderResults(currentResults);
+  }
+
+  function renderResults(results: typeof currentResults) {
+    if (!resultsContainer) return;
+    activeIndex = results.length > 0 ? 0 : -1;
+
+    if (results.length === 0) {
+      if (input && input.value.trim().length > 0) {
+        resultsContainer.innerHTML = `
+          <div class="search-no-results">
+            <p>未找到关于 <strong>"${input.value}"</strong> 的结果</p>
+            <small>请尝试更通用的词汇，如 "按钮"、"颜色"、"表单" 或英文名称</small>
+          </div>
+        `;
+      } else {
+        if (emptyPrompt) {
+          resultsContainer.innerHTML = "";
+          resultsContainer.appendChild(emptyPrompt);
+        }
+      }
+      return;
+    }
+
+    let html = '<div class="search-items-list" role="listbox">';
+    results.forEach((r, idx) => {
+      const isSelected = idx === 0 ? " aria-selected=\"true\" class=\"search-item is-active\"" : " class=\"search-item\"";
+      html += `
+        <a href="${r.url}" role="option" data-index="${idx}" ${isSelected}>
+          <div class="search-item-icon">
+            ${r.isAnchor ? '#' : '📄'}
+          </div>
+          <div class="search-item-content">
+            <div class="search-item-header">
+              <span class="search-item-title">${escapeHtml(r.title)}</span>
+              <span class="search-item-badge">${escapeHtml(r.chapter)}</span>
+            </div>
+            ${r.desc ? `<p class="search-item-desc">${escapeHtml(r.desc)}</p>` : ""}
+          </div>
+          <span class="search-item-action">访问 ↵</span>
+        </a>
+      `;
+    });
+    html += "</div>";
+    resultsContainer.innerHTML = html;
+
+    // 绑定点击与鼠标悬浮
+    resultsContainer.querySelectorAll(".search-item").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        const idx = parseInt(el.getAttribute("data-index") || "0", 10);
+        setActive(idx);
+      });
+    });
+  }
+
+  function setActive(idx: number) {
+    const items = resultsContainer?.querySelectorAll(".search-item");
+    if (!items || items.length === 0) return;
+    if (idx < 0) idx = 0;
+    if (idx >= items.length) idx = items.length - 1;
+    activeIndex = idx;
+    items.forEach((item, i) => {
+      if (i === activeIndex) {
+        item.classList.add("is-active");
+        item.setAttribute("aria-selected", "true");
+        (item as HTMLElement).scrollIntoView({ block: "nearest" });
+      } else {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-selected", "false");
+      }
+    });
+  }
+
+  function escapeHtml(str: string) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  input?.addEventListener("input", (e) => {
+    performSearch((e.target as HTMLInputElement).value);
+  });
+
+  input?.addEventListener("keydown", (e) => {
+    if (!currentResults.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActive((activeIndex + 1) % currentResults.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActive((activeIndex - 1 + currentResults.length) % currentResults.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (activeIndex >= 0 && activeIndex < currentResults.length) {
+        window.location.href = currentResults[activeIndex].url;
+      }
+    }
+  });
+
+  // 快捷标签点击
+  resultsContainer?.addEventListener("click", (e) => {
+    const tag = (e.target as HTMLElement).closest("[data-search-term]");
+    if (tag && input) {
+      const term = tag.getAttribute("data-search-term") || "";
+      input.value = term;
+      performSearch(term);
+    }
+  });
+</script>
+
+<style>
+  .search-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 13, 22, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10vh 1rem 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .search-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .search-dialog {
+    width: 100%;
+    max-width: 640px;
+    background: var(--pico-card-background-color, #ffffff);
+    border: 1px solid var(--pico-muted-border-color, rgba(0, 0, 0, 0.12));
+    border-radius: 14px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transform: translateY(-8px) scale(0.98);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    max-height: 75vh;
+  }
+
+  html[data-theme="dark"] .search-dialog {
+    background: #0f172a;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .search-backdrop.is-open .search-dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  .search-input-wrap {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--pico-muted-border-color, rgba(0, 0, 0, 0.08));
+    gap: 0.75rem;
+    background: transparent;
+  }
+
+  .search-icon {
+    color: var(--pico-primary, #0172ad);
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 1.05rem;
+    color: var(--pico-color, #1e293b);
+    padding: 0;
+    margin: 0;
+    box-shadow: none !important;
+  }
+
+  .search-input::placeholder {
+    color: var(--pico-muted-color, #94a3b8);
+    font-size: 0.95rem;
+  }
+
+  .search-close-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .search-close-btn kbd {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(125, 125, 125, 0.12);
+    color: var(--pico-muted-color, #64748b);
+    border: 1px solid rgba(125, 125, 125, 0.2);
+  }
+
+  .search-results-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+    min-height: 180px;
+    max-height: 50vh;
+  }
+
+  .search-empty-state {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--pico-muted-color, #64748b);
+  }
+
+  .search-empty-state p {
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .search-quick-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+  }
+
+  .search-quick-tags .tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(125, 125, 125, 0.08);
+    border: 1px solid var(--pico-muted-border-color, rgba(0, 0, 0, 0.06));
+    cursor: pointer;
+    color: var(--pico-color, #334155);
+    transition: all 0.15s ease;
+  }
+
+  .search-quick-tags .tag:hover {
+    background: var(--pico-primary, #0172ad);
+    color: #ffffff;
+    border-color: var(--pico-primary, #0172ad);
+  }
+
+  .search-no-results {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--pico-muted-color, #64748b);
+  }
+
+  .search-no-results p {
+    font-size: 1rem;
+    color: var(--pico-color, #1e293b);
+    margin-bottom: 0.4rem;
+  }
+
+  .search-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  a.search-item,
+  a.search-item:hover,
+  a.search-item:focus,
+  a.search-item * {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  a.search-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 0.85rem;
+    border-radius: 8px;
+    color: var(--pico-color) !important;
+    transition: all 0.12s ease;
+    border: 1px solid transparent;
+  }
+
+  a.search-item:hover,
+  a.search-item.is-active {
+    background: color-mix(in srgb, var(--pico-primary, #0172ad) 12%, transparent) !important;
+    border-color: color-mix(in srgb, var(--pico-primary, #0172ad) 28%, transparent) !important;
+  }
+
+  a.search-item:hover .search-item-title,
+  a.search-item.is-active .search-item-title {
+    color: var(--pico-primary, #0172ad) !important;
+  }
+
+  .search-item-icon {
+    font-size: 1.1rem;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  .search-item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .search-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .search-item-title {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--pico-color, #1e293b);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-item.is-active .search-item-title {
+    color: var(--pico-primary, #0172ad);
+  }
+
+  .search-item-badge {
+    font-size: 0.68rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background: rgba(125, 125, 125, 0.12);
+    color: var(--pico-muted-color, #64748b);
+    font-weight: 500;
+  }
+
+  .search-item-desc {
+    font-size: 0.8rem;
+    color: var(--pico-muted-color, #64748b);
+    margin: 0.15rem 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-item-action {
+    font-size: 0.72rem;
+    color: var(--pico-primary, #0172ad);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  .search-item.is-active .search-item-action {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .search-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.1rem;
+    border-top: 1px solid var(--pico-muted-border-color, rgba(0, 0, 0, 0.08));
+    font-size: 0.75rem;
+    color: var(--pico-muted-color, #94a3b8);
+    background: color-mix(in srgb, var(--pico-card-background-color, #ffffff) 90%, black);
+  }
+
+  html[data-theme="dark"] .search-footer {
+    background: #0b1120;
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .search-hints {
+    display: flex;
+    gap: 0.85rem;
+  }
+
+  .search-hints kbd {
+    background: rgba(125, 125, 125, 0.14);
+    padding: 0.12rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.68rem;
+    color: inherit;
+    border: 1px solid rgba(125, 125, 125, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .search-backdrop {
+      padding: 1.5rem 0.75rem;
+      align-items: flex-start;
+    }
+    .search-hints {
+      display: none;
+    }
+  }
+</style>

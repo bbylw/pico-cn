@@ -1,5 +1,7 @@
 ---
 import { DOCS_FLAT } from "../data/docs-nav";
+import { ArrowLeft, ArrowRight } from "lucide-astro";
+
 interface Props {
   id: string;
 }
@@ -12,19 +14,38 @@ const href = (i: string) => (i === "quickstart" ? `${import.meta.env.BASE_URL}do
 
 {
   (prev || next) && (
-    <nav class="doc-pager" aria-label="上一篇/下一篇">
-      {prev && (
-        <a href={href(prev.id)} class="prev secondary">
-          <small>上一篇</small>
-          {prev.label}
+    <nav class="doc-pager-grid" aria-label="上一篇与下一篇">
+      {prev ? (
+        <a href={href(prev.id)} class="doc-pager-card prev">
+          <span class="doc-pager-subtitle">
+            <ArrowLeft size={14} />
+            <span>上一篇</span>
+          </span>
+          <span class="doc-pager-title">{prev.label}</span>
         </a>
+      ) : (
+        <div class="pager-placeholder" />
       )}
       {next && (
-        <a href={href(next.id)} class="next secondary">
-          <small>下一篇</small>
-          {next.label}
+        <a href={href(next.id)} class="doc-pager-card next">
+          <span class="doc-pager-subtitle">
+            <span>下一篇</span>
+            <ArrowRight size={14} />
+          </span>
+          <span class="doc-pager-title">{next.label}</span>
         </a>
       )}
     </nav>
   )
 }
+
+<style>
+  .pager-placeholder {
+    display: none;
+  }
+  @media (min-width: 641px) {
+    .pager-placeholder {
+      display: block;
+    }
+  }
+</style>

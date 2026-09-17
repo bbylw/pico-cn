@@ -1,5 +1,7 @@
 ---
 import Code from "astro/components/Code.astro";
+import { Code2, Copy, Check, ChevronDown } from "lucide-astro";
+
 interface Props {
   /** 要渲染为实时示例的 HTML */
   html: string;
@@ -11,23 +13,106 @@ interface Props {
 }
 const { html, code, lang = "html", label } = Astro.props;
 const src = (code ?? "").replace(/^\n+/, "").replace(/\s+$/, "");
-const aria = label || "示例";
+const aria = label || "组件示例";
 ---
 
-<figure class="example" aria-label={aria}>
-  <div class="demo" set:html={html}></div>
+<figure class="example-box" aria-label={aria}>
+  <div class="example-demo" set:html={html}></div>
   {
     src && (
-      <details class="code-box">
-        <summary>查看代码</summary>
-        <Code code={src} lang={lang} theme={{ light: "vitesse-light", dark: "vitesse-dark" }} />
+      <details class="example-code-wrap">
+        <summary class="example-code-summary">
+          <span class="summary-left">
+            <Code2 size={15} />
+            <span>查看源码</span>
+          </span>
+          <div class="summary-right">
+            <button
+              type="button"
+              class="example-code-copy-btn"
+              data-code-copy={src}
+              aria-label="复制代码"
+              onclick="event.stopPropagation()"
+            >
+              <Copy size={13} class="copy-icon" />
+              <Check size={13} class="check-icon" style="display:none;" />
+              <span class="copy-text">复制</span>
+            </button>
+            <ChevronDown size={15} class="chevron-icon" />
+          </div>
+        </summary>
+        <div class="example-code-body">
+          <Code code={src} lang={lang} theme={{ light: "vitesse-light", dark: "vitesse-dark" }} />
+        </div>
       </details>
     )
   }
 </figure>
 
+<script>
+  // 为所有 example-code-copy-btn 绑定一键复制代码逻辑
+  document.querySelectorAll<HTMLButtonElement>("[data-code-copy]").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const text = btn.getAttribute("data-code-copy") || "";
+      const copyIcon = btn.querySelector(".copy-icon") as HTMLElement | null;
+      const checkIcon = btn.querySelector(".check-icon") as HTMLElement | null;
+      const copyText = btn.querySelector(".copy-text") as HTMLElement | null;
+
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+
+      if (copyIcon && checkIcon && copyText) {
+        copyIcon.style.display = "none";
+        checkIcon.style.display = "inline-block";
+        copyText.textContent = "已复制";
+        btn.style.color = "#10b981";
+        btn.style.borderColor = "#10b981";
+
+        setTimeout(() => {
+          copyIcon.style.display = "inline-block";
+          checkIcon.style.display = "none";
+          copyText.textContent = "复制";
+          btn.style.color = "";
+          btn.style.borderColor = "";
+        }, 1500);
+      }
+    });
+  });
+</script>
+
 <style>
-  figure.example {
-    margin-block: 1.4rem;
+  .summary-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .summary-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .chevron-icon {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.6;
+  }
+
+  details[open] .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  .example-code-body {
+    position: relative;
   }
 </style>

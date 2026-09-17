@@ -33,11 +33,12 @@ src/
 │  ├─ Base.astro            # HTML 壳、主题 boot 脚本（localStorage + 跟随系统）、明暗切换
 │  └─ Docs.astro            # 文档三栏壳：侧栏 / 正文 / 本页目录（scroll-spy）+ 页脚
 ├─ components/
-│  ├─ SiteHeader.astro      # 顶栏（官方 logo 明暗双版本、版本徽章、GitHub、主题切换）
+│  ├─ SiteHeader.astro      # 顶栏（官方 logo 明暗双版本、版本徽章、GitHub、主题切换、搜索入口）
+│  ├─ SearchModal.astro     # 全局搜索弹窗（⌘K / Ctrl+K 快捷呼出，39 页全文模糊索引）
 │  ├─ Sidebar.astro         # 分组侧栏（当前页所在组自动展开）
-│  ├─ Ex.astro              # 示例组件：实时渲染 demo + 「查看代码」折叠（Shiki 高亮）
+│  ├─ Ex.astro              # 示例组件：实时渲染 demo + 「查看代码」折叠（Shiki 高亮 + 一键复制）
 │  ├─ Raw.astro             # 原样 HTML 块（色板卡、色板选择器等专有组件 demo）
-│  └─ DocPager.astro        # 上一篇/下一篇
+│  └─ DocPager.astro        # 上一篇/下一篇卡片
 ├─ pages/
 │  ├─ index.astro           # 营销首页（hero + 12 行起步 + 特性 + 20 色色带）
 │  └─ docs/[...slug].astro  # 全部文档页路由（quickstart 映射到 /docs/）

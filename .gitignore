@@ -5,6 +5,7 @@ dist/
 
 # 验收工件
 .shots/
+.playwright-mcp/
 
 # 抓取原始 HTML（体积大；保留 .probe/en_src/*.json 作为翻译源）
 .probe/en/

@@ -1,607 +1,2149 @@
 ---
 import Base from "../layouts/Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import SearchModal from "../components/SearchModal.astro";
+import {
+  Rocket,
+  Palette,
+  LayoutGrid,
+  CheckCircle2,
+  Sparkles,
+  Zap,
+  ShieldCheck,
+  Package,
+  Copy,
+  Check,
+  ArrowRight,
+  ExternalLink,
+  Code2,
+  Terminal,
+  Sliders,
+  FileCode,
+  Layers,
+  Type
+} from "lucide-astro";
 
 const base = import.meta.env.BASE_URL;
 const cdn = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css";
 const npmCmd = "npm install @picocss/pico";
+const sassCode = '@use "@picocss/pico";';
 ---
 
 <Base
-  title="Pico CSS · 面向语义化 HTML 的极简 CSS 框架"
-  desc="极简、轻量的起步套件，以语义化语法为先，让每个 HTML 元素默认就具备响应式与优雅的样式。"
+  title="Pico CSS · 面向原生语义化 HTML 的极简 CSS 框架"
+  desc="极简、轻量的纯 CSS 框架，仅 15KB。以语义化语法为先，让原生 HTML 标签默认具备出众的排版、现代响应式布局与明暗主题。"
 >
   <SiteHeader />
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <main class="container home" id="top">
-    <!-- 1 · Hero：左文案 / 右真实组件预览 -->
-    <section class="home-hero" aria-label="介绍">
-      <div class="container home-hero-grid">
-      <div class="home-hero-copy">
-        <p class="home-kicker"><span class="home-kicker-dot" aria-hidden="true"></span>PICO-CN DOCS · V2.1.1 · 中文文档</p>
-        <h1>写 <code>HTML</code>，<br />就够了。</h1>
-        <p class="home-lead">
-          Pico 为原生标签提供开箱即用的响应式样式与明暗模式。零依赖，一行 CSS 即可起步。
-        </p>
-        <div class="cta-row home-cta">
-          <a href={`${base}docs/`} role="button">阅读文档</a>
-          <a href="https://github.com/picocss/pico" role="button" class="secondary outline" rel="noopener external" target="_blank">GitHub</a>
-        </div>
-        <ul class="home-meta">
-          <li><strong>约 15 KB</strong><span>gzip 轻量</span></li>
-          <li><strong>零依赖</strong><span>无 JS 运行时</span></li>
-          <li><strong>双模式</strong><span>浅色 / 深色</span></li>
-          <li><strong>MIT</strong><span>开放许可</span></li>
-        </ul>
-      </div>
+  <SearchModal />
 
-      <figure class="browser" aria-label="Pico 实时组件预览">
-        <figcaption class="browser-bar">
-          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="browser-url">picocss.ndjp.net/docs/</span>
-          <span class="browser-live"><i aria-hidden="true"></i>实时渲染</span>
-        </figcaption>
-        <div class="browser-body">
-          <hgroup>
-            <h3>Hello world!</h3>
-            <p>语义即样式：标题、链接、表单开箱可用。</p>
-          </hgroup>
-          <form role="search" onsubmit="return false">
-            <fieldset role="group">
-              <input type="search" name="q" placeholder="搜索文档…" aria-label="搜索文档" />
-              <input type="submit" value="搜索" />
-            </fieldset>
-          </form>
-          <div class="browser-row">
-            <button class="small">主要按钮</button>
-            <button class="small secondary">次要</button>
-            <button class="small contrast outline">对比</button>
-          </div>
-          <div class="browser-grid" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="browser-toggles">
-            <label><input type="checkbox" role="switch" checked /> 深色模式</label>
-            <label><input type="checkbox" checked /> 记住我</label>
-          </div>
-          <input type="range" value="68" aria-label="滑块示例" />
-          <details class="browser-acc">
-            <summary>手风琴：原生 details，零 JS</summary>
-            <p>卡片、弹窗、提示条同理，开箱即用。</p>
-          </details>
-        </div>
-        <p class="browser-foot">以上全部由原生 HTML 渲染，可直接交互试试</p>
-        <span class="browser-chip chip-a">classless 可用</span>
-        <span class="browser-chip chip-b">20 套预编译主题</span>
-      </figure>
-      </div>
-    </section>
+  <main class="home-main" id="top">
+    <!-- 1 · 旗舰 Hero 区域 -->
+    <section class="hero-section" aria-label="介绍">
+      <div class="hero-glow-ambient" aria-hidden="true"></div>
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
 
-    <!-- 2 · 安装：CDN / NPM / Sass 三页签单窗口 -->
-    <section class="home-install" aria-label="安装">
-      <div class="home-window" data-reveal data-tabs>
-        <div class="home-window-bar">
-          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <div class="tabs" role="tablist" aria-label="安装方式">
-            <button type="button" role="tab" id="tab-cdn" aria-controls="panel-cdn" aria-selected="true">CDN</button>
-            <button type="button" role="tab" id="tab-npm" aria-controls="panel-npm" aria-selected="false" tabindex="-1">NPM</button>
-            <button type="button" role="tab" id="tab-sass" aria-controls="panel-sass" aria-selected="false" tabindex="-1">Sass</button>
+      <div class="home-container hero-inner">
+        <!-- 左侧文案与行动号召 -->
+        <div class="hero-copy">
+          <div class="hero-badge">
+            <span class="badge-pulsing-dot" aria-hidden="true"></span>
+            <span>PICO CSS V2.1.1 · 官方中文文档</span>
           </div>
-          <button type="button" class="home-copy" data-copy={cdn} data-copy-btn aria-label="复制当前页签内容">复制</button>
-        </div>
-        <div role="tabpanel" id="panel-cdn" aria-labelledby="tab-cdn" data-copy={cdn} tabindex="0">
-          <pre class="home-code"><code><span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"{cdn}"</span><span class="tk-p">&gt;</span></code></pre>
-        </div>
-        <div role="tabpanel" id="panel-npm" aria-labelledby="tab-npm" data-copy={npmCmd} tabindex="0" hidden>
-          <pre class="home-code"><code><span class="tk-p">$</span> {npmCmd}</code></pre>
-        </div>
-        <div role="tabpanel" id="panel-sass" aria-labelledby="tab-sass" data-copy={`@use "pico";`} tabindex="0" hidden>
-          <pre class="home-code"><code><span class="tk-a">@use</span> <span class="tk-s">"pico"</span><span class="tk-p">;</span>  <span class="tk-p">// 按需覆盖变量，详见 Sass 文档</span></code></pre>
-        </div>
-        <div class="home-install-foot">
-          <small>v2.1.1 · 另有手动下载与 Composer 安装</small>
-          <span class="home-install-links">
-            <a href={`${base}docs/#install-manually`}>手动安装</a> ·
-            <a href={`${base}docs/sass/`}>Sass 定制</a> ·
-            <a href={`${base}docs/version-picker/`}>版本选择器</a>
-          </span>
-        </div>
-      </div>
-    </section>
 
-    <!-- 3 · 为什么是 Pico：非对称 bento，4 格对 4 点 -->
-    <section class="home-why" aria-label="核心特性">
-      <h2>恰到好处的一切</h2>
-      <p class="home-sub">Pico 是「加强版 HTML 重置」，也是干净设计系统的起点：先给好默认，再留足定制空间。</p>
-      <div class="home-bento">
-        <article class="bento bento-wide" data-reveal>
-          <h3>20 套配色，开箱即换</h3>
-          <p>预编译调色板走 CDN 引入，Indigo 为默认，组合超过 100 种。</p>
-          <div class="bento-demo">
-          <div class="bento-swatches" aria-hidden="true">
-            <span class="pico-background-red-500"></span><span class="pico-background-pink-500"></span><span class="pico-background-fuchsia-500"></span><span class="pico-background-purple-500"></span><span class="pico-background-violet-500"></span><span class="pico-background-indigo-500"></span><span class="pico-background-blue-500"></span><span class="pico-background-azure-500"></span><span class="pico-background-cyan-500"></span><span class="pico-background-jade-500"></span><span class="pico-background-green-500"></span><span class="pico-background-lime-500"></span><span class="pico-background-yellow-500"></span><span class="pico-background-amber-500"></span><span class="pico-background-pumpkin-500"></span><span class="pico-background-orange-500"></span>
-          </div>
-          <div class="bento-scale" aria-hidden="true" title="Indigo 50–950">
-            <span class="pico-background-indigo-50"></span><span class="pico-background-indigo-100"></span><span class="pico-background-indigo-200"></span><span class="pico-background-indigo-300"></span><span class="pico-background-indigo-400"></span><span class="pico-background-indigo-500"></span><span class="pico-background-indigo-600"></span><span class="pico-background-indigo-700"></span><span class="pico-background-indigo-800"></span><span class="pico-background-indigo-900"></span><span class="pico-background-indigo-950"></span>
-          </div>
-          </div>
-          <a href={`${base}docs/colors/`}>查看颜色 →</a>
-        </article>
-        <article class="bento" data-reveal style="--d:.06s">
-          <h3>明暗模式跟手</h3>
-          <p>跟随系统偏好，顶栏可手动钉住选择，首帧写入防闪烁。</p>
-          <div class="bento-demo">
-          <div class="bento-theme" aria-hidden="true"><span class="lt">浅</span><span class="dk">深</span></div>
-          </div>
-          <a href={`${base}docs/color-schemes/`}>配色方案 →</a>
-        </article>
-        <article class="bento" data-reveal style="--d:.12s">
-          <h3>容器与栅格</h3>
-          <p>居中容器、流式区块与 12 列栅格，各断点自动适配。</p>
-          <div class="bento-demo">
-          <div class="bento-cols" aria-hidden="true"><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span></span><span></span><span></span><span></span><span></span></div>
-          </div>
-          <a href={`${base}docs/grid/`}>栅格文档 →</a>
-        </article>
-        <article class="bento bento-wide" data-reveal style="--d:.18s">
-          <h3>语义排版，自带层级</h3>
-          <p>标题、引用、表格、代码无需类名，行高与中文回退已调好。</p>
-          <div class="bento-demo">
-          <p class="bento-type" aria-hidden="true"><strong>Aa</strong> 标题 / 正文 / <code>code</code> / <kbd>⌘ K</kbd></p>
-          </div>
-          <a href={`${base}docs/typography/`}>排版文档 →</a>
-        </article>
-      </div>
-    </section>
+          <h1 class="hero-title">
+            写原生 <code>HTML</code>，<br />
+            <span class="hero-title-accent">就足够了。</span>
+          </h1>
 
-    <!-- 4 · 12 行起步：代码与预览左右对照 -->
-    <section class="home-start" aria-label="起步示例">
-      <h2>12 行起步</h2>
-      <p class="home-sub">把 <code>pico.min.css</code> 挂进 <code>&lt;head&gt;</code>，剩下的交给语义标签。</p>
-      <div class="home-editor" data-reveal>
-        <div class="home-editor-code">
-          <div class="home-window-bar">
-            <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span>index.html</span>
-            <button type="button" class="home-copy" data-copy={`<!doctype html>\n<html lang="zh">\n  <head>\n    <meta charset="utf-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <meta name="color-scheme" content="light dark">\n    <link rel="stylesheet" href="${cdn}">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class="container">\n      <h1>Hello world!</h1>\n    </main>\n  </body>\n</html>`} aria-label="复制起步模板">复制模板</button>
-          </div>
-<pre class="code-lines"><code><span class="cl"><span class="tk-p">&lt;!doctype html&gt;</span></span>
-<span class="cl"><span class="tk-p">&lt;html</span> <span class="tk-a">lang</span>=<span class="tk-s">"zh"</span><span class="tk-p">&gt;</span></span>
-<span class="cl">  <span class="tk-p">&lt;head&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">charset</span>=<span class="tk-s">"utf-8"</span><span class="tk-p">&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"viewport"</span> <span class="tk-a">content</span>=<span class="tk-s">"width=device-width, initial-scale=1"</span><span class="tk-p">&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"color-scheme"</span> <span class="tk-a">content</span>=<span class="tk-s">"light dark"</span><span class="tk-p">&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"…/pico.min.css"</span><span class="tk-p">&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;title&gt;</span>Hello world!<span class="tk-p">&lt;/title&gt;</span></span>
-<span class="cl">  <span class="tk-p">&lt;/head&gt;</span></span>
-<span class="cl">  <span class="tk-p">&lt;body&gt;</span></span>
-<span class="cl">    <span class="tk-p">&lt;main</span> <span class="tk-a">class</span>=<span class="tk-s">"container"</span><span class="tk-p">&gt;</span>…<span class="tk-p">&lt;/main&gt;</span></span>
-<span class="cl">  <span class="tk-p">&lt;/body&gt;</span></span>
-<span class="cl"><span class="tk-p">&lt;/html&gt;</span></span></code></pre>
-        </div>
-        <div class="home-editor-demo">
-          <p class="demo-label">实时效果</p>
-          <div style="padding:0;max-width:none">
-            <hgroup><h3>Hello world!</h3><p>语义即样式</p></hgroup>
-            <p>这是一段普通的 <a href={`${base}docs/`}>HTML</a>。表单、表格、卡片开箱可用。</p>
-            <form role="search" onsubmit="return false">
-              <fieldset role="group">
-                <input type="search" placeholder="搜索…" aria-label="搜索" />
-                <input type="submit" value="搜索" />
-              </fieldset>
-            </form>
-          </div>
-          <a href={`${base}docs/forms/`}>表单文档 →</a>
-        </div>
-      </div>
-    </section>
+          <p class="hero-description">
+            仅 <strong>15KB</strong> 轻量无依赖。抛弃数以千计的复杂类名记忆，让纯净的 HTML 标签在任何设备上开箱自带优雅排版、现代化响应式栅格与自适应明暗模式。
+          </p>
 
-    <!-- 5 · 文档地图：分组直达 -->
-    <section class="home-map" aria-label="文档地图">
-      <h2>按需直达文档</h2>
-      <p class="home-sub">39 页中文文档，与官方 URL 一一对应，锚点保留英文 slug。</p>
-      <div class="home-docgrid">
-        <div class="doc-group" data-reveal><h3><a href={`${base}docs/`}>入门</a><span class="doc-count">共 6 页</span></h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a><span class="new-badge">新</span></li></ul></div>
-        <div class="doc-group" data-reveal style="--d:.05s"><h3><a href={`${base}docs/css-variables/`}>定制</a><span class="doc-count">共 3 页</span></h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a><span class="new-badge">新</span></li></ul></div>
-        <div class="doc-group" data-reveal style="--d:.1s"><h3><a href={`${base}docs/container/`}>布局</a><span class="doc-count">共 4 页</span></h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a><span class="new-badge">新</span></li></ul></div>
-        <div class="doc-group" data-reveal style="--d:.15s"><h3><a href={`${base}docs/typography/`}>内容</a><span class="doc-count">共 4 页</span></h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
-        <div class="doc-group" data-reveal style="--d:.2s"><h3><a href={`${base}docs/forms/`}>表单</a><span class="doc-count">共 8 页</span></h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
-        <div class="doc-group" data-reveal style="--d:.25s"><h3><a href={`${base}docs/accordion/`}>组件</a><span class="doc-count">共 9 页</span></h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
+          <div class="hero-cta-group">
+            <a href={`${base}docs/`} class="btn-primary-glow">
+              <span>开始探索文档</span>
+              <ArrowRight size={17} />
+            </a>
+            <a
+              href="https://github.com/picocss/pico"
+              class="btn-secondary-glass"
+              rel="noopener external"
+              target="_blank"
+            >
+              <span>GitHub 仓库</span>
+              <ExternalLink size={15} />
+            </a>
+          </div>
+
+          <!-- 核心指标网格 -->
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <Package size={17} />
+              </div>
+              <div class="metric-text">
+                <strong>约 15 KB</strong>
+                <span>gzip 超轻量体积</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <Zap size={17} />
+              </div>
+              <div class="metric-text">
+                <strong>0 JS 依赖</strong>
+                <span>纯净原生无运行时</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <Palette size={17} />
+              </div>
+              <div class="metric-text">
+                <strong>双主题自适应</strong>
+                <span>原生浅色 / 深色模式</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <ShieldCheck size={17} />
+              </div>
+              <div class="metric-text">
+                <strong>MIT 许可</strong>
+                <span>自由开源免费商用</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧真实可交互组件视窗 (Live Showcase) -->
+        <div class="hero-showcase">
+          <div class="showcase-window" id="demo-window">
+            <div class="showcase-window-bar">
+              <div class="window-controls" aria-hidden="true">
+                <span class="control-dot close"></span>
+                <span class="control-dot min"></span>
+                <span class="control-dot max"></span>
+              </div>
+
+              <div class="window-url-pill">
+                <span class="url-lock">🔒</span>
+                <span>picocss.ndjp.net/demo/</span>
+              </div>
+
+              <div class="window-live-tag">
+                <span class="live-dot" aria-hidden="true"></span>
+                <span>可交互预览</span>
+              </div>
+            </div>
+
+            <div class="showcase-body">
+              <div class="demo-header-group">
+                <h3 class="demo-heading">Hello Pico!</h3>
+                <p class="demo-sub">语义即样式：原生标签默认具备精致观感</p>
+              </div>
+
+              <!-- 搜索与提交 -->
+              <div class="demo-search-row">
+                <input
+                  type="search"
+                  id="showcase-search"
+                  placeholder="搜索文档组件..."
+                  aria-label="交互式输入框示例"
+                />
+                <button type="button" class="demo-search-btn">搜索</button>
+              </div>
+
+              <!-- 按钮变体 -->
+              <div class="demo-button-row">
+                <button type="button" class="demo-btn-main">主要按钮</button>
+                <button type="button" class="demo-btn-sec secondary">次要按钮</button>
+                <button type="button" class="demo-btn-out outline">轮廓样式</button>
+              </div>
+
+              <!-- 表单交互控件 -->
+              <div class="demo-controls-grid">
+                <label class="demo-switch-label">
+                  <input type="checkbox" role="switch" checked id="showcase-theme-switch" />
+                  <span>实时深色模式</span>
+                </label>
+                <label class="demo-checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>自动记住配置</span>
+                </label>
+              </div>
+
+              <!-- 滑块控件 -->
+              <div class="demo-range-wrap">
+                <div class="range-header">
+                  <small>原生滑块组件 range</small>
+                  <span id="range-val" class="range-val-badge">75%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="75"
+                  id="showcase-range"
+                  aria-label="滑块组件演示"
+                />
+              </div>
+
+              <!-- 原生手风琴 -->
+              <details class="demo-accordion" open>
+                <summary>原生 details 手风琴（零 JS）</summary>
+                <p>卡片、提示、下拉与弹窗同理，纯粹靠 HTML 语义标签即可工作。</p>
+              </details>
+
+              <!-- 颜色主题快速切换 -->
+              <div class="demo-palette-bar">
+                <span class="palette-label">点击试换主题色：</span>
+                <div class="palette-dots">
+                  <button type="button" class="dot-btn active" data-accent="#0172ad" title="Indigo (默认)" style="background: #0172ad;"></button>
+                  <button type="button" class="dot-btn" data-accent="#0284c7" title="Azure" style="background: #0284c7;"></button>
+                  <button type="button" class="dot-btn" data-accent="#059669" title="Jade" style="background: #059669;"></button>
+                  <button type="button" class="dot-btn" data-accent="#ea580c" title="Pumpkin" style="background: #ea580c;"></button>
+                  <button type="button" class="dot-btn" data-accent="#7c3aed" title="Violet" style="background: #7c3aed;"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <span>以上组件全部由浏览器原生渲染 · 支持直接点按体验</span>
+            </div>
+          </div>
+
+          <!-- 悬浮特性徽章 -->
+          <div class="floating-badge badge-top-right">
+            <Sparkles size={14} class="badge-sparkle" />
+            <span>Classless 无类名模式可用</span>
+          </div>
+          <div class="floating-badge badge-bottom-left">
+            <Palette size={14} class="badge-sparkle" />
+            <span>内置 20 款精选调色板</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 6 · 收尾：单一意图 -->
-    <section class="home-final" data-reveal aria-label="开始">
-      <div class="home-final-inner">
-        <h2>从第一行语义标签开始</h2>
-        <p>中文翻译遵循 MIT 许可，与上游文档结构保持同步。</p>
-        <p><a href={`${base}docs/`} role="button">阅读文档</a></p>
+    <!-- 2 · 一键安装选项卡 (Interactive Install Window) -->
+    <section class="section-install" aria-label="安装方式">
+      <div class="home-container">
+        <div class="section-header text-center">
+          <h2 class="section-title">一行代码，即刻起步</h2>
+          <p class="section-subtitle">选择你喜欢的方式引入 Pico，开始极速构建纯净 Web 页面。</p>
+        </div>
+
+        <div class="install-terminal-box" data-tabs>
+          <div class="terminal-topbar">
+            <div class="terminal-dots" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+
+            <div class="install-tabs" role="tablist" aria-label="安装渠道">
+              <button
+                type="button"
+                role="tab"
+                id="tab-cdn"
+                aria-controls="panel-cdn"
+                aria-selected="true"
+                class="tab-btn is-active"
+              >
+                CDN 引入
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-npm"
+                aria-controls="panel-npm"
+                aria-selected="false"
+                tabindex="-1"
+                class="tab-btn"
+              >
+                NPM 包
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-sass"
+                aria-controls="panel-sass"
+                aria-selected="false"
+                tabindex="-1"
+                class="tab-btn"
+              >
+                Sass 定制
+              </button>
+            </div>
+
+            <button
+              type="button"
+              class="terminal-copy-btn"
+              id="terminal-copy-action"
+              data-copy-target={cdn}
+              aria-label="复制代码"
+            >
+              <Copy size={13} class="copy-icon" />
+              <Check size={13} class="check-icon" style="display:none;" />
+              <span class="copy-label">复制代码</span>
+            </button>
+          </div>
+
+          <div class="terminal-panels">
+            <div role="tabpanel" id="panel-cdn" aria-labelledby="tab-cdn" data-content={cdn} class="tab-content">
+              <pre class="terminal-pre"><code><span class="tk-tag">&lt;link</span> <span class="tk-attr">rel</span>=<span class="tk-val">"stylesheet"</span> <span class="tk-attr">href</span>=<span class="tk-val">"{cdn}"</span><span class="tk-tag">&gt;</span></code></pre>
+            </div>
+
+            <div role="tabpanel" id="panel-npm" aria-labelledby="tab-npm" data-content={npmCmd} class="tab-content" hidden>
+              <pre class="terminal-pre"><code><span class="tk-cmd">$</span> {npmCmd}</code></pre>
+            </div>
+
+            <div role="tabpanel" id="panel-sass" aria-labelledby="tab-sass" data-content={sassCode} class="tab-content" hidden>
+              <pre class="terminal-pre"><code><span class="tk-keyword">@use</span> <span class="tk-val">"@picocss/pico"</span>;  <span class="tk-comment">// 可自由按需覆盖 SCSS 变量</span></code></pre>
+            </div>
+          </div>
+
+          <div class="terminal-footer">
+            <small class="text-muted">当前版本 v2.1.1 · 支持所有现代现代主流浏览器</small>
+            <div class="terminal-sublinks">
+              <a href={`${base}docs/#install-manually`}>手动下载安装</a> ·
+              <a href={`${base}docs/sass/`}>Sass 变量定制</a> ·
+              <a href={`${base}docs/version-picker/`}>版本与颜色定制器</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · 核心优势 Bento 网格 (Feature Bento) -->
+    <section class="section-bento" aria-label="核心特性">
+      <div class="home-container">
+        <div class="section-header">
+          <div class="section-pill">Why Pico CSS</div>
+          <h2 class="section-title">恰到好处的设计平衡</h2>
+          <p class="section-subtitle">
+            Pico 是加强版的 HTML 重置套件，也是现代极简设计系统的优雅原点：先打理好所有默认标签，再留足扩展定制空间。
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Bento 1: 20 套精选配色 -->
+          <article class="bento-card bento-span-2">
+            <div class="bento-card-header">
+              <div class="bento-icon-pill">
+                <Palette size={18} />
+              </div>
+              <h3 class="bento-title">20 款主题调色板，自由随心</h3>
+            </div>
+            <p class="bento-desc">
+              无需重写样式，引入预编译颜色版本即刻变身。官方以 Indigo 为默认，提供从暖红到青蓝完整的色彩家族。
+            </p>
+
+            <div class="bento-swatches-interactive">
+              <span class="pico-background-indigo-500" title="Indigo"></span>
+              <span class="pico-background-blue-500" title="Blue"></span>
+              <span class="pico-background-azure-500" title="Azure"></span>
+              <span class="pico-background-cyan-500" title="Cyan"></span>
+              <span class="pico-background-jade-500" title="Jade"></span>
+              <span class="pico-background-green-500" title="Green"></span>
+              <span class="pico-background-lime-500" title="Lime"></span>
+              <span class="pico-background-yellow-500" title="Yellow"></span>
+              <span class="pico-background-amber-500" title="Amber"></span>
+              <span class="pico-background-pumpkin-500" title="Pumpkin"></span>
+              <span class="pico-background-orange-500" title="Orange"></span>
+              <span class="pico-background-red-500" title="Red"></span>
+              <span class="pico-background-pink-500" title="Pink"></span>
+              <span class="pico-background-fuchsia-500" title="Fuchsia"></span>
+              <span class="pico-background-purple-500" title="Purple"></span>
+              <span class="pico-background-violet-500" title="Violet"></span>
+            </div>
+
+            <div class="bento-spectrum-bar" title="50 到 950 级色阶渐变">
+              <span class="pico-background-indigo-100"></span>
+              <span class="pico-background-indigo-200"></span>
+              <span class="pico-background-indigo-300"></span>
+              <span class="pico-background-indigo-400"></span>
+              <span class="pico-background-indigo-500"></span>
+              <span class="pico-background-indigo-600"></span>
+              <span class="pico-background-indigo-700"></span>
+              <span class="pico-background-indigo-800"></span>
+              <span class="pico-background-indigo-900"></span>
+            </div>
+
+            <a href={`${base}docs/colors/`} class="bento-explore-link">
+              <span>探索色彩系统文档</span>
+              <ArrowRight size={14} />
+            </a>
+          </article>
+
+          <!-- Bento 2: 明暗模式 -->
+          <article class="bento-card">
+            <div class="bento-card-header">
+              <div class="bento-icon-pill">
+                <Sparkles size={18} />
+              </div>
+              <h3 class="bento-title">零闪烁明暗模式</h3>
+            </div>
+            <p class="bento-desc">
+              自动监听系统偏好；支持 <code>data-theme</code> 属性钉住浅色或深色，首帧渲染平滑无白闪。
+            </p>
+
+            <div class="bento-theme-preview">
+              <div class="theme-half light-half">
+                <span>浅色 Light</span>
+              </div>
+              <div class="theme-half dark-half">
+                <span>深色 Dark</span>
+              </div>
+            </div>
+
+            <a href={`${base}docs/color-schemes/`} class="bento-explore-link">
+              <span>了解配色方案</span>
+              <ArrowRight size={14} />
+            </a>
+          </article>
+
+          <!-- Bento 3: 容器与栅格 -->
+          <article class="bento-card">
+            <div class="bento-card-header">
+              <div class="bento-icon-pill">
+                <LayoutGrid size={18} />
+              </div>
+              <h3 class="bento-title">自适应容器与栅格</h3>
+            </div>
+            <p class="bento-desc">
+              语义化 <code>.container</code> 与 <code>.grid</code>，在手机、平板与超宽屏之间流式响应，无需断点补丁。
+            </p>
+
+            <div class="bento-grid-demo">
+              <div class="grid-sample-cols">
+                <span class="col-highlight"></span>
+                <span class="col-highlight"></span>
+                <span class="col-highlight"></span>
+                <span class="col-box"></span>
+                <span class="col-box"></span>
+                <span class="col-box"></span>
+              </div>
+            </div>
+
+            <a href={`${base}docs/grid/`} class="bento-explore-link">
+              <span>查看栅格排版</span>
+              <ArrowRight size={14} />
+            </a>
+          </article>
+
+          <!-- Bento 4: 语义排版 -->
+          <article class="bento-card bento-span-2">
+            <div class="bento-card-header">
+              <div class="bento-icon-pill">
+                <Code2 size={18} />
+              </div>
+              <h3 class="bento-title">优雅的排版层级与中文支持</h3>
+            </div>
+            <p class="bento-desc">
+              标题、引用、正文、标记与表格自带舒适的黄金行高。经过精细的中文 Web 字体回退调校，清晰易读。
+            </p>
+
+            <div class="bento-typography-preview">
+              <div class="type-badge">Aa</div>
+              <div class="type-show">
+                <span class="type-h">大标题 Heading</span>
+                <span class="type-p">正文段落细腻柔和</span>
+                <span class="type-tags">
+                  <code>&lt;code&gt;</code>
+                  <kbd>⌘ K</kbd>
+                  <mark>高亮文本</mark>
+                </span>
+              </div>
+            </div>
+
+            <a href={`${base}docs/typography/`} class="bento-explore-link">
+              <span>排版与文本规范</span>
+              <ArrowRight size={14} />
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · 12 行起步示例 (Starter Workbench) -->
+    <section class="section-starter" aria-label="起步模板">
+      <div class="home-container">
+        <div class="section-header">
+          <div class="section-pill">Quickstart Template</div>
+          <h2 class="section-title">12 行 HTML，见证开箱即美</h2>
+          <p class="section-subtitle">
+            无需复杂的构建链或打包配置。建立一个纯 HTML 文件，粘贴模板，在浏览器里双击打开就是现代化界面。
+          </p>
+        </div>
+
+        <div class="starter-workbench">
+          <!-- 左侧代码视图 -->
+          <div class="workbench-code">
+            <div class="workbench-topbar">
+              <div class="terminal-dots" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </div>
+              <span class="file-name">index.html</span>
+              <button
+                type="button"
+                class="terminal-copy-btn"
+                id="copy-template-btn"
+                data-copy={`<!doctype html>\n<html lang="zh-CN">\n  <head>\n    <meta charset="utf-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <meta name="color-scheme" content="light dark">\n    <link rel="stylesheet" href="${cdn}">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class="container">\n      <h1>Hello world!</h1>\n      <p>写原生 HTML 就够了。</p>\n    </main>\n  </body>\n</html>`}
+              >
+                <Copy size={13} class="copy-icon" />
+                <Check size={13} class="check-icon" style="display:none;" />
+                <span class="copy-label">复制模板</span>
+              </button>
+            </div>
+
+            <pre class="workbench-pre"><code><span class="cl"><span class="tk-tag">&lt;!doctype html&gt;</span></span>
+<span class="cl"><span class="tk-tag">&lt;html</span> <span class="tk-attr">lang</span>=<span class="tk-val">"zh-CN"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">  <span class="tk-tag">&lt;head&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;meta</span> <span class="tk-attr">charset</span>=<span class="tk-val">"utf-8"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;meta</span> <span class="tk-attr">name</span>=<span class="tk-val">"viewport"</span> <span class="tk-attr">content</span>=<span class="tk-val">"width=device-width, initial-scale=1"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;meta</span> <span class="tk-attr">name</span>=<span class="tk-val">"color-scheme"</span> <span class="tk-attr">content</span>=<span class="tk-val">"light dark"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;link</span> <span class="tk-attr">rel</span>=<span class="tk-val">"stylesheet"</span> <span class="tk-attr">href</span>=<span class="tk-val">"…/pico.min.css"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;title&gt;</span>Hello world!<span class="tk-tag">&lt;/title&gt;</span></span>
+<span class="cl">  <span class="tk-tag">&lt;/head&gt;</span></span>
+<span class="cl">  <span class="tk-tag">&lt;body&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;main</span> <span class="tk-attr">class</span>=<span class="tk-val">"container"</span><span class="tk-tag">&gt;</span></span>
+<span class="cl">      <span class="tk-tag">&lt;h1&gt;</span>Hello world!<span class="tk-tag">&lt;/h1&gt;</span></span>
+<span class="cl">      <span class="tk-tag">&lt;p&gt;</span>写原生 HTML 就够了。<span class="tk-tag">&lt;/p&gt;</span></span>
+<span class="cl">    <span class="tk-tag">&lt;/main&gt;</span></span>
+<span class="cl">  <span class="tk-tag">&lt;/body&gt;</span></span>
+<span class="cl"><span class="tk-tag">&lt;/html&gt;</span></span></code></pre>
+          </div>
+
+          <!-- 右侧效果呈现 -->
+          <div class="workbench-demo">
+            <div class="workbench-demo-header">
+              <span class="live-status-dot"></span>
+              <span>浏览器渲染效果</span>
+            </div>
+
+            <div class="workbench-demo-canvas">
+              <h3>Hello world!</h3>
+              <p>原生标题与正文段落，已具备现代响应式留白与优美字距。</p>
+              <div class="demo-card-box">
+                <strong>语义化卡片与表单示例</strong>
+                <p>无需记忆复杂 class，Pico 根据 HTML 标签关系智能渲染。</p>
+                <div class="demo-card-actions">
+                  <a href={`${base}docs/`} role="button" class="small">立即阅读教程</a>
+                  <a href={`${base}docs/forms/`} role="button" class="small secondary">查看表单</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · 文档导航矩阵 (Documentation Matrix) -->
+    <section class="section-matrix" aria-label="文档导航">
+      <div class="home-container">
+        <div class="section-header">
+          <div class="section-pill">Documentation Sitemap</div>
+          <h2 class="section-title">39 篇中文文档，全景直达</h2>
+          <p class="section-subtitle">
+            与 Pico 官方文档结构 100% 对应，精准翻译每一处术语与说明，保留完整英文锚点。
+          </p>
+        </div>
+
+        <div class="matrix-grid">
+          <!-- 组 1 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <Rocket size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/`}>入门指南</a></h3>
+              <span class="matrix-count">6 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/`}>快速开始 (Quickstart)</a></li>
+              <li><a href={`${base}docs/version-picker/`}>版本选择器 <span class="new-badge">新</span></a></li>
+              <li><a href={`${base}docs/color-schemes/`}>配色方案</a></li>
+              <li><a href={`${base}docs/classless/`}>无类版本 (Classless)</a></li>
+              <li><a href={`${base}docs/conditional/`}>条件样式 <span class="new-badge">新</span></a></li>
+              <li><a href={`${base}docs/rtl/`}>RTL 从右到左排版</a></li>
+            </ul>
+          </div>
+
+          <!-- 组 2 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <Palette size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/css-variables/`}>定制系统</a></h3>
+              <span class="matrix-count">3 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/css-variables/`}>CSS 变量覆盖</a></li>
+              <li><a href={`${base}docs/sass/`}>Sass 深度定制</a></li>
+              <li><a href={`${base}docs/colors/`}>20 套精选颜色 <span class="new-badge">新</span></a></li>
+            </ul>
+          </div>
+
+          <!-- 组 3 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <LayoutGrid size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/container/`}>布局与容器</a></h3>
+              <span class="matrix-count">4 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/container/`}>容器 (Container)</a></li>
+              <li><a href={`${base}docs/landmarks-section/`}>地标与区块</a></li>
+              <li><a href={`${base}docs/grid/`}>12 列响应式栅格</a></li>
+              <li><a href={`${base}docs/overflow-auto/`}>溢出自动滚动 <span class="new-badge">新</span></a></li>
+            </ul>
+          </div>
+
+          <!-- 组 4 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <Type size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/typography/`}>内容与排版</a></h3>
+              <span class="matrix-count">4 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/typography/`}>排版与标题</a></li>
+              <li><a href={`${base}docs/link/`}>链接与状态</a></li>
+              <li><a href={`${base}docs/button/`}>按钮与变体</a></li>
+              <li><a href={`${base}docs/table/`}>表格与响应式</a></li>
+            </ul>
+          </div>
+
+          <!-- 组 5 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <CheckCircle2 size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/forms/`}>表单元素</a></h3>
+              <span class="matrix-count">8 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/forms/`}>表单概览</a></li>
+              <li><a href={`${base}docs/forms/input/`}>文本输入框 (Input)</a></li>
+              <li><a href={`${base}docs/forms/select/`}>下拉选择 (Select)</a></li>
+              <li><a href={`${base}docs/forms/switch/`}>开关 (Switch)</a></li>
+              <li><a href={`${base}docs/forms/checkboxes/`}>复选框与单选</a></li>
+              <li><a href={`${base}docs/forms/range/`}>滑块 (Range)</a></li>
+            </ul>
+          </div>
+
+          <!-- 组 6 -->
+          <div class="matrix-card">
+            <div class="matrix-card-head">
+              <Layers size={18} class="matrix-icon" />
+              <h3><a href={`${base}docs/accordion/`}>交互组件</a></h3>
+              <span class="matrix-count">9 篇</span>
+            </div>
+            <ul class="matrix-links">
+              <li><a href={`${base}docs/modal/`}>原生模态框 (Modal)</a></li>
+              <li><a href={`${base}docs/accordion/`}>手风琴 (Accordion)</a></li>
+              <li><a href={`${base}docs/card/`}>卡片 (Card)</a></li>
+              <li><a href={`${base}docs/dropdown/`}>下拉菜单 (Dropdown)</a></li>
+              <li><a href={`${base}docs/nav/`}>顶栏导航 (Nav)</a></li>
+              <li><a href={`${base}docs/progress/`}>进度条与加载态</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · 尾声行动面板 (Final Call to Action) -->
+    <section class="section-final-cta" aria-label="准备开始">
+      <div class="home-container">
+        <div class="final-cta-card">
+          <div class="final-cta-glow" aria-hidden="true"></div>
+          <div class="final-cta-content">
+            <h2 class="final-cta-title">重回纯粹的 Web 创作乐趣</h2>
+            <p class="final-cta-desc">
+              无需繁复配置，无需编译等待。现在就将 Pico CSS 引入你的下一个项目。
+            </p>
+            <div class="final-cta-actions">
+              <a href={`${base}docs/`} class="btn-final-primary">
+                <span>浏览完整文档</span>
+                <ArrowRight size={17} />
+              </a>
+              <a
+                href="https://github.com/picocss/pico"
+                class="btn-final-secondary"
+                rel="noopener external"
+                target="_blank"
+              >
+                <span>在 GitHub 上关注</span>
+                <ExternalLink size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- 全局页脚 -->
   <footer class="site-footer">
-    <div class="container foot-grid">
-      <div class="foot-brand">
-        <p class="foot-logo">Pico <span>中文文档</span></p>
-        <p>面向语义化 HTML 的极简 CSS 框架，39 页官方文档中文翻译。</p>
-        <p><span class="ver-chip">v2.1.1 · Indigo</span></p>
+    <div class="site-footer-grid">
+      <div class="footer-brand">
+        <h4 class="footer-brand-title">Pico CSS 中文文档</h4>
+        <p class="footer-brand-desc">
+          面向纯语义化 HTML 的极简、轻量级 CSS 框架。39 篇官方英文文档完整精校翻译。
+        </p>
+        <span class="header-version-pill">v2.1.1 · 纯静态构建</span>
       </div>
-      <nav aria-label="文档分组">
-        <strong>文档</strong>
-        <ul>
-          <li><a class="secondary" href={`${base}docs/`}>入门</a></li>
-          <li><a class="secondary" href={`${base}docs/css-variables/`}>定制</a></li>
-          <li><a class="secondary" href={`${base}docs/container/`}>布局</a></li>
-          <li><a class="secondary" href={`${base}docs/typography/`}>内容</a></li>
-          <li><a class="secondary" href={`${base}docs/forms/`}>表单</a></li>
-          <li><a class="secondary" href={`${base}docs/accordion/`}>组件</a></li>
+
+      <div class="footer-col">
+        <div class="footer-col-title">快速直达</div>
+        <ul class="footer-links">
+          <li><a href={`${base}docs/`}>快速开始</a></li>
+          <li><a href={`${base}docs/classless/`}>无类版本 (Classless)</a></li>
+          <li><a href={`${base}docs/forms/`}>表单元素</a></li>
+          <li><a href={`${base}docs/modal/`}>模态框组件</a></li>
+          <li><a href={`${base}docs/colors/`}>调色板指南</a></li>
         </ul>
-      </nav>
-      <nav aria-label="资源">
-        <strong>资源</strong>
-        <ul>
-          <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
-          <li><a class="secondary" href="https://picocss.com" rel="noopener external" target="_blank">官网</a></li>
-          <li><a class="secondary" href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external" target="_blank">MIT 许可证</a></li>
-          <li><a class="secondary" href="#top">回到顶部 ↑</a></li>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">开源与社区</div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub 官方仓库</a></li>
+          <li><a href="https://picocss.com" rel="noopener external" target="_blank">Pico CSS 官网 (英文)</a></li>
+          <li><a href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external" target="_blank">MIT 许可证</a></li>
+          <li><a href="#top">回到顶部 ↑</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
-    <div class="container foot-base">
-      <small>中文翻译自 <a href="https://picocss.com" rel="noopener external">picocss.com</a>，遵循 MIT 许可证。</small>
-      <small>© 2026 · 纯静态构建</small>
+
+    <div class="site-footer-bottom">
+      <small>内容翻译自 <a href="https://picocss.com/docs" rel="noopener external" target="_blank">picocss.com/docs</a>，遵循 MIT 开源许可。</small>
+      <small>© 2026 pico-cn · 纯净体验</small>
     </div>
   </footer>
 </Base>
 
 <script>
-  const root = document.documentElement;
-  root.classList.add("js");
-  // 复制按钮
-  document.querySelectorAll("[data-copy]").forEach((btn) => {
+  // 1. 通用复制按钮逻辑
+  function setupCopyButton(btn: HTMLElement, textToCopy: string) {
     btn.addEventListener("click", async () => {
-      const el = btn as HTMLElement;
-      const text = el.getAttribute("data-copy") || "";
-      const label = el.textContent;
+      const copyIcon = btn.querySelector(".copy-icon") as HTMLElement | null;
+      const checkIcon = btn.querySelector(".check-icon") as HTMLElement | null;
+      const copyLabel = btn.querySelector(".copy-label") as HTMLElement | null;
+
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(textToCopy);
       } catch {
         const ta = document.createElement("textarea");
-        ta.value = text;
+        ta.value = textToCopy;
         document.body.appendChild(ta);
         ta.select();
         document.execCommand("copy");
         ta.remove();
       }
-      el.textContent = "已复制 ✓";
-      el.setAttribute("data-done", "true");
-      window.setTimeout(() => {
-        el.textContent = label;
-        el.removeAttribute("data-done");
-      }, 1400);
+
+      if (copyIcon && checkIcon && copyLabel) {
+        copyIcon.style.display = "none";
+        checkIcon.style.display = "inline-block";
+        copyLabel.textContent = "已复制 ✓";
+        btn.style.borderColor = "#10b981";
+        btn.style.color = "#10b981";
+
+        setTimeout(() => {
+          copyIcon.style.display = "inline-block";
+          checkIcon.style.display = "none";
+          copyLabel.textContent = "复制代码";
+          btn.style.borderColor = "";
+          btn.style.color = "";
+        }, 1600);
+      }
     });
-  });
-  // 安装页签（role=tablist，方向键可切；复制按钮跟随当前页签）
-  document.querySelectorAll("[data-tabs]").forEach((wrap) => {
-    const box = wrap as HTMLElement;
-    const tabs = Array.from(box.querySelectorAll('[role="tab"]')) as HTMLElement[];
-    const panels = Array.from(box.querySelectorAll('[role="tabpanel"]')) as HTMLElement[];
-    const copyBtn = box.querySelector("[data-copy-btn]") as HTMLElement | null;
-    const select = (tab: HTMLElement) => {
-      tabs.forEach((t) => {
-        const on = t === tab;
-        t.setAttribute("aria-selected", on ? "true" : "false");
-        t.tabIndex = on ? 0 : -1;
-      });
-      panels.forEach((p) => {
-        const on = p.id === tab.getAttribute("aria-controls");
-        if (on) p.removeAttribute("hidden");
-        else p.setAttribute("hidden", "");
-        if (on && copyBtn && p.dataset.copy) copyBtn.setAttribute("data-copy", p.dataset.copy);
-      });
-    };
-    tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => select(tab));
-      tab.addEventListener("keydown", (e) => {
-        const ev = e as KeyboardEvent;
-        if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
-        ev.preventDefault();
-        const n = (i + (ev.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
-        tabs[n].focus();
-        select(tabs[n]);
-      });
-    });
-  });
-  // 滚动显现（无 JS 时默认可见）
-  const items = Array.from(document.querySelectorAll("[data-reveal]"));
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) {
-          (e.target as HTMLElement).classList.add("is-in");
-          io.unobserve(e.target);
-        }
-      }),
-      { threshold: 0.12 }
-    );
-    items.forEach((el) => io.observe(el));
-  } else {
-    items.forEach((el) => (el as HTMLElement).classList.add("is-in"));
   }
+
+  // 终端选项卡与复制逻辑
+  const terminalBox = document.querySelector("[data-tabs]");
+  if (terminalBox) {
+    const tabs = Array.from(terminalBox.querySelectorAll<HTMLElement>('[role="tab"]'));
+    const panels = Array.from(terminalBox.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+    const copyBtn = document.getElementById("terminal-copy-action");
+
+    let currentContent = panels[0]?.getAttribute("data-content") || "";
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const copyIcon = copyBtn.querySelector(".copy-icon") as HTMLElement | null;
+        const checkIcon = copyBtn.querySelector(".check-icon") as HTMLElement | null;
+        const copyLabel = copyBtn.querySelector(".copy-label") as HTMLElement | null;
+
+        try {
+          await navigator.clipboard.writeText(currentContent);
+        } catch {
+          const ta = document.createElement("textarea");
+          ta.value = currentContent;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+
+        if (copyIcon && checkIcon && copyLabel) {
+          copyIcon.style.display = "none";
+          checkIcon.style.display = "inline-block";
+          copyLabel.textContent = "已复制 ✓";
+          copyBtn.style.borderColor = "#10b981";
+          copyBtn.style.color = "#10b981";
+
+          setTimeout(() => {
+            copyIcon.style.display = "inline-block";
+            checkIcon.style.display = "none";
+            copyLabel.textContent = "复制代码";
+            copyBtn.style.borderColor = "";
+            copyBtn.style.color = "";
+          }, 1600);
+        }
+      });
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-selected", "false");
+          t.tabIndex = -1;
+        });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-selected", "true");
+        tab.tabIndex = 0;
+
+        panels.forEach((p) => {
+          if (p.id === tab.getAttribute("aria-controls")) {
+            p.removeAttribute("hidden");
+            currentContent = p.getAttribute("data-content") || "";
+          } else {
+            p.setAttribute("hidden", "");
+          }
+        });
+      });
+    });
+  }
+
+  // 起步模板复制代码
+  const copyTemplateBtn = document.getElementById("copy-template-btn");
+  if (copyTemplateBtn) {
+    const text = copyTemplateBtn.getAttribute("data-copy") || "";
+    setupCopyButton(copyTemplateBtn, text);
+  }
+
+  // 2. Showcase 交互：滑块百分比联动
+  const rangeInput = document.getElementById("showcase-range") as HTMLInputElement | null;
+  const rangeBadge = document.getElementById("range-val");
+  if (rangeInput && rangeBadge) {
+    rangeInput.addEventListener("input", () => {
+      rangeBadge.textContent = `${rangeInput.value}%`;
+    });
+  }
+
+  // 3. Showcase 交互：主题明暗开关联动 demo-window
+  const themeSwitch = document.getElementById("showcase-theme-switch") as HTMLInputElement | null;
+  const demoWindow = document.getElementById("demo-window");
+  if (themeSwitch && demoWindow) {
+    themeSwitch.addEventListener("change", () => {
+      if (themeSwitch.checked) {
+        demoWindow.setAttribute("data-theme-override", "dark");
+      } else {
+        demoWindow.setAttribute("data-theme-override", "light");
+      }
+    });
+  }
+
+  // 4. Showcase 交互：主题颜色小点即时变色
+  const dots = document.querySelectorAll<HTMLButtonElement>(".palette-dots .dot-btn");
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      dots.forEach((d) => d.classList.remove("active"));
+      dot.classList.add("active");
+      const color = dot.getAttribute("data-accent");
+      if (color && demoWindow) {
+        demoWindow.style.setProperty("--pico-primary", color);
+      }
+    });
+  });
 </script>
 
 <style>
-  .home { --home-ring: var(--pico-muted-border-color); }
-  .home ::selection { background: color-mix(in srgb, var(--pico-primary) 22%, transparent); }
-  .home p { text-wrap: pretty; }
-  .home :where(.home-copy, .tabs [role="tab"]):focus-visible { outline: 2px solid var(--pico-primary); outline-offset: 2px; }
-  /* 阅读进度：纯 CSS scroll-timeline，无 JS 滚动监听 */
-  .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100; background: var(--pico-primary); transform: scaleX(0); transform-origin: 0 50%; }
-  @supports (animation-timeline: scroll()) {
-    .scroll-progress { animation: scrollgrow linear both; animation-timeline: scroll(); }
-    @keyframes scrollgrow { to { transform: scaleX(1); } }
-  }
-  /* 全幅 hero：破 container 出血，内容用内层 container 对齐 */
-  .home-hero {
+  /* --------------------------------------------------------------------------
+     全局首页容器与网格
+     -------------------------------------------------------------------------- */
+  .home-main {
     position: relative;
-    margin-inline: calc(50% - 50vw);
-    padding-block: 5rem 4rem;
-    border-bottom: 1px solid var(--home-ring);
     overflow: hidden;
   }
-  .home-hero::before {
-    content: "";
+
+  .home-container {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* --------------------------------------------------------------------------
+     1 · Hero 旗舰首屏
+     -------------------------------------------------------------------------- */
+  .hero-section {
+    position: relative;
+    padding-top: 4.5rem;
+    padding-bottom: 5.5rem;
+    border-bottom: 1px solid var(--site-border);
+    overflow: hidden;
+  }
+
+  .hero-glow-ambient {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(circle at 50% 30%, var(--glow-primary) 0%, transparent 68%);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-grid-pattern {
     position: absolute;
     inset: 0;
-    background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"),
-      linear-gradient(var(--home-ring) 1px, transparent 1px) 0 0 / 100% 34px,
-      linear-gradient(90deg, var(--home-ring) 1px, transparent 1px) 0 0 / 34px 100%;
-    opacity: 0.4;
-    mask-image: radial-gradient(75% 100% at 50% 0%, black 25%, transparent 78%);
+    background-image: linear-gradient(to right, var(--site-border-subtle) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--site-border-subtle) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 20%, transparent 80%);
     pointer-events: none;
+    z-index: 0;
   }
-  .home-hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    gap: 3rem;
-    align-items: center;
+
+  .hero-inner {
     position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
   }
-  .home-hero::after {
-    content: "";
-    position: absolute;
-    inset: -4rem -6rem auto;
-    height: 420px;
-    z-index: -1;
-    background: radial-gradient(45% 60% at 70% 30%, color-mix(in srgb, var(--pico-primary) 12%, transparent), transparent 70%);
-    pointer-events: none;
+
+  @media (max-width: 1024px) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 3rem;
+    }
   }
-  html[data-theme="dark"] .home-hero::after {
-    background: radial-gradient(45% 60% at 70% 30%, color-mix(in srgb, var(--pico-primary) 22%, transparent), transparent 70%);
+
+  /* 左侧文案 */
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .home-kicker {
+
+  .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--pico-muted-color);
-    border: 1px solid var(--home-ring);
+    padding: 0.35rem 0.85rem;
     border-radius: 999px;
-    padding: 0.32rem 0.85rem;
-    margin: 0 0 1.2rem;
-    background-color: color-mix(in srgb, var(--pico-card-background-color) 78%, transparent);
-  }
-  .home-kicker-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pico-primary); flex: none; }
-  .home-hero h1 { font-size: clamp(3rem, 7.2vw, 5.4rem); line-height: 1.04; letter-spacing: -0.04em; margin-bottom: 1.1rem; text-wrap: balance; }
-  .home-hero h1 code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.62em;
-    font-weight: 700;
-    letter-spacing: 0;
+    font-size: 0.76rem;
+    font-weight: 600;
+    font-family: var(--pico-font-family-monospace);
     color: var(--pico-primary);
-    background: color-mix(in srgb, var(--pico-primary) 13%, transparent);
-    border: 1px solid color-mix(in srgb, var(--pico-primary) 38%, transparent);
-    padding: 0.06em 0.3em;
-    border-radius: 0.22em;
+    background: color-mix(in srgb, var(--pico-primary) 10%, var(--site-card-bg));
+    border: 1px solid color-mix(in srgb, var(--pico-primary) 28%, transparent);
+    box-shadow: 0 2px 8px -2px var(--glow-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-pulsing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pico-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--pico-primary) 30%, transparent);
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 5.8vw, 4.4rem);
+    font-weight: 850;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.25rem;
+    color: var(--pico-color);
+    text-wrap: balance;
+  }
+
+  .hero-title code {
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.72em;
+    font-weight: 800;
+    color: var(--pico-primary);
+    background: color-mix(in srgb, var(--pico-primary) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pico-primary) 32%, transparent);
+    padding: 0.08em 0.35em;
+    border-radius: 8px;
+    vertical-align: 2px;
+  }
+
+  .hero-title-accent {
+    background: linear-gradient(135deg, var(--pico-color) 30%, var(--pico-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--pico-muted-color);
+    max-width: 52ch;
+    margin-bottom: 2.2rem;
+    text-wrap: pretty;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-primary-glow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: var(--pico-primary);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px -8px var(--pico-primary);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-primary-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -6px var(--pico-primary);
+    text-decoration: none;
+  }
+
+  .btn-secondary-glass {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--pico-color) !important;
+    background: color-mix(in srgb, var(--site-card-bg) 80%, transparent);
+    border: 1px solid var(--site-border);
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: var(--site-shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary-glass:hover {
+    border-color: var(--pico-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--site-shadow-md);
+    text-decoration: none;
+  }
+
+  /* 4 个指标小卡片 */
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .metric-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--site-card-bg) 65%, transparent);
+    border: 1px solid var(--site-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .metric-icon-wrap {
+    color: var(--pico-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--pico-primary) 12%, transparent);
+    flex-shrink: 0;
+  }
+
+  .metric-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-text strong {
+    font-size: 0.95rem;
+    font-weight: 750;
+    color: var(--pico-color);
+    letter-spacing: -0.01em;
+  }
+
+  .metric-text span {
+    font-size: 0.75rem;
+    color: var(--pico-muted-color);
+  }
+
+  /* 右侧可交互组件沙盒 (Showcase) */
+  .hero-showcase {
+    position: relative;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .showcase-window {
+    position: relative;
+    border: 1px solid var(--site-border);
+    border-radius: 14px;
+    background: var(--pico-card-background-color);
+    box-shadow: var(--site-shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  [data-theme-override="dark"] {
+    --pico-card-background-color: #101625;
+    --pico-background-color: #090d16;
+    --pico-color: #f1f5f9;
+    --pico-muted-color: #94a3b8;
+    --site-border: rgba(255, 255, 255, 0.09);
+  }
+
+  [data-theme-override="light"] {
+    --pico-card-background-color: #ffffff;
+    --pico-background-color: #f8fafc;
+    --pico-color: #1e293b;
+    --pico-muted-color: #64748b;
+    --site-border: rgba(0, 0, 0, 0.08);
+  }
+
+  .showcase-window-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--site-border);
+    background: color-mix(in srgb, var(--pico-card-background-color) 85%, transparent);
+    font-size: 0.8rem;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .control-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .control-dot.close { background: #ef4444; }
+  .control-dot.min { background: #f59e0b; }
+  .control-dot.max { background: #10b981; }
+
+  .window-url-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--pico-muted-color);
+    background: var(--pico-background-color);
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
+    padding: 0.15rem 0.75rem;
+    font-family: var(--pico-font-family-monospace);
+    max-width: 175px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .home-lead { font-size: 1.2rem; color: var(--pico-color-grey-600); max-width: 42ch; margin-bottom: 1.8rem; }
-  html[data-theme="dark"] .home-lead { color: var(--pico-color-grey-400); }
-  .home-cta { margin-bottom: 2rem; }
-  .home-cta [role="button"] { font-size: 1.02rem; padding: 0.85rem 1.7rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
-  .home-cta [role="button"]:first-child { box-shadow: 0 14px 30px -16px color-mix(in srgb, var(--pico-primary) 70%, transparent); }
-  .home-cta [role="button"]:hover { text-decoration: none; }
-  .home-cta [role="button"]:active { transform: translateY(1px) scale(0.99); }
-  .home-meta { list-style: none; padding: 1.4rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; border-top: 2px solid var(--pico-color); }
-  .home-meta li { display: grid; gap: 0.15rem; }
-  .home-meta strong { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-  .home-meta span { font-size: 0.8rem; color: var(--pico-muted-color); }
-  @media (min-width: 768px) {
-    .home-meta li + li { border-left: 1px solid var(--home-ring); padding-left: 1rem; }
+
+  .window-live-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #10b981;
   }
-  /* 浏览器预览 */
-  .browser {
-    position: relative;
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  .showcase-body {
+    padding: 1.5rem 1.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .demo-heading {
+    font-size: 1.25rem;
+    font-weight: 750;
+    margin: 0 0 0.2rem;
+    color: var(--pico-color);
+  }
+
+  .demo-sub {
+    font-size: 0.86rem;
+    color: var(--pico-muted-color);
     margin: 0;
-    border: 1px solid var(--home-ring);
-    border-radius: calc(var(--pico-border-radius) + 10px);
-    background: var(--pico-card-background-color);
-    box-shadow: 0 40px 90px -40px color-mix(in srgb, var(--pico-primary) 45%, transparent), 0 4px 18px -8px rgba(0,0,0,0.18);
-    overflow: visible;
   }
-  .browser-bar, .home-window-bar {
-    display: flex; align-items: center; gap: 0.7rem;
+
+  .demo-search-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .demo-search-row input[type="search"] {
+    flex: 1;
+    margin: 0;
+    font-size: 0.88rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .demo-search-btn {
+    margin: 0;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+
+  .demo-button-row {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .demo-button-row button {
+    margin: 0;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+    border-radius: 6px;
+  }
+
+  .demo-controls-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .demo-controls-grid label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.84rem;
+    margin: 0;
+    cursor: pointer;
+    color: var(--pico-color);
+  }
+
+  .demo-range-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .range-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .range-header small {
+    color: var(--pico-muted-color);
+    font-size: 0.78rem;
+  }
+
+  .range-val-badge {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--pico-primary);
+  }
+
+  .demo-range-wrap input[type="range"] {
+    margin: 0;
+  }
+
+  .demo-accordion {
+    margin: 0;
     padding: 0.65rem 1rem;
-    border-bottom: 1px solid var(--home-ring);
-    font-size: 0.82rem; color: var(--pico-muted-color);
-  }
-  .browser-dots { display: inline-flex; gap: 0.35rem; }
-  .browser-dots i { width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--pico-muted-border-color); display: block; }
-  .browser-dots i:first-child { background: #e5484d; } .browser-dots i:nth-child(2) { background: #f5a524; } .browser-dots i:nth-child(3) { background: #30a46c; }
-  .browser-url {
-    flex: 1; text-align: center; font-size: 0.78rem;
+    border: 1px solid var(--site-border);
+    border-radius: 8px;
     background: var(--pico-background-color);
-    border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.2rem 0.8rem;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    font-size: 0.86rem;
   }
-  .browser-live { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; color: var(--pico-primary); white-space: nowrap; }
-  .browser-live i { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: #30a46c; }
-  .browser-body { padding: 1.35rem 1.35rem 1.5rem; display: grid; gap: 1rem; }
-  .browser-body hgroup { margin: 0; } .browser-body hgroup h3 { margin-bottom: 0.2rem; font-size: 1.3rem; } .browser-body hgroup p { margin: 0; color: var(--pico-muted-color); font-size: 0.9rem; }
-  .browser-toggles { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-  .browser-toggles label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.86rem; margin: 0; cursor: pointer; }
-  .browser-toggles input { margin: 0; }
-  .browser-body input[type="range"] { margin: 0; }
-  .browser-acc { margin: 0; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.7rem 1rem; }
-  .browser-acc summary { margin: 0; font-weight: 600; font-size: 0.9rem; }
-  .browser-acc p { margin: 0.5rem 0 0; font-size: 0.86rem; color: var(--pico-muted-color); }
-  .browser-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .browser-row button.small { padding: 0.35rem 0.7rem; font-size: 0.82rem; margin: 0; }
-  .browser-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.5rem; }
-  .browser-grid span { height: 2.2rem; border-radius: var(--pico-border-radius); background: color-mix(in srgb, var(--pico-primary) 14%, var(--pico-card-background-color)); border: 1px solid var(--home-ring); }
-  .browser-foot { margin: 0; padding: 0.7rem 1.2rem; border-top: 1px solid var(--home-ring); font-size: 0.78rem; color: var(--pico-muted-color); text-align: center; }
-  .browser-chip {
-    position: absolute; font-size: 0.75rem; font-weight: 600;
+
+  .demo-accordion summary {
+    font-weight: 600;
+    font-size: 0.86rem;
+    margin: 0;
+  }
+
+  .demo-accordion p {
+    margin: 0.5rem 0 0;
+    font-size: 0.82rem;
+    color: var(--pico-muted-color);
+  }
+
+  .demo-palette-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pico-primary) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pico-primary) 18%, transparent);
+  }
+
+  .palette-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--pico-color);
+  }
+
+  .palette-dots {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .dot-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .dot-btn:hover {
+    transform: scale(1.15);
+  }
+
+  .dot-btn.active {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 1px var(--pico-primary);
+  }
+
+  .showcase-footer {
+    padding: 0.65rem 1.25rem;
+    border-top: 1px solid var(--site-border);
+    font-size: 0.76rem;
+    color: var(--pico-muted-color);
+    text-align: center;
+    background: color-mix(in srgb, var(--pico-card-background-color) 92%, black);
+  }
+
+  /* 悬浮特性徽章 */
+  .floating-badge {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
     background: var(--pico-card-background-color);
-    border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.3rem 0.7rem;
-    box-shadow: 0 10px 24px -12px rgba(0,0,0,0.35);
+    border: 1px solid var(--site-border);
+    box-shadow: var(--site-shadow-md);
+    color: var(--pico-color);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
   }
-  .chip-a { top: -0.85rem; left: 1.2rem; } .chip-b { bottom: -0.9rem; right: 1.4rem; }
-  /* 安装窗口 */
-  .home-install { padding-block: 1rem; }
-  .home-window { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); background: var(--pico-card-background-color); overflow: hidden; }
-  .home-window-bar { justify-content: space-between; flex-wrap: wrap; row-gap: 0.5rem; }
-  .tabs { display: inline-flex; gap: 0.2rem; background: var(--pico-background-color); border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.2rem; }
-  .tabs [role="tab"] { border: 0; background: transparent; color: var(--pico-muted-color); font-size: 0.78rem; font-weight: 600; padding: 0.28rem 0.85rem; border-radius: 999px; cursor: pointer; margin: 0; }
-  .tabs [role="tab"][aria-selected="true"] { background: var(--pico-primary); color: var(--pico-primary-inverse); }
-  .tabs [role="tab"]:hover:not([aria-selected="true"]) { color: var(--pico-primary); }
-  [role="tabpanel"][hidden] { display: none !important; }
-  [role="tabpanel"]:focus-visible { outline: 2px solid var(--pico-primary); outline-offset: -2px; }
-  .home-install-foot small { color: var(--pico-muted-color); }
-  .home-copy { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.78rem; border: 1px solid var(--home-ring); border-radius: 999px; background: transparent; color: var(--pico-primary); font-weight: 600; cursor: pointer; }
-  .home-copy[data-done="true"] { color: #30a46c; border-color: #30a46c; }
-  .home-code { margin: 0; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.86rem; }
-  .tk-p { color: var(--pico-muted-color); } .tk-a { color: var(--pico-primary); } .tk-s { color: #177245; }
-  html[data-theme="dark"] .tk-s { color: #7ddf9a; }
-  .home-install-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.7rem 1rem; border-top: 1px solid var(--home-ring); }
-  .home-npm { display: inline-flex; align-items: center; gap: 0.6rem; background: none; border: 1px dashed var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.35rem 0.6rem; cursor: pointer; color: inherit; font-size: 0.84rem; }
-  .home-npm span { font-size: 0.76rem; color: var(--pico-primary); font-weight: 600; }
-  .home-install-links { font-size: 0.85rem; color: var(--pico-muted-color); }
-  /* 章节节奏：纵向堆叠标题，大字号 + 方块标识 + 分隔线 */
-  .home-install { padding-block: 3rem 0.5rem; }
-  .home-why, .home-start, .home-map, .home-final { padding-block: 4.5rem 0.5rem; border-top: 1px solid var(--home-ring); margin-top: 4rem; }
-  .home-why h2, .home-start h2, .home-map h2, .home-final-inner h2 { margin-bottom: 0.6rem; font-size: clamp(1.9rem, 3.2vw, 2.5rem); letter-spacing: -0.02em; }
-  .home-why h2::before, .home-start h2::before, .home-map h2::before { content: ""; display: inline-block; width: 0.5em; height: 0.5em; background: var(--pico-primary); border-radius: 3px; margin-right: 0.45em; vertical-align: baseline; }
-  .home-sub { font-size: 1.05rem; }
-  .home-sub { color: var(--pico-color-grey-600); max-width: 62ch; margin-bottom: 1.4rem; }
-  html[data-theme="dark"] .home-sub { color: var(--pico-color-grey-400); }
-  .home-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .bento { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.2rem; margin: 0; background: var(--pico-card-background-color); display: grid; gap: 0.6rem; align-content: start; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.2s ease, box-shadow 0.25s ease; }
-  .bento:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--pico-primary) 45%, var(--home-ring)); box-shadow: 0 18px 42px -26px color-mix(in srgb, var(--pico-primary) 40%, transparent); }
-  @media (hover: none) { .bento:hover { transform: none; box-shadow: none; } }
-  .bento-wide { grid-column: span 2; }
-  .bento h3 { margin: 0; font-size: 1.02rem; } .bento p { margin: 0; font-size: 0.9rem; color: var(--pico-color-grey-600); }
-  html[data-theme="dark"] .bento p { color: var(--pico-color-grey-400); }
-  .bento a { font-size: 0.88rem; font-weight: 600; }
-  .bento-swatches { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .bento-swatches span { width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.14); transition: transform 0.15s ease; }
-  .bento-swatches span:hover { transform: scale(1.18); }
-  .bento-demo { background: color-mix(in srgb, var(--pico-primary) 6%, var(--pico-background-color)); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.95rem 1rem; display: grid; gap: 0.7rem; }
-  .bento-scale { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 0.25rem; }
-  .bento-scale span { height: 1.5rem; border-radius: 6px; border: 1px solid rgba(0,0,0,0.1); }
-  .bento-theme { display: flex; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; font-size: 0.82rem; font-weight: 600; }
-  .bento-theme .lt { flex: 1; padding: 0.6rem; background: #fff; color: #111; text-align: center; }
-  .bento-theme .dk { flex: 1; padding: 0.6rem; background: #13171c; color: #f2f4f7; text-align: center; }
-  .bento-cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.3rem; }
-  .bento-cols span { height: 2rem; border-radius: 5px; background: transparent; border: 1px dashed var(--home-ring); }
-  .bento-cols span.f { background: color-mix(in srgb, var(--pico-primary) 22%, var(--pico-card-background-color)); border-style: solid; border-color: color-mix(in srgb, var(--pico-primary) 40%, var(--home-ring)); }
-  .bento-type { font-size: 0.95rem !important; color: var(--pico-muted-color) !important; }
-  .bento-type strong { font-size: 1.7rem; letter-spacing: -0.02em; color: var(--pico-color); margin-right: 0.35rem; }
-  /* 起步编辑器 */
-  .home-editor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; background: var(--pico-card-background-color); }
-  .home-editor-code { border-right: 1px solid var(--home-ring); min-width: 0; }
-  .home-editor-code pre { margin: 0; padding: 1rem 1.2rem 1rem 0.6rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.75; }
-  .code-lines { counter-reset: ln; }
-  .code-lines .cl { display: block; padding-left: 2.8rem; position: relative; white-space: pre; }
-  .code-lines .cl::before { counter-increment: ln; content: counter(ln); position: absolute; left: 0; width: 2rem; text-align: right; color: var(--pico-muted-color); opacity: 0.5; user-select: none; }
-  .home-editor-demo { padding: 1.2rem; display: grid; gap: 0.8rem; align-content: start; }
-  .demo-label { margin: 0; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; color: var(--pico-muted-color); }
-  /* 文档地图 */
-  .home-docgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--home-ring); padding-top: 1.4rem; }
-  .doc-group { background: var(--pico-card-background-color); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.1rem 1.2rem; margin: 0; transition: border-color 0.2s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1); }
-  .doc-group:hover { border-color: color-mix(in srgb, var(--pico-primary) 40%, var(--home-ring)); transform: translateY(-2px); }
-  @media (hover: none) { .doc-group:hover { transform: none; } }
-  .doc-group h3 { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; font-size: 1rem; margin: 0 0 0.6rem; }
-  .doc-group h3 a { color: var(--pico-color); text-decoration: none; }
-  .doc-group h3 a:hover { color: var(--pico-primary); }
-  .doc-count { font-size: 0.74rem; font-weight: 400; letter-spacing: 0; color: var(--pico-muted-color); white-space: nowrap; }
-  .home-docgrid ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; }
-  .home-docgrid a { font-weight: 500; font-size: 1.02rem; transition: color 0.15s ease; }
-  .home-docgrid a::after { content: " →"; opacity: 0; display: inline-block; transform: translateX(-5px); transition: opacity 0.2s ease, transform 0.2s ease; }
-  .home-docgrid a:hover { color: var(--pico-primary); text-decoration: none; }
-  .home-docgrid a:hover::after { opacity: 1; transform: none; }
-  .home-docgrid .new-badge { vertical-align: 1px; }
-  .home-final { padding-block: 3.5rem 1rem; }
-  .home-final-inner { position: relative; overflow: hidden; text-align: center; border: 1px solid transparent; border-radius: calc(var(--pico-border-radius) + 8px); background: var(--pico-primary); color: var(--pico-primary-inverse); padding: 4rem 1.5rem; }
-  .home-final-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 110% at 50% 0%, rgba(255,255,255,0.16), transparent 70%); pointer-events: none; }
-  .home-final-inner > * { position: relative; }
-  .home-final-inner h2 { color: inherit; }
-  .home-final-inner p { color: inherit; opacity: 0.88; }
-  .home-final-inner a[role="button"] { background: var(--pico-primary-inverse); border-color: transparent; color: var(--pico-primary); font-size: 1.02rem; padding: 0.85rem 1.7rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
-  .home-final-inner a[role="button"]:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -14px rgba(0,0,0,0.45); }
-  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; padding-bottom: 1.5rem; }
-  .foot-brand p { font-size: 0.88rem; color: var(--pico-muted-color); margin: 0.45rem 0; }
-  .foot-logo { font-size: 1.1rem !important; font-weight: 800; letter-spacing: -0.01em; color: var(--pico-color) !important; }
-  .foot-logo span { font-weight: 400; color: var(--pico-muted-color); }
-  .ver-chip { display: inline-block; font-size: 0.72rem; font-weight: 700; color: var(--pico-muted-color); border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.12rem 0.65rem; }
-  .site-footer nav { display: block; }
-  .site-footer nav strong { display: block; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--pico-muted-color); margin-bottom: 0.65rem; }
-  .site-footer nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
-  .site-footer nav ul li { padding: 0; margin: 0; }
-  .site-footer nav ul li a { padding: 0; }
-  .foot-base { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--home-ring); padding-top: 1.2rem; }
-  .foot-base small { color: var(--pico-muted-color); }
-  /* 入场 */
-  html.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); transition-delay: var(--d, 0s); }
-  html.js [data-reveal].is-in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: no-preference) {
-    html.js .home-hero-copy > * { animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) both; }
-    html.js .home-hero-copy > *:nth-child(2) { animation-delay: 0.06s; }
-    html.js .home-hero-copy > *:nth-child(3) { animation-delay: 0.12s; }
-    html.js .home-hero-copy > *:nth-child(4) { animation-delay: 0.18s; }
-    html.js .home-hero-copy > *:nth-child(5) { animation-delay: 0.24s; }
-    html.js .browser { animation: rise 0.8s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
-    @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
-    .browser-chip { animation: bob 5s ease-in-out infinite alternate; }
-    .chip-b { animation-delay: -2.5s; }
-    @keyframes bob { to { transform: translateY(-5px); } }
-    .home-kicker-dot { animation: pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 50% { opacity: 0.4; } }
+
+  .badge-top-right {
+    top: -6px;
+    right: 20px;
   }
-  @media (max-width: 1023px) {
-    .home-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
-    .chip-a { left: 0.6rem; } .home-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .bento-wide { grid-column: span 2; } .home-docgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .badge-bottom-left {
+    bottom: -6px;
+    left: 20px;
   }
-  @media (max-width: 767px) {
-    .home-hero { padding-block: 3rem 2.5rem; }
-    .home-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .home-bento, .home-editor, .home-docgrid, .foot-grid { grid-template-columns: minmax(0, 1fr); }
-    .bento-wide { grid-column: span 1; }
-    .home-editor-code { border-right: none; border-bottom: 1px solid var(--home-ring); }
-    .chip-a, .chip-b { display: none; }
-    .browser-url { font-size: 0.7rem; }
-    .home-window-bar .browser-dots { display: none; }
+
+  .badge-sparkle {
+    color: var(--pico-primary);
   }
-  @media (prefers-reduced-motion: reduce) {
-    html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
-    html.js .home-hero-copy > *, html.js .browser, .browser-chip, .home-kicker-dot { animation: none !important; }
-    .scroll-progress { display: none; }
-    * { scroll-behavior: auto !important; }
+
+  @media (max-width: 640px) {
+    .floating-badge {
+      display: none;
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     2 · 一键安装终端栏
+     -------------------------------------------------------------------------- */
+  .section-install {
+    padding-block: 5rem;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .section-header {
+    margin-bottom: 2.8rem;
+  }
+
+  .section-header.text-center {
+    text-align: center;
+  }
+
+  .section-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--pico-font-family-monospace);
+    color: var(--pico-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.6rem;
+    color: var(--pico-color);
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--pico-muted-color);
+    max-width: 58ch;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+
+  .install-terminal-box {
+    max-width: 820px;
+    margin-inline: auto;
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    background: var(--pico-card-background-color);
+    box-shadow: var(--site-shadow-md);
+    overflow: hidden;
+  }
+
+  .terminal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.15rem;
+    border-bottom: 1px solid var(--site-border);
+    background: color-mix(in srgb, var(--pico-card-background-color) 85%, transparent);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .terminal-dots i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: block;
+    background: rgba(125, 125, 125, 0.28);
+  }
+
+  .install-tabs {
+    display: inline-flex;
+    gap: 0.25rem;
+    background: var(--pico-background-color);
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
+    padding: 0.2rem;
+  }
+
+  .tab-btn {
+    border: none;
+    background: transparent;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.85rem;
+    border-radius: 999px;
+    color: var(--pico-muted-color);
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.15s ease;
+  }
+
+  .tab-btn.is-active {
+    background: var(--pico-primary);
+    color: #ffffff;
+  }
+
+  .terminal-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--site-border);
+    background: transparent;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--pico-color);
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.15s ease;
+  }
+
+  .terminal-copy-btn:hover {
+    border-color: var(--pico-primary);
+    color: var(--pico-primary);
+  }
+
+  .terminal-panels {
+    background: var(--code-bg);
+  }
+
+  .terminal-pre {
+    margin: 0;
+    padding: 1.25rem 1.4rem;
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.92rem;
+    overflow-x: auto;
+    border: none;
+    background: transparent !important;
+  }
+
+  .tk-tag { color: #f43f5e; }
+  .tk-attr { color: #8b5cf6; }
+  .tk-val { color: #10b981; }
+  .tk-cmd { color: var(--pico-primary); font-weight: 700; }
+  .tk-keyword { color: #ec4899; }
+  .tk-comment { color: var(--pico-muted-color); font-style: italic; }
+
+  .terminal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--site-border);
+    font-size: 0.8rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .terminal-sublinks a {
+    color: var(--pico-muted-color);
+    text-decoration: none;
+  }
+  .terminal-sublinks a:hover {
+    color: var(--pico-primary);
+  }
+
+  /* --------------------------------------------------------------------------
+     3 · Bento 核心优势网格
+     -------------------------------------------------------------------------- */
+  .section-bento {
+    padding-block: 5.5rem;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 959px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .bento-span-2 {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 640px) {
+    .bento-span-2 {
+      grid-column: span 1;
+    }
+  }
+
+  .bento-card {
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    background: var(--pico-card-background-color);
+    padding: 1.65rem;
+    box-shadow: var(--site-shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--pico-primary) 38%, var(--site-border));
+    box-shadow: var(--site-shadow-md);
+  }
+
+  .bento-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bento-icon-pill {
+    color: var(--pico-primary);
+  }
+
+  .bento-title {
+    font-size: 1.12rem;
+    font-weight: 750;
+    margin: 0;
+    color: var(--pico-color);
+  }
+
+  .bento-desc {
+    font-size: 0.88rem;
+    color: var(--pico-muted-color);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .bento-explore-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--pico-primary);
+    text-decoration: none;
+    transition: gap 0.15s ease;
+  }
+
+  .bento-explore-link:hover {
+    gap: 0.55rem;
+    text-decoration: none;
+  }
+
+  /* Bento 1: 颜色球与渐变 */
+  .bento-swatches-interactive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .bento-swatches-interactive span {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease;
+    cursor: pointer;
+  }
+
+  .bento-swatches-interactive span:hover {
+    transform: scale(1.22);
+  }
+
+  .bento-spectrum-bar {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: 0.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .bento-spectrum-bar span {
+    height: 1.2rem;
+    border-radius: 4px;
+  }
+
+  /* Bento 2: 明暗对比卡 */
+  .bento-theme-preview {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--site-border);
+    margin-bottom: 1.25rem;
+    height: 80px;
+  }
+
+  .theme-half {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .light-half {
+    background: #ffffff;
+    color: #1e293b;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .dark-half {
+    background: #090d16;
+    color: #f1f5f9;
+  }
+
+  /* Bento 3: 栅格演示 */
+  .bento-grid-demo {
+    margin-bottom: 1.25rem;
+  }
+
+  .grid-sample-cols {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .col-highlight {
+    height: 2.5rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--pico-primary) 22%, transparent);
+    border: 1px solid var(--pico-primary);
+  }
+
+  .col-box {
+    height: 2.5rem;
+    border-radius: 6px;
+    border: 1px dashed var(--site-border);
+  }
+
+  /* Bento 4: 字体排版 */
+  .bento-typography-preview {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.95rem 1.25rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pico-primary) 5%, var(--site-card-bg));
+    border: 1px solid var(--site-border);
+    margin-bottom: 1.25rem;
+  }
+
+  .type-badge {
+    font-size: 2.6rem;
+    font-weight: 850;
+    line-height: 1;
+    color: var(--pico-color);
+    letter-spacing: -0.04em;
+  }
+
+  .type-show {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .type-h {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pico-color);
+  }
+
+  .type-p {
+    font-size: 0.82rem;
+    color: var(--pico-muted-color);
+  }
+
+  .type-tags {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+  }
+
+  /* --------------------------------------------------------------------------
+     4 · 12 行起步双栏工作台
+     -------------------------------------------------------------------------- */
+  .section-starter {
+    padding-block: 5.5rem;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .starter-workbench {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    border: 1px solid var(--site-border);
+    border-radius: 14px;
+    background: var(--pico-card-background-color);
+    box-shadow: var(--site-shadow-md);
+    overflow: hidden;
+  }
+
+  @media (max-width: 959px) {
+    .starter-workbench {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .workbench-code {
+    border-right: 1px solid var(--site-border);
+    background: var(--code-bg);
+  }
+
+  @media (max-width: 959px) {
+    .workbench-code {
+      border-right: none;
+      border-bottom: 1px solid var(--site-border);
+    }
+  }
+
+  .workbench-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.1rem;
+    border-bottom: 1px solid var(--site-border);
+    font-size: 0.78rem;
+    color: var(--pico-muted-color);
+  }
+
+  .file-name {
+    font-family: var(--pico-font-family-monospace);
+    font-weight: 600;
+  }
+
+  .workbench-pre {
+    margin: 0;
+    padding: 1.25rem 1.4rem;
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.85rem;
+    line-height: 1.75;
+    overflow-x: auto;
+    background: transparent !important;
+    border: none;
+    counter-reset: line;
+  }
+
+  .code-lines .cl,
+  .workbench-pre .cl {
+    display: block;
+    position: relative;
+    padding-left: 2.2rem;
+  }
+
+  .workbench-pre .cl::before {
+    counter-increment: line;
+    content: counter(line);
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    text-align: right;
+    color: var(--pico-muted-color);
+    opacity: 0.45;
+    user-select: none;
+    font-size: 0.78rem;
+  }
+
+  .workbench-demo {
+    display: flex;
+    flex-direction: column;
+    background: var(--pico-card-background-color);
+  }
+
+  .workbench-demo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    border-bottom: 1px solid var(--site-border);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--pico-muted-color);
+  }
+
+  .live-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  .workbench-demo-canvas {
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .workbench-demo-canvas h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--pico-color);
+  }
+
+  .demo-card-box {
+    padding: 1.15rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--site-border);
+    background: var(--pico-background-color);
+  }
+
+  .demo-card-box strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--pico-color);
+    margin-bottom: 0.35rem;
+  }
+
+  .demo-card-box p {
+    font-size: 0.84rem;
+    color: var(--pico-muted-color);
+    margin-bottom: 0.85rem;
+  }
+
+  .demo-card-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .demo-card-actions a[role="button"] {
+    margin: 0;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+
+  /* --------------------------------------------------------------------------
+     5 · 文档全景导航矩阵
+     -------------------------------------------------------------------------- */
+  .section-matrix {
+    padding-block: 5.5rem;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 959px) {
+    .matrix-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .matrix-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .matrix-card {
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    background: var(--pico-card-background-color);
+    padding: 1.4rem 1.5rem;
+    box-shadow: var(--site-shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .matrix-card:hover {
+    border-color: color-mix(in srgb, var(--pico-primary) 35%, var(--site-border));
+    transform: translateY(-2px);
+    box-shadow: var(--site-shadow-md);
+  }
+
+  .matrix-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--site-border-subtle);
+  }
+
+  .matrix-icon {
+    color: var(--pico-primary);
+  }
+
+  .matrix-card-head h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 750;
+    flex: 1;
+  }
+
+  .matrix-card-head h3 a {
+    color: var(--pico-color);
+    text-decoration: none;
+  }
+
+  .matrix-card-head h3 a:hover {
+    color: var(--pico-primary);
+  }
+
+  .matrix-count {
+    font-size: 0.74rem;
+    color: var(--pico-muted-color);
+    background: rgba(125, 125, 125, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .matrix-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .matrix-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    color: var(--pico-color);
+    opacity: 0.85;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    padding: 0.15rem 0;
+  }
+
+  .matrix-links a:hover {
+    opacity: 1;
+    color: var(--pico-primary);
+    transform: translateX(3px);
+  }
+
+  /* --------------------------------------------------------------------------
+     6 · 尾声行动面板
+     -------------------------------------------------------------------------- */
+  .section-final-cta {
+    padding-block: 5rem 6rem;
+  }
+
+  .final-cta-card {
+    position: relative;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0172ad 0%, #4338ca 100%);
+    color: #ffffff;
+    padding: 4.5rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(1, 114, 173, 0.35);
+  }
+
+  .final-cta-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  .final-cta-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 850;
+    margin-bottom: 0.85rem;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+  }
+
+  .final-cta-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.6;
+    margin-bottom: 2.2rem;
+  }
+
+  .final-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-final-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: #ffffff;
+    color: #0172ad !important;
+    text-decoration: none;
+    box-shadow: 0 10px 25px -6px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-final-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -6px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+  }
+
+  .btn-final-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+  }
+
+  .btn-final-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    text-decoration: none;
   }
 </style>

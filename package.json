@@ -12,7 +12,8 @@
   "dependencies": {
     "@astrojs/mdx": "latest",
     "@picocss/pico": "latest",
-    "astro": "latest"
+    "astro": "latest",
+    "lucide-astro": "^0.556.0"
   },
   "devDependencies": {
     "@astrojs/check": "latest",

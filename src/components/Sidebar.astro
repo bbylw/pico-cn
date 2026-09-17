@@ -1,31 +1,180 @@
 ---
 import { DOCS_NAV } from "../data/docs-nav";
+import {
+  Rocket,
+  Palette,
+  LayoutGrid,
+  Type,
+  CheckSquare,
+  Layers,
+  Info,
+  ChevronRight,
+  Filter
+} from "lucide-astro";
+
 interface Props {
   current: string;
+  isMobileDrawer?: boolean;
 }
-const { current } = Astro.props;
+const { current, isMobileDrawer = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const groupIcons: Record<string, any> = {
+  "入门": Rocket,
+  "定制": Palette,
+  "布局": LayoutGrid,
+  "内容": Type,
+  "表单": CheckSquare,
+  "组件": Layers,
+  "关于": Info,
+};
 ---
 
-<aside class="sidebar" aria-label="文档导航">
-  {
-    DOCS_NAV.map((g) => (
-      <details open={g.items.some((i) => i.id === current)}>
-        <summary>{g.group}</summary>
-        <ul>
-          {g.items.map((i) => (
-            <li>
-              <a
-                href={`${import.meta.env.BASE_URL}docs/${i.id === "quickstart" ? "" : i.id + "/"}`}
-                class="secondary"
-                aria-current={i.id === current ? "page" : undefined}
-              >
-                {i.label}
-                {i.badge === "new" && <span class="new-badge">新</span>}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
-    ))
-  }
+<aside class={`sidebar ${isMobileDrawer ? 'mobile-drawer-sidebar' : ''}`} aria-label="文档导航">
+  <div class="sidebar-filter-wrap">
+    <Filter size={14} class="filter-icon" />
+    <input
+      type="text"
+      placeholder="快速过滤页面..."
+      class="sidebar-filter-input"
+      id={isMobileDrawer ? "sidebar-filter-mobile" : "sidebar-filter-desktop"}
+      aria-label="过滤文档菜单"
+    />
+  </div>
+
+  <nav class="sidebar-nav">
+    {
+      DOCS_NAV.map((g) => {
+        const IconComponent = groupIcons[g.group] || Layers;
+        const isCurrentInGroup = g.items.some((i) => i.id === current);
+        return (
+          <details class="sidebar-group" open={isCurrentInGroup}>
+            <summary class="sidebar-group-summary">
+              <span class="group-title-wrap">
+                <IconComponent size={15} class="group-icon" />
+                <span>{g.group}</span>
+              </span>
+              <ChevronRight size={15} class="sidebar-group-arrow" />
+            </summary>
+            <ul class="sidebar-list">
+              {g.items.map((i) => (
+                <li class="sidebar-item" data-nav-item data-nav-label={i.label.toLowerCase()}>
+                  <a
+                    href={`${base}docs/${i.id === "quickstart" ? "" : i.id + "/"}`}
+                    class={`sidebar-link ${i.id === current ? "is-active" : ""}`}
+                    aria-current={i.id === current ? "page" : undefined}
+                  >
+                    <span>{i.label}</span>
+                    {i.badge === "new" && <span class="new-badge">新</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        );
+      })
+    }
+  </nav>
 </aside>
+
+<script>
+  // 侧边栏菜单即时过滤功能
+  function bindFilter(inputId: string) {
+    const input = document.getElementById(inputId) as HTMLInputElement | null;
+    if (!input) return;
+    const sidebar = input.closest(".sidebar");
+    if (!sidebar) return;
+
+    input.addEventListener("input", (e) => {
+      const q = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      const groups = sidebar.querySelectorAll(".sidebar-group");
+
+      groups.forEach((grp) => {
+        let hasVisibleItem = false;
+        const items = grp.querySelectorAll<HTMLElement>("[data-nav-item]");
+        items.forEach((item) => {
+          const text = item.getAttribute("data-nav-label") || "";
+          if (!q || text.includes(q)) {
+            item.style.display = "";
+            hasVisibleItem = true;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        if (q) {
+          if (hasVisibleItem) {
+            (grp as HTMLDetailsElement).open = true;
+            (grp as HTMLElement).style.display = "";
+          } else {
+            (grp as HTMLElement).style.display = "none";
+          }
+        } else {
+          (grp as HTMLElement).style.display = "";
+        }
+      });
+    });
+  }
+
+  bindFilter("sidebar-filter-desktop");
+  bindFilter("sidebar-filter-mobile");
+</script>
+
+<style>
+  .sidebar-filter-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pico-card-background-color) 70%, transparent);
+    border: 1px solid var(--site-border);
+    margin-bottom: 1.25rem;
+    margin-right: 0.5rem;
+    transition: all 0.15s ease;
+  }
+
+  .sidebar-filter-wrap:focus-within {
+    border-color: var(--pico-primary);
+    box-shadow: 0 0 0 1px var(--pico-primary);
+  }
+
+  .filter-icon {
+    color: var(--pico-muted-color);
+    flex-shrink: 0;
+  }
+
+  .sidebar-filter-input {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 0.82rem;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    color: var(--pico-color);
+    width: 100%;
+  }
+
+  .sidebar-filter-input::placeholder {
+    color: var(--pico-muted-color);
+    font-size: 0.8rem;
+  }
+
+  .group-title-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .group-icon {
+    color: var(--pico-primary);
+    opacity: 0.85;
+  }
+
+  .mobile-drawer-sidebar {
+    position: static;
+    max-height: none;
+    padding-right: 0;
+  }
+</style>

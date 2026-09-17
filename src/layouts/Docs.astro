@@ -4,40 +4,74 @@ import Base from "./Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import Sidebar from "../components/Sidebar.astro";
 import DocPager from "../components/DocPager.astro";
-import { DOCS_NAV } from "../data/docs-nav";
+import SearchModal from "../components/SearchModal.astro";
+import { ListFilter, X, ArrowUp } from "lucide-astro";
 
 interface Props {
   entry: CollectionEntry<"docs">;
 }
 const { entry } = Astro.props;
 const { title, chapter, lead, toc = [], badge } = entry.data;
-const desc = lead ? `${lead}｜Pico CSS 文档` : "Pico CSS 中文文档";
+const desc = lead ? `${lead.replace(/<[^>]+>/g, "")}｜Pico CSS 官方中文文档` : "Pico CSS 官方中文文档";
+const base = import.meta.env.BASE_URL;
 ---
 
-<Base title={`${title} | Pico CSS`} desc={desc}>
+<Base title={`${title} | Pico CSS 中文文档`} desc={desc}>
   <SiteHeader />
+  <SearchModal />
+
+  <!-- 移动端侧边抽屉导航 -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true">
+    <div class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <span style="font-weight: 700; font-size: 0.95rem;">文档导航</span>
+        <button type="button" class="header-icon-btn" id="mobile-drawer-close" aria-label="关闭侧边菜单">
+          <X size={18} />
+        </button>
+      </div>
+      <div class="mobile-drawer-content">
+        <Sidebar current={entry.id} isMobileDrawer={true} />
+      </div>
+    </div>
+  </div>
+
   <main class="docs-layout">
+    <!-- 桌面端左侧导航 -->
     <Sidebar current={entry.id} />
-    <div class="content">
-      <hgroup>
-        <p class="chapter">{chapter}</p>
-        <h1>{title}{badge === "new" && <span class="new-badge">新</span>}</h1>
+
+    <!-- 中间正文区域 -->
+    <article class="content" id="doc-content">
+      <header class="doc-header">
+        {chapter && <div class="chapter-kicker">{chapter}</div>}
+        <h1>
+          <span>{title}</span>
+          {badge === "new" && <span class="new-badge">新</span>}
+        </h1>
         {lead && <p class="doc-lead" set:html={lead}></p>}
-      </hgroup>
-      <div id="doc-body">
+      </header>
+
+      <div id="doc-body" class="doc-body">
         <slot />
       </div>
+
       <DocPager id={entry.id} />
-    </div>
+    </article>
+
+    <!-- 桌面端右侧本页目录 -->
     {
       toc.length > 0 && (
         <aside class="toc" aria-label="本页目录">
+          <div class="toc-title">
+            <span>本页目录</span>
+            <a href="#doc-content" class="toc-top-link" aria-label="回到顶部">
+              顶部 ↑
+            </a>
+          </div>
           <nav>
-            <strong>本页目录</strong>
-            <ul>
+            <ul class="toc-list">
               {toc.map((t) => (
-                <li class={`depth-${t.depth}`}>
-                  <a class="secondary" href={`#${t.id}`} data-toc-link={t.id}>
+                <li class={`toc-item depth-${t.depth}`}>
+                  <a class="toc-link" href={`#${t.id}`} data-toc-link={t.id}>
                     {t.text}
                   </a>
                 </li>
@@ -48,47 +82,114 @@ const desc = lead ? `${lead}｜Pico CSS 文档` : "Pico CSS 中文文档";
       )
     }
   </main>
+
   <footer class="site-footer">
-    <nav>
-      <ul>
-        <li><a class="secondary" href={import.meta.env.BASE_URL}>首页</a></li>
-        <li><a class="secondary" href={`${import.meta.env.BASE_URL}docs/`}>文档</a></li>
-        <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
-      </ul>
-      <ul>
-        <li>
-          <small>
-            中文翻译自 <a href="https://picocss.com/docs" rel="noopener external">picocss.com/docs</a>，
-            遵循 <a href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external">MIT 许可证</a>。
-          </small>
-        </li>
-      </ul>
-    </nav>
+    <div class="site-footer-grid">
+      <div class="footer-brand">
+        <h4 class="footer-brand-title">Pico CSS 中文文档</h4>
+        <p class="footer-brand-desc">
+          面向纯语义化 HTML 的极简、轻量级 CSS 框架。39 篇官方英文文档完整精校翻译。
+        </p>
+        <span class="header-version-pill">v2.1.1 · 纯静态构建</span>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">快速直达</div>
+        <ul class="footer-links">
+          <li><a href={`${base}docs/`}>快速开始</a></li>
+          <li><a href={`${base}docs/classless/`}>无类版本 (Classless)</a></li>
+          <li><a href={`${base}docs/forms/`}>表单元素</a></li>
+          <li><a href={`${base}docs/modal/`}>模态框组件</a></li>
+          <li><a href={`${base}docs/colors/`}>调色板指南</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">开源与社区</div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub 官方仓库</a></li>
+          <li><a href="https://picocss.com" rel="noopener external" target="_blank">Pico CSS 官网 (英文)</a></li>
+          <li><a href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external" target="_blank">MIT 许可证</a></li>
+          <li><a href="#doc-content">回到顶部 ↑</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer-bottom">
+      <small>内容翻译自 <a href="https://picocss.com/docs" rel="noopener external" target="_blank">picocss.com/docs</a>，遵循 MIT 开源许可。</small>
+      <small>© 2026 pico-cn · 纯净体验</small>
+    </div>
   </footer>
 </Base>
 
 <script>
-  // TOC scroll-spy
-  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"));
-  if (links.length) {
-    const map = new Map<string, HTMLAnchorElement>();
-    links.forEach((l) => map.set(l.dataset.tocLink!, l));
-    const headings = Array.from(map.keys())
+  // 1. TOC 目录 Scroll-Spy 高亮追踪
+  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"));
+  if (tocLinks.length) {
+    const linkMap = new Map<string, HTMLAnchorElement>();
+    tocLinks.forEach((l) => linkMap.set(l.dataset.tocLink!, l));
+    const trackedHeadings = Array.from(linkMap.keys())
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
-    const setActive = (id: string) => {
-      links.forEach((l) => l.classList.remove("is-active"));
-      map.get(id)?.classList.add("is-active");
+
+    const setActiveToc = (id: string) => {
+      tocLinks.forEach((l) => l.classList.remove("is-active"));
+      linkMap.get(id)?.classList.add("is-active");
     };
-    const obs = new IntersectionObserver(
+
+    const tocObserver = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible[0]) {
-          setActive(visible[0].target.id);
+          setActiveToc(visible[0].target.id);
         }
       },
-      { rootMargin: "-88px 0px -66% 0px", threshold: 0 }
+      { rootMargin: "-80px 0px -65% 0px", threshold: 0 }
     );
-    headings.forEach((h) => obs.observe(h));
+    trackedHeadings.forEach((h) => tocObserver.observe(h));
   }
+
+  // 2. 为所有 h2, h3 自动注入优雅的锚点跳转与悬浮复制提示
+  const headings = document.querySelectorAll<HTMLElement>("#doc-body h2[id], #doc-body h3[id]");
+  headings.forEach((heading) => {
+    const id = heading.id;
+    if (!id) return;
+    const anchor = document.createElement("a");
+    anchor.className = "anchor-link";
+    anchor.href = `#${id}`;
+    anchor.innerHTML = "#";
+    anchor.setAttribute("aria-label", `复制链接到 ${heading.textContent}`);
+    anchor.title = "点击跳转并复制锚点";
+    anchor.addEventListener("click", async (e) => {
+      try {
+        await navigator.clipboard.writeText(window.location.origin + window.location.pathname + `#${id}`);
+      } catch {}
+    });
+    heading.appendChild(anchor);
+  });
+
+  // 3. 移动端抽屉开关
+  const drawerToggle = document.getElementById("mobile-drawer-toggle");
+  const drawerClose = document.getElementById("mobile-drawer-close");
+  const drawerBackdrop = document.getElementById("mobile-drawer-backdrop");
+
+  function openDrawer() {
+    drawerBackdrop?.classList.add("is-open");
+    drawerBackdrop?.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    drawerBackdrop?.classList.remove("is-open");
+    drawerBackdrop?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  drawerToggle?.addEventListener("click", openDrawer);
+  drawerClose?.addEventListener("click", closeDrawer);
+  drawerBackdrop?.addEventListener("click", (e) => {
+    if (e.target === drawerBackdrop) closeDrawer();
+  });
 </script>
