@@ -12,7 +12,8 @@ const npmCmd = "npm install @picocss/pico";
   desc="极简、轻量的起步套件，以语义化语法为先，让每个 HTML 元素默认就具备响应式与优雅的样式。"
 >
   <SiteHeader />
-  <main class="container home">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <main class="container home" id="top">
     <!-- 1 · Hero：左文案 / 右真实组件预览 -->
     <section class="home-hero" aria-label="介绍">
       <div class="home-hero-copy">
@@ -66,19 +67,31 @@ const npmCmd = "npm install @picocss/pico";
       </figure>
     </section>
 
-    <!-- 2 · 安装条：单一窗口 + 内联分支 -->
+    <!-- 2 · 安装：CDN / NPM / Sass 三页签单窗口 -->
     <section class="home-install" aria-label="安装">
-      <div class="home-window" data-reveal>
+      <div class="home-window" data-reveal data-tabs>
         <div class="home-window-bar">
           <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span>一行引入，即刻起步</span>
-          <button type="button" class="home-copy" data-copy={cdn} aria-label="复制 CDN 链接">复制</button>
+          <div class="tabs" role="tablist" aria-label="安装方式">
+            <button type="button" role="tab" id="tab-cdn" aria-controls="panel-cdn" aria-selected="true">CDN</button>
+            <button type="button" role="tab" id="tab-npm" aria-controls="panel-npm" aria-selected="false" tabindex="-1">NPM</button>
+            <button type="button" role="tab" id="tab-sass" aria-controls="panel-sass" aria-selected="false" tabindex="-1">Sass</button>
+          </div>
+          <button type="button" class="home-copy" data-copy={cdn} data-copy-btn aria-label="复制当前页签内容">复制</button>
         </div>
-        <pre class="home-code"><code><span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"{cdn}"</span><span class="tk-p">&gt;</span></code></pre>
+        <div role="tabpanel" id="panel-cdn" aria-labelledby="tab-cdn" data-copy={cdn} tabindex="0">
+          <pre class="home-code"><code><span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"{cdn}"</span><span class="tk-p">&gt;</span></code></pre>
+        </div>
+        <div role="tabpanel" id="panel-npm" aria-labelledby="tab-npm" data-copy={npmCmd} tabindex="0" hidden>
+          <pre class="home-code"><code><span class="tk-p">$</span> {npmCmd}</code></pre>
+        </div>
+        <div role="tabpanel" id="panel-sass" aria-labelledby="tab-sass" data-copy={`@use "pico";`} tabindex="0" hidden>
+          <pre class="home-code"><code><span class="tk-a">@use</span> <span class="tk-s">"pico"</span><span class="tk-p">;</span>  <span class="tk-p">// 按需覆盖变量，详见 Sass 文档</span></code></pre>
+        </div>
         <div class="home-install-foot">
-          <button type="button" class="home-npm" data-copy={npmCmd} aria-label="复制 NPM 命令"><code>{npmCmd}</code><span>复制</span></button>
+          <small>v2.1.1 · 另有手动下载与 Composer 安装</small>
           <span class="home-install-links">
-            <a href={`${base}docs/`}>手动安装</a> ·
+            <a href={`${base}docs/#install-manually`}>手动安装</a> ·
             <a href={`${base}docs/sass/`}>Sass 定制</a> ·
             <a href={`${base}docs/version-picker/`}>版本选择器</a>
           </span>
@@ -97,24 +110,27 @@ const npmCmd = "npm install @picocss/pico";
           <div class="bento-swatches" aria-hidden="true">
             <span class="pico-background-red-500"></span><span class="pico-background-pink-500"></span><span class="pico-background-fuchsia-500"></span><span class="pico-background-purple-500"></span><span class="pico-background-violet-500"></span><span class="pico-background-indigo-500"></span><span class="pico-background-blue-500"></span><span class="pico-background-azure-500"></span><span class="pico-background-cyan-500"></span><span class="pico-background-jade-500"></span><span class="pico-background-green-500"></span><span class="pico-background-lime-500"></span><span class="pico-background-yellow-500"></span><span class="pico-background-amber-500"></span><span class="pico-background-pumpkin-500"></span><span class="pico-background-orange-500"></span>
           </div>
+          <div class="bento-scale" aria-hidden="true" title="Indigo 50–950">
+            <span class="pico-background-indigo-50"></span><span class="pico-background-indigo-100"></span><span class="pico-background-indigo-200"></span><span class="pico-background-indigo-300"></span><span class="pico-background-indigo-400"></span><span class="pico-background-indigo-500"></span><span class="pico-background-indigo-600"></span><span class="pico-background-indigo-700"></span><span class="pico-background-indigo-800"></span><span class="pico-background-indigo-900"></span><span class="pico-background-indigo-950"></span>
+          </div>
           <a href={`${base}docs/colors/`}>查看颜色 →</a>
         </article>
-        <article class="bento" data-reveal>
+        <article class="bento" data-reveal style="--d:.06s">
           <h3>明暗模式跟手</h3>
           <p>跟随系统偏好，顶栏可手动钉住选择，首帧写入防闪烁。</p>
           <div class="bento-theme" aria-hidden="true"><span class="lt">浅</span><span class="dk">深</span></div>
           <a href={`${base}docs/color-schemes/`}>配色方案 →</a>
         </article>
-        <article class="bento" data-reveal>
+        <article class="bento" data-reveal style="--d:.12s">
           <h3>容器与栅格</h3>
           <p>居中容器、流式区块与 12 列栅格，各断点自动适配。</p>
-          <div class="bento-cols" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <div class="bento-cols" aria-hidden="true"><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span></span><span></span><span></span><span></span><span></span></div>
           <a href={`${base}docs/grid/`}>栅格文档 →</a>
         </article>
-        <article class="bento bento-wide" data-reveal>
+        <article class="bento bento-wide" data-reveal style="--d:.18s">
           <h3>语义排版，自带层级</h3>
           <p>标题、引用、表格、代码无需类名，行高与中文回退已调好。</p>
-          <p class="bento-type" aria-hidden="true">Aa 标题 / 正文 / <code>code</code> / <kbd>⌘ K</kbd></p>
+          <p class="bento-type" aria-hidden="true"><strong>Aa</strong> 标题 / 正文 / <code>code</code> / <kbd>⌘ K</kbd></p>
           <a href={`${base}docs/typography/`}>排版文档 →</a>
         </article>
       </div>
@@ -166,20 +182,22 @@ const npmCmd = "npm install @picocss/pico";
       <h2>按需直达文档</h2>
       <p class="home-sub">39 页中文文档，与官方 URL 一一对应，锚点保留英文 slug。</p>
       <div class="home-docgrid">
-        <div data-reveal><h3>入门</h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a></li></ul></div>
-        <div data-reveal><h3>定制</h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a></li></ul></div>
-        <div data-reveal><h3>布局</h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a></li></ul></div>
-        <div data-reveal><h3>内容</h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
-        <div data-reveal><h3>表单</h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
-        <div data-reveal><h3>组件</h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
+        <div data-reveal><h3>入门</h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a><span class="new-badge">新</span></li></ul></div>
+        <div data-reveal style="--d:.05s"><h3>定制</h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a><span class="new-badge">新</span></li></ul></div>
+        <div data-reveal style="--d:.1s"><h3>布局</h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a><span class="new-badge">新</span></li></ul></div>
+        <div data-reveal style="--d:.15s"><h3>内容</h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
+        <div data-reveal style="--d:.2s"><h3>表单</h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
+        <div data-reveal style="--d:.25s"><h3>组件</h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
       </div>
     </section>
 
     <!-- 6 · 收尾：单一意图 -->
     <section class="home-final" data-reveal aria-label="开始">
-      <h2>从第一行语义标签开始</h2>
-      <p>中文翻译遵循 MIT 许可，与上游文档结构保持同步。</p>
-      <p><a href={`${base}docs/`} role="button">阅读文档</a></p>
+      <div class="home-final-inner">
+        <h2>从第一行语义标签开始</h2>
+        <p>中文翻译遵循 MIT 许可，与上游文档结构保持同步。</p>
+        <p><a href={`${base}docs/`} role="button">阅读文档</a></p>
+      </div>
     </section>
   </main>
 
@@ -189,6 +207,7 @@ const npmCmd = "npm install @picocss/pico";
         <li><a class="secondary" href={`${base}docs/`}>文档</a></li>
         <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
         <li><a class="secondary" href="https://picocss.com" rel="noopener external" target="_blank">官网</a></li>
+        <li><a class="secondary" href="#top">回到顶部 ↑</a></li>
       </ul>
       <ul>
         <li>
@@ -229,6 +248,37 @@ const npmCmd = "npm install @picocss/pico";
       }, 1400);
     });
   });
+  // 安装页签（role=tablist，方向键可切；复制按钮跟随当前页签）
+  document.querySelectorAll("[data-tabs]").forEach((wrap) => {
+    const box = wrap as HTMLElement;
+    const tabs = Array.from(box.querySelectorAll('[role="tab"]')) as HTMLElement[];
+    const panels = Array.from(box.querySelectorAll('[role="tabpanel"]')) as HTMLElement[];
+    const copyBtn = box.querySelector("[data-copy-btn]") as HTMLElement | null;
+    const select = (tab: HTMLElement) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        const on = p.id === tab.getAttribute("aria-controls");
+        if (on) p.removeAttribute("hidden");
+        else p.setAttribute("hidden", "");
+        if (on && copyBtn && p.dataset.copy) copyBtn.setAttribute("data-copy", p.dataset.copy);
+      });
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (e) => {
+        const ev = e as KeyboardEvent;
+        if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
+        ev.preventDefault();
+        const n = (i + (ev.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+        tabs[n].focus();
+        select(tabs[n]);
+      });
+    });
+  });
   // 滚动显现（无 JS 时默认可见）
   const items = Array.from(document.querySelectorAll("[data-reveal]"));
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -249,6 +299,15 @@ const npmCmd = "npm install @picocss/pico";
 
 <style>
   .home { --home-ring: var(--pico-muted-border-color); }
+  .home ::selection { background: color-mix(in srgb, var(--pico-primary) 22%, transparent); }
+  .home p { text-wrap: pretty; }
+  .home :where(.home-copy, .tabs [role="tab"]):focus-visible { outline: 2px solid var(--pico-primary); outline-offset: 2px; }
+  /* 阅读进度：纯 CSS scroll-timeline，无 JS 滚动监听 */
+  .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100; background: var(--pico-primary); transform: scaleX(0); transform-origin: 0 50%; }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress { animation: scrollgrow linear both; animation-timeline: scroll(); }
+    @keyframes scrollgrow { to { transform: scaleX(1); } }
+  }
   .home-hero {
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
@@ -269,6 +328,18 @@ const npmCmd = "npm install @picocss/pico";
     opacity: 0.35;
     mask-image: radial-gradient(70% 90% at 30% 20%, black 30%, transparent 75%);
   }
+  .home-hero::after {
+    content: "";
+    position: absolute;
+    inset: -4rem -6rem auto;
+    height: 420px;
+    z-index: -1;
+    background: radial-gradient(45% 60% at 70% 30%, color-mix(in srgb, var(--pico-primary) 12%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  html[data-theme="dark"] .home-hero::after {
+    background: radial-gradient(45% 60% at 70% 30%, color-mix(in srgb, var(--pico-primary) 22%, transparent), transparent 70%);
+  }
   .home-kicker {
     display: inline-flex;
     align-items: center;
@@ -283,14 +354,21 @@ const npmCmd = "npm install @picocss/pico";
     background-color: color-mix(in srgb, var(--pico-card-background-color) 70%, transparent);
   }
   .home-kicker-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pico-primary); }
-  .home-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .home-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 0.9rem; text-wrap: balance; }
   .home-lead { font-size: 1.12rem; color: var(--pico-color-grey-600); max-width: 44ch; margin-bottom: 1.4rem; }
   html[data-theme="dark"] .home-lead { color: var(--pico-color-grey-400); }
   .home-cta { margin-bottom: 1.6rem; }
+  .home-cta [role="button"] { transition: transform 0.15s ease, box-shadow 0.2s ease; }
+  .home-cta [role="button"]:first-child { box-shadow: 0 14px 30px -16px color-mix(in srgb, var(--pico-primary) 70%, transparent); }
+  .home-cta [role="button"]:hover { text-decoration: none; }
+  .home-cta [role="button"]:active { transform: translateY(1px) scale(0.99); }
   .home-meta { list-style: none; padding: 1rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--home-ring); }
   .home-meta li { display: grid; gap: 0.1rem; }
   .home-meta strong { font-size: 1.02rem; }
   .home-meta span { font-size: 0.8rem; color: var(--pico-muted-color); }
+  @media (min-width: 768px) {
+    .home-meta li + li { border-left: 1px solid var(--home-ring); padding-left: 1rem; }
+  }
   /* 浏览器预览 */
   .browser {
     position: relative;
@@ -336,7 +414,14 @@ const npmCmd = "npm install @picocss/pico";
   /* 安装窗口 */
   .home-install { padding-block: 1rem; }
   .home-window { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); background: var(--pico-card-background-color); overflow: hidden; }
-  .home-window-bar { justify-content: space-between; }
+  .home-window-bar { justify-content: space-between; flex-wrap: wrap; row-gap: 0.5rem; }
+  .tabs { display: inline-flex; gap: 0.2rem; background: var(--pico-background-color); border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.2rem; }
+  .tabs [role="tab"] { border: 0; background: transparent; color: var(--pico-muted-color); font-size: 0.78rem; font-weight: 600; padding: 0.28rem 0.85rem; border-radius: 999px; cursor: pointer; margin: 0; }
+  .tabs [role="tab"][aria-selected="true"] { background: var(--pico-primary); color: var(--pico-primary-inverse); }
+  .tabs [role="tab"]:hover:not([aria-selected="true"]) { color: var(--pico-primary); }
+  [role="tabpanel"][hidden] { display: none !important; }
+  [role="tabpanel"]:focus-visible { outline: 2px solid var(--pico-primary); outline-offset: -2px; }
+  .home-install-foot small { color: var(--pico-muted-color); }
   .home-copy { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.78rem; border: 1px solid var(--home-ring); border-radius: 999px; background: transparent; color: var(--pico-primary); font-weight: 600; cursor: pointer; }
   .home-copy[data-done="true"] { color: #30a46c; border-color: #30a46c; }
   .home-code { margin: 0; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.86rem; }
@@ -352,19 +437,25 @@ const npmCmd = "npm install @picocss/pico";
   .home-sub { color: var(--pico-color-grey-600); max-width: 62ch; margin-bottom: 1.4rem; }
   html[data-theme="dark"] .home-sub { color: var(--pico-color-grey-400); }
   .home-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .bento { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.2rem; margin: 0; background: var(--pico-card-background-color); display: grid; gap: 0.6rem; align-content: start; }
+  .bento { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.2rem; margin: 0; background: var(--pico-card-background-color); display: grid; gap: 0.6rem; align-content: start; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.2s ease, box-shadow 0.25s ease; }
+  .bento:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--pico-primary) 45%, var(--home-ring)); box-shadow: 0 18px 42px -26px color-mix(in srgb, var(--pico-primary) 40%, transparent); }
+  @media (hover: none) { .bento:hover { transform: none; box-shadow: none; } }
   .bento-wide { grid-column: span 2; }
   .bento h3 { margin: 0; font-size: 1.02rem; } .bento p { margin: 0; font-size: 0.9rem; color: var(--pico-color-grey-600); }
   html[data-theme="dark"] .bento p { color: var(--pico-color-grey-400); }
   .bento a { font-size: 0.88rem; font-weight: 600; }
   .bento-swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .bento-swatches span { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
+  .bento-scale { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 0.25rem; }
+  .bento-scale span { height: 1.5rem; border-radius: 6px; border: 1px solid rgba(0,0,0,0.1); }
   .bento-theme { display: flex; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; font-size: 0.82rem; font-weight: 600; }
   .bento-theme .lt { flex: 1; padding: 0.6rem; background: #fff; color: #111; text-align: center; }
   .bento-theme .dk { flex: 1; padding: 0.6rem; background: #13171c; color: #f2f4f7; text-align: center; }
-  .bento-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0.4rem; }
-  .bento-cols span { height: 2rem; border-radius: 6px; background: color-mix(in srgb, var(--pico-primary) 12%, transparent); border: 1px solid var(--home-ring); }
-  .bento-type { font-size: 1rem !important; color: inherit !important; }
+  .bento-cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.3rem; }
+  .bento-cols span { height: 2rem; border-radius: 5px; background: transparent; border: 1px dashed var(--home-ring); }
+  .bento-cols span.f { background: color-mix(in srgb, var(--pico-primary) 22%, var(--pico-card-background-color)); border-style: solid; border-color: color-mix(in srgb, var(--pico-primary) 40%, var(--home-ring)); }
+  .bento-type { font-size: 0.95rem !important; color: var(--pico-muted-color) !important; }
+  .bento-type strong { font-size: 1.7rem; letter-spacing: -0.02em; color: var(--pico-color); margin-right: 0.35rem; }
   /* 起步编辑器 */
   .home-editor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; background: var(--pico-card-background-color); }
   .home-editor-code { border-right: 1px solid var(--home-ring); min-width: 0; }
@@ -375,13 +466,32 @@ const npmCmd = "npm install @picocss/pico";
   .home-docgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; border-top: 1px solid var(--home-ring); padding-top: 1.4rem; }
   .home-docgrid h3 { font-size: 0.85rem; letter-spacing: 0.06em; color: var(--pico-muted-color); margin: 0 0 0.5rem; }
   .home-docgrid ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; }
-  .home-docgrid a { font-weight: 500; }
-  .home-final { text-align: center; padding-block: 3.5rem 1rem; }
-  .home-final p { color: var(--pico-muted-color); }
+  .home-docgrid a { font-weight: 500; transition: color 0.15s ease, padding-left 0.2s ease; }
+  .home-docgrid a:hover { color: var(--pico-primary); padding-left: 2px; text-decoration: none; }
+  .home-docgrid .new-badge { vertical-align: 1px; }
+  .home-final { padding-block: 3.5rem 1rem; }
+  .home-final-inner { position: relative; overflow: hidden; text-align: center; border: 1px solid var(--home-ring); border-radius: calc(var(--pico-border-radius) + 8px); background: var(--pico-card-background-color); padding: 3rem 1.5rem; }
+  .home-final-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--pico-primary) 16%, transparent), transparent 70%); pointer-events: none; }
+  html[data-theme="dark"] .home-final-inner::before { background: radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--pico-primary) 26%, transparent), transparent 70%); }
+  .home-final-inner > * { position: relative; }
   .site-footer nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   /* 入场 */
-  html.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  html.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); transition-delay: var(--d, 0s); }
   html.js [data-reveal].is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .home-hero-copy > * { animation: rise 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    html.js .home-hero-copy > *:nth-child(2) { animation-delay: 0.06s; }
+    html.js .home-hero-copy > *:nth-child(3) { animation-delay: 0.12s; }
+    html.js .home-hero-copy > *:nth-child(4) { animation-delay: 0.18s; }
+    html.js .home-hero-copy > *:nth-child(5) { animation-delay: 0.24s; }
+    html.js .browser { animation: rise 0.8s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+    .browser-chip { animation: bob 5s ease-in-out infinite alternate; }
+    .chip-b { animation-delay: -2.5s; }
+    @keyframes bob { to { transform: translateY(-5px); } }
+    .home-kicker-dot { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: 0.4; } }
+  }
   @media (max-width: 1023px) {
     .home-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
     .chip-a { left: 0.6rem; } .home-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -395,9 +505,12 @@ const npmCmd = "npm install @picocss/pico";
     .home-editor-code { border-right: none; border-bottom: 1px solid var(--home-ring); }
     .chip-a, .chip-b { display: none; }
     .browser-url { font-size: 0.7rem; }
+    .home-window-bar .browser-dots { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+    html.js .home-hero-copy > *, html.js .browser, .browser-chip, .home-kicker-dot { animation: none !important; }
+    .scroll-progress { display: none; }
     * { scroll-behavior: auto !important; }
   }
 </style>
