@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "slug": "mission",
+  "chapter": "About",
+  "title": "Mission",
+  "lead": "Pico CSS is a minimalist and lightweight starter kit that prioritizes semantic syntax, making every HTML element responsive and elegant by default.",
+  "url": "https://picocss.com/docs/mission"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "With a focus on simplicity, Pico provides a clean starting point for building websites without the need for excessive CSS classes and wrappers."
+  },
+  {
+   "t": "p",
+   "md": "Here’s our maxi-minimalist story."
+  },
+  {
+   "t": "p",
+   "md": "Pico started as a solution to two minor frustrations:"
+  },
+  {
+   "t": "quote",
+   "md": "“I don’t want to import a huge CSS framework only to build a landing page with a title, a description, and a small signup form.”— Frustrated frontend developer"
+  },
+  {
+   "t": "quote",
+   "md": "“I don’t want to use meaningless wrappers and huge classes stacking to add a simple  `<input />`.”— Same frustrated frontend developer"
+  },
+  {
+   "t": "p",
+   "md": "This was the starting idea. Let’s call it “The epic quest for minimalism”:"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<main>\n  <h1>Join the pursuit of HTML simplicity</h1>\n  <p>Let’s avoid meaningless div and classes and make it beautiful!</p>\n  <form>\n    <input type=\"email\" placeholder=\"Your email\" />\n    <input type=\"submit\">Let’s start!</input>\n  </form>\n</main>\n\n<footer>\n  This page should be fast enough to please Google's algorithm.\n</footer>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "That’s all! We believe that CSS classes are essential when building complex websites, but why use classes for the default style? And above all, why block page rendering with JavaScript for such a simple structure?"
+  },
+  {
+   "t": "p",
+   "md": "From there, we added all form elements, HTML landmarks, typographic elements, and every relevant tag we could find. We made every single element responsive and elegant by default, for both light and dark mode."
+  },
+  {
+   "t": "p",
+   "md": "As we continued to build, our community grew 🧡, and with it, the responsibility to provide a reliable CSS reset that would prevent sadness when looking at our HTML DOM."
+  }
+ ]
+}

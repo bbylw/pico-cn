@@ -1,0 +1,149 @@
+{
+ "meta": {
+  "slug": "sass",
+  "chapter": "Customization",
+  "title": "Sass",
+  "lead": "Build your own minimal design system by compiling a custom version of Pico CSS framework with [SASS](https://sass-lang.com/).",
+  "url": "https://picocss.com/docs/sass"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "To get the most out of Pico, we recommend compiling your own version with SASS. This way, you can include only the required modules and personalize the settings without overriding CSS styles."
+  },
+  {
+   "t": "p",
+   "md": "Avoid modifying Pico’s core files whenever possible. This approach allows you to keep Pico up to date without conflicts since the Pico code and your custom code are separated."
+  },
+  {
+   "t": "h2",
+   "text": "Import",
+   "id": "import"
+  },
+  {
+   "t": "p",
+   "md": "You can import Pico into your SCSS file with [@use](https://sass-lang.com/documentation/at-rules/use):"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"pico\";",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "If you are using [Sass Command-Line Interface](https://sass-lang.com/documentation/cli/dart-sass) to compile your `.scss` files, you can define the load path using `sass --load-path=node_modules/@picocss/pico/scss/` to avoid using relative URLs like:"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"node_modules/@picocss/pico/scss/pico\";",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "If you are using [React](https://react.dev/), or [Webpack](https://webpack.js.org/) with [sass-loader](https://github.com/webpack-contrib/sass-loader), the default configuration will automatically resolve the path to `node_modules` so you can simply import Pico with:"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"@picocss/pico/scss/pico\";",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "h2",
+   "text": "Settings",
+   "id": "settings"
+  },
+  {
+   "t": "p",
+   "md": "You can set custom settings with `@use \"pico\" with ( ... );`. These custom values will override the default variables."
+  },
+  {
+   "t": "p",
+   "md": "Here is an example to generate the classless version:"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Pico classless version\n@use \"pico\" with (\n  $enable-semantic-container: true,\n  $enable-classes: false\n);",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "Example to generate a lightweight version without `.classes`, uncommon form elements, and components."
+  },
+  {
+   "t": "p",
+   "md": "This version reduces the weight of Pico by ~50%."
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Pico lightweight version\n@use \"pico\" with (\n  $enable-semantic-container: true,\n  $enable-classes: false,\n  $modules: (\n    \"content/code\": false,\n    \"forms/input-color\": false,\n    \"forms/input-date\": false,\n    \"forms/input-file\": false,\n    \"forms/input-range\": false,\n    \"forms/input-search\": false,\n    \"components/accordion\": false,\n    \"components/card\": false,\n    \"components/dropdown\": false,\n    \"components/loading\": false,\n    \"components/modal\": false,\n    \"components/nav\": false,\n    \"components/progress\": false,\n    \"components/tooltip\": false,\n    \"utilities/accessibility\": false,\n    \"utilities/reduce-motion\": false\n  )\n);",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Theme color\n$theme-color: \"azure\" !default; // amber, azure, blue, cyan, fuchsia, green, grey, indigo, jade, lime, orange, pink, pumpkin, purple, red, sand, slate, violet, yellow, zinc\n\n// Prefix for CSS variables\n$css-var-prefix: \"--pico-\" !default; // Must start with \"--\"\n\n// Define the root element used to target <header>, <main>, <footer>\n// with $enable-semantic-container and $enable-responsive-spacings\n$semantic-root-element: \"body\" !default;\n\n// Enable <header>, <main>, <footer> inside $semantic-root-element as containers\n$enable-semantic-container: false !default;\n\n// Enable a centered viewport for <header>, <main>, <footer> inside $semantic-root-element\n// Fluid layout if disabled\n$enable-viewport: true !default;\n\n// Enable responsive spacings for <header>, <main>, <footer>, <section>, <article>\n// Fixed spacings by default\n$enable-responsive-spacings: false !default;\n\n// Enable responsive typography\n// Fixed root element size (rem) if disabled\n$enable-responsive-typography: true !default;\n\n// Enable .classes\n// .classless version if disabled\n$enable-classes: true !default;\n\n// Enable transitions\n$enable-transitions: true !default;\n\n// Enable overriding with !important\n$enable-important: true !default;\n\n// Optional parent selector\n// If defined, all HTML tags are wrapped with this selector\n// :root is not wrapped\n$parent-selector: \"\" !default;\n\n// Breakpoints, viewports and root font size\n$breakpoints: () !default;\n$breakpoints: map.deep-merge(\n  (\n    // Small (landscape phones)\n    // Font size: 17px\n    sm: (\n        breakpoint: 576px,\n        viewport: 510px,\n        root-font-size: 106.25%,\n      ),\n\n    // Medium (tablets)\n    // Font size: 18px\n    md: (\n        breakpoint: 768px,\n        viewport: 700px,\n        root-font-size: 112.5%,\n      ),\n\n    // Large\n    // Font size: 19px\n    lg: (\n        breakpoint: 1024px,\n        viewport: 950px,\n        root-font-size: 118.75%,\n      ),\n\n    // Extra large\n    // Font size: 20px\n    xl: (\n        breakpoint: 1280px,\n        viewport: 1200px,\n        root-font-size: 125%,\n      ),\n\n    // Extra extra large\n    // Font size: 21px\n    xxl: (\n        breakpoint: 1536px,\n        viewport: 1450px,\n        root-font-size: 131.25%,\n      )\n  ),\n  $breakpoints\n);\n\n// Modules to export\n$modules: () !default;\n$modules: map.merge(\n  (\n    // Theme\n    \"themes/default\": true,\n\n    // Layout\n    \"layout/document\": true,\n    \"layout/landmarks\": true,\n    \"layout/container\": true,\n    \"layout/section\": true,\n    \"layout/grid\": true,\n    \"layout/overflow-auto\": true,\n\n    // Content\n    \"content/link\": true,\n    \"content/typography\": true,\n    \"content/embedded\": true,\n    \"content/button\": true,\n    \"content/table\": true,\n    \"content/code\": true,\n    \"content/figure\": true,\n    \"content/misc\": true,\n\n    // Forms\n    \"forms/basics\": true,\n    \"forms/checkbox-radio-switch\": true,\n    \"forms/input-color\": true,\n    \"forms/input-date\": true,\n    \"forms/input-file\": true,\n    \"forms/input-range\": true,\n    \"forms/input-search\": true,\n\n    // Components\n    \"components/accordion\": true,\n    \"components/card\": true,\n    \"components/dropdown\": true,\n    \"components/group\": true,\n    \"components/loading\": true,\n    \"components/modal\": true,\n    \"components/nav\": true,\n    \"components/progress\": true,\n    \"components/tooltip\": true,\n\n    // Utilities\n    \"utilities/accessibility\": true,\n    \"utilities/reduce-motion\": true\n  ),\n  $modules\n);",
+   "title": "All default settings",
+   "collapsed": true
+  },
+  {
+   "t": "h2",
+   "text": "Theme color",
+   "id": "theme-color"
+  },
+  {
+   "t": "p",
+   "md": "Pico comes with a default `\"azure\"` theme. \nYou can easily recompile Pico using a different primary color from a selection of 20 colors."
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Pico with purple primary color\n@use \"pico\" with (\n  $theme-color: \"purple\"\n);",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "Possible color choices: `amber`, `azure`, `blue`, `cyan`, `fuchsia`, `green`, `grey`, `indigo`, `jade`, `lime`, `orange`, `pink`, `pumpkin`, `purple`, `red`, `sand`, `slate`, `violet`, `yellow`, `zinc`."
+  },
+  {
+   "t": "h2",
+   "text": "Custom theme",
+   "id": "custom-theme"
+  },
+  {
+   "t": "p",
+   "md": "To create a custom version of Pico with a fully custom theme that reflects your brand identity, you can:"
+  },
+  {
+   "t": "ol",
+   "items": [
+    "Exclude the default theme from compilation,",
+    "Import your custom theme (you can duplicate  [Pico’s default theme](https://github.com/picocss/pico/tree/main/scss/themes/) as a starting point and customize it to match your brand’s style)."
+   ]
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Pico without default theme\n@use \"pico\" with (\n  $modules: (\n    \"themes/default\": false\n  )\n);\n\n// Your custom theme\n@use \"path/custom-theme\";   ",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  }
+ ]
+}

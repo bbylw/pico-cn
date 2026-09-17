@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "slug": "card",
+  "chapter": "Components",
+  "title": "Card",
+  "lead": "Create flexible cards with a semantic markup that provides graceful spacings across various devices and viewports.",
+  "url": "https://picocss.com/docs/card"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Card example",
+   "demo": "<article aria-label=\"Card example\">I’m a card!</article>",
+   "lang": "html",
+   "code": "<article>I’m a card!</article>"
+  },
+  {
+   "t": "p",
+   "md": "You can use `<header>` and `<footer>` inside `<article>`."
+  },
+  {
+   "t": "h2",
+   "text": "Sectioning",
+   "id": "sectioning"
+  },
+  {
+   "t": "example",
+   "label": "Card sectioning example",
+   "demo": "<article aria-label=\"Card sectioning example\"><header>Header</header>Body<footer>Footer</footer></article>",
+   "lang": "html",
+   "code": "<article>\n  <header>Header</header>\n  Body\n  <footer>Footer</footer>\n</article>"
+  }
+ ]
+}

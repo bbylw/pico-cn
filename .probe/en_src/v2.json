@@ -1,0 +1,145 @@
+{
+ "meta": {
+  "slug": "v2",
+  "chapter": "About",
+  "title": "What’s new in v2?",
+  "lead": "Pico v2.0 features better accessibility, easier customization with SASS, a complete color palette, a new group component, and 20 precompiled color themes totaling over 100 combinations accessible via CDN.",
+  "url": "https://picocss.com/docs/v2"
+ },
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "New look and feel",
+   "id": "new-look-and-feel"
+  },
+  {
+   "t": "p",
+   "md": "All colors have been carefully and manually redefined for a more contrasted, neutral (less bluish) look and feel."
+  },
+  {
+   "t": "p",
+   "md": "The default color theme is much more accessible. Most colors now follow the WCAG 2.1 AAA standard, and some secondary muted colors follow the WCAG 2.1 AA standard."
+  },
+  {
+   "t": "p",
+   "md": "Focus states have been improved for more consistency and contrast, and spacings have been reduced for a sleeker and more neutral style."
+  },
+  {
+   "t": "h2",
+   "text": "Easier customization",
+   "id": "easier-customisation"
+  },
+  {
+   "t": "p",
+   "md": "We have refactored all `.scss` files to make it easier for you to compile your version of Pico with [SASS](https://picocss.com/docs/sass). All modules can now be enabled or disabled using [@use](https://sass-lang.com/documentation/at-rules/use)."
+  },
+  {
+   "t": "p",
+   "md": "We added more [CSS variables](https://picocss.com/docs/css-variables), now totaling over 130, to easily create a unique look and feel, enhancing design flexibility."
+  },
+  {
+   "t": "h2",
+   "text": "Color palette",
+   "id": "color-palette"
+  },
+  {
+   "t": "p",
+   "md": "Pico v2 comes with [380 manually crafted colors](https://picocss.com/docs/colors) to help you personalize your brand design system. The colors can be imported into any `.scss`file, and a new stylesheet with all the color utilities is provided."
+  },
+  {
+   "t": "h2",
+   "text": "Better breakpoints",
+   "id": "better-breakpoints"
+  },
+  {
+   "t": "p",
+   "md": "We have updated the [breakpoints](https://picocss.com/docs/container) to follow the width of standard devices and added a new breakpoint for larger screens."
+  },
+  {
+   "t": "h2",
+   "text": "Group component",
+   "id": "group-component"
+  },
+  {
+   "t": "p",
+   "md": "With [group](https://picocss.com/docs/group) (`role=\"group\"`), you can now stack forms elements and buttons horizontally."
+  },
+  {
+   "t": "h2",
+   "text": "Conditional Styling",
+   "id": "conditional-styling"
+  },
+  {
+   "t": "p",
+   "md": "[Conditional Styling](https://picocss.com/docs/conditional) is a powerful feature that allows you to apply styles selectively by wrapping elements in `.pico` containers, which is ideal for mixed-style environments. This method restricts styling to designated sections, making it particularly useful for combining multiple stylesheets or components seamlessly."
+  },
+  {
+   "t": "h2",
+   "text": "Version picker",
+   "id": "version-picker"
+  },
+  {
+   "t": "p",
+   "md": "Play with the [Version Picker](https://picocss.com/docs/version-picker), which offers 20 precompiled color themes accessible via CDN for all Pico versions. The total number of combinations is over 100."
+  },
+  {
+   "t": "h2",
+   "text": "Breaking changes",
+   "id": "breaking-changes"
+  },
+  {
+   "t": "h3",
+   "text": "CSS Vars",
+   "id": "css-vars"
+  },
+  {
+   "t": "p",
+   "md": "All [CSS custom properties](https://picocss.com/docs/css-variables) are prefixed with `pico-`to avoid collisions with other CSS frameworks or your vars. We also added new CSS variables and renamed some to follow a consistent pattern`{component}-{state}-{property}`."
+  },
+  {
+   "t": "h3",
+   "text": "SCSS files",
+   "id": "scss-files"
+  },
+  {
+   "t": "p",
+   "md": "We renamed and moved many `.scss` files. If you import Pico modules, you need to update your paths."
+  },
+  {
+   "t": "h3",
+   "text": "Buttons",
+   "id": "buttons"
+  },
+  {
+   "t": "p",
+   "md": "[Buttons](https://picocss.com/docs/button) are not `width: 100%;` by default anymore. Only form buttons are full-width to be consistent with other form elements."
+  },
+  {
+   "t": "h3",
+   "text": "Table",
+   "id": "table"
+  },
+  {
+   "t": "p",
+   "md": "The `.striped` class is now used for the striped [table](https://picocss.com/docs/table)’s style."
+  },
+  {
+   "t": "h3",
+   "text": "Dropdowns",
+   "id": "dropdowns"
+  },
+  {
+   "t": "p",
+   "md": "While [accordions](https://picocss.com/docs/accordion) are still classless, [dropdowns](https://picocss.com/docs/dropdown) now use`.dropdown`. We also removed the experimental syntax that allowed dropdowns in the nav using nested lists."
+  },
+  {
+   "t": "h3",
+   "text": "Grid",
+   "id": "grid"
+  },
+  {
+   "t": "p",
+   "md": "[Grid](https://picocss.com/docs/grid) columns now collapse on small devices (`<768px`)."
+  }
+ ]
+}

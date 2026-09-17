@@ -1,0 +1,39 @@
+---
+title: 栅格
+chapter: 布局
+lead: 使用 <code>.grid</code> 开启自动布局列，创建极简的响应式布局。
+toc:
+  - { id: about-css-grids, text: 关于 CSS Grid, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+添加列 移除列
+
+<Ex
+  html={`<article aria-label="Grid example" class="component"><div class="grid"><div>1</div><div>2</div><div>3</div><div>4</div></div></article>`}
+  code={`<div class="grid">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+</div>`}
+  lang="html"
+  label="Grid example"
+/>
+
+在小型设备（`<768px`）上，各列会有意折叠为纵向排列。
+
+`.grid` 在无类版本中不可用。
+
+<h2 id="about-css-grids">关于 CSS Grid</h2>
+
+Pico 专注于原生 HTML 元素，因此我们保持这套栅格系统的极简。
+
+一套完整的 flexbox 栅格系统——包含全部的排序、偏移和断点工具类——体积可能比整个 Pico 库还大，这并不符合 Pico 的精神。
+
+如果你需要快速搭建原型或构建复杂布局，可以看看 **Flexbox 栅格布局**，例如 [Bootstrap Grid System](https://getbootstrap.com/docs/4.2/getting-started/contents/) 或 [Flexbox Grid](http://flexboxgrid.com/)。
+
+如果你需要一个轻量且可定制的栅格，可以看看 **CSS Grid 生成器**，例如 [CSS Grid Generator](https://cssgrid-generator.netlify.app/)、[Layoutit!](http://grid.layoutit.com/) 或 [Griddy](https://griddy.io/)。
+
+或者，你也可以[了解 CSS Grid](https://learncssgrid.com/)。

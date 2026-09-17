@@ -1,0 +1,44 @@
+{
+ "meta": {
+  "slug": "loading",
+  "chapter": "Components",
+  "title": "Loading",
+  "lead": "Add a loading indicator with `aria-busy=\"true\"`.",
+  "url": "https://picocss.com/docs/loading"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "It can be applied to any block:"
+  },
+  {
+   "t": "example",
+   "label": "Loading example",
+   "demo": "<article aria-busy=\"true\" aria-label=\"Loading example\"></article>",
+   "lang": "html",
+   "code": "<article aria-busy=\"true\"></article>"
+  },
+  {
+   "t": "p",
+   "md": "Any inline element:"
+  },
+  {
+   "t": "example",
+   "label": "Loading example",
+   "demo": "<article aria-label=\"Loading example\" class=\"component\"><span aria-busy=\"true\">Generating your link...</span></article>",
+   "lang": "html",
+   "code": "<span aria-busy=\"true\">Generating your link...</span>"
+  },
+  {
+   "t": "p",
+   "md": "Any button:"
+  },
+  {
+   "t": "example",
+   "label": "Loading button examples",
+   "demo": "<article aria-label=\"Loading button examples\" class=\"component\"><div class=\"grid\" id=\"buttons\"><button aria-busy=\"true\" aria-label=\"Please wait…\"></button><button aria-busy=\"true\" aria-label=\"Please wait…\" class=\"secondary\"></button><button aria-busy=\"true\" aria-label=\"Please wait…\" class=\"contrast\"></button></div><div class=\"grid\" id=\"outline-buttons\"><button aria-busy=\"true\" class=\"outline\">Please wait…</button><button aria-busy=\"true\" class=\"outline secondary\">Please wait…</button><button aria-busy=\"true\" class=\"outline contrast\">Please wait…</button></div></article>",
+   "lang": "html",
+   "code": "<button aria-busy=\"true\" aria-label=\"Please wait…\" />\n<button aria-busy=\"true\" aria-label=\"Please wait…\" class=\"secondary\" />\n<button aria-busy=\"true\" aria-label=\"Please wait…\" class=\"contrast\" />\n<button aria-busy=\"true\" class=\"outline\">Please wait…</button>\n<button aria-busy=\"true\" class=\"outline secondary\">Please wait…</button>\n<button aria-busy=\"true\" class=\"outline contrast\">Please wait…</button>"
+  }
+ ]
+}

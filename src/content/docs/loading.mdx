@@ -1,0 +1,39 @@
+---
+title: 加载
+chapter: 组件
+lead: 使用 <code>aria-busy="true"</code> 添加加载指示器。
+---
+
+import Ex from "../../components/Ex.astro";
+
+它可以应用于任何块级元素：
+
+<Ex
+  html={`<article aria-busy="true" aria-label="Loading example"></article>`}
+  code={`<article aria-busy="true"></article>`}
+  lang="html"
+  label="Loading example"
+/>
+
+任何行内元素：
+
+<Ex
+  html={`<article aria-label="Loading example" class="component"><span aria-busy="true">Generating your link...</span></article>`}
+  code={`<span aria-busy="true">Generating your link...</span>`}
+  lang="html"
+  label="Loading example"
+/>
+
+任何按钮：
+
+<Ex
+  html={`<article aria-label="Loading button examples" class="component"><div class="grid" id="buttons"><button aria-busy="true" aria-label="Please wait…"></button><button aria-busy="true" aria-label="Please wait…" class="secondary"></button><button aria-busy="true" aria-label="Please wait…" class="contrast"></button></div><div class="grid" id="outline-buttons"><button aria-busy="true" class="outline">Please wait…</button><button aria-busy="true" class="outline secondary">Please wait…</button><button aria-busy="true" class="outline contrast">Please wait…</button></div></article>`}
+  code={`<button aria-busy="true" aria-label="Please wait…" />
+<button aria-busy="true" aria-label="Please wait…" class="secondary" />
+<button aria-busy="true" aria-label="Please wait…" class="contrast" />
+<button aria-busy="true" class="outline">Please wait…</button>
+<button aria-busy="true" class="outline secondary">Please wait…</button>
+<button aria-busy="true" class="outline contrast">Please wait…</button>`}
+  lang="html"
+  label="Loading button examples"
+/>

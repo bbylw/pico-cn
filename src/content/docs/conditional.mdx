@@ -1,0 +1,101 @@
+---
+title: 条件样式
+chapter: 入门
+lead: 将 Pico CSS 样式限制在 <code>.pico</code> 容器内的元素上，按需选择性生效，适合多种样式并存的环境。
+toc:
+  - { id: local-setup, text: 手动安装, depth: 2 }
+  - { id: usage-from-cdn, text: 通过 CDN 使用, depth: 2 }
+  - { id: usage-with-sass, text: 通过 Sass 使用, depth: 2 }
+  - { id: starter-html-template, text: 起步 HTML 模板, depth: 2 }
+  - { id: examples, text: 示例, depth: 2 }
+  - { id: demo, text: 演示, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+Pico 提供 `.conditional` 版本，只将样式应用于 `.pico` 类容器内的元素。
+
+保留的最小化 `:root` 重置则确保整个网站的排版风格一致。
+
+参见[版本选择器](/docs/version-picker/)，轻松挑选最适合项目需求的 Pico CSS 版本变体。
+
+<h2 id="local-setup">手动安装</h2>
+
+[下载 Pico](https://github.com/picocss/pico/archive/refs/heads/v2.zip)，并在网站的 `<head>` 中引入 `/css/pico.conditional.min.css`。
+
+```html
+<link rel="stylesheet" href="css/pico.conditional.min.css">
+```
+
+<h2 id="usage-from-cdn">通过 CDN 使用</h2>
+
+或者，你可以使用 [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/) 引入 `pico.conditional.min.css`。
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css">
+```
+
+<h2 id="usage-with-sass">通过 Sass 使用</h2>
+
+```scss
+@use "pico" with (
+  $parent-selector: ".pico"
+);
+```
+
+<h2 id="starter-html-template">起步 HTML 模板</h2>
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="css/pico.conditional.min.css">
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <p>Unstyled hello world!</p>
+      </section>
+      <section class="pico">
+        <p>Styled hello world!</p>
+      </section>
+    </main>
+  </body>
+</html>
+```
+
+<h2 id="examples">示例</h2>
+
+应用 Pico 样式的示例：
+
+<Ex
+  html={`<article aria-label="Styled example" class="component"><form><input aria-label="Text" name="text" placeholder="Text" type="text"/></form></article>`}
+  code={`<form class="pico">
+  <input type="text" name="text" placeholder="Text" aria-label="Text" />
+</form>`}
+  lang="html"
+  label="Styled example"
+/>
+
+未应用 Pico 样式的示例：
+
+<Ex
+  html={`<article aria-label="Unstyled example" class="component"><form><input aria-label="Text" name="text" placeholder="Text" style="all:revert" type="text"/></form></article>`}
+  code={`<form>
+  <input type="text" name="text" placeholder="Text" aria-label="Text" />
+</form>`}
+  lang="html"
+  label="Unstyled example"
+/>
+
+<h2 id="demo">演示</h2>
+
+- [预览](https://kv4lrs.csb.app/)
+- [在 CodeSandbox 中编辑](https://codesandbox.io/embed/kv4lrs?view=Editor+%2B+Preview&module=%2Findex.html)
+- [查看源码](https://github.com/picocss/examples/tree/master/v2-conditional-styling)

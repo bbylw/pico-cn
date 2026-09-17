@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+interface Props {
+  title: string;
+  desc?: string;
+}
+const { title, desc = "面向语义化 HTML 的极简 CSS 框架" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      (() => {
+        let saved = null;
+        try {
+          saved = localStorage.getItem("pico-cn-theme");
+        } catch {}
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+  }
+</style>
+
+<script>
+  // 明暗切换：顶栏 [data-theme-toggle] 按钮
+  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("pico-cn-theme", next);
+      } catch {}
+    });
+    // 未手动选择过时跟随系统
+    try {
+      if (!localStorage.getItem("pico-cn-theme")) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
+        });
+      }
+    } catch {}
+  }
+</script>

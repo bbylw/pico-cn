@@ -1,0 +1,97 @@
+---
+title: 分组
+chapter: 组件
+lead: 使用 <code>role="group"</code> 和 <code>role="search"</code> 将表单元素与按钮水平堆叠。
+badge: new
+toc:
+  - { id: search, text: 搜索, depth: 2 }
+  - { id: buttons, text: 按钮, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+`role="group"` 用于将子元素水平堆叠。
+
+与 `<form>` 标签一起使用时，分组为 `width: 100%;`。
+
+与 `.grid`（见 [栅格](/docs/grid/)）不同，列在移动设备上不会被折叠。
+
+<Ex
+  html={`<article aria-label="Form group example" class="component"><form><fieldset role="group"><input autocomplete="email" name="email" placeholder="Enter your email" type="email"/><input type="submit" value="Subscribe"/></fieldset></form></article>`}
+  code={`<form>
+  <fieldset role="group">
+    <input name="email" type="email" placeholder="Enter your email" autocomplete="email" />
+    <input type="submit" value="Subscribe" />
+  </fieldset>
+</form>`}
+  lang="html"
+  label="Form group example"
+/>
+
+该组件主要面向表单元素与按钮设计。根据获得焦点的子元素是 `<input>` 还是 `<button>`，分组会呈现相应的 `:focus` 样式。
+
+分组的 `:focus` 样式依赖 `:has()` CSS 选择器。当 `:has()` 不受支持时，子元素将使用各自常规的 `:focus` 样式。
+
+<Ex
+  html={`<article aria-label="Form group example" class="component"><form><fieldset role="group"><input autocomplete="email" name="email" placeholder="Email" type="email"/><input autocomplete="current-password" name="password" placeholder="Password" type="password"/><input type="submit" value="Log in"/></fieldset></form></article>`}
+  code={`<form>
+  <fieldset role="group">
+    <input name="email" type="email" placeholder="Email" autocomplete="email" />
+    <input name="password" type="password" placeholder="Password" />
+    <input type="submit" value="Log in" />
+  </fieldset>
+</form>`}
+  lang="html"
+  label="Form group example"
+/>
+
+<h2 id="search">搜索</h2>
+
+`role="search"` 同样将子元素水平堆叠，并提供一种与 `<input type="search">` 保持一致的特殊样式（见 [搜索输入框](/docs/forms/input/#search)）。
+
+<Ex
+  html={`<article aria-label="Searcgh group example" class="component"><form role="search"><input name="search" placeholder="Search" type="search"/><input type="submit" value="Search"/></form></article>`}
+  code={`<form role="search">
+  <input name="search" type="search" placeholder="Search" />
+  <input type="submit" value="Search" />
+</form>`}
+  lang="html"
+  label="Searcgh group example"
+/>
+
+<h2 id="buttons">按钮</h2>
+
+`role="group"` 也很适合用来归组一系列按钮。
+
+<Ex
+  html={`<article aria-label="Group example" class="component"><div role="group"><button>Button</button><button>Button</button><button>Button</button></div></article>`}
+  code={`<div role="group">
+  <button>Button</button>
+  <button>Button</button>
+  <button>Button</button>
+</div>`}
+  lang="html"
+  label="Group example"
+/>
+
+<Ex
+  html={`<article aria-label="Group example" class="component"><div role="group"><button aria-current="true">Active</button><button>Button</button><button>Button</button></div></article>`}
+  code={`<div role="group">
+  <button aria-current="true">Active</button>
+  <button>Button</button>
+  <button>Button</button>
+</div>`}
+  lang="html"
+  label="Group example"
+/>
+
+<Ex
+  html={`<article aria-label="Group example" class="component"><div role="group"><button>Button</button><button class="secondary">Button</button><button class="contrast">Button</button></div></article>`}
+  code={`<div role="group">
+  <button>Button</button>
+  <button class="secondary">Button</button>
+  <button class="contrast">Button</button>
+</div>`}
+  lang="html"
+  label="Group example"
+/>

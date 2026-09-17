@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "slug": "forms-select",
+  "chapter": "Forms",
+  "title": "Select",
+  "lead": "The native `<select>` is styled like the input for consistency.",
+  "url": "https://picocss.com/docs/forms-select"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Select example",
+   "demo": "<article aria-label=\"Select example\" class=\"component\"><select aria-label=\" Select your favorite cuisine...\" name=\"favorite-cuisine\" required=\"\"><option disabled=\"\" selected=\"\" value=\"\">Select your favorite cuisine...</option><option>Italian</option><option>Japanese</option><option>Indian</option><option>Thai</option><option>French</option></select></article>",
+   "lang": "html",
+   "code": "<select name=\"favorite-cuisine\" aria-label=\"Select your favorite cuisine...\" required>\n  <option selected disabled value=\"\">\n    Select your favorite cuisine...\n  </option>\n  <option>Italian</option>\n  <option>Japanese</option>\n  <option>Indian</option>\n  <option>Thai</option>\n  <option>French</option>\n</select>"
+  },
+  {
+   "t": "h2",
+   "text": "Select multiple",
+   "id": "multiple"
+  },
+  {
+   "t": "example",
+   "label": "Disabled and read-only example",
+   "demo": "<article aria-label=\"Disabled and read-only example\" class=\"component\"><select aria-label=\"Select your favorite snacks...\" multiple=\"\" size=\"6\"><option disabled=\"\">Select your favorite snacks...</option><option>Cheese</option><option selected=\"\">Fruits</option><option selected=\"\">Nuts</option><option>Chocolate</option><option>Crackers</option></select></article>",
+   "lang": "html",
+   "code": "<select aria-label=\"Select your favorite snacks...\" multiple size=\"6\">\n  <option disabled>\n    Select your favorite snacks...\n  </option>\n  <option>Cheese</option>\n  <option selected>Fruits</option>\n  <option selected>Nuts</option>\n  <option>Chocolate</option>\n  <option>Crackers</option>\n</select>"
+  },
+  {
+   "t": "h2",
+   "text": "Disabled select",
+   "id": "disabled"
+  },
+  {
+   "t": "example",
+   "label": "Disabled example",
+   "demo": "<article aria-label=\"Disabled example\" class=\"component\"><select aria-label=\"Select a meal type...\" disabled=\"\" name=\"meal-type\"><option>Select a meal type...</option></select></article>",
+   "lang": "html",
+   "code": "<select name=\"meal-type\" aria-label=\"Select a meal type...\" disabled>\n  <option>Select a meal type...</option>\n  <option>...</option>\n</select>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><select aria-invalid=\"false\" aria-label=\"Select your favorite pizza topping...\" name=\"pizza-topping\"><option disabled=\"\">Select your favorite pizza topping...</option><option selected=\"\">Pepperoni</option><option>Mushrooms</option><option>Onions</option><option>Green Peppers</option><option>Olives</option></select><small>Great choice!</small><select aria-invalid=\"true\" aria-label=\"Select your favorite pizza topping...\" name=\"pizza-topping\" required=\"\"><option disabled=\"\" selected=\"\" value=\"\">Select your favorite pizza topping...</option><option>Pepperoni</option><option>Mushrooms</option><option>Onions</option><option>Green Peppers</option><option>Olives</option></select><small>Please select your favorite pizza topping!</small></article>",
+   "lang": "html",
+   "code": "<select aria-invalid=\"false\">\n  ...\n</select>\n<small>Great choice!</small>\n\n<select required aria-invalid=\"true\">\n  ...\n</select>\n<small>\n  Please select your favorite pizza topping!\n</small>"
+  },
+  {
+   "t": "h2",
+   "text": "Dropdown",
+   "id": "dropdown"
+  },
+  {
+   "t": "p",
+   "md": "The dropdown component allows you to build a custom select with the same style as the native select. See [Dropdown](https://picocss.com/docs/dropdown)."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns as selects",
+   "demo": "<article aria-label=\"Dropdowns as selects\" class=\"component\"><div class=\"grid\"><details class=\"dropdown\"><summary>Select your favorite French dessert...</summary><ul><li><label><input name=\"french-dessert\" type=\"radio\" value=\"Crème brûlée\"/>Crème brûlée</label></li><li><label><input name=\"french-dessert\" type=\"radio\" value=\"Macarons\"/>Macarons</label></li><li><label><input name=\"french-dessert\" type=\"radio\" value=\"Tarte tatin\"/>Tarte tatin</label></li><li><label><input name=\"french-dessert\" type=\"radio\" value=\"Éclair\"/>Éclair</label></li></ul></details></div></article>",
+   "lang": "html",
+   "code": ""
+  }
+ ]
+}

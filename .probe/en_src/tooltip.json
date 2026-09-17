@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "slug": "tooltip",
+  "chapter": "Components",
+  "title": "Tooltip",
+  "lead": "Enable tooltips everywhere, without JavaScript.",
+  "url": "https://picocss.com/docs/tooltip"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Tooltip example",
+   "demo": "<article aria-label=\"Tooltip example\" class=\"component\"><p>Tooltip on a <a data-discover=\"true\" data-tooltip=\"Tooltip\" href=\"/docs/tooltip\">link</a></p><p>Tooltip on <em data-tooltip=\"Tooltip\">inline element</em></p><p><button data-tooltip=\"Tooltip\">Tooltip on a button</button></p></article>",
+   "lang": "html",
+   "code": "<p>Tooltip on a <a href=\"#\" data-tooltip=\"Tooltip\">link</a></p>\n<p>Tooltip on <em data-tooltip=\"Tooltip\">inline element</em></p>\n<p><button data-tooltip=\"Tooltip\">Tooltip on a button</button></p>"
+  },
+  {
+   "t": "h2",
+   "text": "Placement",
+   "id": "placement"
+  },
+  {
+   "t": "p",
+   "md": "The tooltip is displayed on top by default but you can change it with the `data-placement` attribute."
+  },
+  {
+   "t": "example",
+   "label": "Tooltip placement example",
+   "demo": "<article aria-label=\"Tooltip placement example\" class=\"component\" id=\"tooltip-placement\"><main class=\"grid\"><button data-tooltip=\"Top\">Top</button><button data-placement=\"right\" data-tooltip=\"Right\">Right</button><button data-placement=\"bottom\" data-tooltip=\"Bottom\">Bottom</button><button data-placement=\"left\" data-tooltip=\"Left\">Left</button></main></article>",
+   "lang": "html",
+   "code": "<button data-tooltip=\"Top\">Top</button>\n<button data-tooltip=\"Right\" data-placement=\"right\">Right</button>\n<button data-tooltip=\"Bottom\" data-placement=\"bottom\">Bottom</button>\n<button data-tooltip=\"Left\" data-placement=\"left\">Left</button>"
+  }
+ ]
+}

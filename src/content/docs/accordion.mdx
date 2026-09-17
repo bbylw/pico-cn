@@ -1,0 +1,82 @@
+---
+title: 手风琴
+chapter: 组件
+lead: 用最简的语义化标记，在纯 HTML 中切换内容区块的展开与折叠，无需 JavaScript。
+toc:
+  - { id: button-variants, text: 按钮变体, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+`name="example"` 可以添加到多个 `<details>` 上，使同一时间只展开一个。
+
+<Ex
+  html={`<article aria-label="Accordions example" class="component"><details name="example" open=""><summary>Accordion 1</summary><p>Flamingos are known for their bright pink feathers and distinctive long necks. These birds are social creatures that live in large groups, and a group of flamingos is called a flamboyance. They can often be seen standing on one leg, which helps them conserve body heat.</p></details><hr/><details name="example"><summary>Accordion 2</summary><ul><li>Kangaroos are marsupials that are native to Australia.</li><li>They are known for their powerful hind legs, which they use to hop around.</li><li>Kangaroos can’t walk backwards due to the shape of their legs and tail.</li><li>Baby kangaroos, called joeys, are born very small and undeveloped and must crawl into their mother’s pouch to continue developing.</li><li>Some species of kangaroos can leap up to 30 feet in a single bound.</li></ul></details></article>`}
+  code={`<details name="example" open>
+  <summary>Accordion 1</summary>
+  <p>...</p>
+</details>
+
+<hr />
+
+<details name="example">
+  <summary>Accordion 2</summary>
+  <ul>
+    <li>...</li>
+    <li>...</li>
+  </ul>
+</details>`}
+  lang="html"
+  label="Accordions example"
+/>
+
+<h2 id="button-variants">按钮变体</h2>
+
+`role="button"` 可以把 `<summary>` 变成按钮。
+
+<Ex
+  html={`<article aria-label="Accordions buttons example" class="component"><details><summary role="button">Button</summary><p>Owls are nocturnal birds of prey that are known for their distinctive hooting calls. A group of owls is called a parliament, and these birds are often associated with wisdom and intelligence. Owls have excellent hearing and vision, which helps them hunt prey in the dark.</p></details></article>`}
+  code={`<details>
+  <summary role="button">Owls</summary>
+  <p>...</p>
+</details>`}
+  lang="html"
+  label="Accordions buttons example"
+/>
+
+与普通按钮一样，它们带有 `.secondary`、`.contrast` 和 `.outline` 变体（[无类版本](/docs/classless/)中不可用）。
+
+<Ex
+  html={`<article aria-label="Accordions buttons example" class="component"><details><summary class="secondary" role="button">Secondary</summary><p>Ostriches are the largest birds in the world and are native to Africa. They have long, powerful legs that they use to run at high speeds, and they can reach up to 45 miles per hour. An ostrich’s eye is bigger than its brain, which is unusual for birds.</p></details><details><summary class="contrast" role="button">Contrast</summary><p>Koalas are arboreal marsupials that are native to Australia. They are known for their cute and cuddly appearance, but they can be quite aggressive if provoked. The fingerprints of koalas are so similar to those of humans that they have been mistaken for crime scene prints.</p></details><details><summary class="outline" role="button">Primary outline</summary><p>Elephants are the largest land animals and highly intelligent with intricate communication systems. They use infrasonic sounds to talk and have long memories. They create and maintain habitats for other species, and can eat up to 300 pounds of vegetation per day. Their elongated incisor teeth, called tusks, serve various purposes, including digging and defense.</p></details><details><summary class="outline secondary" role="button">Secondary outline</summary><p>Crows are intelligent birds that are known for their problem-solving abilities. A group of crows is called a murder, and these birds have a reputation for being mischievous and sometimes even aggressive. Despite their negative image in some cultures, crows are important for their role in controlling pest populations and maintaining ecological balance.</p></details><details><summary class="outline contrast" role="button">Contrast outline</summary><p>Penguins are flightless birds with a tuxedo-like appearance. They swim well and can hold their breath for up to 20 minutes. Penguins are social, forming tight-knit communities, and some mate for life. They have adaptations to survive in cold climates, including thick feathers and a layer of fat for insulation.</p></details></article>`}
+  code={`<!-- Secondary -->
+<details>
+  <summary role="button" class="secondary">Secondary</summary>
+  <p>...</p>
+</details>
+
+<!-- Contrast -->
+<details>
+  <summary role="button" class="contrast">Contrast</summary>
+  <p>...</p>
+</details>
+
+<!-- Primary outline -->
+<details>
+  <summary role="button" class="outline">Primary outline</summary>
+  <p>...</p>
+</details>
+
+<!-- Secondary outline -->
+<details>
+  <summary role="button" class="outline secondary">Secondary outline</summary>
+  <p>...</p>
+</details>
+
+<!-- Contrast outline -->
+<details>
+  <summary role="button" class="outline contrast">Contrast outline</summary>
+  <p>...</p>
+</details>`}
+  lang="html"
+  label="Accordions buttons example"
+/>

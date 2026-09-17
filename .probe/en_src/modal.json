@@ -1,0 +1,118 @@
+{
+ "meta": {
+  "slug": "modal",
+  "chapter": "Components",
+  "title": "Modal",
+  "lead": "The classic modal component with graceful spacings across devices and viewports, using the semantic HTML tag `<dialog>`.",
+  "url": "https://picocss.com/docs/modal"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Modals are built with `<dialog>` as a wrapper and `<article>` for the modal content."
+  },
+  {
+   "t": "p",
+   "md": "Inside `<header>` `<button rel=\"prev\">` is defined to `float: right;` allowing a close icon to be top aligned with a title."
+  },
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<dialog class=\"example\" open=\"\"><article><header><button aria-label=\"Close\" rel=\"prev\"></button><p><strong>🗓️ Thank You for Registering!</strong></p></header><p>We’re excited to have you join us for our upcoming event. Please arrive at the museum on time to check in and get started.</p><ul><li>Date: Saturday, April 15</li><li>Time: 10:00am - 12:00pm</li></ul></article></dialog>",
+   "lang": "html",
+   "code": "<dialog open>\n  <article>\n    <header>\n      <button aria-label=\"Close\" rel=\"prev\"></button>\n      <p>\n        <strong>🗓️ Thank You for Registering!</strong>\n      </p>\n    </header>\n    <p>\n      We're excited to have you join us for our\n      upcoming event. Please arrive at the museum \n      on time to check in and get started.\n    </p>\n    <ul>\n      <li>Date: Saturday, April 15</li>\n      <li>Time: 10:00am - 12:00pm</li>\n    </ul>\n  </article>\n</dialog>"
+  },
+  {
+   "t": "p",
+   "md": "Inside `<footer>`, the content is right aligned by default."
+  },
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<dialog class=\"example\" open=\"\"><article><h2>Confirm Your Membership</h2><p>Thank you for signing up for a membership! Please review the membership details below:</p><ul><li>Membership: Individual</li><li>Price: $10</li></ul><footer><button class=\"secondary\">Cancel</button><button>Confirm</button></footer></article></dialog>",
+   "lang": "html",
+   "code": "<dialog open>\n  <article>\n    <h2>Confirm Your Membership</h2>\n    <p>\n      Thank you for signing up for a membership!\n      Please review the membership details below:\n    </p>\n    <ul>\n      <li>Membership: Individual</li>\n      <li>Price: $10</li>\n    </ul>\n    <footer>\n      <button class=\"secondary\">\n        Cancel\n      </button>\n      <button>Confirm</button>\n    </footer>\n  </article>\n</dialog>"
+  },
+  {
+   "t": "h2",
+   "text": "Demo",
+   "id": "demo"
+  },
+  {
+   "t": "p",
+   "md": "Toggle a modal by clicking the button below."
+  },
+  {
+   "t": "raw",
+   "html": "<article aria-label=\"Modal demo\" id=\"modal-demo\"><button class=\"contrast\">Open modal</button></article>"
+  },
+  {
+   "t": "p",
+   "md": "Pico does not include JavaScript code. You need to implement your JS to interact with modals."
+  },
+  {
+   "t": "p",
+   "md": "As a starting point, you can look at the [HTMLDialogElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) or the advanced examples below:"
+  },
+  {
+   "t": "ul",
+   "items": [
+    "[Vanilla JavaScript](https://codesandbox.io/embed/4mrnhq?view=Editor+%2B+Preview&module=%2Fjs%2Fmodal.js)",
+    "[React](https://codesandbox.io/p/devbox/github/picocss/examples/tree/master/v2-react-color-schemes-and-modal?embed=1&file=%2Fsrc%2Fcomponents%2FModal.js)"
+   ]
+  },
+  {
+   "t": "p",
+   "md": "To open a modal, add the `open` attribute to the`<dialog>` container."
+  },
+  {
+   "t": "h2",
+   "text": "Utilities",
+   "id": "utilities"
+  },
+  {
+   "t": "p",
+   "md": "Modals come with 3 utility classes."
+  },
+  {
+   "t": "p",
+   "md": "These classes are not available in the [class-less version](https://picocss.com/docs/classless)."
+  },
+  {
+   "t": "p",
+   "md": "`.modal-is-open` prevents any scrolling and interactions below the modal."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html class=\"modal-is-open\">\n  ...\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "`.modal-is-opening` brings an opening animation."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html class=\"modal-is-open modal-is-opening\">\n  ...\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "`.modal-is-closing` brings a closing animation."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html class=\"modal-is-open modal-is-closing\">\n  ...\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  }
+ ]
+}

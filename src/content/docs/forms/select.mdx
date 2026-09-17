@@ -1,0 +1,89 @@
+---
+title: 选择框
+chapter: 表单
+lead: 原生 <code>&lt;select&gt;</code> 与输入框采用一致样式，以保持统一。
+toc:
+  - { id: multiple, text: 多选, depth: 2 }
+  - { id: disabled, text: 禁用选择框, depth: 2 }
+  - { id: validation-states, text: 验证状态, depth: 2 }
+  - { id: dropdown, text: 下拉菜单, depth: 2 }
+---
+
+import Ex from "../../../components/Ex.astro";
+
+<Ex
+  html={`<select aria-label=" Select your favorite cuisine..." name="favorite-cuisine" required=""><option disabled="" selected="" value="">Select your favorite cuisine...</option><option>Italian</option><option>Japanese</option><option>Indian</option><option>Thai</option><option>French</option></select>`}
+  code={`<select name="favorite-cuisine" aria-label="Select your favorite cuisine..." required>
+  <option selected disabled value="">
+    Select your favorite cuisine...
+  </option>
+  <option>Italian</option>
+  <option>Japanese</option>
+  <option>Indian</option>
+  <option>Thai</option>
+  <option>French</option>
+</select>`}
+  lang="html"
+  label="Select example"
+/>
+
+<h2 id="multiple">多选</h2>
+
+<Ex
+  html={`<select aria-label="Select your favorite snacks..." multiple="" size="6"><option disabled="">Select your favorite snacks...</option><option>Cheese</option><option selected="">Fruits</option><option selected="">Nuts</option><option>Chocolate</option><option>Crackers</option></select>`}
+  code={`<select aria-label="Select your favorite snacks..." multiple size="6">
+  <option disabled>
+    Select your favorite snacks...
+  </option>
+  <option>Cheese</option>
+  <option selected>Fruits</option>
+  <option selected>Nuts</option>
+  <option>Chocolate</option>
+  <option>Crackers</option>
+</select>`}
+  lang="html"
+  label="Disabled and read-only example"
+/>
+
+<h2 id="disabled">禁用选择框</h2>
+
+<Ex
+  html={`<select aria-label="Select a meal type..." disabled="" name="meal-type"><option>Select a meal type...</option></select>`}
+  code={`<select name="meal-type" aria-label="Select a meal type..." disabled>
+  <option>Select a meal type...</option>
+  <option>...</option>
+</select>`}
+  lang="html"
+  label="Disabled example"
+/>
+
+<h2 id="validation-states">验证状态</h2>
+
+通过 `aria-invalid` 提供验证状态。
+
+<Ex
+  html={`<select aria-invalid="false" aria-label="Select your favorite pizza topping..." name="pizza-topping"><option disabled="">Select your favorite pizza topping...</option><option selected="">Pepperoni</option><option>Mushrooms</option><option>Onions</option><option>Green Peppers</option><option>Olives</option></select><small>Great choice!</small><select aria-invalid="true" aria-label="Select your favorite pizza topping..." name="pizza-topping" required=""><option disabled="" selected="" value="">Select your favorite pizza topping...</option><option>Pepperoni</option><option>Mushrooms</option><option>Onions</option><option>Green Peppers</option><option>Olives</option></select><small>Please select your favorite pizza topping!</small>`}
+  code={`<select aria-invalid="false">
+  ...
+</select>
+<small>Great choice!</small>
+
+<select required aria-invalid="true">
+  ...
+</select>
+<small>
+  Please select your favorite pizza topping!
+</small>`}
+  lang="html"
+  label="Validation states example"
+/>
+
+<h2 id="dropdown">下拉菜单</h2>
+
+借助下拉菜单组件，你可以构建与原生选择框样式一致的自定义 select。参见 [下拉菜单](/docs/dropdown/)。
+
+<Ex
+  html={`<div class="grid"><details class="dropdown"><summary>Select your favorite French dessert...</summary><ul><li><label><input name="french-dessert" type="radio" value="Crème brûlée"/>Crème brûlée</label></li><li><label><input name="french-dessert" type="radio" value="Macarons"/>Macarons</label></li><li><label><input name="french-dessert" type="radio" value="Tarte tatin"/>Tarte tatin</label></li><li><label><input name="french-dessert" type="radio" value="Éclair"/>Éclair</label></li></ul></details></div>`}
+  lang="html"
+  label="Dropdowns as selects"
+/>

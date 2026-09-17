@@ -1,0 +1,46 @@
+{
+ "meta": {
+  "slug": "forms-radios",
+  "chapter": "Forms",
+  "title": "Radios",
+  "lead": "The native `<input type=\"radio\">` with a custom and responsive style.",
+  "url": "https://picocss.com/docs/forms-radios"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Radios example",
+   "demo": "<article aria-label=\"Radios example\" class=\"component\"><fieldset><legend>Language preference:</legend><label><input checked=\"\" name=\"language\" type=\"radio\"/>English</label><label><input name=\"language\" type=\"radio\"/>French</label><label><input name=\"language\" type=\"radio\"/>Mandarin</label><label><input name=\"language\" type=\"radio\"/>Thai</label><label aria-disabled=\"true\"><input disabled=\"\" name=\"language\" type=\"radio\"/>Dothraki</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <legend>Language preference:</legend>\n  <label>\n    <input type=\"radio\" name=\"language\" checked />\n    English\n  </label>\n  <label>\n    <input type=\"radio\" name=\"language\" />\n    French\n  </label>\n  <label>\n    <input type=\"radio\" name=\"language\" />\n    Mandarin\n  </label>\n  <label>\n    <input type=\"radio\" name=\"language\" />\n    Thai\n  </label>\n  <label aria-disabled=\"true\">\n    <input type=\"radio\" name=\"language\" disabled />\n    Dothraki\n  </label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Horizontal stacking",
+   "id": "horizontal-stacking"
+  },
+  {
+   "t": "example",
+   "label": "Horizontal stacking example",
+   "demo": "<article aria-label=\"Horizontal stacking example\" class=\"component\"><fieldset><legend>Second language:</legend><input checked=\"\" id=\"hindi\" name=\"second-language\" type=\"radio\"/><label for=\"hindi\">Hindi</label><input id=\"swahili\" name=\"second-language\" type=\"radio\"/><label for=\"swahili\">Swahili</label><input disabled=\"\" id=\"navi\" name=\"second-language\" type=\"radio\"/><label aria-disabled=\"true\" for=\"navi\">Na'vi</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <legend>Second language:</legend>\n  <input type=\"radio\" id=\"hindi\" name=\"second-language\" checked />\n  <label htmlFor=\"hindi\">Hindi</label>\n  <input type=\"radio\" id=\"swahili\" name=\"second-language\" />\n  <label htmlFor=\"swahili\">Swahili</label>\n  <input type=\"radio\" id=\"navi\" name=\"second-language\" disabled />\n  <label htmlFor=\"navi\" aria-disabled=\"true\">Na'vi</label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><fieldset><label><input aria-invalid=\"false\" name=\"validation-states\" type=\"radio\"/>Valid</label><label><input aria-invalid=\"true\" name=\"validation-states\" type=\"radio\"/>Invalid</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <label>\n    <input type=\"radio\" name=\"validation-states\" aria-invalid=\"false\" />\n    Valid\n  </label>\n\n  <label>\n    <input type=\"radio\" name=\"validation-states\" aria-invalid=\"true\" />\n    Invalid\n  </label>\n</fieldset>"
+  }
+ ]
+}

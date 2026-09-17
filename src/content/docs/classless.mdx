@@ -1,0 +1,110 @@
+---
+title: 无类版本
+chapter: 入门
+lead: 拥抱极简主义：<code>.classless</code> 无类版本是专为偏爱精简写法的裸 HTML 纯粹主义者准备的语义化选择。
+toc:
+  - { id: usage, text: 用法, depth: 2 }
+  - { id: root-container, text: 根容器, depth: 2 }
+---
+
+Pico 提供了 `.classless` 版本（[示例](https://x4qtf8.csb.app/)）。
+
+在该版本中，`<body>` 内的 `<header>`、`<main>` 与 `<footer>` 会充当[容器](/docs/container/)，用来定义居中或流式视口。
+
+```css
+/* Containers */
+body > header,
+body > main,
+body > footer {
+  ...
+}
+```
+
+下面这两个页面的样式完全相同：
+
+```html
+<!-- With pico.min.css -->
+<body>
+  <main class="container">
+    <h1>Hello, world!</h1>
+  </main>
+</body>
+```
+
+```html
+<!-- With pico.classless.min.css -->
+<body>
+  <main>
+    <h1>Hello, world!</h1>
+  </main>
+</body>
+```
+
+参见[版本选择器](/docs/version-picker/)，轻松挑选最适合项目需求的 Pico CSS 版本变体。
+
+<h2 id="usage">用法</h2>
+
+如果你需要居中的视口，使用默认的 `.classless` 版本：
+
+```html
+<link rel="stylesheet" href="css/pico.classless.min.css">
+```
+
+或者，如果你需要流式容器，使用 `.fluid.classless` 版本：
+
+```html
+<link rel="stylesheet" href="css/pico.fluid.classless.min.css">
+```
+
+这些 `.classless` 版本同样可在 [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/) 上获取：
+
+```html
+<!-- Centered viewport -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+>
+```
+
+```html
+<!-- Fluid viewport -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+>
+```
+
+<h2 id="root-container">根容器</h2>
+
+如果你想为 `<header>`、`<main>` 与 `<footer>` 自定义默认的根容器，可以用另一个 CSS 选择器重新编译 Pico。
+
+这一点对 [React](https://reactjs.org/)、[Gatsby](https://www.gatsbyjs.com/) 或 [Next.js](https://nextjs.org/) 很有用。
+
+```scss
+/* Custom Class-less version for React */
+@use "pico" with (
+  
+  // Define the root element used to target <header>, <main>, <footer>
+  // with $enable-semantic-container and $enable-responsive-spacings
+  $semantic-root-element: "#root",
+  
+  // Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+  $enable-semantic-container: true,
+
+  // Enable .classes
+  $enable-classes: false
+)
+```
+
+上述代码编译出的 Pico，其容器定义方式如下：
+
+```css
+/* Containers */
+#root > header,
+#root > main,
+#root > footer {
+  ...
+}
+```
+
+进一步了解[用 Sass 编译定制版 Pico](/docs/sass/)。

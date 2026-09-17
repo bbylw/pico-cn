@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "slug": "table",
+  "chapter": "Content",
+  "title": "Table",
+  "lead": "Clean and minimal styles for `<table>`, providing consistent spacings and a minimal unbordered look.",
+  "url": "https://picocss.com/docs/table"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<div class=\"overflow-auto\"><table><thead><tr><th scope=\"col\">Planet</th><th scope=\"col\">Diam. (km)</th><th scope=\"col\">Dist. to Sun (AU)</th><th scope=\"col\">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope=\"row\">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope=\"row\">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope=\"row\">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope=\"row\">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope=\"row\">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>",
+   "lang": "html",
+   "code": "<table>\n  <thead>\n    <tr>\n      <th scope=\"col\">Planet</th>\n      <th scope=\"col\">Diameter (km)</th>\n      <th scope=\"col\">Distance to Sun (AU)</th>\n      <th scope=\"col\">Orbit (days)</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope=\"row\">Mercury</th>\n      <td>4,880</td>\n      <td>0.39</td>\n      <td>88</td>\n    </tr>\n    <tr>\n      <th scope=\"row\">Venus</th>\n      <td>12,104</td>\n      <td>0.72</td>\n      <td>225</td>\n    </tr>\n    <tr>\n      <th scope=\"row\">Earth</th>\n      <td>12,742</td>\n      <td>1.00</td>\n      <td>365</td>\n    </tr>\n    <tr>\n      <th scope=\"row\">Mars</th>\n      <td>6,779</td>\n      <td>1.52</td>\n      <td>687</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th scope=\"row\">Average</th>\n      <td>9,126</td>\n      <td>0.91</td>\n      <td>341</td>\n    </tr>\n  </tfoot>\n</table>"
+  },
+  {
+   "t": "h2",
+   "text": "Color schemes",
+   "id": "color-schemes"
+  },
+  {
+   "t": "p",
+   "md": "`data-theme=\"light\"` or `data-theme=\"dark\"` can be used at any level: `<table>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, `<td>`."
+  },
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<div class=\"overflow-auto\"><table><thead data-theme=\"dark\"><tr><th scope=\"col\">Planet</th><th scope=\"col\">Diam. (km)</th><th scope=\"col\">Dist. to Sun (AU)</th><th scope=\"col\">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope=\"row\">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope=\"row\">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope=\"row\">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope=\"row\">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope=\"row\">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>",
+   "lang": "html",
+   "code": "<table>\n  <thead data-theme=\"dark\">\n    ...\n  </thead>\n  <tbody>...</tbody>\n  <tfoot>...</tfoot>\n</table>"
+  },
+  {
+   "t": "h2",
+   "text": "Striped table",
+   "id": "striped"
+  },
+  {
+   "t": "p",
+   "md": "`.striped` enable striped rows (not available in the [class‑less version](https://picocss.com/docs/classless))."
+  },
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<div class=\"overflow-auto\"><table class=\"striped\"><thead><tr><th scope=\"col\">Planet</th><th scope=\"col\">Diam. (km)</th><th scope=\"col\">Dist. to Sun (AU)</th><th scope=\"col\">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope=\"row\">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope=\"row\">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope=\"row\">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope=\"row\">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope=\"row\">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>",
+   "lang": "html",
+   "code": "<table class=\"striped\">\n  ...\n</table>"
+  }
+ ]
+}

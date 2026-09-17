@@ -1,0 +1,31 @@
+---
+import { DOCS_NAV } from "../data/docs-nav";
+interface Props {
+  current: string;
+}
+const { current } = Astro.props;
+---
+
+<aside class="sidebar" aria-label="文档导航">
+  {
+    DOCS_NAV.map((g) => (
+      <details open={g.items.some((i) => i.id === current)}>
+        <summary>{g.group}</summary>
+        <ul>
+          {g.items.map((i) => (
+            <li>
+              <a
+                href={`/docs/${i.id === "quickstart" ? "" : i.id}/`}
+                class="secondary"
+                aria-current={i.id === current ? "page" : undefined}
+              >
+                {i.label}
+                {i.badge === "new" && <span class="new-badge">新</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))
+  }
+</aside>

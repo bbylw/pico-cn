@@ -1,0 +1,91 @@
+{
+ "meta": {
+  "slug": "group",
+  "chapter": "Components",
+  "title": "Group",
+  "lead": "Stack forms elements and buttons horizontally with `role=\"group\"` and  `role=\"search\"`.",
+  "url": "https://picocss.com/docs/group"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "`role=\"group\"` is used to stack children horizontally."
+  },
+  {
+   "t": "p",
+   "md": "When used with the `<form>` tag, the group is `width: 100%;`."
+  },
+  {
+   "t": "p",
+   "md": "Unlike `.grid` (see [Grid](https://picocss.com/docs/grid)), columns are not collapsed on mobile devices."
+  },
+  {
+   "t": "example",
+   "label": "Form group example",
+   "demo": "<article aria-label=\"Form group example\" class=\"component\"><form><fieldset role=\"group\"><input autocomplete=\"email\" name=\"email\" placeholder=\"Enter your email\" type=\"email\"/><input type=\"submit\" value=\"Subscribe\"/></fieldset></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <fieldset role=\"group\">\n    <input name=\"email\" type=\"email\" placeholder=\"Enter your email\" autocomplete=\"email\" />\n    <input type=\"submit\" value=\"Subscribe\" />\n  </fieldset>\n</form>"
+  },
+  {
+   "t": "p",
+   "md": "This component is mainly designed for form elements and buttons. It brings a `:focus` style to the group depending on whether the focused child is an `<input>` or a `<button>`."
+  },
+  {
+   "t": "p",
+   "md": "The group `:focus` style relies on the `:has()` CSS selector. When `:has()` is not supported the children have their regular `:focus` style."
+  },
+  {
+   "t": "example",
+   "label": "Form group example",
+   "demo": "<article aria-label=\"Form group example\" class=\"component\"><form><fieldset role=\"group\"><input autocomplete=\"email\" name=\"email\" placeholder=\"Email\" type=\"email\"/><input autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><input type=\"submit\" value=\"Log in\"/></fieldset></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <fieldset role=\"group\">\n    <input name=\"email\" type=\"email\" placeholder=\"Email\" autocomplete=\"email\" />\n    <input name=\"password\" type=\"password\" placeholder=\"Password\" />\n    <input type=\"submit\" value=\"Log in\" />\n  </fieldset>\n</form>"
+  },
+  {
+   "t": "h2",
+   "text": "Search",
+   "id": "search"
+  },
+  {
+   "t": "p",
+   "md": "`role=\"search\"` also stacks children horizontally and brings a special style, consistent with `<input type=\"search\">` (see [Search input](https://picocss.com/docs/forms/input#search))."
+  },
+  {
+   "t": "example",
+   "label": "Searcgh group example",
+   "demo": "<article aria-label=\"Searcgh group example\" class=\"component\"><form role=\"search\"><input name=\"search\" placeholder=\"Search\" type=\"search\"/><input type=\"submit\" value=\"Search\"/></form></article>",
+   "lang": "html",
+   "code": "<form role=\"search\">\n  <input name=\"search\" type=\"search\" placeholder=\"Search\" />\n  <input type=\"submit\" value=\"Search\" />\n</form>"
+  },
+  {
+   "t": "h2",
+   "text": "Buttons",
+   "id": "buttons"
+  },
+  {
+   "t": "p",
+   "md": "`role=\"group\"` is also useful for grouping a series of buttons."
+  },
+  {
+   "t": "example",
+   "label": "Group example",
+   "demo": "<article aria-label=\"Group example\" class=\"component\"><div role=\"group\"><button>Button</button><button>Button</button><button>Button</button></div></article>",
+   "lang": "html",
+   "code": "<div role=\"group\">\n  <button>Button</button>\n  <button>Button</button>\n  <button>Button</button>\n</div>"
+  },
+  {
+   "t": "example",
+   "label": "Group example",
+   "demo": "<article aria-label=\"Group example\" class=\"component\"><div role=\"group\"><button aria-current=\"true\">Active</button><button>Button</button><button>Button</button></div></article>",
+   "lang": "html",
+   "code": "<div role=\"group\">\n  <button aria-current=\"true\">Active</button>\n  <button>Button</button>\n  <button>Button</button>\n</div>"
+  },
+  {
+   "t": "example",
+   "label": "Group example",
+   "demo": "<article aria-label=\"Group example\" class=\"component\"><div role=\"group\"><button>Button</button><button class=\"secondary\">Button</button><button class=\"contrast\">Button</button></div></article>",
+   "lang": "html",
+   "code": "<div role=\"group\">\n  <button>Button</button>\n  <button class=\"secondary\">Button</button>\n  <button class=\"contrast\">Button</button>\n</div>"
+  }
+ ]
+}

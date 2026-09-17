@@ -1,0 +1,22 @@
+---
+title: 滑块
+chapter: 表单
+lead: 使用 <code>&lt;input type="range"&gt;</code> 创建滑块控件。
+---
+
+import Ex from "../../../components/Ex.astro";
+
+<Ex
+  html={`<label>Brightness<input type="range"/></label><label>Contrast<input type="range" value="40"/></label>`}
+  code={`<label>
+  Brightness
+  <input type="range" />
+</label>
+
+<label>
+  Contrast
+  <input type="range" value="40" />
+</label>`}
+  lang="html"
+  label="Range examples"
+/>

@@ -1,0 +1,57 @@
+---
+title: 地标与区块
+chapter: 布局
+lead: 用语义化地标与区块组织页面结构，带来更好的可访问性与优雅的间距。
+toc:
+  - { id: root-container, text: 根容器, depth: 2 }
+  - { id: section, text: 区块, depth: 2 }
+---
+
+作为 `<body>` 的直接子元素，`<header>`、`<main>` 和 `<footer>` 会提供响应式的垂直 `padding`。
+
+```html
+<body>
+  <header>...</header>
+  <main>...</main>
+  <footer>...</footer>
+</body>
+```
+
+<h2 id="root-container">根容器</h2>
+
+如果需要自定义 `<header>`、`<main>` 和 `<footer>` 所在的默认根容器，可以换一个 CSS 选择器重新编译 Pico。
+
+这对 [React](https://reactjs.org/)、[Gatsby](https://www.gatsbyjs.com/) 或 [Next.js](https://nextjs.org/) 很实用。
+
+```scss
+/* Custom Class-less version for React */
+@use "pico" with (
+  
+  // Define the root element used to target <header>, <main>, <footer>
+  // with $enable-semantic-container and $enable-responsive-spacings
+  $semantic-root-element: "#root",
+  
+  // Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+  $enable-semantic-container: true,
+
+  // Enable .classes
+  $enable-classes: false
+)
+```
+
+上述代码编译后，容器的定义方式如下：
+
+```css
+/* Containers */
+#root > header,
+#root > main,
+#root > footer {
+  ...
+}
+```
+
+进一步了解[如何使用 Sass 编译 Pico 定制版本](/docs/sass/)。
+
+<h2 id="section">区块</h2>
+
+`<section>` 提供响应式的 `margin-bottom`，用于分隔各个区块。

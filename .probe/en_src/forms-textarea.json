@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "slug": "forms-textarea",
+  "chapter": "Forms",
+  "title": "Textarea",
+  "lead": "The native `<textarea>` is styled like the input for consistency.",
+  "url": "https://picocss.com/docs/forms-textarea"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Textarea example",
+   "demo": "<article aria-label=\"Textarea example\" class=\"component\"><textarea aria-label=\"Professional short bio\" name=\"bio\" placeholder=\"Write a professional short bio...\"></textarea></article>",
+   "lang": "html",
+   "code": "<textarea\n  name=\"bio\"\n  placeholder=\"Write a professional short bio...\"\n  aria-label=\"Professional short bio\"\n>\n</textarea>"
+  },
+  {
+   "t": "h2",
+   "text": "Disabled textarea",
+   "id": "disabled"
+  },
+  {
+   "t": "example",
+   "label": "Disabled example",
+   "demo": "<article aria-label=\"Disabled example\" class=\"component\"><textarea aria-label=\"Disabled textarea\" disabled=\"\" name=\"disabled\">Disabled</textarea></article>",
+   "lang": "html",
+   "code": "<textarea name=\"disabled\" disabled>\n  Disabled\n</textarea>"
+  },
+  {
+   "t": "h2",
+   "text": "Read-only textarea",
+   "id": "readonly"
+  },
+  {
+   "t": "example",
+   "label": "Disabled example",
+   "demo": "<article aria-label=\"Disabled example\" class=\"component\"><textarea aria-label=\"Read-only textarea\" name=\"read-only\" readonly=\"\">Read-only</textarea></article>",
+   "lang": "html",
+   "code": "<textarea name=\"read-only\" readonly>\n  Read-only\n</textarea>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><textarea aria-invalid=\"false\" name=\"valid\" placeholder=\"Valid\">Valid</textarea><textarea aria-invalid=\"true\" name=\"invalid\" placeholder=\"Invalid\">Invalid</textarea></article>",
+   "lang": "html",
+   "code": "<textarea name=\"valid\" aria-invalid=\"false\">\n  Valid\n</textarea>\n\n<textarea name=\"invalid\" aria-invalid=\"true\">\n  Invalid\n</textarea> "
+  },
+  {
+   "t": "p",
+   "md": "Helper texts, defined with `<small>` below the textarea, inherit the validation state color."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><textarea aria-describedby=\"valid-helper\" aria-invalid=\"false\" name=\"valid\" placeholder=\"Valid\">Valid</textarea><small id=\"valid-helper\">Looks good!</small><textarea aria-describedby=\"invalid-helper\" aria-invalid=\"true\" name=\"invalid\" placeholder=\"Invalid\">Invalid</textarea><small id=\"invalid-helper\">Please provide a valid value!</small></article>",
+   "lang": "html",
+   "code": "<textarea\n  name=\"valid\"\n  aria-invalid=\"false\"\n  aria-describedby=\"valid-helper\"\n>\n  Valid\n</textarea>\n<small id=\"valid-helper\">Looks good!</small>\n\n<textarea\n  name=\"invalid\"\n  aria-invalid=\"true\"\n  aria-describedby=\"invalid-helper\"\n>\n  Invalid\n</textarea>\n<small id=\"invalid-helper\">\n  Please provide a valid value!\n</small>"
+  }
+ ]
+}

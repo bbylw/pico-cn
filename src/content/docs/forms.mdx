@@ -1,0 +1,148 @@
+---
+title: 表单概览
+chapter: 表单
+lead: 所有表单元素都基于纯语义化 HTML，完全响应式，能够在不同设备和视口下从容地良好缩放。
+toc:
+  - { id: helper-text, text: 辅助文本, depth: 2 }
+  - { id: usage-with-grid, text: 配合栅格使用, depth: 2 }
+  - { id: usage-with-group, text: 配合分组使用, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+输入框默认宽度为 `width: 100%;`，并与按钮保持相同尺寸，从而构建风格一致的表单。
+
+<Ex
+  html={`<form><fieldset><label>First name<input autocomplete="given-name" name="first_name" placeholder="First name"/></label><label>Email<input autocomplete="email" name="email" placeholder="Email" type="email"/></label></fieldset><input type="submit" value="Subscribe"/></form>`}
+  code={`<form>
+  <fieldset>
+    <label>
+      First name
+      <input
+        name="first_name"
+        placeholder="First name"
+        autocomplete="given-name"
+      />
+    </label>
+    <label>
+      Email
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        autocomplete="email"
+      />
+    </label>
+  </fieldset>
+
+  <input
+    type="submit"
+    value="Subscribe"
+  />
+</form>`}
+  lang="html"
+  label="Form example"
+/>
+
+`<input>` 可以放在 `<label>` 内部，也可以放在其外部。
+
+<Ex
+  html={`<form><label>First name<input autocomplete="given-name" name="first_name" placeholder="First name"/></label><label for="email">Email</label><input autocomplete="email" id="email" placeholder="Email" type="email"/></form>`}
+  code={`<form>
+  
+  <!-- Input inside label -->
+  <label>
+    First name
+    <input
+      name="first_name"
+      placeholder="First name"
+      autocomplete="given-name"
+    />
+  </label>
+
+  <!-- Input outside label -->
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    placeholder="Email"
+    autocomplete="email"
+  />
+
+</form>`}
+  lang="html"
+  label="Label and input syntax"
+/>
+
+<h2 id="helper-text">辅助文本</h2>
+
+表单元素下方的 `<small>` 会以弱化颜色显示，用作辅助文本。
+
+<Ex
+  html={`<input aria-describedby="email-helper" aria-label="Email" autocomplete="email" name="email" placeholder="Email" type="email"/><small id="email-helper">We’ll never share your email with anyone else.</small>`}
+  code={`<input
+  type="email"
+  name="email"
+  placeholder="Email"
+  autoComplete="email"
+  aria-label="Email"
+  aria-describedby="email-helper"
+/>
+<small id="email-helper">
+  We'll never share your email with anyone else.
+</small>`}
+  lang="html"
+  label="Form helpers example"
+/>
+
+<h2 id="usage-with-grid">配合栅格使用</h2>
+
+你可以在表单内使用 `.grid`。参见 [栅格](/docs/grid/)。
+
+<Ex
+  html={`<form><fieldset class="grid"><input aria-label="Login" autocomplete="username" name="login" placeholder="Login"/><input aria-label="Password" autocomplete="current-password" name="password" placeholder="Password" type="password"/><input type="submit" value="Log in"/></fieldset></form>`}
+  code={`<form>
+  <fieldset class="grid">
+    <input 
+      name="login"
+      placeholder="Login"
+      aria-label="Login"
+      autocomplete="username"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      aria-label="Password"
+      autocomplete="current-password"
+    />
+    <input
+      type="submit"
+      value="Log in"
+    />
+  </fieldset>
+</form>`}
+  lang="html"
+  label="Form and grid example"
+/>
+
+<h2 id="usage-with-group">配合分组使用</h2>
+
+你可以将 `role="group"` 用于表单元素。参见 [分组](/docs/group/)。
+
+<Ex
+  html={`<form><fieldset role="group"><input autocomplete="email" name="email" placeholder="Enter your email" type="email"/><input type="submit" value="Subscribe"/></fieldset></form>`}
+  code={`<form>
+  <fieldset role="group">
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      autocomplete="email"
+    />
+    <input type="submit" value="Subscribe" />
+  </fieldset>
+</form>`}
+  lang="html"
+  label="Form group example"
+/>

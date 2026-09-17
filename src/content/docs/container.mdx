@@ -1,0 +1,52 @@
+---
+title: 容器
+chapter: 布局
+lead: 使用 <code>.container</code> 获得居中的视口，或使用 <code>.container-fluid</code> 实现全宽布局。
+toc:
+  - { id: fixed-width, text: 固定宽度, depth: 2 }
+  - { id: fluid-width, text: 流式宽度, depth: 2 }
+  - { id: semantic-containers, text: 语义化容器, depth: 2 }
+---
+
+Pico 内置六个默认断点，可以通过 [Sass](/docs/sass/) 进行定制。
+
+| 设备 | 断点 | 视口 |
+| --- | --- | --- |
+| 超小 | `<576px` | 100% |
+| 小 | `≥576px` | 510px |
+| 中 | `≥768px` | 700px |
+| 大 | `≥1024px` | 950px |
+| 超大 | `≥1280px` | 1200px |
+| 特大 | `≥1536px` | 1450px |
+
+`.container` 和 `.container-fluid` 在无类版本中不可用（替代方案参见[语义化容器](/docs/container/#semantic-containers)）。
+
+<h2 id="fixed-width">固定宽度</h2>
+
+`.container` 提供一个固定宽度的居中容器。
+
+```html
+<body>
+  <main class="container">
+    ...
+  </main>
+</body>
+```
+
+<h2 id="fluid-width">流式宽度</h2>
+
+`.container-fluid` 提供一个全宽的流式容器。
+
+```html
+<body>
+  <main class="container-fluid">
+    ...
+  </main>
+</body>
+```
+
+<h2 id="semantic-containers">语义化容器</h2>
+
+在无类版本中，`<body>` 内的 `<header>`、`<main>` 和 `<footer>` 本身就充当容器，用于定义居中或流式的视口。
+
+参见[无类版本](/docs/classless/)。

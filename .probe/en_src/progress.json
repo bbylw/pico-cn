@@ -1,0 +1,30 @@
+{
+ "meta": {
+  "slug": "progress",
+  "chapter": "Components",
+  "title": "Progress",
+  "lead": "The progress bar element in pure HTML, without JavaScript.",
+  "url": "https://picocss.com/docs/progress"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Progress example",
+   "demo": "<article aria-label=\"Progress example\" class=\"component\"><progress max=\"100\" value=\"34\"></progress></article>",
+   "lang": "html",
+   "code": "<progress value=\"34\" max=\"100\" />"
+  },
+  {
+   "t": "h2",
+   "text": "Indeterminate",
+   "id": "indeterminate"
+  },
+  {
+   "t": "example",
+   "label": "Indeterminate progress example",
+   "demo": "<article aria-label=\"Indeterminate progress example\" class=\"component\"><progress></progress></article>",
+   "lang": "html",
+   "code": "<progress />"
+  }
+ ]
+}

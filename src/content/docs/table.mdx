@@ -1,0 +1,87 @@
+---
+title: 表格
+chapter: 内容
+lead: 为 <code>&lt;table&gt;</code> 提供干净、极简的样式，带来一致的内边距与无框的极简观感。
+toc:
+  - { id: color-schemes, text: 配色方案, depth: 2 }
+  - { id: striped, text: 条纹表格, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<div class="overflow-auto"><table><thead><tr><th scope="col">Planet</th><th scope="col">Diam. (km)</th><th scope="col">Dist. to Sun (AU)</th><th scope="col">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope="row">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope="row">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope="row">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope="row">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope="row">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>`}
+  code={`<table>
+  <thead>
+    <tr>
+      <th scope="col">Planet</th>
+      <th scope="col">Diameter (km)</th>
+      <th scope="col">Distance to Sun (AU)</th>
+      <th scope="col">Orbit (days)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Mercury</th>
+      <td>4,880</td>
+      <td>0.39</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th scope="row">Venus</th>
+      <td>12,104</td>
+      <td>0.72</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th scope="row">Earth</th>
+      <td>12,742</td>
+      <td>1.00</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th scope="row">Mars</th>
+      <td>6,779</td>
+      <td>1.52</td>
+      <td>687</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Average</th>
+      <td>9,126</td>
+      <td>0.91</td>
+      <td>341</td>
+    </tr>
+  </tfoot>
+</table>`}
+  lang="html"
+/>
+
+<h2 id="color-schemes">配色方案</h2>
+
+`data-theme="light"` 或 `data-theme="dark"` 可用于任意层级：`<table>`、`<thead>`、`<tbody>`、`<tfoot>`、`<tr>`、`<th>`、`<td>`。
+
+<Ex
+  html={`<div class="overflow-auto"><table><thead data-theme="dark"><tr><th scope="col">Planet</th><th scope="col">Diam. (km)</th><th scope="col">Dist. to Sun (AU)</th><th scope="col">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope="row">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope="row">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope="row">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope="row">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope="row">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>`}
+  code={`<table>
+  <thead data-theme="dark">
+    ...
+  </thead>
+  <tbody>...</tbody>
+  <tfoot>...</tfoot>
+</table>`}
+  lang="html"
+/>
+
+<h2 id="striped">条纹表格</h2>
+
+`.striped` 可开启斑马纹行（在[无类版本](/docs/classless/)中不可用）。
+
+<Ex
+  html={`<div class="overflow-auto"><table class="striped"><thead><tr><th scope="col">Planet</th><th scope="col">Diam. (km)</th><th scope="col">Dist. to Sun (AU)</th><th scope="col">Grav. (m/s²)</th></tr></thead><tbody><tr><th scope="row">Mercury</th><td>4,880</td><td>0.39</td><td>3.7</td></tr><tr><th scope="row">Venus</th><td>12,104</td><td>0.72</td><td>8.9</td></tr><tr><th scope="row">Earth</th><td>12,742</td><td>1.00</td><td>9.8</td></tr><tr><th scope="row">Mars</th><td>6,779</td><td>1.52</td><td>3.7</td></tr></tbody><tfoot><tr><th scope="row">Average</th><td>9,126</td><td>0.91</td><td>6.5</td></tr></tfoot></table></div>`}
+  code={`<table class="striped">
+  ...
+</table>`}
+  lang="html"
+/>

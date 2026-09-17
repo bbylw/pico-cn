@@ -1,0 +1,30 @@
+---
+import { DOCS_FLAT } from "../data/docs-nav";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const idx = DOCS_FLAT.findIndex((i) => i.id === id);
+const prev = idx > 0 ? DOCS_FLAT[idx - 1] : undefined;
+const next = idx >= 0 && idx < DOCS_FLAT.length - 1 ? DOCS_FLAT[idx + 1] : undefined;
+const href = (i: string) => (i === "quickstart" ? "/docs/" : `/docs/${i}/`);
+---
+
+{
+  (prev || next) && (
+    <nav class="doc-pager" aria-label="上一篇/下一篇">
+      {prev && (
+        <a href={href(prev.id)} class="prev secondary">
+          <small>上一篇</small>
+          {prev.label}
+        </a>
+      )}
+      {next && (
+        <a href={href(next.id)} class="next secondary">
+          <small>下一篇</small>
+          {next.label}
+        </a>
+      )}
+    </nav>
+  )
+}

@@ -1,0 +1,116 @@
+{
+ "meta": {
+  "slug": "docs",
+  "chapter": "Getting started",
+  "title": "Quick start",
+  "lead": "Link `pico.css` manually or via CDN for a dependency-free setup, or use NPM or Composer for advanced usage.",
+  "url": "https://picocss.com/docs/"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "There are 4 ways to get started with pico.css:"
+  },
+  {
+   "t": "h2",
+   "text": "Install manually",
+   "id": "install-manually"
+  },
+  {
+   "t": "p",
+   "md": "[Download Pico](https://github.com/picocss/pico/archive/refs/heads/main.zip) and link `/css/pico.min.css` in the `<head>` of your website."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "h2",
+   "text": "Usage from CDN",
+   "id": "usage-from-cdn"
+  },
+  {
+   "t": "p",
+   "md": "Alternatively, you can use [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/) to link`pico.min.css`."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css\"\n>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Install with NPM",
+   "id": "install-with-npm"
+  },
+  {
+   "t": "code",
+   "lang": "bash",
+   "code": "npm install @picocss/pico",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "Or"
+  },
+  {
+   "t": "code",
+   "lang": "bash",
+   "code": "yarn add @picocss/pico",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "Then, import Pico into your SCSS file with [@use](https://sass-lang.com/documentation/at-rules/use):"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"pico\";",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "Learn more about the [customization with Sass](https://picocss.com/docs/sass)."
+  },
+  {
+   "t": "h2",
+   "text": "Install with Composer",
+   "id": "install-with-composer"
+  },
+  {
+   "t": "code",
+   "lang": "bash",
+   "code": "composer require picocss/pico",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "h2",
+   "text": "Starter HTML template",
+   "id": "starter-html-template"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"color-scheme\" content=\"light dark\">\n    <link rel=\"stylesheet\" href=\"css/pico.min.css\">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class=\"container\">\n      <h1>Hello world!</h1>\n    </main>\n  </body>\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+---
+title: 工具提示
+chapter: 组件
+lead: 随处启用工具提示，无需 JavaScript。
+toc:
+  - { id: placement, text: 位置, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Tooltip example" class="component"><p>Tooltip on a <a data-discover="true" data-tooltip="Tooltip" href="/docs/tooltip">link</a></p><p>Tooltip on <em data-tooltip="Tooltip">inline element</em></p><p><button data-tooltip="Tooltip">Tooltip on a button</button></p></article>`}
+  code={`<p>Tooltip on a <a href="#" data-tooltip="Tooltip">link</a></p>
+<p>Tooltip on <em data-tooltip="Tooltip">inline element</em></p>
+<p><button data-tooltip="Tooltip">Tooltip on a button</button></p>`}
+  lang="html"
+  label="Tooltip example"
+/>
+
+<h2 id="placement">位置</h2>
+
+工具提示默认显示在上方，但你可以通过 `data-placement` 属性改变位置。
+
+<Ex
+  html={`<article aria-label="Tooltip placement example" class="component" id="tooltip-placement"><main class="grid"><button data-tooltip="Top">Top</button><button data-placement="right" data-tooltip="Right">Right</button><button data-placement="bottom" data-tooltip="Bottom">Bottom</button><button data-placement="left" data-tooltip="Left">Left</button></main></article>`}
+  code={`<button data-tooltip="Top">Top</button>
+<button data-tooltip="Right" data-placement="right">Right</button>
+<button data-tooltip="Bottom" data-placement="bottom">Bottom</button>
+<button data-tooltip="Left" data-placement="left">Left</button>`}
+  lang="html"
+  label="Tooltip placement example"
+/>

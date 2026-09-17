@@ -1,0 +1,123 @@
+{
+ "meta": {
+  "slug": "conditional",
+  "chapter": "Getting started",
+  "title": "Conditional styling",
+  "lead": "Apply Pico CSS styles selectively by wrapping elements in a `.pico`  container, ideal for mixed-style environments.",
+  "url": "https://picocss.com/docs/conditional"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Pico offers a `.conditional` version that restricts styling to elements within `.pico` class containers."
+  },
+  {
+   "t": "p",
+   "md": "The remaining minimal `:root` reset ensures typography consistency across your entire site."
+  },
+  {
+   "t": "p",
+   "md": "See the [version picker](https://picocss.com/docs/version-picker) to easily select the ideal Pico CSS version variant to match your project's needs."
+  },
+  {
+   "t": "h2",
+   "text": "Install manually",
+   "id": "local-setup"
+  },
+  {
+   "t": "p",
+   "md": "[Download Pico](https://github.com/picocss/pico/archive/refs/heads/v2.zip) and link `/css/pico.conditional.min.css` in the `<head>` of your website."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.conditional.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "h2",
+   "text": "Usage from CDN",
+   "id": "usage-from-cdn"
+  },
+  {
+   "t": "p",
+   "md": "Alternatively, you can use [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/) to link`pico.conditional.min.css`."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Usage with Sass",
+   "id": "usage-with-sass"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"pico\" with (\n  $parent-selector: \".pico\"\n);",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Starter HTML template",
+   "id": "starter-html-template"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"color-scheme\" content=\"light dark\" />\n    <link rel=\"stylesheet\" href=\"css/pico.conditional.min.css\">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main>\n      <section>\n        <p>Unstyled hello world!</p>\n      </section>\n      <section class=\"pico\">\n        <p>Styled hello world!</p>\n      </section>\n    </main>\n  </body>\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Examples",
+   "id": "examples"
+  },
+  {
+   "t": "p",
+   "md": "Example with Pico styles:"
+  },
+  {
+   "t": "example",
+   "label": "Styled example",
+   "demo": "<article aria-label=\"Styled example\" class=\"component\"><form><input aria-label=\"Text\" name=\"text\" placeholder=\"Text\" type=\"text\"/></form></article>",
+   "lang": "html",
+   "code": "<form class=\"pico\">\n  <input type=\"text\" name=\"text\" placeholder=\"Text\" aria-label=\"Text\" />\n</form>"
+  },
+  {
+   "t": "p",
+   "md": "Example without Pico styles:"
+  },
+  {
+   "t": "example",
+   "label": "Unstyled example",
+   "demo": "<article aria-label=\"Unstyled example\" class=\"component\"><form><input aria-label=\"Text\" name=\"text\" placeholder=\"Text\" style=\"all:revert\" type=\"text\"/></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <input type=\"text\" name=\"text\" placeholder=\"Text\" aria-label=\"Text\" />\n</form>"
+  },
+  {
+   "t": "h2",
+   "text": "Demo",
+   "id": "demo"
+  },
+  {
+   "t": "ul",
+   "items": [
+    "[Preview](https://kv4lrs.csb.app/)",
+    "[Edit in CodeSandbox](https://codesandbox.io/embed/kv4lrs?view=Editor+%2B+Preview&module=%2Findex.html)",
+    "[View source](https://github.com/picocss/examples/tree/master/v2-conditional-styling)"
+   ]
+  }
+ ]
+}

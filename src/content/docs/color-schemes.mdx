@@ -1,0 +1,37 @@
+---
+title: 配色方案
+chapter: 入门
+lead: Pico CSS 内置浅色与深色两套配色方案，会根据用户偏好自动启用。
+toc:
+  - { id: usage, text: 用法, depth: 2 }
+  - { id: example, text: 卡片示例, depth: 2 }
+---
+
+import Raw from "../../components/Raw.astro";
+
+默认配色方案为浅色。如果用户开启了深色模式（`prefers-color-scheme: dark;`），则会自动启用深色配色方案。
+
+<Raw html={`<article aria-label="Theme switcher" id="theme-switcher"><button class="contrast"><svg class="icon-theme-toggle theme-toggle" fill="currentColor" height="24" viewbox="0 0 32 32" width="24" xmlns="http://www.w3.org/2000/svg"><clippath id="theme-toggle-cutout"><path d="M0-11h25a1 1 0 0017 13v30H0Z"></path></clippath><g clip-path="url(#theme-toggle-cutout)"><circle cx="16" cy="16" r="8.4"></circle><path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z"></path></g></svg>开启深色模式</button></article>`} />
+
+<h2 id="usage">用法</h2>
+
+配色方案可以通过 `<html data-theme="light">` 应用到整个文档，也可以单独应用到某个 HTML 元素上，例如 `<article data-theme="dark">`。
+
+在标签层面设置配色方案，适用于 `a`、`button`、`table`、`input`、`textarea`、`select`、`article`、`dialog`、`progress` 等元素。
+
+与配色方案对应的 CSS 变量会被赋给每一个 HTML 标签。但我们没有在所有 HTML 标签上强制设定具体的背景与颜色，以保持背景透明，并让颜色从父级标签继承。
+
+对于其他一些 HTML 标签，你可能需要显式设置 `background-color` 和 `color`。
+
+```css
+section {
+  background-color: var(--pico-background-color);
+  color: var(--pico-color);
+}
+```
+
+<h2 id="example">卡片示例</h2>
+
+<Raw html={`<article aria-label="Forced light theme example" data-theme="light"><h2>浅色卡片</h2><form><fieldset class="grid"><input aria-label="Login" autocomplete="username" name="login" placeholder="Login" type="text"/><input aria-label="Password" autocomplete="current-password" name="password" placeholder="Password" type="password"/><button type="submit">Login</button></fieldset><fieldset><label><input checked="" name="switch" role="switch" type="checkbox"/> Remember me</label></fieldset></form></article>`} />
+
+<Raw html={`<article aria-label="Forced dark theme example" data-theme="dark"><h2>深色卡片</h2><form><fieldset class="grid"><input aria-label="Login" autocomplete="username" name="login" placeholder="Login" type="text"/><input aria-label="Password" autocomplete="current-password" name="password" placeholder="Password" type="password"/><button type="submit">Login</button></fieldset><fieldset><label><input checked="" name="switch" role="switch" type="checkbox"/> Remember me</label></fieldset></form></article>`} />

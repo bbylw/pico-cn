@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "slug": "built-with",
+  "chapter": "About",
+  "title": "Built With",
+  "lead": "Relevant packages, tools, and resources we depend on.",
+  "url": "https://picocss.com/docs/built-with"
+ },
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Pico CSS Library",
+   "id": "pico-css-library"
+  },
+  {
+   "t": "p",
+   "md": "Core technologies and resources powering Pico CSS."
+  },
+  {
+   "t": "ul",
+   "items": [
+    "[Sass](https://sass-lang.com/): CSS pre-processor",
+    "[PostCSS](https://postcss.org/): CSS post-processor",
+    "[Autoprefixer](https://www.npmjs.com/package/autoprefixer): add vendor CSS prefixes using values from [Can I Use](https://caniuse.com/)",
+    "[Clean CSS](https://www.npmjs.com/package/clean-css-cli): CSS optimizer and minifier",
+    "[Sanitize.css](https://csstools.github.io/sanitize.css/): Cross-browser default styling",
+    "[Normalize.css:](https://necolas.github.io/normalize.css/) CSS reset",
+    "[Tabler Icons](https://tabler.io/icons): Embedded icons",
+    "[jsDelivr](https://www.jsdelivr.com/package/npm/@picocss/pico): CDN"
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Website and docs",
+   "id": "website-and-docs"
+  },
+  {
+   "t": "p",
+   "md": "The stack behind our website and documentation."
+  },
+  {
+   "t": "ul",
+   "items": [
+    "[Remix](https://remix.run/): React framework",
+    "[Cloudflare](https://www.cloudflare.com/): Hosting and website CDN",
+    "[TypeIt](https://www.typeitjs.com/): JavaScript typewriter effect",
+    "[React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)",
+    "[Theme toggles](https://toggles.dev/): Animated theme toggle icon",
+    "[CodeSandbox](https://codesandbox.io/): Examples cloud development platform",
+    "[Figtree](https://www.erikdkennedy.com/projects/figtree.html): Friendly sans serif font for the headings",
+    "[Fira Code](https://github.com/tonsky/FiraCode): Monospaced font with ligatures for code snippets"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,332 @@
+/* Pico CSS —— 本站的设计语言本体 */
+@import "@picocss/pico/css/pico.min.css";
+/* 颜色工具类（pico-background-* / pico-color-*），供色彩页与首页色带使用 */
+@import "@picocss/pico/css/pico.colors.min.css";
+
+/* ---------- 中文字体回退 ---------- */
+:root {
+  --pico-font-family-sans-serif:
+    system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --pico-line-height: 1.75;
+  --content-max: 820px;
+  --header-h: 3.6rem;
+}
+
+/* ---------- Shiki 双主题（defaultColor: false） ---------- */
+pre.astro-code {
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  background-color: var(--shiki-light-bg) !important;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+pre.astro-code code,
+pre.astro-code span {
+  color: var(--shiki-light);
+  background: transparent !important;
+}
+html[data-theme="dark"] pre.astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+}
+html[data-theme="dark"] pre.astro-code code,
+html[data-theme="dark"] pre.astro-code span {
+  color: var(--shiki-dark);
+}
+
+/* ---------- 站点顶栏 ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  backdrop-filter: blur(8px);
+  background-color: color-mix(in srgb, var(--pico-background-color) 86%, transparent);
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  height: var(--header-h);
+}
+.site-header nav {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  height: 100%;
+  align-items: center;
+}
+.site-header strong {
+  letter-spacing: 0.2px;
+}
+.site-header a[aria-label="Home"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+}
+.site-header .logo {
+  height: 24px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 959px) {
+  .feature-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+}
+.feature-grid article { margin: 0; }
+html[data-theme="dark"] .theme-toggle .sun { display: none; }
+html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
+
+/* ---------- 文档三栏布局 ---------- */
+.docs-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 224px) minmax(0, 1fr) minmax(0, 212px);
+  gap: 2rem;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  align-items: start;
+}
+@media (max-width: 1199px) {
+  .docs-layout { grid-template-columns: minmax(0, 224px) minmax(0, 1fr); }
+  .docs-layout .toc { display: none; }
+}
+@media (max-width: 959px) {
+  .docs-layout { grid-template-columns: minmax(0, 1fr); }
+  .docs-layout .sidebar { position: static; max-height: none; }
+}
+.docs-layout .content {
+  min-width: 0;
+  max-width: var(--content-max);
+  padding-bottom: 4rem;
+}
+
+/* 侧栏 */
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 1.25rem);
+  max-height: calc(100vh - var(--header-h) - 2.5rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-bottom: 2rem;
+  font-size: 0.88rem;
+}
+.sidebar details {
+  border-bottom: none;
+  padding-block: 0.15rem;
+}
+.sidebar details summary {
+  font-weight: 600;
+  color: var(--pico-color-grey-600);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+html[data-theme="dark"] .sidebar details summary {
+  color: var(--pico-color-grey-400);
+}
+.sidebar ul {
+  padding-left: 0.35rem;
+  border-left: 1px solid var(--pico-muted-border-color);
+  margin-left: 0.35rem;
+}
+.sidebar li { margin-block: 0.1rem; }
+.sidebar a {
+  padding-block: 0.22rem;
+  font-weight: 500;
+}
+.sidebar a[aria-current="page"] {
+  color: var(--pico-primary);
+  font-weight: 700;
+}
+.sidebar badge, .new-badge {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  font-weight: 600;
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+}
+
+/* 本页目录 */
+.toc {
+  position: sticky;
+  top: calc(var(--header-h) + 1.25rem);
+  font-size: 0.84rem;
+  max-height: calc(100vh - var(--header-h) - 2.5rem);
+  overflow-y: auto;
+}
+.toc nav { padding: 0; }
+.toc strong {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--pico-color-grey-600);
+  margin-bottom: 0.5rem;
+}
+html[data-theme="dark"] .toc strong { color: var(--pico-color-grey-400); }
+.toc ul { padding-left: 0; list-style: none; }
+.toc li { margin-block: 0.05rem; }
+.toc li.depth-3 { padding-left: 0.9rem; }
+.toc a.is-active {
+  color: var(--pico-primary);
+  font-weight: 600;
+}
+
+/* 文档正文 */
+.chapter {
+  color: var(--pico-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+.doc-lead {
+  color: var(--pico-color-grey-600);
+  font-size: 1.06rem;
+}
+html[data-theme="dark"] .doc-lead { color: var(--pico-color-grey-400); }
+.content h2 { margin-top: 2.6rem; }
+.content h2, .content h3 { scroll-margin-top: calc(var(--header-h) + 1rem); }
+.content img { border-radius: var(--pico-border-radius); }
+.content hr { margin-block: 2.2rem; }
+
+/* 上/下篇 */
+.doc-pager {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.doc-pager a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  transition: border-color 120ms ease-in-out;
+}
+.doc-pager a:hover { border-color: var(--pico-primary); }
+.doc-pager small {
+  display: block;
+  color: var(--pico-muted-color);
+  margin-bottom: 0.2rem;
+}
+.doc-pager .next { text-align: right; grid-column: 2; }
+
+/* ---------- 示例组件 ---------- */
+.example {
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  margin-block: 1.4rem;
+  background-color: var(--pico-card-background-color);
+}
+.example .demo {
+  padding: 1.2rem 1.25rem;
+}
+.example .demo dialog {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  color: inherit;
+  --pico-dialog-inline-padding: 0;
+}
+.example .demo dialog::backdrop { display: none; }
+.example .demo dialog > article { margin: 0; }
+.example details.code-box {
+  border-top: 1px solid var(--pico-muted-border-color);
+  padding: 0;
+}
+.example details.code-box summary {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--pico-muted-color);
+  background-color: color-mix(in srgb, var(--pico-card-background-color) 60%, var(--pico-background-color));
+  border-radius: 0 0 var(--pico-border-radius) var(--pico-border-radius);
+}
+.example details.code-box summary:hover { color: var(--pico-primary); }
+.example details.code-box pre.astro-code {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+/* 色彩页色阶卡：色号文字加粗，20px+700 满足大字号对比度阈值 */
+.family main button { font-weight: 700; }
+.family button[class*="-350"] {
+  color: #16191c !important;
+}
+
+/* 首页 */
+.hero { padding-block: 4.5rem 3rem; }
+/* 版本选择器色板（官方站专有组件的最小还原） */
+.color-picker header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.8rem 1rem;
+  margin: 0;
+}
+.color-picker header a {
+  display: inline-flex;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.color-picker header a svg { width: 14px; height: 14px; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.18; letter-spacing: -0.5px; }
+.hero .lead { font-size: 1.18rem; color: var(--pico-color-grey-600); max-width: 46ch; }
+html[data-theme="dark"] .hero .lead { color: var(--pico-color-grey-400); }
+.color-strip {
+  display: flex;
+  gap: 0.35rem;
+  margin-block: 1.2rem;
+}
+.color-strip span {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+.feature-card h3 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+.feature-card p { margin: 0; color: var(--pico-color-grey-600); font-size: 0.92rem; }
+html[data-theme="dark"] .feature-card p { color: var(--pico-color-grey-400); }
+
+/* 页脚 */
+.site-footer {
+  border-top: 1px solid var(--pico-muted-border-color);
+  margin-top: 4rem;
+  padding-block: 2rem 3rem;
+  font-size: 0.88rem;
+}
+
+/* 减少动效 */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; }

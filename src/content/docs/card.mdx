@@ -1,0 +1,31 @@
+---
+title: 卡片
+chapter: 组件
+lead: 使用语义化标记创建灵活的卡片，在各种设备与视口下都能获得优雅的间距。
+toc:
+  - { id: sectioning, text: 分区, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Card example">I’m a card!</article>`}
+  code={`<article>I’m a card!</article>`}
+  lang="html"
+  label="Card example"
+/>
+
+`<article>` 内可以使用 `<header>` 和 `<footer>`。
+
+<h2 id="sectioning">分区</h2>
+
+<Ex
+  html={`<article aria-label="Card sectioning example"><header>Header</header>Body<footer>Footer</footer></article>`}
+  code={`<article>
+  <header>Header</header>
+  Body
+  <footer>Footer</footer>
+</article>`}
+  lang="html"
+  label="Card sectioning example"
+/>

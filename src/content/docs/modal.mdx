@@ -1,0 +1,115 @@
+---
+title: 模态框
+chapter: 组件
+lead: 经典模态框组件，在各种设备与视口下都有优雅间距，基于语义化 HTML 标签 <code>&lt;dialog&gt;</code> 构建。
+toc:
+  - { id: demo, text: 演示, depth: 2 }
+  - { id: utilities, text: 工具类, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+import Raw from "../../components/Raw.astro";
+
+模态框以 `<dialog>` 作为包裹容器，`<article>` 承载模态框内容。
+
+`<header>` 内的 `<button rel="prev">` 被定义为 `float: right;`，让关闭图标能够与标题顶部对齐。
+
+<Ex
+  html={`<dialog class="example" open=""><article><header><button aria-label="Close" rel="prev"></button><p><strong>🗓️ Thank You for Registering!</strong></p></header><p>We’re excited to have you join us for our upcoming event. Please arrive at the museum on time to check in and get started.</p><ul><li>Date: Saturday, April 15</li><li>Time: 10:00am - 12:00pm</li></ul></article></dialog>`}
+  code={`<dialog open>
+  <article>
+    <header>
+      <button aria-label="Close" rel="prev"></button>
+      <p>
+        <strong>🗓️ Thank You for Registering!</strong>
+      </p>
+    </header>
+    <p>
+      We're excited to have you join us for our
+      upcoming event. Please arrive at the museum 
+      on time to check in and get started.
+    </p>
+    <ul>
+      <li>Date: Saturday, April 15</li>
+      <li>Time: 10:00am - 12:00pm</li>
+    </ul>
+  </article>
+</dialog>`}
+  lang="html"
+  label=""
+/>
+
+`<footer>` 内的内容默认右对齐。
+
+<Ex
+  html={`<dialog class="example" open=""><article><h2>Confirm Your Membership</h2><p>Thank you for signing up for a membership! Please review the membership details below:</p><ul><li>Membership: Individual</li><li>Price: $10</li></ul><footer><button class="secondary">Cancel</button><button>Confirm</button></footer></article></dialog>`}
+  code={`<dialog open>
+  <article>
+    <h2>Confirm Your Membership</h2>
+    <p>
+      Thank you for signing up for a membership!
+      Please review the membership details below:
+    </p>
+    <ul>
+      <li>Membership: Individual</li>
+      <li>Price: $10</li>
+    </ul>
+    <footer>
+      <button class="secondary">
+        Cancel
+      </button>
+      <button>Confirm</button>
+    </footer>
+  </article>
+</dialog>`}
+  lang="html"
+  label=""
+/>
+
+<h2 id="demo">演示</h2>
+
+点击下方按钮切换模态框。
+
+<Raw html={`<article aria-label="Modal demo" id="modal-demo"><button class="contrast">Open modal</button></article>`} />
+
+Pico 不包含 JavaScript 代码。你需要自行编写 JS 来与模态框交互。
+
+作为一个起点，你可以参考 [HTMLDialogElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement)，或查看下面的进阶示例：
+
+- [原生 JavaScript](https://codesandbox.io/embed/4mrnhq?view=Editor+%2B+Preview&module=%2Fjs%2Fmodal.js)
+- [React](https://codesandbox.io/p/devbox/github/picocss/examples/tree/master/v2-react-color-schemes-and-modal?embed=1&file=%2Fsrc%2Fcomponents%2FModal.js)
+
+要打开模态框，在 `<dialog>` 容器上添加 `open` 属性。
+
+<h2 id="utilities">工具类</h2>
+
+模态框附带 3 个工具类。
+
+这些工具类在[无类版本](/docs/classless/)中不可用。
+
+`.modal-is-open` 可阻止模态框下方的任何滚动和交互。
+
+```html
+<!doctype html>
+<html class="modal-is-open">
+  ...
+</html>
+```
+
+`.modal-is-opening` 提供打开动画。
+
+```html
+<!doctype html>
+<html class="modal-is-open modal-is-opening">
+  ...
+</html>
+```
+
+`.modal-is-closing` 提供关闭动画。
+
+```html
+<!doctype html>
+<html class="modal-is-open modal-is-closing">
+  ...
+</html>
+```

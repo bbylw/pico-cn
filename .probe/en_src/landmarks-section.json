@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "slug": "landmarks-section",
+  "chapter": "Layout",
+  "title": "Landmarks & section",
+  "lead": "Structure your pages with semantic landmarks and sections for better accessibility and graceful spacings.",
+  "url": "https://picocss.com/docs/landmarks-section"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "`<header>`, `<main>` and `<footer>` as direct children of `<body>` provide a responsive vertical `padding`"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<body>\n  <header>...</header>\n  <main>...</main>\n  <footer>...</footer>\n</body>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Root container",
+   "id": "root-container"
+  },
+  {
+   "t": "p",
+   "md": "If you need to customize the default root container for `<header>`, `<main>`, and `<footer>`, you can recompile Pico with another CSS selector."
+  },
+  {
+   "t": "p",
+   "md": "Useful for [React](https://reactjs.org/), [Gatsby](https://www.gatsbyjs.com/), or [Next.js](https://nextjs.org/)."
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "/* Custom Class-less version for React */\n@use \"pico\" with (\n  \n  // Define the root element used to target <header>, <main>, <footer>\n  // with $enable-semantic-container and $enable-responsive-spacings\n  $semantic-root-element: \"#root\",\n  \n  // Enable <header>, <main>, <footer> inside $semantic-root-element as containers\n  $enable-semantic-container: true,\n\n  // Enable .classes\n  $enable-classes: false\n)",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "The code above will compile Pico with the containers defined like this:"
+  },
+  {
+   "t": "code",
+   "lang": "css",
+   "code": "/* Containers */\n#root > header,\n#root > main,\n#root > footer {\n  ...\n}",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "Learn more about [compiling a custom version of Pico with SASS](https://picocss.com/docs/sass)."
+  },
+  {
+   "t": "h2",
+   "text": "Section",
+   "id": "section"
+  },
+  {
+   "t": "p",
+   "md": "`<section>` provides a responsive `margin-bottom` to separate your sections."
+  }
+ ]
+}

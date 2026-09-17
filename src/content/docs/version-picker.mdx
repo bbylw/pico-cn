@@ -1,0 +1,82 @@
+---
+title: 版本选择器
+chapter: 入门
+lead: 轻松挑选最适合项目需求的 Pico CSS 版本变体。
+toc:
+  - { id: theme-color, text: 主题色, depth: 2 }
+  - { id: configuration, text: 配置, depth: 2 }
+  - { id: usage-from-cdn, text: 通过 CDN 使用, depth: 2 }
+  - { id: usage-with-sass, text: 通过 Sass 使用, depth: 2 }
+  - { id: starter-html-template, text: 起步 HTML 模板, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+import Raw from "../../components/Raw.astro";
+
+<h2 id="theme-color">主题色</h2>
+
+<Ex
+  html={`<article aria-label="Custom theme example" class="color-picker component"><header><a aria-busy="false" aria-label="Azure" class="pico-background-red" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-pink" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-fuchsia" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-purple" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-violet" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-indigo" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-blue" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-current="page" aria-label="Azure" class="pico-background-azure" data-discover="true" href="/docs/version-picker"><svg class="icon-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><style>
+ path#check-icon {
+ stroke-dasharray: 22px;
+ stroke-dashoffset: 22px;
+ animation: check 0.2s ease-out forwards;
+ }
+ @keyframes check {
+ from {
+ stroke-dashoffset: 22px;
+ }
+ to {
+ stroke-dashoffset: 0;
+ }
+ }
+ </style><path d="M5 12l5 5l10 -10" id="check-icon"></path></svg></a><a aria-busy="false" aria-label="Azure" class="pico-background-cyan" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-jade" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-green" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-lime" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-yellow" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-amber" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-pumpkin" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-orange" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-sand" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-grey" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-zinc" data-discover="true" href="/docs/version-picker/"></a><a aria-busy="false" aria-label="Azure" class="pico-background-slate" data-discover="true" href="/docs/version-picker/"></a></header><hgroup><h2>Azure</h2><p>Form example with an azure theme.</p></hgroup><form><fieldset class="grid"><input aria-label="Login" autocomplete="username" name="login" placeholder="Login" type="text"/><input aria-label="Password" autocomplete="current-password" name="password" placeholder="Password" type="password"/><button type="submit">Log in</button></fieldset><fieldset><label><input checked="" name="switch" role="switch" type="checkbox"/> I agree to the <a data-discover="true" href="/docs/version-picker">Privacy Policy</a></label></fieldset></form></article>`}
+  code={`<link rel="stylesheet" href="css/pico.min.css">`}
+  lang="html"
+  label="Custom theme example"
+/>
+
+<h2 id="configuration">配置</h2>
+
+<Raw html={`<select name="configuration"><option value="0">常规，带类名</option><option value="1">无类，居中视口</option><option value="2">无类，流式视口</option></select>`} />
+
+<Raw html={`<small>Pico CSS 的默认版本，包含全部组件与类名。</small>`} />
+
+<Raw html={`<fieldset><label><input name="conditional" role="switch" type="checkbox"/>条件样式</label></fieldset>`} />
+
+<Raw html={`<small>默认版本会将 Pico 样式应用到所有 HTML 元素。</small>`} />
+
+<h2 id="usage-from-cdn">通过 CDN 使用</h2>
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+```
+
+<h2 id="usage-with-sass">通过 Sass 使用</h2>
+
+```scss
+@use "pico";
+```
+
+<h2 id="starter-html-template">起步 HTML 模板</h2>
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Hello world!</h1>
+    </main>
+  </body>
+</html>
+```

@@ -1,0 +1,235 @@
+{
+ "meta": {
+  "slug": "colors",
+  "chapter": "Customization",
+  "title": "Colors",
+  "lead": "Pico comes with 380 manually crafted colors to help you personalize your brand design system.",
+  "url": "https://picocss.com/docs/colors"
+ },
+ "blocks": [
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-red\">Red</header><main><button class=\"secondary pico-background-red-50\">50</button><button class=\"secondary pico-background-red-100\">100</button><button class=\"secondary pico-background-red-150\">150</button><button class=\"secondary pico-background-red-200\">200</button><button class=\"secondary pico-background-red-250\">250</button><button class=\"secondary pico-background-red-300\">300</button><button class=\"secondary pico-background-red-350\">350</button><button class=\"secondary pico-background-red-400\">400</button><button class=\"secondary pico-background-red-450\">450</button><button class=\"secondary pico-background-red-500\">500</button><button class=\"secondary pico-background-red-550\">550</button><button class=\"secondary pico-background-red-600\">600</button><button class=\"secondary pico-background-red-650\">650</button><button class=\"secondary pico-background-red-700\">700</button><button class=\"secondary pico-background-red-750\">750</button><button class=\"secondary pico-background-red-800\">800</button><button class=\"secondary pico-background-red-850\">850</button><button class=\"secondary pico-background-red-900\">900</button><button class=\"secondary pico-background-red-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-pink\">Pink</header><main><button class=\"secondary pico-background-pink-50\">50</button><button class=\"secondary pico-background-pink-100\">100</button><button class=\"secondary pico-background-pink-150\">150</button><button class=\"secondary pico-background-pink-200\">200</button><button class=\"secondary pico-background-pink-250\">250</button><button class=\"secondary pico-background-pink-300\">300</button><button class=\"secondary pico-background-pink-350\">350</button><button class=\"secondary pico-background-pink-400\">400</button><button class=\"secondary pico-background-pink-450\">450</button><button class=\"secondary pico-background-pink-500\">500</button><button class=\"secondary pico-background-pink-550\">550</button><button class=\"secondary pico-background-pink-600\">600</button><button class=\"secondary pico-background-pink-650\">650</button><button class=\"secondary pico-background-pink-700\">700</button><button class=\"secondary pico-background-pink-750\">750</button><button class=\"secondary pico-background-pink-800\">800</button><button class=\"secondary pico-background-pink-850\">850</button><button class=\"secondary pico-background-pink-900\">900</button><button class=\"secondary pico-background-pink-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-fuchsia\">Fuchsia</header><main><button class=\"secondary pico-background-fuchsia-50\">50</button><button class=\"secondary pico-background-fuchsia-100\">100</button><button class=\"secondary pico-background-fuchsia-150\">150</button><button class=\"secondary pico-background-fuchsia-200\">200</button><button class=\"secondary pico-background-fuchsia-250\">250</button><button class=\"secondary pico-background-fuchsia-300\">300</button><button class=\"secondary pico-background-fuchsia-350\">350</button><button class=\"secondary pico-background-fuchsia-400\">400</button><button class=\"secondary pico-background-fuchsia-450\">450</button><button class=\"secondary pico-background-fuchsia-500\">500</button><button class=\"secondary pico-background-fuchsia-550\">550</button><button class=\"secondary pico-background-fuchsia-600\">600</button><button class=\"secondary pico-background-fuchsia-650\">650</button><button class=\"secondary pico-background-fuchsia-700\">700</button><button class=\"secondary pico-background-fuchsia-750\">750</button><button class=\"secondary pico-background-fuchsia-800\">800</button><button class=\"secondary pico-background-fuchsia-850\">850</button><button class=\"secondary pico-background-fuchsia-900\">900</button><button class=\"secondary pico-background-fuchsia-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-purple\">Purple</header><main><button class=\"secondary pico-background-purple-50\">50</button><button class=\"secondary pico-background-purple-100\">100</button><button class=\"secondary pico-background-purple-150\">150</button><button class=\"secondary pico-background-purple-200\">200</button><button class=\"secondary pico-background-purple-250\">250</button><button class=\"secondary pico-background-purple-300\">300</button><button class=\"secondary pico-background-purple-350\">350</button><button class=\"secondary pico-background-purple-400\">400</button><button class=\"secondary pico-background-purple-450\">450</button><button class=\"secondary pico-background-purple-500\">500</button><button class=\"secondary pico-background-purple-550\">550</button><button class=\"secondary pico-background-purple-600\">600</button><button class=\"secondary pico-background-purple-650\">650</button><button class=\"secondary pico-background-purple-700\">700</button><button class=\"secondary pico-background-purple-750\">750</button><button class=\"secondary pico-background-purple-800\">800</button><button class=\"secondary pico-background-purple-850\">850</button><button class=\"secondary pico-background-purple-900\">900</button><button class=\"secondary pico-background-purple-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-violet\">Violet</header><main><button class=\"secondary pico-background-violet-50\">50</button><button class=\"secondary pico-background-violet-100\">100</button><button class=\"secondary pico-background-violet-150\">150</button><button class=\"secondary pico-background-violet-200\">200</button><button class=\"secondary pico-background-violet-250\">250</button><button class=\"secondary pico-background-violet-300\">300</button><button class=\"secondary pico-background-violet-350\">350</button><button class=\"secondary pico-background-violet-400\">400</button><button class=\"secondary pico-background-violet-450\">450</button><button class=\"secondary pico-background-violet-500\">500</button><button class=\"secondary pico-background-violet-550\">550</button><button class=\"secondary pico-background-violet-600\">600</button><button class=\"secondary pico-background-violet-650\">650</button><button class=\"secondary pico-background-violet-700\">700</button><button class=\"secondary pico-background-violet-750\">750</button><button class=\"secondary pico-background-violet-800\">800</button><button class=\"secondary pico-background-violet-850\">850</button><button class=\"secondary pico-background-violet-900\">900</button><button class=\"secondary pico-background-violet-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-indigo\">Indigo</header><main><button class=\"secondary pico-background-indigo-50\">50</button><button class=\"secondary pico-background-indigo-100\">100</button><button class=\"secondary pico-background-indigo-150\">150</button><button class=\"secondary pico-background-indigo-200\">200</button><button class=\"secondary pico-background-indigo-250\">250</button><button class=\"secondary pico-background-indigo-300\">300</button><button class=\"secondary pico-background-indigo-350\">350</button><button class=\"secondary pico-background-indigo-400\">400</button><button class=\"secondary pico-background-indigo-450\">450</button><button class=\"secondary pico-background-indigo-500\">500</button><button class=\"secondary pico-background-indigo-550\">550</button><button class=\"secondary pico-background-indigo-600\">600</button><button class=\"secondary pico-background-indigo-650\">650</button><button class=\"secondary pico-background-indigo-700\">700</button><button class=\"secondary pico-background-indigo-750\">750</button><button class=\"secondary pico-background-indigo-800\">800</button><button class=\"secondary pico-background-indigo-850\">850</button><button class=\"secondary pico-background-indigo-900\">900</button><button class=\"secondary pico-background-indigo-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-blue\">Blue</header><main><button class=\"secondary pico-background-blue-50\">50</button><button class=\"secondary pico-background-blue-100\">100</button><button class=\"secondary pico-background-blue-150\">150</button><button class=\"secondary pico-background-blue-200\">200</button><button class=\"secondary pico-background-blue-250\">250</button><button class=\"secondary pico-background-blue-300\">300</button><button class=\"secondary pico-background-blue-350\">350</button><button class=\"secondary pico-background-blue-400\">400</button><button class=\"secondary pico-background-blue-450\">450</button><button class=\"secondary pico-background-blue-500\">500</button><button class=\"secondary pico-background-blue-550\">550</button><button class=\"secondary pico-background-blue-600\">600</button><button class=\"secondary pico-background-blue-650\">650</button><button class=\"secondary pico-background-blue-700\">700</button><button class=\"secondary pico-background-blue-750\">750</button><button class=\"secondary pico-background-blue-800\">800</button><button class=\"secondary pico-background-blue-850\">850</button><button class=\"secondary pico-background-blue-900\">900</button><button class=\"secondary pico-background-blue-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-azure\">Azure</header><main><button class=\"secondary pico-background-azure-50\">50</button><button class=\"secondary pico-background-azure-100\">100</button><button class=\"secondary pico-background-azure-150\">150</button><button class=\"secondary pico-background-azure-200\">200</button><button class=\"secondary pico-background-azure-250\">250</button><button class=\"secondary pico-background-azure-300\">300</button><button class=\"secondary pico-background-azure-350\">350</button><button class=\"secondary pico-background-azure-400\">400</button><button class=\"secondary pico-background-azure-450\">450</button><button class=\"secondary pico-background-azure-500\">500</button><button class=\"secondary pico-background-azure-550\">550</button><button class=\"secondary pico-background-azure-600\">600</button><button class=\"secondary pico-background-azure-650\">650</button><button class=\"secondary pico-background-azure-700\">700</button><button class=\"secondary pico-background-azure-750\">750</button><button class=\"secondary pico-background-azure-800\">800</button><button class=\"secondary pico-background-azure-850\">850</button><button class=\"secondary pico-background-azure-900\">900</button><button class=\"secondary pico-background-azure-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-cyan\">Cyan</header><main><button class=\"secondary pico-background-cyan-50\">50</button><button class=\"secondary pico-background-cyan-100\">100</button><button class=\"secondary pico-background-cyan-150\">150</button><button class=\"secondary pico-background-cyan-200\">200</button><button class=\"secondary pico-background-cyan-250\">250</button><button class=\"secondary pico-background-cyan-300\">300</button><button class=\"secondary pico-background-cyan-350\">350</button><button class=\"secondary pico-background-cyan-400\">400</button><button class=\"secondary pico-background-cyan-450\">450</button><button class=\"secondary pico-background-cyan-500\">500</button><button class=\"secondary pico-background-cyan-550\">550</button><button class=\"secondary pico-background-cyan-600\">600</button><button class=\"secondary pico-background-cyan-650\">650</button><button class=\"secondary pico-background-cyan-700\">700</button><button class=\"secondary pico-background-cyan-750\">750</button><button class=\"secondary pico-background-cyan-800\">800</button><button class=\"secondary pico-background-cyan-850\">850</button><button class=\"secondary pico-background-cyan-900\">900</button><button class=\"secondary pico-background-cyan-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-jade\">Jade</header><main><button class=\"secondary pico-background-jade-50\">50</button><button class=\"secondary pico-background-jade-100\">100</button><button class=\"secondary pico-background-jade-150\">150</button><button class=\"secondary pico-background-jade-200\">200</button><button class=\"secondary pico-background-jade-250\">250</button><button class=\"secondary pico-background-jade-300\">300</button><button class=\"secondary pico-background-jade-350\">350</button><button class=\"secondary pico-background-jade-400\">400</button><button class=\"secondary pico-background-jade-450\">450</button><button class=\"secondary pico-background-jade-500\">500</button><button class=\"secondary pico-background-jade-550\">550</button><button class=\"secondary pico-background-jade-600\">600</button><button class=\"secondary pico-background-jade-650\">650</button><button class=\"secondary pico-background-jade-700\">700</button><button class=\"secondary pico-background-jade-750\">750</button><button class=\"secondary pico-background-jade-800\">800</button><button class=\"secondary pico-background-jade-850\">850</button><button class=\"secondary pico-background-jade-900\">900</button><button class=\"secondary pico-background-jade-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-green\">Green</header><main><button class=\"secondary pico-background-green-50\">50</button><button class=\"secondary pico-background-green-100\">100</button><button class=\"secondary pico-background-green-150\">150</button><button class=\"secondary pico-background-green-200\">200</button><button class=\"secondary pico-background-green-250\">250</button><button class=\"secondary pico-background-green-300\">300</button><button class=\"secondary pico-background-green-350\">350</button><button class=\"secondary pico-background-green-400\">400</button><button class=\"secondary pico-background-green-450\">450</button><button class=\"secondary pico-background-green-500\">500</button><button class=\"secondary pico-background-green-550\">550</button><button class=\"secondary pico-background-green-600\">600</button><button class=\"secondary pico-background-green-650\">650</button><button class=\"secondary pico-background-green-700\">700</button><button class=\"secondary pico-background-green-750\">750</button><button class=\"secondary pico-background-green-800\">800</button><button class=\"secondary pico-background-green-850\">850</button><button class=\"secondary pico-background-green-900\">900</button><button class=\"secondary pico-background-green-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-lime\">Lime</header><main><button class=\"secondary pico-background-lime-50\">50</button><button class=\"secondary pico-background-lime-100\">100</button><button class=\"secondary pico-background-lime-150\">150</button><button class=\"secondary pico-background-lime-200\">200</button><button class=\"secondary pico-background-lime-250\">250</button><button class=\"secondary pico-background-lime-300\">300</button><button class=\"secondary pico-background-lime-350\">350</button><button class=\"secondary pico-background-lime-400\">400</button><button class=\"secondary pico-background-lime-450\">450</button><button class=\"secondary pico-background-lime-500\">500</button><button class=\"secondary pico-background-lime-550\">550</button><button class=\"secondary pico-background-lime-600\">600</button><button class=\"secondary pico-background-lime-650\">650</button><button class=\"secondary pico-background-lime-700\">700</button><button class=\"secondary pico-background-lime-750\">750</button><button class=\"secondary pico-background-lime-800\">800</button><button class=\"secondary pico-background-lime-850\">850</button><button class=\"secondary pico-background-lime-900\">900</button><button class=\"secondary pico-background-lime-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-yellow\">Yellow</header><main><button class=\"secondary pico-background-yellow-50\">50</button><button class=\"secondary pico-background-yellow-100\">100</button><button class=\"secondary pico-background-yellow-150\">150</button><button class=\"secondary pico-background-yellow-200\">200</button><button class=\"secondary pico-background-yellow-250\">250</button><button class=\"secondary pico-background-yellow-300\">300</button><button class=\"secondary pico-background-yellow-350\">350</button><button class=\"secondary pico-background-yellow-400\">400</button><button class=\"secondary pico-background-yellow-450\">450</button><button class=\"secondary pico-background-yellow-500\">500</button><button class=\"secondary pico-background-yellow-550\">550</button><button class=\"secondary pico-background-yellow-600\">600</button><button class=\"secondary pico-background-yellow-650\">650</button><button class=\"secondary pico-background-yellow-700\">700</button><button class=\"secondary pico-background-yellow-750\">750</button><button class=\"secondary pico-background-yellow-800\">800</button><button class=\"secondary pico-background-yellow-850\">850</button><button class=\"secondary pico-background-yellow-900\">900</button><button class=\"secondary pico-background-yellow-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-amber\">Amber</header><main><button class=\"secondary pico-background-amber-50\">50</button><button class=\"secondary pico-background-amber-100\">100</button><button class=\"secondary pico-background-amber-150\">150</button><button class=\"secondary pico-background-amber-200\">200</button><button class=\"secondary pico-background-amber-250\">250</button><button class=\"secondary pico-background-amber-300\">300</button><button class=\"secondary pico-background-amber-350\">350</button><button class=\"secondary pico-background-amber-400\">400</button><button class=\"secondary pico-background-amber-450\">450</button><button class=\"secondary pico-background-amber-500\">500</button><button class=\"secondary pico-background-amber-550\">550</button><button class=\"secondary pico-background-amber-600\">600</button><button class=\"secondary pico-background-amber-650\">650</button><button class=\"secondary pico-background-amber-700\">700</button><button class=\"secondary pico-background-amber-750\">750</button><button class=\"secondary pico-background-amber-800\">800</button><button class=\"secondary pico-background-amber-850\">850</button><button class=\"secondary pico-background-amber-900\">900</button><button class=\"secondary pico-background-amber-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-pumpkin\">Pumpkin</header><main><button class=\"secondary pico-background-pumpkin-50\">50</button><button class=\"secondary pico-background-pumpkin-100\">100</button><button class=\"secondary pico-background-pumpkin-150\">150</button><button class=\"secondary pico-background-pumpkin-200\">200</button><button class=\"secondary pico-background-pumpkin-250\">250</button><button class=\"secondary pico-background-pumpkin-300\">300</button><button class=\"secondary pico-background-pumpkin-350\">350</button><button class=\"secondary pico-background-pumpkin-400\">400</button><button class=\"secondary pico-background-pumpkin-450\">450</button><button class=\"secondary pico-background-pumpkin-500\">500</button><button class=\"secondary pico-background-pumpkin-550\">550</button><button class=\"secondary pico-background-pumpkin-600\">600</button><button class=\"secondary pico-background-pumpkin-650\">650</button><button class=\"secondary pico-background-pumpkin-700\">700</button><button class=\"secondary pico-background-pumpkin-750\">750</button><button class=\"secondary pico-background-pumpkin-800\">800</button><button class=\"secondary pico-background-pumpkin-850\">850</button><button class=\"secondary pico-background-pumpkin-900\">900</button><button class=\"secondary pico-background-pumpkin-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-orange\">Orange</header><main><button class=\"secondary pico-background-orange-50\">50</button><button class=\"secondary pico-background-orange-100\">100</button><button class=\"secondary pico-background-orange-150\">150</button><button class=\"secondary pico-background-orange-200\">200</button><button class=\"secondary pico-background-orange-250\">250</button><button class=\"secondary pico-background-orange-300\">300</button><button class=\"secondary pico-background-orange-350\">350</button><button class=\"secondary pico-background-orange-400\">400</button><button class=\"secondary pico-background-orange-450\">450</button><button class=\"secondary pico-background-orange-500\">500</button><button class=\"secondary pico-background-orange-550\">550</button><button class=\"secondary pico-background-orange-600\">600</button><button class=\"secondary pico-background-orange-650\">650</button><button class=\"secondary pico-background-orange-700\">700</button><button class=\"secondary pico-background-orange-750\">750</button><button class=\"secondary pico-background-orange-800\">800</button><button class=\"secondary pico-background-orange-850\">850</button><button class=\"secondary pico-background-orange-900\">900</button><button class=\"secondary pico-background-orange-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-sand\">Sand</header><main><button class=\"secondary pico-background-sand-50\">50</button><button class=\"secondary pico-background-sand-100\">100</button><button class=\"secondary pico-background-sand-150\">150</button><button class=\"secondary pico-background-sand-200\">200</button><button class=\"secondary pico-background-sand-250\">250</button><button class=\"secondary pico-background-sand-300\">300</button><button class=\"secondary pico-background-sand-350\">350</button><button class=\"secondary pico-background-sand-400\">400</button><button class=\"secondary pico-background-sand-450\">450</button><button class=\"secondary pico-background-sand-500\">500</button><button class=\"secondary pico-background-sand-550\">550</button><button class=\"secondary pico-background-sand-600\">600</button><button class=\"secondary pico-background-sand-650\">650</button><button class=\"secondary pico-background-sand-700\">700</button><button class=\"secondary pico-background-sand-750\">750</button><button class=\"secondary pico-background-sand-800\">800</button><button class=\"secondary pico-background-sand-850\">850</button><button class=\"secondary pico-background-sand-900\">900</button><button class=\"secondary pico-background-sand-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-grey\">Grey</header><main><button class=\"secondary pico-background-grey-50\">50</button><button class=\"secondary pico-background-grey-100\">100</button><button class=\"secondary pico-background-grey-150\">150</button><button class=\"secondary pico-background-grey-200\">200</button><button class=\"secondary pico-background-grey-250\">250</button><button class=\"secondary pico-background-grey-300\">300</button><button class=\"secondary pico-background-grey-350\">350</button><button class=\"secondary pico-background-grey-400\">400</button><button class=\"secondary pico-background-grey-450\">450</button><button class=\"secondary pico-background-grey-500\">500</button><button class=\"secondary pico-background-grey-550\">550</button><button class=\"secondary pico-background-grey-600\">600</button><button class=\"secondary pico-background-grey-650\">650</button><button class=\"secondary pico-background-grey-700\">700</button><button class=\"secondary pico-background-grey-750\">750</button><button class=\"secondary pico-background-grey-800\">800</button><button class=\"secondary pico-background-grey-850\">850</button><button class=\"secondary pico-background-grey-900\">900</button><button class=\"secondary pico-background-grey-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-zinc\">Zinc</header><main><button class=\"secondary pico-background-zinc-50\">50</button><button class=\"secondary pico-background-zinc-100\">100</button><button class=\"secondary pico-background-zinc-150\">150</button><button class=\"secondary pico-background-zinc-200\">200</button><button class=\"secondary pico-background-zinc-250\">250</button><button class=\"secondary pico-background-zinc-300\">300</button><button class=\"secondary pico-background-zinc-350\">350</button><button class=\"secondary pico-background-zinc-400\">400</button><button class=\"secondary pico-background-zinc-450\">450</button><button class=\"secondary pico-background-zinc-500\">500</button><button class=\"secondary pico-background-zinc-550\">550</button><button class=\"secondary pico-background-zinc-600\">600</button><button class=\"secondary pico-background-zinc-650\">650</button><button class=\"secondary pico-background-zinc-700\">700</button><button class=\"secondary pico-background-zinc-750\">750</button><button class=\"secondary pico-background-zinc-800\">800</button><button class=\"secondary pico-background-zinc-850\">850</button><button class=\"secondary pico-background-zinc-900\">900</button><button class=\"secondary pico-background-zinc-950\">950</button></main></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article class=\"family\"><header class=\"pico-background-slate\">Slate</header><main><button class=\"secondary pico-background-slate-50\">50</button><button class=\"secondary pico-background-slate-100\">100</button><button class=\"secondary pico-background-slate-150\">150</button><button class=\"secondary pico-background-slate-200\">200</button><button class=\"secondary pico-background-slate-250\">250</button><button class=\"secondary pico-background-slate-300\">300</button><button class=\"secondary pico-background-slate-350\">350</button><button class=\"secondary pico-background-slate-400\">400</button><button class=\"secondary pico-background-slate-450\">450</button><button class=\"secondary pico-background-slate-500\">500</button><button class=\"secondary pico-background-slate-550\">550</button><button class=\"secondary pico-background-slate-600\">600</button><button class=\"secondary pico-background-slate-650\">650</button><button class=\"secondary pico-background-slate-700\">700</button><button class=\"secondary pico-background-slate-750\">750</button><button class=\"secondary pico-background-slate-800\">800</button><button class=\"secondary pico-background-slate-850\">850</button><button class=\"secondary pico-background-slate-900\">900</button><button class=\"secondary pico-background-slate-950\">950</button></main></article>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage with CSS",
+   "id": "usage-with-css"
+  },
+  {
+   "t": "p",
+   "md": "The main Pico stylesheet excludes color utilities."
+  },
+  {
+   "t": "p",
+   "md": "There is a separate stylesheet with all the color utilities that you can link in the `<head>` of your website."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.colors.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "Also available on [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/):"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css\"\n>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "This stylesheet is almost the same size as the entire Pico library."
+  },
+  {
+   "t": "p",
+   "md": "We do not recommend including all colors on a production site. You should include only the color families and shades that you use."
+  },
+  {
+   "t": "p",
+   "md": "After linking the color utilities, you can style any element with the utility classes. Click on any color above to see details."
+  },
+  {
+   "t": "example",
+   "label": "Color example",
+   "demo": "<article aria-label=\"Color example\" class=\"component\"><h2 class=\"pico-color-pink-500\">Pink title</h2></article>",
+   "lang": "html",
+   "code": "<h2 class=\"pico-color-pink-500\">Pink title</h2>"
+  },
+  {
+   "t": "example",
+   "label": "Background color example",
+   "demo": "<article aria-label=\"Background color example\" class=\"pico-background-pink-600\">Pink card</article>",
+   "lang": "html",
+   "code": "<article class=\"pico-background-pink-600\">\n  Pink card\n</article>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage with SASS",
+   "id": "usage-with-sass"
+  },
+  {
+   "t": "p",
+   "md": "You can import all colors as SASS variables in any `.scss` file with:"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"colors\" as *;",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "The colors can then be used like this:"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "h2 {\n  color: $pink-500;\n}",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "You can also generate the utility classes with [@use](https://sass-lang.com/documentation/at-rules/use):"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"colors/utilities\";",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "There are many settings available."
+  },
+  {
+   "t": "p",
+   "md": "Here is, for example, how to generate only the color utilities (and not the background utilities) and only for red, pink, fuchsia, and purple color families."
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"colors/utilities\" with (\n  $palette: (\n    \"color-families\": (\n      red,\n      pink,\n      fuchsia,\n      purple,\n    ),\n  ),\n  $utilities: (\n    \"background-colors\": false,\n  )\n);",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "// Prefix for CSS variables\n$css-var-prefix: \"--pico-\" !default; // Must start with \"--\"\n$css-class-prefix: \"pico-\" !default;\n\n// Palette\n$palette: () !default;\n$palette: map.merge(\n  (\n    // Color families\n    \"color-families\": (\n        red,\n        pink,\n        fuchsia,\n        purple,\n        violet,\n        indigo,\n        blue,\n        azure,\n        cyan,\n        jade,\n        green,\n        lime,\n        yellow,\n        amber,\n        pumpkin,\n        orange,\n        sand,\n        grey,\n        zinc,\n        slate\n      ),\n    // Shades\n    \"shades\": (\n        50,\n        100,\n        150,\n        200,\n        250,\n        300,\n        350,\n        400,\n        450,\n        500,\n        550,\n        600,\n        650,\n        700,\n        750,\n        800,\n        850,\n        900,\n        950\n      ),\n    // Export main color for each family\n    \"enable-main-color\": true,\n\n    // Export shades for each family\n    \"enable-shades\": true,\n\n    // Export black and white\n    \"enable-black-and-white\": false,\n\n    // Light color used for dark backgrounds\n    \"light-color\": #fff,\n\n    // Dark color used for light backgrounds\n    \"dark-color\": #000,\n\n    // Export as HEX, RGB or HSL values\n    \"export-as\": \"hex\" // hex | rgb | hsl\n  ),\n  $palette\n);\n\n// Properties names used for CSS variables and classes\n// Useful if you want to shorten the names\n$properties: () !default;\n$properties: map.merge(\n  (\n    \"color\": \"color\",\n    \"background-color\": \"background\",\n  ),\n  $properties\n);\n\n// Utilities to export\n$utilities: () !default;\n$utilities: map.merge(\n  (\n    // CSS Vars\n    \"css-vars\": true,\n\n    // Colors utility classes\n    \"colors\": true,\n\n    // Background color utility classes\n    \"background-colors\": true,\n\n    // Color value for background color utility classes\n    \"color-for-background-colors\": true\n  ),\n  $utilities\n);",
+   "title": "All default settings",
+   "collapsed": true
+  },
+  {
+   "t": "h2",
+   "text": "Import in Figma",
+   "id": "import-in-figma"
+  },
+  {
+   "t": "p",
+   "md": "You can use the Figma plugin [Palette Importer](https://www.figma.com/community/plugin/1067561134666722782/Palette-Importer) to import all 380 Pico colors."
+  },
+  {
+   "t": "p",
+   "md": "![Figma plugin Palette Importer](/build/_assets/customization-colors-palette-importer-3MH32MKA.png)"
+  },
+  {
+   "t": "p",
+   "md": "Download the `.json` file with all the colors:"
+  },
+  {
+   "t": "p",
+   "md": "[Download]()"
+  }
+ ]
+}

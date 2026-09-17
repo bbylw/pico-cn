@@ -1,0 +1,70 @@
+{
+ "meta": {
+  "slug": "container",
+  "chapter": "Layout",
+  "title": "Container",
+  "lead": "Use `.container` for a centered viewport or  `.container-fluid` for a full-width layout.",
+  "url": "https://picocss.com/docs/container"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Pico includes six default breakpoints. These breakpoints can be customized with [Sass](https://picocss.com/docs/sass)."
+  },
+  {
+   "t": "table",
+   "md": "| Device | Breakpoint | Viewport |\n| --- | --- | --- |\n| Extra small | <576px | 100% |\n| Small | ≥576px | 510px |\n| Medium | ≥768px | 700px |\n| Large | ≥1024px | 950px |\n| Extra large | ≥1280px | 1200px |\n| Extra extra large | ≥1536px | 1450px |"
+  },
+  {
+   "t": "p",
+   "md": "`.container` and `.container-fluid` are not available in the [class‑less version](https://picocss.com/docs/classless) (see [Semantic containers](https://picocss.com/docs/container#semantic-containers) for an alternative)."
+  },
+  {
+   "t": "h2",
+   "text": "Fixed width",
+   "id": "fixed-width"
+  },
+  {
+   "t": "p",
+   "md": "`.container` provides a centered container with a fixed width."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<body>\n  <main class=\"container\">\n    ...\n  </main>\n</body>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Fluid width",
+   "id": "fluid-width"
+  },
+  {
+   "t": "p",
+   "md": "`.container-fluid` provides a full-width container."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<body>\n  <main class=\"container-fluid\">\n    ...\n  </main>\n</body>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Semantic containers",
+   "id": "semantic-containers"
+  },
+  {
+   "t": "p",
+   "md": "In the classless version, `<header>`, `<main>`, and `<footer>` inside `<body>` act as containers to define a centered or a fluid viewport."
+  },
+  {
+   "t": "p",
+   "md": "See [Class-less version](https://picocss.com/docs/classless)."
+  }
+ ]
+}

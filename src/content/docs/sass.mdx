@@ -1,0 +1,256 @@
+---
+title: Sass
+chapter: 定制
+lead: 使用 <a href="https://sass-lang.com/">SASS</a> 编译 Pico CSS 框架的自定义版本，构建你自己的极简设计系统。
+toc:
+  - { id: import, text: 导入, depth: 2 }
+  - { id: settings, text: 配置, depth: 2 }
+  - { id: theme-color, text: 主题颜色, depth: 2 }
+  - { id: custom-theme, text: 自定义主题, depth: 2 }
+---
+
+为了充分发挥 Pico 的潜力，我们推荐用 SASS 编译你自己的版本。这样你只需包含必需的模块，即可个性化各项配置，而无需覆盖 CSS 样式。
+
+尽可能避免修改 Pico 的核心文件。由于 Pico 的代码与你的自定义代码是分离的，这种方式能让你在不产生冲突的情况下随时让 Pico 保持最新。
+
+<h2 id="import">导入</h2>
+
+你可以通过 [@use](https://sass-lang.com/documentation/at-rules/use) 在 SCSS 文件中导入 Pico：
+
+```scss
+@use "pico";
+```
+
+如果你使用 [Sass 命令行接口](https://sass-lang.com/documentation/cli/dart-sass) 编译 `.scss` 文件，可以用 `sass --load-path=node_modules/@picocss/pico/scss/` 定义加载路径，从而避免使用如下相对路径：
+
+```scss
+@use "node_modules/@picocss/pico/scss/pico";
+```
+
+如果你使用 [React](https://react.dev/)，或使用搭配 [sass-loader](https://github.com/webpack-contrib/sass-loader) 的 [Webpack](https://webpack.js.org/)，默认配置会自动解析 `node_modules` 路径，因此你可以直接这样导入 Pico：
+
+```scss
+@use "@picocss/pico/scss/pico";
+```
+
+<h2 id="settings">配置</h2>
+
+你可以用 `@use "pico" with ( ... );` 进行自定义配置。这些自定义值将覆盖默认变量。
+
+下面是生成无类版本的示例：
+
+```scss
+// Pico classless version
+@use "pico" with (
+  $enable-semantic-container: true,
+  $enable-classes: false
+);
+```
+
+示例：生成一个轻量版本，不含 `.classes`、非常用表单元素和组件。
+
+该版本可将 Pico 的体积减少约 50%。
+
+```scss
+// Pico lightweight version
+@use "pico" with (
+  $enable-semantic-container: true,
+  $enable-classes: false,
+  $modules: (
+    "content/code": false,
+    "forms/input-color": false,
+    "forms/input-date": false,
+    "forms/input-file": false,
+    "forms/input-range": false,
+    "forms/input-search": false,
+    "components/accordion": false,
+    "components/card": false,
+    "components/dropdown": false,
+    "components/loading": false,
+    "components/modal": false,
+    "components/nav": false,
+    "components/progress": false,
+    "components/tooltip": false,
+    "utilities/accessibility": false,
+    "utilities/reduce-motion": false
+  )
+);
+```
+
+<details>
+  <summary>全部默认配置</summary>
+
+```scss
+// Theme color
+$theme-color: "azure" !default; // amber, azure, blue, cyan, fuchsia, green, grey, indigo, jade, lime, orange, pink, pumpkin, purple, red, sand, slate, violet, yellow, zinc
+
+// Prefix for CSS variables
+$css-var-prefix: "--pico-" !default; // Must start with "--"
+
+// Define the root element used to target <header>, <main>, <footer>
+// with $enable-semantic-container and $enable-responsive-spacings
+$semantic-root-element: "body" !default;
+
+// Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+$enable-semantic-container: false !default;
+
+// Enable a centered viewport for <header>, <main>, <footer> inside $semantic-root-element
+// Fluid layout if disabled
+$enable-viewport: true !default;
+
+// Enable responsive spacings for <header>, <main>, <footer>, <section>, <article>
+// Fixed spacings by default
+$enable-responsive-spacings: false !default;
+
+// Enable responsive typography
+// Fixed root element size (rem) if disabled
+$enable-responsive-typography: true !default;
+
+// Enable .classes
+// .classless version if disabled
+$enable-classes: true !default;
+
+// Enable transitions
+$enable-transitions: true !default;
+
+// Enable overriding with !important
+$enable-important: true !default;
+
+// Optional parent selector
+// If defined, all HTML tags are wrapped with this selector
+// :root is not wrapped
+$parent-selector: "" !default;
+
+// Breakpoints, viewports and root font size
+$breakpoints: () !default;
+$breakpoints: map.deep-merge(
+  (
+    // Small (landscape phones)
+    // Font size: 17px
+    sm: (
+        breakpoint: 576px,
+        viewport: 510px,
+        root-font-size: 106.25%,
+      ),
+
+    // Medium (tablets)
+    // Font size: 18px
+    md: (
+        breakpoint: 768px,
+        viewport: 700px,
+        root-font-size: 112.5%,
+      ),
+
+    // Large
+    // Font size: 19px
+    lg: (
+        breakpoint: 1024px,
+        viewport: 950px,
+        root-font-size: 118.75%,
+      ),
+
+    // Extra large
+    // Font size: 20px
+    xl: (
+        breakpoint: 1280px,
+        viewport: 1200px,
+        root-font-size: 125%,
+      ),
+
+    // Extra extra large
+    // Font size: 21px
+    xxl: (
+        breakpoint: 1536px,
+        viewport: 1450px,
+        root-font-size: 131.25%,
+      )
+  ),
+  $breakpoints
+);
+
+// Modules to export
+$modules: () !default;
+$modules: map.merge(
+  (
+    // Theme
+    "themes/default": true,
+
+    // Layout
+    "layout/document": true,
+    "layout/landmarks": true,
+    "layout/container": true,
+    "layout/section": true,
+    "layout/grid": true,
+    "layout/overflow-auto": true,
+
+    // Content
+    "content/link": true,
+    "content/typography": true,
+    "content/embedded": true,
+    "content/button": true,
+    "content/table": true,
+    "content/code": true,
+    "content/figure": true,
+    "content/misc": true,
+
+    // Forms
+    "forms/basics": true,
+    "forms/checkbox-radio-switch": true,
+    "forms/input-color": true,
+    "forms/input-date": true,
+    "forms/input-file": true,
+    "forms/input-range": true,
+    "forms/input-search": true,
+
+    // Components
+    "components/accordion": true,
+    "components/card": true,
+    "components/dropdown": true,
+    "components/group": true,
+    "components/loading": true,
+    "components/modal": true,
+    "components/nav": true,
+    "components/progress": true,
+    "components/tooltip": true,
+
+    // Utilities
+    "utilities/accessibility": true,
+    "utilities/reduce-motion": true
+  ),
+  $modules
+);
+```
+
+</details>
+
+<h2 id="theme-color">主题颜色</h2>
+
+Pico 自带默认的 `"azure"` 主题。你可以轻松地从 20 种颜色中选择另一种主色，重新编译 Pico。
+
+```scss
+// Pico with purple primary color
+@use "pico" with (
+  $theme-color: "purple"
+);
+```
+
+可选颜色：`amber`、`azure`、`blue`、`cyan`、`fuchsia`、`green`、`grey`、`indigo`、`jade`、`lime`、`orange`、`pink`、`pumpkin`、`purple`、`red`、`sand`、`slate`、`violet`、`yellow`、`zinc`。
+
+<h2 id="custom-theme">自定义主题</h2>
+
+要创建一个拥有完全自定义主题、体现你品牌形象的 Pico 定制版本，你可以：
+
+1. 在编译时排除默认主题；
+2. 导入你的自定义主题（你可以复制 [Pico 的默认主题](https://github.com/picocss/pico/tree/main/scss/themes/) 作为起点，并按照你的品牌风格进行定制）。
+
+```scss
+// Pico without default theme
+@use "pico" with (
+  $modules: (
+    "themes/default": false
+  )
+);
+
+// Your custom theme
+@use "path/custom-theme";   
+```

@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "slug": "forms-checkboxes",
+  "chapter": "Forms",
+  "title": "Checkboxes",
+  "lead": "The native `<input type=\"checkbox\">` with a custom and responsive style.",
+  "url": "https://picocss.com/docs/forms-checkboxes"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Checkboxes example",
+   "demo": "<article aria-label=\"Checkboxes example\" class=\"component\"><fieldset><legend>Language preferences:</legend><label><input checked=\"\" name=\"english\" type=\"checkbox\"/>English</label><label><input checked=\"\" name=\"french\" type=\"checkbox\"/>French</label><label><input name=\"mandarin\" type=\"checkbox\"/>Mandarin</label><label><input name=\"thai\" type=\"checkbox\"/>Thai</label><label aria-disabled=\"true\"><input disabled=\"\" name=\"dothraki\" type=\"checkbox\"/>Dothraki</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <legend>Language preferences:</legend>\n  <label>\n    <input type=\"checkbox\" name=\"english\" checked />\n    English\n  </label>\n  <label>\n    <input type=\"checkbox\" name=\"french\" checked />\n    French\n  </label>\n  <label>\n    <input type=\"checkbox\" name=\"mandarin\" />\n    Mandarin\n  </label>\n  <label>\n    <input type=\"checkbox\" name=\"thai\" />\n    Thai\n  </label>\n  <label aria-disabled=\"true\">\n    <input type=\"checkbox\" name=\"dothraki\" disabled />\n    Dothraki\n  </label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Horizontal stacking",
+   "id": "horizontal-stacking"
+  },
+  {
+   "t": "example",
+   "label": "Horizontal stacking example",
+   "demo": "<article aria-label=\"Horizontal stacking example\" class=\"component\"><fieldset><legend>Language preferences:</legend><input checked=\"\" id=\"hindi\" name=\"hindi\" type=\"checkbox\"/><label for=\"hindi\">Hindi</label><input id=\"swahili\" name=\"swahili\" type=\"checkbox\"/><label for=\"swahili\">Swahili</label><input disabled=\"\" id=\"navi\" name=\"navi\" type=\"checkbox\"/><label aria-disabled=\"true\" for=\"navi\">Na'vi</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <legend>Language preferences:</legend>\n  <input type=\"checkbox\" id=\"hindi\" name=\"hindi\" checked />\n  <label htmlFor=\"hindi\">Hindi</label>\n  <input type=\"checkbox\" id=\"swahili\" name=\"swahili\" />\n  <label htmlFor=\"swahili\">Swahili</label>\n  <input type=\"checkbox\" id=\"navi\" name=\"navi\" disabled />\n  <label htmlFor=\"navi\" aria-disabled=\"true\">Na'vi</label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Indeterminate",
+   "id": "indeterminate"
+  },
+  {
+   "t": "p",
+   "md": "You can change a checkbox to an indeterminate state by setting the `indeterminate` property to `true`."
+  },
+  {
+   "t": "example",
+   "label": "Indeterminate checkbox example",
+   "demo": "<article aria-label=\"Indeterminate checkbox example\" class=\"component\"><label><input name=\"indeterminate\" type=\"checkbox\"/>Indeterminate</label></article>",
+   "lang": "html",
+   "code": "<label>\n  <input type=\"checkbox\" id=\"indeterminate\" name=\"indeterminate\" />\n  Indeterminate\n</label>\n\n<script>\n  const checkbox = document.querySelector('#indeterminate');\n  checkbox.indeterminate = true;\n</script>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><label><input aria-invalid=\"false\" name=\"valid\" type=\"checkbox\"/>Valid</label><label><input aria-invalid=\"true\" name=\"invalid\" type=\"checkbox\"/>Invalid</label></article>",
+   "lang": "html",
+   "code": "<label>\n  <input type=\"checkbox\" name=\"valid\" aria-invalid=\"false\" />\n  Valid\n</label>\n\n<label>\n  <input type=\"checkbox\" name=\"invalid\" aria-invalid=\"true\" />\n  Invalid\n</label>"
+  }
+ ]
+}

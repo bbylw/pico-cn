@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "slug": "rtl",
+  "chapter": "Getting started",
+  "title": "RTL",
+  "lead": "Support for Right-To-Left text.",
+  "url": "https://picocss.com/docs/rtl"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "To enable RTL (Right-To-Left) with Pico, you need to set `dir=\"rtl\"` on the `<html>` element."
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html dir=\"rtl\" lang=\"ar\">\n  ...\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "RTL can also be enabled on a per-element basis:"
+  },
+  {
+   "t": "example",
+   "label": "RTL example",
+   "demo": "<article aria-label=\"RTL example\" class=\"component\"><blockquote dir=\"rtl\" lang=\"ar\">“كُنْ كالطير، الذي إذا اعتاد القفز على الأغصان لا يحس بالخطر وليس في ذلك أي تردد، ولكنه لو فقد الثقة بجناحيه فإنه يسقط أرضًا. كذلك، إذا اعتاد الإنسان على العمل الصالح فإنه يستطيع فعله بلا جهد وليس في ذلك أي عناء، ولكنه إذا فقد الثقة بنفسه فإنه يفشل.”<footer><cite>— خليل جبران</cite></footer></blockquote></article>",
+   "lang": "html",
+   "code": "<blockquote dir=\"rtl\" lang=\"ar\">\n  “كُنْ كالطير، الذي إذا اعتاد القفز على الأغصان لا يحس بالخطر وليس في ذلك أي تردد،\n  ولكنه لو فقد الثقة بجناحيه فإنه يسقط أرضًا. كذلك، إذا اعتاد الإنسان على العمل الصالح\n  فإنه يستطيع فعله بلا جهد وليس في ذلك أي عناء، ولكنه إذا فقد الثقة بنفسه فإنه يفشل.”\n  <footer>\n    <cite>— خليل جبران</cite>\n  </footer>\n</blockquote>"
+  }
+ ]
+}

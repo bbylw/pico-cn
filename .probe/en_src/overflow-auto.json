@@ -1,0 +1,22 @@
+{
+ "meta": {
+  "slug": "overflow-auto",
+  "chapter": "Layout",
+  "title": "Overflow auto",
+  "lead": "`.overflow-auto` enables automatic scrollbars to an element if its content extends beyond its limits.",
+  "url": "https://picocss.com/docs/overflow-auto"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Useful to have responsive `<table>`."
+  },
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<div class=\"overflow-auto\"><table><thead><tr><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th></tr></thead><tbody><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr></tbody></table></div>",
+   "lang": "html",
+   "code": "<div class=\"overflow-auto\">\n  <table>\n  ...\n  </table>\n</div>"
+  }
+ ]
+}

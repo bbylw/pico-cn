@@ -1,0 +1,19 @@
+---
+title: 自动溢出滚动
+chapter: 布局
+lead: <code>.overflow-auto</code> 可为元素启用自动滚动条，当内容超出元素边界时即可滚动。
+---
+
+import Ex from "../../components/Ex.astro";
+
+这对实现响应式 `<table>` 很有用。
+
+<Ex
+  html={`<div class="overflow-auto"><table><thead><tr><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th></tr></thead><tbody><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr></tbody></table></div>`}
+  code={`<div class="overflow-auto">
+  <table>
+  ...
+  </table>
+</div>`}
+  lang="html"
+/>

@@ -1,0 +1,33 @@
+{
+ "meta": {
+  "slug": "link",
+  "chapter": "Content",
+  "title": "Link",
+  "lead": "Links come with `.secondary` and `.contrast` styles.",
+  "url": "https://picocss.com/docs/link"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Links example",
+   "demo": "<article aria-label=\"Links example\" class=\"component\"><a data-discover=\"true\" href=\"/docs/link\">Primary</a><br/><a class=\"secondary\" data-discover=\"true\" href=\"/docs/link\">Secondary</a><br/><a class=\"contrast\" data-discover=\"true\" href=\"/docs/link\">Contrast</a><br/></article>",
+   "lang": "html",
+   "code": "<a href=\"#\">Primary</a>\n<a href=\"#\" class=\"secondary\">Secondary</a>\n<a href=\"#\" class=\"contrast\">Contrast</a>"
+  },
+  {
+   "t": "p",
+   "md": "`.secondary` and `.contrast` classes are not available in the [class‑less version](https://picocss.com/docs/classless)."
+  },
+  {
+   "t": "p",
+   "md": "`aria-current` send the active state to assistive technologies and is displayed as the hover links."
+  },
+  {
+   "t": "example",
+   "label": "Active link example",
+   "demo": "<article aria-label=\"Active link example\" class=\"component\"><a data-discover=\"true\" href=\"/docs/link\">Regular link</a><br/><a aria-current=\"page\" data-discover=\"true\" href=\"/docs/link\">Active link</a><br/><a data-discover=\"true\" href=\"/docs/link\">Regular link</a><br/></article>",
+   "lang": "html",
+   "code": "<a href=\"#\">Regular link</a>\n<a href=\"#\" aria-current=\"page\">Active link</a>\n<a href=\"#\">Regular link</a>"
+  }
+ ]
+}

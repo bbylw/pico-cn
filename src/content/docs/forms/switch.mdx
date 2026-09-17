@@ -1,0 +1,62 @@
+---
+title: 开关
+chapter: 表单
+lead: 纯 CSS 实现的开关组件，沿用复选框语法。
+toc:
+  - { id: disabled, text: 禁用, depth: 2 }
+  - { id: validation-states, text: 验证状态, depth: 2 }
+---
+
+import Ex from "../../../components/Ex.astro";
+
+<Ex
+  html={`<fieldset><label><input name="terms" role="switch" type="checkbox"/>I agree to the Terms</label><label><input checked="" name="opt-in" role="switch" type="checkbox"/>I want to receive updates</label></fieldset>`}
+  code={`<fieldset>
+  <label>
+    <input name="terms" type="checkbox" role="switch" />
+    I agree to the Terms
+  </label>
+  <label>
+    <input name="opt-in" type="checkbox" role="switch" checked />
+    Receive news and offers
+  </label>
+</fieldset>`}
+  lang="html"
+  label="Switch example"
+/>
+
+<h2 id="disabled">禁用</h2>
+
+<Ex
+  html={`<fieldset><label aria-disabled="true"><input disabled="" name="publish" role="switch" type="checkbox"/>Publish on my profile</label><label aria-disabled="true"><input checked="" disabled="" name="change-password" role="switch" type="checkbox"/>Change my password at next login</label></fieldset>`}
+  code={`<fieldset>
+  <label>
+    <input name="publish" type="checkbox" role="switch" disabled />
+    Publish on my profile
+  </label>
+  <label>
+    <input name="change-password" type="checkbox" role="switch" checked disabled />
+    Change my password at next login
+  </label>
+</fieldset>`}
+  lang="html"
+  label="Disabled switch example"
+/>
+
+<h2 id="validation-states">验证状态</h2>
+
+<Ex
+  html={`<fieldset><label><input aria-invalid="false" name="2fa" role="switch" type="checkbox"/>Enable two-factor authentication</label><label><input aria-invalid="true" name="subscription" role="switch" type="checkbox"/>Automatic subscription renewal</label></fieldset>`}
+  code={`<fieldset>
+  <label>
+    <input name="2fa" type="checkbox" role="switch" aria-invalid="false" />
+    Enable two-factor authentication
+  </label>
+  <label>
+    <input name="subscription" type="checkbox" role="switch" aria-invalid="true" />
+    Automatic subscription renewal
+  </label>
+</fieldset>`}
+  lang="html"
+  label="Validation states example"
+/>

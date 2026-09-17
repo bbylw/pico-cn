@@ -1,0 +1,95 @@
+---
+title: 复选框
+chapter: 表单
+lead: 原生 <code>&lt;input type="checkbox"&gt;</code>，采用自定义且响应式的样式。
+toc:
+  - { id: horizontal-stacking, text: 水平排列, depth: 2 }
+  - { id: indeterminate, text: 不确定状态, depth: 2 }
+  - { id: validation-states, text: 验证状态, depth: 2 }
+---
+
+import Ex from "../../../components/Ex.astro";
+
+<Ex
+  html={`<fieldset><legend>Language preferences:</legend><label><input checked="" name="english" type="checkbox"/>English</label><label><input checked="" name="french" type="checkbox"/>French</label><label><input name="mandarin" type="checkbox"/>Mandarin</label><label><input name="thai" type="checkbox"/>Thai</label><label aria-disabled="true"><input disabled="" name="dothraki" type="checkbox"/>Dothraki</label></fieldset>`}
+  code={`<fieldset>
+  <legend>Language preferences:</legend>
+  <label>
+    <input type="checkbox" name="english" checked />
+    English
+  </label>
+  <label>
+    <input type="checkbox" name="french" checked />
+    French
+  </label>
+  <label>
+    <input type="checkbox" name="mandarin" />
+    Mandarin
+  </label>
+  <label>
+    <input type="checkbox" name="thai" />
+    Thai
+  </label>
+  <label aria-disabled="true">
+    <input type="checkbox" name="dothraki" disabled />
+    Dothraki
+  </label>
+</fieldset>`}
+  lang="html"
+  label="Checkboxes example"
+/>
+
+<h2 id="horizontal-stacking">水平排列</h2>
+
+<Ex
+  html={`<fieldset><legend>Language preferences:</legend><input checked="" id="hindi" name="hindi" type="checkbox"/><label for="hindi">Hindi</label><input id="swahili" name="swahili" type="checkbox"/><label for="swahili">Swahili</label><input disabled="" id="navi" name="navi" type="checkbox"/><label aria-disabled="true" for="navi">Na'vi</label></fieldset>`}
+  code={`<fieldset>
+  <legend>Language preferences:</legend>
+  <input type="checkbox" id="hindi" name="hindi" checked />
+  <label htmlFor="hindi">Hindi</label>
+  <input type="checkbox" id="swahili" name="swahili" />
+  <label htmlFor="swahili">Swahili</label>
+  <input type="checkbox" id="navi" name="navi" disabled />
+  <label htmlFor="navi" aria-disabled="true">Na'vi</label>
+</fieldset>`}
+  lang="html"
+  label="Horizontal stacking example"
+/>
+
+<h2 id="indeterminate">不确定状态</h2>
+
+将复选框的 `indeterminate` 属性设置为 `true`，即可让它呈现不确定状态。
+
+<Ex
+  html={`<label><input name="indeterminate" type="checkbox"/>Indeterminate</label>`}
+  code={`<label>
+  <input type="checkbox" id="indeterminate" name="indeterminate" />
+  Indeterminate
+</label>
+
+<script>
+  const checkbox = document.querySelector('#indeterminate');
+  checkbox.indeterminate = true;
+</script>`}
+  lang="html"
+  label="Indeterminate checkbox example"
+/>
+
+<h2 id="validation-states">验证状态</h2>
+
+通过 `aria-invalid` 提供验证状态。
+
+<Ex
+  html={`<label><input aria-invalid="false" name="valid" type="checkbox"/>Valid</label><label><input aria-invalid="true" name="invalid" type="checkbox"/>Invalid</label>`}
+  code={`<label>
+  <input type="checkbox" name="valid" aria-invalid="false" />
+  Valid
+</label>
+
+<label>
+  <input type="checkbox" name="invalid" aria-invalid="true" />
+  Invalid
+</label>`}
+  lang="html"
+  label="Validation states example"
+/>

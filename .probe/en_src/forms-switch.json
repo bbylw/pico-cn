@@ -1,0 +1,42 @@
+{
+ "meta": {
+  "slug": "forms-switch",
+  "chapter": "Forms",
+  "title": "Switch",
+  "lead": "A switch component in pure CSS, using the checkbox syntax.",
+  "url": "https://picocss.com/docs/forms-switch"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Switch example",
+   "demo": "<article aria-label=\"Switch example\" class=\"component\"><fieldset><label><input name=\"terms\" role=\"switch\" type=\"checkbox\"/>I agree to the Terms</label><label><input checked=\"\" name=\"opt-in\" role=\"switch\" type=\"checkbox\"/>I want to receive updates</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <label>\n    <input name=\"terms\" type=\"checkbox\" role=\"switch\" />\n    I agree to the Terms\n  </label>\n  <label>\n    <input name=\"opt-in\" type=\"checkbox\" role=\"switch\" checked />\n    Receive news and offers\n  </label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Disabled",
+   "id": "disabled"
+  },
+  {
+   "t": "example",
+   "label": "Disabled switch example",
+   "demo": "<article aria-label=\"Disabled switch example\" class=\"component\"><fieldset><label aria-disabled=\"true\"><input disabled=\"\" name=\"publish\" role=\"switch\" type=\"checkbox\"/>Publish on my profile</label><label aria-disabled=\"true\"><input checked=\"\" disabled=\"\" name=\"change-password\" role=\"switch\" type=\"checkbox\"/>Change my password at next login</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <label>\n    <input name=\"publish\" type=\"checkbox\" role=\"switch\" disabled />\n    Publish on my profile\n  </label>\n  <label>\n    <input name=\"change-password\" type=\"checkbox\" role=\"switch\" checked disabled />\n    Change my password at next login\n  </label>\n</fieldset>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><fieldset><label><input aria-invalid=\"false\" name=\"2fa\" role=\"switch\" type=\"checkbox\"/>Enable two-factor authentication</label><label><input aria-invalid=\"true\" name=\"subscription\" role=\"switch\" type=\"checkbox\"/>Automatic subscription renewal</label></fieldset></article>",
+   "lang": "html",
+   "code": "<fieldset>\n  <label>\n    <input name=\"2fa\" type=\"checkbox\" role=\"switch\" aria-invalid=\"false\" />\n    Enable two-factor authentication\n  </label>\n  <label>\n    <input name=\"subscription\" type=\"checkbox\" role=\"switch\" aria-invalid=\"true\" />\n    Automatic subscription renewal\n  </label>\n</fieldset>"
+  }
+ ]
+}

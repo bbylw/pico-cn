@@ -1,0 +1,61 @@
+{
+ "meta": {
+  "slug": "color-schemes",
+  "chapter": "Getting started",
+  "title": "Color schemes",
+  "lead": "Pico CSS comes with both Light and Dark color schemes, automatically enabled based on user preferences.",
+  "url": "https://picocss.com/docs/color-schemes"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "The default color scheme is Light. The Dark scheme is automatically enabled if the user has dark mode enabled `prefers-color-scheme: dark;`."
+  },
+  {
+   "t": "raw",
+   "html": "<article aria-label=\"Theme switcher\" id=\"theme-switcher\"><button class=\"contrast\"><svg class=\"icon-theme-toggle theme-toggle\" fill=\"currentColor\" height=\"24\" viewbox=\"0 0 32 32\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><clippath id=\"theme-toggle-cutout\"><path d=\"M0-11h25a1 1 0 0017 13v30H0Z\"></path></clippath><g clip-path=\"url(#theme-toggle-cutout)\"><circle cx=\"16\" cy=\"16\" r=\"8.4\"></circle><path d=\"M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z\"></path></g></svg>Turn on dark mode</button></article>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage",
+   "id": "usage"
+  },
+  {
+   "t": "p",
+   "md": "Color schemes can be defined for the entire document using `<html data-theme=\"light\">` or for specific HTML elements, such as `<article data-theme=\"dark\">`."
+  },
+  {
+   "t": "p",
+   "md": "Color schemes at the HTML tag level work great for elements such as `a`, `button`, `table`, `input`, `textarea`, `select`, `article`, `dialog`, `progress`."
+  },
+  {
+   "t": "p",
+   "md": "CSS variables specific to the color scheme are assigned to every HTML tag. However, we have not enforced specific background and color settings across all HTML tags to maintain transparent backgrounds and ensure colors are inherited from the parent tag."
+  },
+  {
+   "t": "p",
+   "md": "For some other HTML tags, you might need to explicitly set `background-color` and `color`."
+  },
+  {
+   "t": "code",
+   "lang": "css",
+   "code": "section {\n  background-color: var(--pico-background-color);\n  color: var(--pico-color);\n}",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Card example",
+   "id": "example"
+  },
+  {
+   "t": "raw",
+   "html": "<article aria-label=\"Forced light theme example\" data-theme=\"light\"><h2>Light card</h2><form><fieldset class=\"grid\"><input aria-label=\"Login\" autocomplete=\"username\" name=\"login\" placeholder=\"Login\" type=\"text\"/><input aria-label=\"Password\" autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><button type=\"submit\">Login</button></fieldset><fieldset><label><input checked=\"\" name=\"switch\" role=\"switch\" type=\"checkbox\"/> Remember me</label></fieldset></form></article>"
+  },
+  {
+   "t": "raw",
+   "html": "<article aria-label=\"Forced dark theme example\" data-theme=\"dark\"><h2>Dark card</h2><form><fieldset class=\"grid\"><input aria-label=\"Login\" autocomplete=\"username\" name=\"login\" placeholder=\"Login\" type=\"text\"/><input aria-label=\"Password\" autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><button type=\"submit\">Login</button></fieldset><fieldset><label><input checked=\"\" name=\"switch\" role=\"switch\" type=\"checkbox\"/> Remember me</label></fieldset></form></article>"
+  }
+ ]
+}

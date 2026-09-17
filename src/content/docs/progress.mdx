@@ -1,0 +1,25 @@
+---
+title: 进度条
+chapter: 组件
+lead: 纯 HTML 的进度条元素，无需 JavaScript。
+toc:
+  - { id: indeterminate, text: 不确定状态, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Progress example" class="component"><progress max="100" value="34"></progress></article>`}
+  code={`<progress value="34" max="100" />`}
+  lang="html"
+  label="Progress example"
+/>
+
+<h2 id="indeterminate">不确定状态</h2>
+
+<Ex
+  html={`<article aria-label="Indeterminate progress example" class="component"><progress></progress></article>`}
+  code={`<progress />`}
+  lang="html"
+  label="Indeterminate progress example"
+/>

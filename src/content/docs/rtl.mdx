@@ -1,0 +1,32 @@
+---
+title: RTL
+chapter: 入门
+lead: 支持从右到左（Right-To-Left）的文本布局。
+---
+
+import Ex from "../../components/Ex.astro";
+
+要在 Pico 中启用 RTL（Right-To-Left，从右到左），需要在 `<html>` 元素上设置 `dir="rtl"`。
+
+```html
+<!doctype html>
+<html dir="rtl" lang="ar">
+  ...
+</html>
+```
+
+RTL 也可以按元素单独启用：
+
+<Ex
+  html={`<article aria-label="RTL example" class="component"><blockquote dir="rtl" lang="ar">“كُنْ كالطير، الذي إذا اعتاد القفز على الأغصان لا يحس بالخطر وليس في ذلك أي تردد، ولكنه لو فقد الثقة بجناحيه فإنه يسقط أرضًا. كذلك، إذا اعتاد الإنسان على العمل الصالح فإنه يستطيع فعله بلا جهد وليس في ذلك أي عناء، ولكنه إذا فقد الثقة بنفسه فإنه يفشل.”<footer><cite>— خليل جبران</cite></footer></blockquote></article>`}
+  code={`<blockquote dir="rtl" lang="ar">
+  “كُنْ كالطير، الذي إذا اعتاد القفز على الأغصان لا يحس بالخطر وليس في ذلك أي تردد،
+  ولكنه لو فقد الثقة بجناحيه فإنه يسقط أرضًا. كذلك، إذا اعتاد الإنسان على العمل الصالح
+  فإنه يستطيع فعله بلا جهد وليس في ذلك أي عناء، ولكنه إذا فقد الثقة بنفسه فإنه يفشل.”
+  <footer>
+    <cite>— خليل جبران</cite>
+  </footer>
+</blockquote>`}
+  lang="html"
+  label="RTL example"
+/>

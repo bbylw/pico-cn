@@ -1,0 +1,189 @@
+---
+title: 导航
+chapter: 组件
+lead: 纯语义化 HTML 实现的基础导航栏组件。
+toc:
+  - { id: link-variants, text: 链接变体, depth: 2 }
+  - { id: buttons, text: 按钮, depth: 2 }
+  - { id: dropdowns, text: 下拉菜单, depth: 2 }
+  - { id: vertical-stacking, text: 垂直堆叠, depth: 2 }
+  - { id: breadcrumb, text: 面包屑, depth: 2 }
+  - { id: overflow, text: 溢出, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Nav example" class="component"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a data-discover="true" href="/docs/nav">About</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li><li><a data-discover="true" href="/docs/nav">Products</a></li></ul></nav></article>`}
+  code={`<nav>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Products</a></li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Nav example"
+/>
+
+`<ul>` 会自动水平分布。
+
+`<li>` 不带样式且内联排列。
+
+`<a>` 仅在 `:hover` 时显示下划线。
+
+<h2 id="link-variants">链接变体</h2>
+
+你可以使用 `.secondary`、`.contrast` 和 `.outline` 类（[无类版本](/docs/classless/)中不可用）。
+
+<Ex
+  html={`<article aria-label="Nav example" class="component"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a class="contrast" data-discover="true" href="/docs/nav">About</a></li><li><a class="contrast" data-discover="true" href="/docs/nav">Services</a></li><li><a class="contrast" data-discover="true" href="/docs/nav">Products</a></li></ul></nav></article>`}
+  code={`<nav>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#" class="contrast">About</a></li>
+    <li><a href="#" class="contrast">Services</a></li>
+    <li><a href="#" class="contrast">Products</a></li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Nav example"
+/>
+
+<Ex
+  html={`<article aria-label="Nav example" class="component"><nav><ul><li><a aria-label="Menu" class="secondary" data-discover="true" href="/docs/nav"><svg class="icon-menu" fill="none" height="1rem" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path d="M4 18l16 0"></path></svg></a></li></ul><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a aria-label="Twitter" class="secondary" data-discover="true" href="/docs/nav"><svg class="icon-x" height="1rem" viewbox="0 0 512 512" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg></a></li></ul></nav></article>`}
+  code={`<nav>
+  <ul>
+    <li><a href="#" class="secondary">...</a></li>
+  </ul>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#" class="secondary">...</a></li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Nav example"
+/>
+
+<h2 id="buttons">按钮</h2>
+
+你可以在 `<li>` 内使用 `<button>`。
+
+按钮的尺寸会自动匹配链接的大小与外边距。
+
+<Ex
+  html={`<article aria-label="Nav example" class="component"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a data-discover="true" href="/docs/nav">About</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li><li><button class="secondary">Products</button></li></ul></nav></article>`}
+  code={`<nav>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><button class="secondary">Products</button></li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Nav example"
+/>
+
+<h2 id="dropdowns">下拉菜单</h2>
+
+你可以在 Nav 内使用[下拉菜单](/docs/dropdown/)。
+
+<Ex
+  html={`<article aria-label="Dropdowns inside nav" class="component"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a class="secondary" data-discover="true" href="/docs/nav">Services</a></li><li><details class="dropdown"><summary>Account</summary><ul dir="rtl"><li><a data-discover="true" href="/docs/nav">Profile</a></li><li><a data-discover="true" href="/docs/nav">Settings</a></li><li><a data-discover="true" href="/docs/nav">Security</a></li><li><a data-discover="true" href="/docs/nav">Logout</a></li></ul></details></li></ul></nav></article>`}
+  code={`<nav>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#" class="secondary">Services</a></li>
+    <li>
+      <details class="dropdown">
+        <summary>
+          Account
+        </summary>
+        <ul dir="rtl">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </details>
+    </li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Dropdowns inside nav"
+/>
+
+<h2 id="vertical-stacking">垂直堆叠</h2>
+
+在 `<aside>` 内，导航条目会垂直堆叠。
+
+<Ex
+  html={`<article aria-label="Vertical nav example" class="component"><aside><nav><ul><li><a data-discover="true" href="/docs/nav">About</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li><li><a data-discover="true" href="/docs/nav">Products</a></li></ul></nav></aside></article>`}
+  code={`<aside>
+  <nav>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+    </ul>
+  </nav>
+</aside>`}
+  lang="html"
+  label="Vertical nav example"
+/>
+
+<h2 id="breadcrumb">面包屑</h2>
+
+使用 `<nav aria-label="breadcrumb">`，可以把导航变成面包屑。
+
+<Ex
+  html={`<article aria-label="Breadcrumb example" class="component"><nav aria-label="breadcrumb"><ul><li><a data-discover="true" href="/docs/nav">Home</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li><li>Design</li></ul></nav></article>`}
+  code={`<nav aria-label="breadcrumb">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li>Design</li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Breadcrumb example"
+/>
+
+你可以通过局部 CSS 自定义属性 `--pico-nav-breadcrumb-divider` 更换分隔符。
+
+<Ex
+  html={`<article aria-label="Breadcrumb example" class="component"><nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider:'✨'"><ul><li><a data-discover="true" href="/docs/nav">Home</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li><li>Design</li></ul></nav></article>`}
+  code={`<nav
+  aria-label="breadcrumb"
+  style="--pico-nav-breadcrumb-divider: '✨';"
+>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li>Design</li>
+  </ul>
+</nav>`}
+  lang="html"
+  label="Breadcrumb example"
+/>
+
+<h2 id="overflow">溢出</h2>
+
+`<nav>` 组件在容器上使用 `overflow: visible;`，并在子元素上使用负外边距，让链接在键盘导航下拥有美观的 `::focus-visible` 样式，同时保持内容水平对齐。
+
+<Ex
+  html={`<article aria-label="Overflow example" class="component"><nav aria-label="overflow"><ul><li><a data-discover="true" href="/docs/nav">About</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li></ul><ul><li><a data-discover="true" href="/docs/nav">Products</a></li></ul></nav><nav aria-label="overflow-with-focus"><ul><li><a class="focused" data-discover="true" href="/docs/nav">About</a></li><li><a data-discover="true" href="/docs/nav">Services</a></li></ul><ul><li><a class="focused" data-discover="true" href="/docs/nav">Products</a></li></ul></nav></article>`}
+  label="Overflow example"
+/>

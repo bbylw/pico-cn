@@ -1,0 +1,113 @@
+{
+ "meta": {
+  "slug": "dropdown",
+  "chapter": "Components",
+  "title": "Dropdown",
+  "lead": "Create dropdown menus and custom selects with minimal and semantic HTML, without JavaScript.",
+  "url": "https://picocss.com/docs/dropdown"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Dropdowns are built with `<details class=\"dropdown\">` as a wrapper and `<summary>` and `<ul>` as direct children. Unless they are in a [Nav](https://picocss.com/docs/nav), dropdowns are `width: 100%;` by default."
+  },
+  {
+   "t": "p",
+   "md": "Dropdowns are not available in the [class‑less version](https://picocss.com/docs/classless)."
+  },
+  {
+   "t": "p",
+   "md": "For style consistency with the form elements, dropdowns are styled like a select by default."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns as selects",
+   "demo": "<article aria-label=\"Dropdowns as selects\" class=\"component\"><div class=\"grid\"><details class=\"dropdown\"><summary>Dropdown</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><select aria-label=\"Select\" name=\"select\" required=\"\"><option disabled=\"\" selected=\"\" value=\"\">Select</option><option>Solid</option><option>Liquid</option><option>Gas</option><option>Plasma</option></select></div></article>",
+   "lang": "html",
+   "code": "<!-- Dropdown -->\n<details class=\"dropdown\">\n  <summary>Dropdown</summary>\n  <ul>\n    <li><a href=\"#\">Solid</a></li>\n    <li><a href=\"#\">Liquid</a></li>\n    <li><a href=\"#\">Gas</a></li>\n    <li><a href=\"#\">Plasma</a></li>\n  </ul>\n</details>\n\n<!-- Select -->\n<select name=\"select\" aria-label=\"Select\" required>\n  <option selected disabled value=\"\">Select</option>\n  <option>Solid</option>\n  <option>Liquid</option>\n  <option>Gas</option>\n  <option>Plasma</option>false\n</select>"
+  },
+  {
+   "t": "h2",
+   "text": "Dropdowns with checkboxes and radios",
+   "id": "dropdowns-with-checkboxes-and-radios"
+  },
+  {
+   "t": "p",
+   "md": "Dropdowns can be used as custom selects with `<input type=\"radio\">` or `<input type=\"checkbox\">`."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns with radio buttons or checkboxes",
+   "demo": "<article aria-label=\"Dropdowns with radio buttons or checkboxes\" class=\"component\"><details class=\"dropdown\"><summary>Select a phase of matter...</summary><ul><li><label><input name=\"phase\" type=\"radio\" value=\"Solid\"/>Solid</label></li><li><label><input name=\"phase\" type=\"radio\" value=\"Liquid\"/>Liquid</label></li><li><label><input name=\"phase\" type=\"radio\" value=\"Gas\"/>Gas</label></li><li><label><input name=\"phase\" type=\"radio\" value=\"Plasma\"/>Plasma</label></li></ul></details><details class=\"dropdown\"><summary>Select phases of matter...</summary><ul><li><label><input name=\"solid\" type=\"checkbox\" value=\"Solid\"/>Solid</label></li><li><label><input name=\"liquid\" type=\"checkbox\" value=\"Liquid\"/>Liquid</label></li><li><label><input name=\"gas\" type=\"checkbox\" value=\"Gas\"/>Gas</label></li><li><label><input name=\"plasma\" type=\"checkbox\" value=\"Plasma\"/>Plasma</label></li></ul></details></article>",
+   "lang": "html",
+   "code": "<!-- Radios -->\n<details class=\"dropdown\">\n  <summary>\n    Select a phase of matter...\n  </summary>\n  <ul>\n    <li>\n      <label>\n        <input type=\"radio\" name=\"phase\" value=\"solid\" />\n        Solid\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"radio\" name=\"phase\" value=\"liquid\" />\n        Liquid\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"radio\" name=\"phase\" value=\"gas\" />\n        Gas\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"radio\" name=\"phase\" value=\"plasma\" />\n        Plasma\n      </label>\n    </li>\n  </ul>\n</details>\n\n<!-- Checkboxes -->\n<details class=\"dropdown\">\n  <summary>\n    Select phases of matter...\n  </summary>\n  <ul>\n    <li>\n      <label>\n        <input type=\"checkbox\" name=\"solid\" />\n        Solid\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"checkbox\" name=\"liquid\" />\n        Liquid\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"checkbox\" name=\"gas\" />\n        Gas\n      </label>\n    </li>\n    <li>\n      <label>\n        <input type=\"checkbox\" name=\"plasma\" />\n        Plasma\n      </label>\n    </li>\n  </ul>\n</details>"
+  },
+  {
+   "t": "p",
+   "md": "Pico does not include JavaScript code. You will probably need some JavaScript to interact with these custom dropdowns."
+  },
+  {
+   "t": "h2",
+   "text": "Button variants",
+   "id": "button-variants"
+  },
+  {
+   "t": "p",
+   "md": "`<summary role=\"button\">` transforms the dropdown into a button."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns as buttons",
+   "demo": "<article aria-label=\"Dropdowns as buttons\" class=\"component\"><details class=\"dropdown\"><summary role=\"button\">Dropdown as a button</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details></article>",
+   "lang": "html",
+   "code": "<details class=\"dropdown\">\n  <summary role=\"button\">\n    Dropdown as a button\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>"
+  },
+  {
+   "t": "p",
+   "md": "Like regular buttons, they come with `.secondary`, `.contrast`, and `.outline` (not available in the [class-less version](https://picocss.com/docs/classless))."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns as buttons",
+   "demo": "<article aria-label=\"Dropdowns as buttons\" class=\"component\"><details class=\"dropdown\"><summary role=\"button\">Primary</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary class=\"secondary\" role=\"button\">Secondary</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary class=\"contrast\" role=\"button\">Contrast</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary class=\"outline\" role=\"button\">Primary outline</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary class=\"outline secondary\" role=\"button\">Secondary outline</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary class=\"outline contrast\" role=\"button\">Contrast outline</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details></article>",
+   "lang": "html",
+   "code": "<!-- Primary -->\n<details class=\"dropdown\">\n  <summary role=\"button\">\n    Primary\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<!-- Secondary -->\n<details class=\"dropdown\">\n  <summary role=\"button\" class=\"secondary\">\n    Secondary\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<!-- Contrast -->\n<details class=\"dropdown\">\n  <summary role=\"button\" class=\"contrast\">\n    Contrast\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<!-- Primary outline -->\n<details class=\"dropdown\">\n  <summary role=\"button\" class=\"outline\">\n    Primary outline\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<!-- Secondary outline -->\n<details class=\"dropdown\">\n  <summary role=\"button\" class=\"outline secondary\">\n    Secondary outline\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<!-- Contrast outline -->\n<details class=\"dropdown\">\n  <summary role=\"button\" class=\"outline contrast\">\n    Contrast outline\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Just like any form elements, validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns with validation states",
+   "demo": "<article aria-label=\"Dropdowns with validation states\" class=\"component\"><details class=\"dropdown\"><summary aria-invalid=\"false\">Valid phase of matter: Solid</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details><details class=\"dropdown\"><summary aria-invalid=\"true\">Debated classification: Plasma</summary><ul><li><a data-discover=\"true\" href=\"/docs/dropdown\">Solid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Liquid</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Gas</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Plasma</a></li></ul></details></article>",
+   "lang": "html",
+   "code": "<details class=\"dropdown\">\n  <summary aria-invalid=\"false\">\n    Valid phase of matter: Solid\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>\n\n<details class=\"dropdown\">\n  <summary aria-invalid=\"true\">\n    Debated classification: Plasma\n  </summary>\n  <ul>\n    ...\n  </ul>\n</details>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage with <nav>",
+   "id": "usage-with-nav"
+  },
+  {
+   "t": "p",
+   "md": "You can use dropdowns inside [Nav](https://picocss.com/docs/nav)."
+  },
+  {
+   "t": "p",
+   "md": "To change the alignment of the submenu, simply use `<ul dir=\"rtl\">`."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns inside nav",
+   "demo": "<article aria-label=\"Dropdowns inside nav\" class=\"component\"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a class=\"secondary\" data-discover=\"true\" href=\"/docs/dropdown\">Services</a></li><li><details class=\"dropdown\"><summary>Account</summary><ul dir=\"rtl\"><li><a data-discover=\"true\" href=\"/docs/dropdown\">Profile</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Settings</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Security</a></li><li><a data-discover=\"true\" href=\"/docs/dropdown\">Logout</a></li></ul></details></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\" class=\"secondary\">Services</a></li>\n    <li>\n      <details class=\"dropdown\">\n        <summary>\n          Account\n        </summary>\n        <ul dir=\"rtl\">\n          <li><a href=\"#\">Profile</a></li>\n          <li><a href=\"#\">Settings</a></li>\n          <li><a href=\"#\">Security</a></li>\n          <li><a href=\"#\">Logout</a></li>\n        </ul>\n      </details>\n    </li>\n  </ul>\n</nav>"
+  }
+ ]
+}

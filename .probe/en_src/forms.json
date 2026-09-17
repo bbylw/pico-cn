@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "slug": "forms",
+  "chapter": "Forms",
+  "title": "Forms overview",
+  "lead": "All form elements are fully responsive with pure semantic HTML, enabling forms to scale gracefully across devices and viewports.",
+  "url": "https://picocss.com/docs/forms"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Inputs are `width: 100%;` by default and are the same size as the buttons to build consistent forms."
+  },
+  {
+   "t": "example",
+   "label": "Form example",
+   "demo": "<article aria-label=\"Form example\" class=\"component\"><form><fieldset><label>First name<input autocomplete=\"given-name\" name=\"first_name\" placeholder=\"First name\"/></label><label>Email<input autocomplete=\"email\" name=\"email\" placeholder=\"Email\" type=\"email\"/></label></fieldset><input type=\"submit\" value=\"Subscribe\"/></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <fieldset>\n    <label>\n      First name\n      <input\n        name=\"first_name\"\n        placeholder=\"First name\"\n        autocomplete=\"given-name\"\n      />\n    </label>\n    <label>\n      Email\n      <input\n        type=\"email\"\n        name=\"email\"\n        placeholder=\"Email\"\n        autocomplete=\"email\"\n      />\n    </label>\n  </fieldset>\n\n  <input\n    type=\"submit\"\n    value=\"Subscribe\"\n  />\n</form>"
+  },
+  {
+   "t": "p",
+   "md": "`<input>` can be inside or outside `<label>`."
+  },
+  {
+   "t": "example",
+   "label": "Label and input syntax",
+   "demo": "<article aria-label=\"Label and input syntax\" class=\"component\"><form><label>First name<input autocomplete=\"given-name\" name=\"first_name\" placeholder=\"First name\"/></label><label for=\"email\">Email</label><input autocomplete=\"email\" id=\"email\" placeholder=\"Email\" type=\"email\"/></form></article>",
+   "lang": "html",
+   "code": "<form>\n  \n  <!-- Input inside label -->\n  <label>\n    First name\n    <input\n      name=\"first_name\"\n      placeholder=\"First name\"\n      autocomplete=\"given-name\"\n    />\n  </label>\n\n  <!-- Input outside label -->\n  <label for=\"email\">Email</label>\n  <input\n    type=\"email\"\n    id=\"email\"\n    placeholder=\"Email\"\n    autocomplete=\"email\"\n  />\n\n</form>"
+  },
+  {
+   "t": "h2",
+   "text": "Helper text",
+   "id": "helper-text"
+  },
+  {
+   "t": "p",
+   "md": "`<small>` below form elements are muted and act as helper texts."
+  },
+  {
+   "t": "example",
+   "label": "Form helpers example",
+   "demo": "<article aria-label=\"Form helpers example\" class=\"component\"><input aria-describedby=\"email-helper\" aria-label=\"Email\" autocomplete=\"email\" name=\"email\" placeholder=\"Email\" type=\"email\"/><small id=\"email-helper\">We’ll never share your email with anyone else.</small></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"email\"\n  name=\"email\"\n  placeholder=\"Email\"\n  autoComplete=\"email\"\n  aria-label=\"Email\"\n  aria-describedby=\"email-helper\"\n/>\n<small id=\"email-helper\">\n  We'll never share your email with anyone else.\n</small>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage with grid",
+   "id": "usage-with-grid"
+  },
+  {
+   "t": "p",
+   "md": "You can use `.grid` inside a form. See [Grid](https://picocss.com/docs/grid)."
+  },
+  {
+   "t": "example",
+   "label": "Form and grid example",
+   "demo": "<article aria-label=\"Form and grid example\" class=\"component\"><form><fieldset class=\"grid\"><input aria-label=\"Login\" autocomplete=\"username\" name=\"login\" placeholder=\"Login\"/><input aria-label=\"Password\" autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><input type=\"submit\" value=\"Log in\"/></fieldset></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <fieldset class=\"grid\">\n    <input \n      name=\"login\"\n      placeholder=\"Login\"\n      aria-label=\"Login\"\n      autocomplete=\"username\"\n    />\n    <input\n      type=\"password\"\n      name=\"password\"\n      placeholder=\"Password\"\n      aria-label=\"Password\"\n      autocomplete=\"current-password\"\n    />\n    <input\n      type=\"submit\"\n      value=\"Log in\"\n    />\n  </fieldset>\n</form>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage with group",
+   "id": "usage-with-group"
+  },
+  {
+   "t": "p",
+   "md": "You can use `role=\"group\"` with form elements. See [Group](https://picocss.com/docs/group)."
+  },
+  {
+   "t": "example",
+   "label": "Form group example",
+   "demo": "<article aria-label=\"Form group example\" class=\"component\"><form><fieldset role=\"group\"><input autocomplete=\"email\" name=\"email\" placeholder=\"Enter your email\" type=\"email\"/><input type=\"submit\" value=\"Subscribe\"/></fieldset></form></article>",
+   "lang": "html",
+   "code": "<form>\n  <fieldset role=\"group\">\n    <input\n      type=\"email\"\n      name=\"email\"\n      placeholder=\"Enter your email\"\n      autocomplete=\"email\"\n    />\n    <input type=\"submit\" value=\"Subscribe\" />\n  </fieldset>\n</form>"
+  }
+ ]
+}

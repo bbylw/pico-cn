@@ -1,0 +1,78 @@
+---
+title: 快速开始
+chapter: 入门
+lead: 手动或通过 CDN 引入 <code>pico.css</code>，即可零依赖起步；进阶用法可采用 NPM 或 Composer。
+toc:
+  - { id: install-manually, text: 手动安装, depth: 2 }
+  - { id: usage-from-cdn, text: 通过 CDN 使用, depth: 2 }
+  - { id: install-with-npm, text: 使用 NPM 安装, depth: 2 }
+  - { id: install-with-composer, text: 使用 Composer 安装, depth: 2 }
+  - { id: starter-html-template, text: 起步 HTML 模板, depth: 2 }
+---
+
+开始使用 pico.css 有 4 种方式：
+
+<h2 id="install-manually">手动安装</h2>
+
+[下载 Pico](https://github.com/picocss/pico/archive/refs/heads/main.zip)，并在你网站的 `<head>` 中引入 `/css/pico.min.css`。
+
+```html
+<link rel="stylesheet" href="css/pico.min.css">
+```
+
+<h2 id="usage-from-cdn">通过 CDN 使用</h2>
+
+或者，你可以使用 [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/) 来引入 `pico.min.css`。
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+```
+
+<h2 id="install-with-npm">使用 NPM 安装</h2>
+
+```bash
+npm install @picocss/pico
+```
+
+或者
+
+```bash
+yarn add @picocss/pico
+```
+
+然后，通过 [@use](https://sass-lang.com/documentation/at-rules/use) 将 Pico 引入你的 SCSS 文件：
+
+```scss
+@use "pico";
+```
+
+进一步了解 [使用 Sass 定制](/docs/sass/)。
+
+<h2 id="install-with-composer">使用 Composer 安装</h2>
+
+```bash
+composer require picocss/pico
+```
+
+<h2 id="starter-html-template">起步 HTML 模板</h2>
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Hello world!</h1>
+    </main>
+  </body>
+</html>
+```

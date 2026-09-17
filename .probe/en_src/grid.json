@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "slug": "grid",
+  "chapter": "Layout",
+  "title": "Grid",
+  "lead": "Create minimal responsive layouts with `.grid` to enable auto-layout columns.",
+  "url": "https://picocss.com/docs/grid"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Add columnRemove column"
+  },
+  {
+   "t": "example",
+   "label": "Grid example",
+   "demo": "<article aria-label=\"Grid example\" class=\"component\"><div class=\"grid\"><div>1</div><div>2</div><div>3</div><div>4</div></div></article>",
+   "lang": "html",
+   "code": "<div class=\"grid\">\n  <div>1</div>\n  <div>2</div>\n  <div>3</div>\n  <div>4</div>\n</div>"
+  },
+  {
+   "t": "p",
+   "md": "Columns intentionally collapse on small devices (`<768px`)."
+  },
+  {
+   "t": "p",
+   "md": "`.grid` is not available in the [class‑less version](https://picocss.com/docs/classless)."
+  },
+  {
+   "t": "h2",
+   "text": "About CSS Grids",
+   "id": "about-css-grids"
+  },
+  {
+   "t": "p",
+   "md": "As Pico focuses on native HTML elements, we kept this grid system minimalist."
+  },
+  {
+   "t": "p",
+   "md": "A complete grid system in flexbox, with all the ordering, offsetting, and breakpoints utilities, can be heavier than the total size of the Pico library. Not really in the Pico spirit."
+  },
+  {
+   "t": "p",
+   "md": "If you need a quick way to prototype or build a complex layout, you can look at **Flexbox grid layouts**—for example, [Bootstrap Grid System](https://getbootstrap.com/docs/4.2/getting-started/contents/) or [Flexbox Grid](http://flexboxgrid.com/)."
+  },
+  {
+   "t": "p",
+   "md": "If you need a light and custom grid, you can look at **CSS Grid Generators**—for example, [CSS Grid Generator](https://cssgrid-generator.netlify.app/), [Layoutit!](http://grid.layoutit.com/), or [Griddy](https://griddy.io/)."
+  },
+  {
+   "t": "p",
+   "md": "Alternatively, you can [learn about CSS Grid](https://learncssgrid.com/)."
+  }
+ ]
+}

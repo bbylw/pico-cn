@@ -1,0 +1,133 @@
+{
+ "meta": {
+  "slug": "forms-input",
+  "chapter": "Forms",
+  "title": "Input",
+  "lead": "All input types are consistently styled and come with validation states.",
+  "url": "https://picocss.com/docs/forms-input"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Input examples",
+   "demo": "<article aria-label=\"Input examples\" class=\"component\"><form><input aria-label=\"Text\" name=\"text\" placeholder=\"Text\" type=\"text\"/><input aria-label=\"Email\" autocomplete=\"email\" name=\"email\" placeholder=\"Email\" type=\"email\"/><input aria-label=\"Number\" name=\"number\" placeholder=\"Number\" type=\"number\"/><input aria-label=\"Password\" autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><input aria-label=\"Tel\" autocomplete=\"tel\" name=\"tel\" placeholder=\"Tel\" type=\"tel\"/><input aria-label=\"Url\" name=\"url\" placeholder=\"Url\" type=\"url\"/></form></article>",
+   "lang": "html",
+   "code": "<input type=\"text\" name=\"text\" placeholder=\"Text\" aria-label=\"Text\">\n<input type=\"email\" name=\"email\" placeholder=\"Email\" aria-label=\"Email\" autocomplete=\"email\">\n<input type=\"number\" name=\"number\" placeholder=\"Number\" aria-label=\"Number\">\n<input type=\"password\" name=\"password\" placeholder=\"Password\" aria-label=\"Password\">\n<input type=\"tel\" name=\"tel\" placeholder=\"Tel\" aria-label=\"Tel\" autocomplete=\"tel\">\n<input type=\"url\" name=\"url\" placeholder=\"Url\" aria-label=\"Url\">"
+  },
+  {
+   "t": "h2",
+   "text": "Datetime input",
+   "id": "datetime"
+  },
+  {
+   "t": "p",
+   "md": "Datetime inputs come with an icon."
+  },
+  {
+   "t": "example",
+   "label": "Datetime input examples",
+   "demo": "<article aria-label=\"Datetime input examples\" class=\"component\"><form><input aria-label=\"Date\" name=\"date\" type=\"date\"/><input aria-label=\"Datetime local\" name=\"datetime-local\" type=\"datetime-local\"/><input aria-label=\"Month\" name=\"month\" type=\"month\"/><input aria-label=\"Time\" name=\"time\" type=\"time\"/></form></article>",
+   "lang": "html",
+   "code": "<input type=\"date\" name=\"date\" aria-label=\"Date\">\n<input type=\"datetime-local\" name=\"datetime-local\" aria-label=\"Datetime local\">\n<input type=\"month\" name=\"month\" aria-label=\"Month\">\n<input type=\"time\" name=\"time\" aria-label=\"Time\">"
+  },
+  {
+   "t": "h2",
+   "text": "Search input",
+   "id": "search"
+  },
+  {
+   "t": "p",
+   "md": "`type=\"search\"` comes with a distinctive style."
+  },
+  {
+   "t": "example",
+   "label": "Search input example",
+   "demo": "<article aria-label=\"Search input example\" class=\"component\"><input aria-label=\"Search\" name=\"search\" placeholder=\"Search\" type=\"search\"/></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"search\"\n  name=\"search\"\n  placeholder=\"Search\"\n  aria-label=\"Search\"\n/>"
+  },
+  {
+   "t": "h2",
+   "text": "Color input",
+   "id": "color"
+  },
+  {
+   "t": "p",
+   "md": "`type=\"color\"` is also consistent with the other input types."
+  },
+  {
+   "t": "example",
+   "label": "Color input example",
+   "demo": "<article aria-label=\"Color input example\" class=\"component\"><input aria-label=\"Color picker\" type=\"color\" value=\"#ff9500\"/></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"color\"\n  value=\"#ff9500\"\n  aria-label=\"Color picker\"\n>"
+  },
+  {
+   "t": "h2",
+   "text": "File input",
+   "id": "file"
+  },
+  {
+   "t": "p",
+   "md": "Input type file button has a [*secondary* button style](https://picocss.com/docs/button#variants)."
+  },
+  {
+   "t": "example",
+   "label": "File input example",
+   "demo": "<article aria-label=\"File input example\" class=\"component\"><input type=\"file\"/></article>",
+   "lang": "html",
+   "code": "<input type=\"file\">"
+  },
+  {
+   "t": "h2",
+   "text": "Disabled input",
+   "id": "disabled"
+  },
+  {
+   "t": "example",
+   "label": "Disabled example",
+   "demo": "<article aria-label=\"Disabled example\" class=\"component\"><input aria-label=\"Disabled input\" disabled=\"\" name=\"text\" placeholder=\"Disabled\" type=\"text\"/></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"text\"\n  name=\"text\"\n  placeholder=\"Disabled\"\n  aria-label=\"Disabled input\"\n  disabled\n>"
+  },
+  {
+   "t": "h2",
+   "text": "Read-only input",
+   "id": "readonly"
+  },
+  {
+   "t": "example",
+   "label": "Disabled example",
+   "demo": "<article aria-label=\"Disabled example\" class=\"component\"><input aria-label=\"Read-only input\" name=\"text\" readonly=\"\" type=\"text\" value=\"Read-only\"/></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"text\"\n  name=\"text\"\n  value=\"Read-only\"\n  aria-label=\"Read-only input\"\n  readonly\n>"
+  },
+  {
+   "t": "h2",
+   "text": "Validation states",
+   "id": "validation-states"
+  },
+  {
+   "t": "p",
+   "md": "Validation states are provided with `aria-invalid`."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><input aria-invalid=\"false\" name=\"valid\" placeholder=\"Valid\" type=\"text\" value=\"Valid\"/><input aria-invalid=\"true\" name=\"invalid\" placeholder=\"Invalid\" type=\"text\" value=\"Invalid\"/></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"text\"\n  name=\"valid\"\n  value=\"Valid\"\n  aria-invalid=\"false\"\n>\n\n<input\n  type=\"text\"\n  name=\"invalid\"\n  value=\"Invalid\"\n  aria-invalid=\"true\"\n>"
+  },
+  {
+   "t": "p",
+   "md": "Helper texts, defined with `<small>` below the form element, inherit the validation state color."
+  },
+  {
+   "t": "example",
+   "label": "Validation states example",
+   "demo": "<article aria-label=\"Validation states example\" class=\"component\"><input aria-describedby=\"valid-helper\" aria-invalid=\"false\" name=\"valid\" placeholder=\"Valid\" type=\"text\" value=\"Valid\"/><small id=\"valid-helper\">Looks good!</small><input aria-describedby=\"invalid-helper\" aria-invalid=\"true\" name=\"invalid\" placeholder=\"Invalid\" type=\"text\" value=\"Invalid\"/><small id=\"invalid-helper\">Please provide a valid value!</small></article>",
+   "lang": "html",
+   "code": "<input\n  type=\"text\"\n  name=\"valid\"\n  value=\"Valid\"\n  aria-invalid=\"false\"\n  aria-describedby=\"valid-helper\"\n>\n<small id=\"valid-helper\">Looks good!</small>\n\n<input\n  type=\"text\"\n  name=\"invalid\"\n  value=\"Invalid\"\n  aria-invalid=\"true\"\n  aria-describedby=\"invalid-helper\"\n>\n<small id=\"invalid-helper\">\n  Please provide a valid value!\n</small>"
+  }
+ ]
+}

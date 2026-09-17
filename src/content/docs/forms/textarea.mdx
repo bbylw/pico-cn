@@ -1,0 +1,89 @@
+---
+title: 文本域
+chapter: 表单
+lead: 原生 <code>&lt;textarea&gt;</code> 与输入框采用一致样式，以保持统一。
+toc:
+  - { id: disabled, text: 禁用文本域, depth: 2 }
+  - { id: readonly, text: 只读文本域, depth: 2 }
+  - { id: validation-states, text: 验证状态, depth: 2 }
+---
+
+import Ex from "../../../components/Ex.astro";
+
+<Ex
+  html={`<textarea aria-label="Professional short bio" name="bio" placeholder="Write a professional short bio..."></textarea>`}
+  code={`<textarea
+  name="bio"
+  placeholder="Write a professional short bio..."
+  aria-label="Professional short bio"
+>
+</textarea>`}
+  lang="html"
+  label="Textarea example"
+/>
+
+<h2 id="disabled">禁用文本域</h2>
+
+<Ex
+  html={`<textarea aria-label="Disabled textarea" disabled="" name="disabled">Disabled</textarea>`}
+  code={`<textarea name="disabled" disabled>
+  Disabled
+</textarea>`}
+  lang="html"
+  label="Disabled example"
+/>
+
+<h2 id="readonly">只读文本域</h2>
+
+<Ex
+  html={`<textarea aria-label="Read-only textarea" name="read-only" readonly="">Read-only</textarea>`}
+  code={`<textarea name="read-only" readonly>
+  Read-only
+</textarea>`}
+  lang="html"
+  label="Disabled example"
+/>
+
+<h2 id="validation-states">验证状态</h2>
+
+通过 `aria-invalid` 提供验证状态。
+
+<Ex
+  html={`<textarea aria-invalid="false" name="valid" placeholder="Valid">Valid</textarea><textarea aria-invalid="true" name="invalid" placeholder="Invalid">Invalid</textarea>`}
+  code={`<textarea name="valid" aria-invalid="false">
+  Valid
+</textarea>
+
+<textarea name="invalid" aria-invalid="true">
+  Invalid
+</textarea> `}
+  lang="html"
+  label="Validation states example"
+/>
+
+在文本域下方用 `<small>` 定义的辅助文本，会继承验证状态的颜色。
+
+<Ex
+  html={`<textarea aria-describedby="valid-helper" aria-invalid="false" name="valid" placeholder="Valid">Valid</textarea><small id="valid-helper">Looks good!</small><textarea aria-describedby="invalid-helper" aria-invalid="true" name="invalid" placeholder="Invalid">Invalid</textarea><small id="invalid-helper">Please provide a valid value!</small>`}
+  code={`<textarea
+  name="valid"
+  aria-invalid="false"
+  aria-describedby="valid-helper"
+>
+  Valid
+</textarea>
+<small id="valid-helper">Looks good!</small>
+
+<textarea
+  name="invalid"
+  aria-invalid="true"
+  aria-describedby="invalid-helper"
+>
+  Invalid
+</textarea>
+<small id="invalid-helper">
+  Please provide a valid value!
+</small>`}
+  lang="html"
+  label="Validation states example"
+/>

@@ -1,0 +1,95 @@
+---
+title: 排版
+chapter: 内容
+lead: 所有排版元素都是响应式的，能在不同设备与视口之间优雅地缩放。
+toc:
+  - { id: headings, text: 标题, depth: 2 }
+  - { id: heading-group, text: 标题分组, depth: 2 }
+  - { id: inline-text-elements, text: 行内文本元素, depth: 2 }
+  - { id: blockquote, text: 引用块, depth: 2 }
+  - { id: horizontal-rule, text: 水平分隔线, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+import Raw from "../../components/Raw.astro";
+
+响应式字号
+
+| 断点 | xs（超小 `<576px`） | sm（小 `≥576px`） | md（中 `≥768px`） | lg（大 `≥1024px`） | xl（超大 `≥1280px`） | xxl（极大 `≥1536px`） |
+| --- | --- | --- | --- | --- | --- | --- |
+| 基准 | 16px | 17px | 18px | 19px | 20px | 21px |
+| `<h1>` | 32px | 34px | 36px | 38px | 40px | 42px |
+| `<h2>` | 28px | 29.75px | 31.5px | 33.25px | 35px | 36.75px |
+| `<h3>` | 24px | 25.5px | 27px | 28.5px | 30px | 31.5px |
+| `<h4>` | 20px | 21.25px | 22.5px | 23.75px | 25px | 26.25px |
+| `<h5>` | 18px | 19.125px | 20.25px | 21.375px | 22.5px | 23.625px |
+| `<h6>` | 16px | 17px | 18px | 19px | 20px | 21px |
+| `<small>` | 14px | 14.875px | 15.75px | 16.625px | 17.5px | 18.375px |
+
+**以 rem 显示**
+
+为了确保遵循用户的默认字号，基础字号被定义为一个随用户屏幕尺寸增长的百分比，而 HTML 元素则以 `rem` 定义。
+
+由于 `rem` 是 HTML 文档字号的倍数，所有 HTML 元素的字号都会随用户屏幕尺寸按比例增长。
+
+<h2 id="headings">标题</h2>
+
+<Ex
+  html={`<article aria-label="Headings example" class="component"><h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3><h4>Heading 4</h4><h5>Heading 5</h5><h6>Heading 6</h6></article>`}
+  code={`<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>`}
+  lang="html"
+  label="Headings example"
+/>
+
+<h2 id="heading-group">标题分组</h2>
+
+在 `<hgroup>` 内部，外边距会被折叠，并且 `:last-child` 会显示为弱化色。
+
+<Ex
+  html={`<article aria-label="Headings example" class="component"><hgroup><h2>Get inspired with CSS</h2><p>How to use CSS to add glam to your Website?</p></hgroup></article>`}
+  code={`<hgroup>
+  <h2>Get inspired with CSS</h2>
+  <p>How to use CSS to add glam to your Website?</p>
+</hgroup>`}
+  lang="html"
+  label="Headings example"
+/>
+
+<h2 id="inline-text-elements">行内文本元素</h2>
+
+<Raw html={`<div class="grid"><div><p><abbr title="Abbreviation">Abbr.</abbr> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">abbr</span><span class="token tag punctuation">&gt;</span></code></p><p><strong>Bold</strong> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">strong</span><span class="token tag punctuation">&gt;</span></code> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">b</span><span class="token tag punctuation">&gt;</span></code></p><p><em>Italic</em> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">i</span><span class="token tag punctuation">&gt;</span></code> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">em</span><span class="token tag punctuation">&gt;</span></code> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">cite</span><span class="token tag punctuation">&gt;</span></code></p><p><del>Deleted</del> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">del</span><span class="token tag punctuation">&gt;</span></code></p><p><ins>Inserted</ins> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">ins</span><span class="token tag punctuation">&gt;</span></code></p><p><kbd>Ctrl + S</kbd> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">kbd</span><span class="token tag punctuation">&gt;</span></code></p></div><div><p><mark>Highlighted</mark> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">mark</span><span class="token tag punctuation">&gt;</span></code></p><p><s>Strikethrough</s> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">s</span><span class="token tag punctuation">&gt;</span></code></p><p><small>Small </small><code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">small</span><span class="token tag punctuation">&gt;</span></code></p><p>Text <sub>Sub</sub> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">sub</span><span class="token tag punctuation">&gt;</span></code></p><p>Text <sup>Sup</sup> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">sup</span><span class="token tag punctuation">&gt;</span></code></p><p><u>Underline</u> <code class="language-html"><span class="token tag punctuation">&lt;</span><span class="token tag">u</span><span class="token tag punctuation">&gt;</span></code></p></div></div>`} />
+
+<h2 id="blockquote">引用块</h2>
+
+> 设计是个很有意思的词。有些人以为设计意味着看起来怎么样，但显然，往深处看，设计其实关乎它如何运作。
+>
+> — 史蒂夫·乔布斯
+
+```html
+<blockquote>
+  “Design is a funny word. Some people think 
+  design means how it looks. But of course, if 
+  you dig deeper, it's really how it works.”
+  <footer>
+    <cite>— Steve Jobs</cite>
+  </footer>
+</blockquote>
+```
+
+<h2 id="horizontal-rule">水平分隔线</h2>
+
+`<hr>` 标签会渲染一条水平线。
+
+<Ex
+  html={`<article aria-label="Horizontal rule example" class="component"><p>Paragraph before the horizontal line.</p><hr/><p>Paragraph after the horizontal line.</p></article>`}
+  code={`<p>Paragraph before the horizontal line.</p>
+<hr />
+<p>Paragraph after the horizontal line.</p>`}
+  lang="html"
+  label="Horizontal rule example"
+/>

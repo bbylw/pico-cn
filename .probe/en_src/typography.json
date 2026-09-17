@@ -1,0 +1,100 @@
+{
+ "meta": {
+  "slug": "typography",
+  "chapter": "Content",
+  "title": "Typography",
+  "lead": "All typographic elements are responsive and scale gracefully across devices and viewports.",
+  "url": "https://picocss.com/docs/typography"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "",
+   "demo": "<div class=\"overflow-auto\"><table class=\"striped\" id=\"responsive-font-sizes\"><caption>Responsive font sizes</caption><thead><tr><th>Breakpoint</th><th><span data-placement=\"bottom\" data-tooltip=\"Extra small &lt; 576px\">xs</span></th><th><span data-placement=\"bottom\" data-tooltip=\"Small ≥ 576px\">sm</span></th><th><span data-placement=\"bottom\" data-tooltip=\"Medium ≥ 768px\">md</span></th><th><span data-placement=\"bottom\" data-tooltip=\"Large ≥ 1024px\">lg</span></th><th><span data-placement=\"bottom\" data-tooltip=\"Extra large ≥ 1280px\">xl</span></th><th><span data-placement=\"bottom\" data-tooltip=\"Extra extra large ≥ 1536px\">xxl</span></th></tr></thead><tbody><tr><th>Base</th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 16px\">16<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 16px\">17<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 16px\">18<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 16px\">19<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 16px\">20<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 16px\">21<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h1</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 2rem * 16px\">32<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 2rem * 16px\">34<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 2rem * 16px\">36<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 2rem * 16px\">38<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 2rem * 16px\">40<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 2rem * 16px\">42<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h2</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 1.75rem * 16px\">28<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 1.75rem * 16px\">29.75<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 1.75rem * 16px\">31.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 1.75rem * 16px\">33.25<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 1.75rem * 16px\">35<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 1.75rem * 16px\">36.75<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h3</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 1.5rem * 16px\">24<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 1.5rem * 16px\">25.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 1.5rem * 16px\">27<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 1.5rem * 16px\">28.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 1.5rem * 16px\">30<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 1.5rem * 16px\">31.5<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h4</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 1.25rem * 16px\">20<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 1.25rem * 16px\">21.25<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 1.25rem * 16px\">22.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 1.25rem * 16px\">23.75<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 1.25rem * 16px\">25<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 1.25rem * 16px\">26.25<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h5</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 1.125rem * 16px\">18<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 1.125rem * 16px\">19.125<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 1.125rem * 16px\">20.25<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 1.125rem * 16px\">21.375<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 1.125rem * 16px\">22.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 1.125rem * 16px\">23.625<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">h6</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 1rem * 16px\">16<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 1rem * 16px\">17<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 1rem * 16px\">18<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 1rem * 16px\">19<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 1rem * 16px\">20<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 1rem * 16px\">21<small>px</small></span></td></tr><tr><th><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">small</span><span class=\"token tag punctuation\">&gt;</span></code></th><td><span data-placement=\"bottom\" data-tooltip=\"100% * 0.875em * 16px\">14<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"106.25% * 0.875em * 16px\">14.875<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"112.5% * 0.875em * 16px\">15.75<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"118.75% * 0.875em * 16px\">16.625<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"125% * 0.875em * 16px\">17.5<small>px</small></span></td><td><span data-placement=\"bottom\" data-tooltip=\"131.25% * 0.875em * 16px\">18.375<small>px</small></span></td></tr></tbody></table></div>",
+   "lang": "html",
+   "code": ""
+  },
+  {
+   "t": "p",
+   "md": "Display in rem"
+  },
+  {
+   "t": "p",
+   "md": "To ensure that the user’s default font size is followed, the base font size is defined as a percentage that grows with the user’s screen size, while HTML elements are defined in `rem`."
+  },
+  {
+   "t": "p",
+   "md": "Since `rem` is a multiplier of the HTML document font size, all HTML element’s font sizes grow proportionally with the size of the user’s screen."
+  },
+  {
+   "t": "h2",
+   "text": "Headings",
+   "id": "headings"
+  },
+  {
+   "t": "example",
+   "label": "Headings example",
+   "demo": "<article aria-label=\"Headings example\" class=\"component\"><h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3><h4>Heading 4</h4><h5>Heading 5</h5><h6>Heading 6</h6></article>",
+   "lang": "html",
+   "code": "<h1>Heading 1</h1>\n<h2>Heading 2</h2>\n<h3>Heading 3</h3>\n<h4>Heading 4</h4>\n<h5>Heading 5</h5>\n<h6>Heading 6</h6>"
+  },
+  {
+   "t": "h2",
+   "text": "Heading group",
+   "id": "heading-group"
+  },
+  {
+   "t": "p",
+   "md": "Inside a `<hgroup>`, margins are collapsed, and the `:last-child` is muted."
+  },
+  {
+   "t": "example",
+   "label": "Headings example",
+   "demo": "<article aria-label=\"Headings example\" class=\"component\"><hgroup><h2>Get inspired with CSS</h2><p>How to use CSS to add glam to your Website?</p></hgroup></article>",
+   "lang": "html",
+   "code": "<hgroup>\n  <h2>Get inspired with CSS</h2>\n  <p>How to use CSS to add glam to your Website?</p>\n</hgroup>"
+  },
+  {
+   "t": "h2",
+   "text": "Inline text elements",
+   "id": "inline-text-elements"
+  },
+  {
+   "t": "raw",
+   "html": "<div class=\"grid\"><div><p><abbr title=\"Abbreviation\">Abbr.</abbr> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">abbr</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><strong>Bold</strong> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">strong</span><span class=\"token tag punctuation\">&gt;</span></code> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">b</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><em>Italic</em> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">i</span><span class=\"token tag punctuation\">&gt;</span></code> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">em</span><span class=\"token tag punctuation\">&gt;</span></code> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">cite</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><del>Deleted</del> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">del</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><ins>Inserted</ins> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">ins</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><kbd>Ctrl + S</kbd> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">kbd</span><span class=\"token tag punctuation\">&gt;</span></code></p></div><div><p><mark>Highlighted</mark> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">mark</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><s>Strikethrough</s> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">s</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><small>Small </small><code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">small</span><span class=\"token tag punctuation\">&gt;</span></code></p><p>Text <sub>Sub</sub> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">sub</span><span class=\"token tag punctuation\">&gt;</span></code></p><p>Text <sup>Sup</sup> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">sup</span><span class=\"token tag punctuation\">&gt;</span></code></p><p><u>Underline</u> <code class=\"language-html\"><span class=\"token tag punctuation\">&lt;</span><span class=\"token tag\">u</span><span class=\"token tag punctuation\">&gt;</span></code></p></div></div>"
+  },
+  {
+   "t": "h2",
+   "text": "Blockquote",
+   "id": "blockquote"
+  },
+  {
+   "t": "quote",
+   "md": "“Design is a funny word. Some people think design means how it looks. But of course, if you dig deeper, it’s really how it works.”— Steve Jobs"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<blockquote>\n  “Design is a funny word. Some people think \n  design means how it looks. But of course, if \n  you dig deeper, it's really how it works.”\n  <footer>\n    <cite>— Steve Jobs</cite>\n  </footer>\n</blockquote>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Horizontal rule",
+   "id": "horizontal-rule"
+  },
+  {
+   "t": "p",
+   "md": "The `<hr>` tag renders a horizontal line."
+  },
+  {
+   "t": "example",
+   "label": "Horizontal rule example",
+   "demo": "<article aria-label=\"Horizontal rule example\" class=\"component\"><p>Paragraph before the horizontal line.</p><hr/><p>Paragraph after the horizontal line.</p></article>",
+   "lang": "html",
+   "code": "<p>Paragraph before the horizontal line.</p>\n<hr />\n<p>Paragraph after the horizontal line.</p>"
+  }
+ ]
+}

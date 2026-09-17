@@ -1,0 +1,29 @@
+---
+title: 链接
+chapter: 内容
+lead: 链接自带 <code>.secondary</code> 和 <code>.contrast</code> 样式。
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Links example" class="component"><a data-discover="true" href="/docs/link">Primary</a><br/><a class="secondary" data-discover="true" href="/docs/link">Secondary</a><br/><a class="contrast" data-discover="true" href="/docs/link">Contrast</a><br/></article>`}
+  code={`<a href="#">Primary</a>
+<a href="#" class="secondary">Secondary</a>
+<a href="#" class="contrast">Contrast</a>`}
+  lang="html"
+  label="Links example"
+/>
+
+`.secondary` 和 `.contrast` 类在[无类版本](/docs/classless/)中不可用。
+
+`aria-current` 会将激活状态传递给辅助技术，并以悬停链接的样式显示。
+
+<Ex
+  html={`<article aria-label="Active link example" class="component"><a data-discover="true" href="/docs/link">Regular link</a><br/><a aria-current="page" data-discover="true" href="/docs/link">Active link</a><br/><a data-discover="true" href="/docs/link">Regular link</a><br/></article>`}
+  code={`<a href="#">Regular link</a>
+<a href="#" aria-current="page">Active link</a>
+<a href="#">Regular link</a>`}
+  lang="html"
+  label="Active link example"
+/>

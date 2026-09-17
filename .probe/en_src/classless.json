@@ -1,0 +1,137 @@
+{
+ "meta": {
+  "slug": "classless",
+  "chapter": "Getting started",
+  "title": "Class-less version",
+  "lead": "Embrace minimalism with Pico’s `.classless` version, a semantic option for wild HTML purists who prefer a stripped-down approach.",
+  "url": "https://picocss.com/docs/classless"
+ },
+ "blocks": [
+  {
+   "t": "p",
+   "md": "Pico provides a `.classless` version ([example](https://x4qtf8.csb.app/))."
+  },
+  {
+   "t": "p",
+   "md": "In this version, `<header>`, `<main>`, and `<footer>` inside `<body>` act as [containers](https://picocss.com/docs/container) to define a centered or a fluid viewport."
+  },
+  {
+   "t": "code",
+   "lang": "css",
+   "code": "/* Containers */\nbody > header,\nbody > main,\nbody > footer {\n  ...\n}",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "These 2 pages have the same style:"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!-- With pico.min.css -->\n<body>\n  <main class=\"container\">\n    <h1>Hello, world!</h1>\n  </main>\n</body>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!-- With pico.classless.min.css -->\n<body>\n  <main>\n    <h1>Hello, world!</h1>\n  </main>\n</body>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "See the [version picker](https://picocss.com/docs/version-picker) to easily select the ideal Pico CSS version variant to match your project's needs."
+  },
+  {
+   "t": "h2",
+   "text": "Usage",
+   "id": "usage"
+  },
+  {
+   "t": "p",
+   "md": "Use the default `.classless` version if you need centered viewports:"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.classless.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "Or use the `.fluid.classless` version if you need a fluid container:"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.fluid.classless.min.css\">",
+   "title": "",
+   "collapsed": false,
+   "small": true
+  },
+  {
+   "t": "p",
+   "md": "These `.classless` versions are also available on [jsDelivr CDN](https://cdn.jsdelivr.net/npm/@picocss/pico@2/):"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!-- Centered viewport -->\n<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css\"\n>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!-- Fluid viewport -->\n<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css\"\n>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Root container",
+   "id": "root-container"
+  },
+  {
+   "t": "p",
+   "md": "If you need to customize the default root container for `<header>`, `<main>`, and `<footer>`, you can recompile Pico with another CSS selector."
+  },
+  {
+   "t": "p",
+   "md": "Useful for [React](https://reactjs.org/), [Gatsby](https://www.gatsbyjs.com/), or [Next.js](https://nextjs.org/)."
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "/* Custom Class-less version for React */\n@use \"pico\" with (\n  \n  // Define the root element used to target <header>, <main>, <footer>\n  // with $enable-semantic-container and $enable-responsive-spacings\n  $semantic-root-element: \"#root\",\n  \n  // Enable <header>, <main>, <footer> inside $semantic-root-element as containers\n  $enable-semantic-container: true,\n\n  // Enable .classes\n  $enable-classes: false\n)",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "The code above will compile Pico with the containers defined like this:"
+  },
+  {
+   "t": "code",
+   "lang": "css",
+   "code": "/* Containers */\n#root > header,\n#root > main,\n#root > footer {\n  ...\n}",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "p",
+   "md": "Learn more about [compiling a custom version of Pico with SASS](https://picocss.com/docs/sass)."
+  }
+ ]
+}

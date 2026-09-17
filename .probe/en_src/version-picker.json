@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "slug": "version-picker",
+  "chapter": "Getting started",
+  "title": "Version picker",
+  "lead": "Easily select the ideal Pico CSS version variant to match your project's needs.",
+  "url": "https://picocss.com/docs/version-picker"
+ },
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Theme color",
+   "id": "theme-color"
+  },
+  {
+   "t": "example",
+   "label": "Custom theme example",
+   "demo": "<article aria-label=\"Custom theme example\" class=\"color-picker component\"><header><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-red\" data-discover=\"true\" href=\"/docs/version-picker/red\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-pink\" data-discover=\"true\" href=\"/docs/version-picker/pink\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-fuchsia\" data-discover=\"true\" href=\"/docs/version-picker/fuchsia\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-purple\" data-discover=\"true\" href=\"/docs/version-picker/purple\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-violet\" data-discover=\"true\" href=\"/docs/version-picker/violet\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-indigo\" data-discover=\"true\" href=\"/docs/version-picker/indigo\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-blue\" data-discover=\"true\" href=\"/docs/version-picker/blue\"></a><a aria-busy=\"false\" aria-current=\"page\" aria-label=\"Azure\" class=\"pico-background-azure\" data-discover=\"true\" href=\"/docs/version-picker\"><svg class=\"icon-check\" fill=\"none\" height=\"24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"4\" viewbox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><style>\n path#check-icon {\n stroke-dasharray: 22px;\n stroke-dashoffset: 22px;\n animation: check 0.2s ease-out forwards;\n }\n @keyframes check {\n from {\n stroke-dashoffset: 22px;\n }\n to {\n stroke-dashoffset: 0;\n }\n }\n </style><path d=\"M5 12l5 5l10 -10\" id=\"check-icon\"></path></svg></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-cyan\" data-discover=\"true\" href=\"/docs/version-picker/cyan\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-jade\" data-discover=\"true\" href=\"/docs/version-picker/jade\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-green\" data-discover=\"true\" href=\"/docs/version-picker/green\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-lime\" data-discover=\"true\" href=\"/docs/version-picker/lime\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-yellow\" data-discover=\"true\" href=\"/docs/version-picker/yellow\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-amber\" data-discover=\"true\" href=\"/docs/version-picker/amber\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-pumpkin\" data-discover=\"true\" href=\"/docs/version-picker/pumpkin\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-orange\" data-discover=\"true\" href=\"/docs/version-picker/orange\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-sand\" data-discover=\"true\" href=\"/docs/version-picker/sand\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-grey\" data-discover=\"true\" href=\"/docs/version-picker/grey\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-zinc\" data-discover=\"true\" href=\"/docs/version-picker/zinc\"></a><a aria-busy=\"false\" aria-label=\"Azure\" class=\"pico-background-slate\" data-discover=\"true\" href=\"/docs/version-picker/slate\"></a></header><hgroup><h2>Azure</h2><p>Form example with an azure theme.</p></hgroup><form><fieldset class=\"grid\"><input aria-label=\"Login\" autocomplete=\"username\" name=\"login\" placeholder=\"Login\" type=\"text\"/><input aria-label=\"Password\" autocomplete=\"current-password\" name=\"password\" placeholder=\"Password\" type=\"password\"/><button type=\"submit\">Log in</button></fieldset><fieldset><label><input checked=\"\" name=\"switch\" role=\"switch\" type=\"checkbox\"/> I agree to the <a data-discover=\"true\" href=\"/docs/version-picker\">Privacy Policy</a></label></fieldset></form></article>",
+   "lang": "html",
+   "code": "<link rel=\"stylesheet\" href=\"css/pico.min.css\">"
+  },
+  {
+   "t": "h2",
+   "text": "Configuration",
+   "id": "configuration"
+  },
+  {
+   "t": "raw",
+   "html": "<select name=\"configuration\"><option value=\"0\">Regular, with classes</option><option value=\"1\">Class-less, with centered viewports</option><option value=\"2\">Class-less, with fluid viewport</option></select>"
+  },
+  {
+   "t": "raw",
+   "html": "<small>The default version of Pico CSS, with all components and classes.</small>"
+  },
+  {
+   "t": "raw",
+   "html": "<fieldset><label><input name=\"conditional\" role=\"switch\" type=\"checkbox\"/>Conditional Styling</label></fieldset>"
+  },
+  {
+   "t": "raw",
+   "html": "<small>The default version applies Pico styles to every HTML element.</small>"
+  },
+  {
+   "t": "h2",
+   "text": "Usage from CDN",
+   "id": "usage-from-cdn"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css\"\n>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Usage with Sass",
+   "id": "usage-with-sass"
+  },
+  {
+   "t": "code",
+   "lang": "scss",
+   "code": "@use \"pico\";",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  },
+  {
+   "t": "h2",
+   "text": "Starter HTML template",
+   "id": "starter-html-template"
+  },
+  {
+   "t": "code",
+   "lang": "html",
+   "code": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"color-scheme\" content=\"light dark\">\n    <link rel=\"stylesheet\" href=\"css/pico.min.css\">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class=\"container\">\n      <h1>Hello world!</h1>\n    </main>\n  </body>\n</html>",
+   "title": "",
+   "collapsed": false,
+   "small": false
+  }
+ ]
+}

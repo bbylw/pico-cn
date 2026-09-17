@@ -1,0 +1,148 @@
+{
+ "meta": {
+  "slug": "nav",
+  "chapter": "Components",
+  "title": "Nav",
+  "lead": "The essential navbar component in pure semantic HTML.",
+  "url": "https://picocss.com/docs/nav"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Nav example",
+   "demo": "<article aria-label=\"Nav example\" class=\"component\"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Products</a></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\">About</a></li>\n    <li><a href=\"#\">Services</a></li>\n    <li><a href=\"#\">Products</a></li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "p",
+   "md": "`<ul>` are automatically distributed horizontally."
+  },
+  {
+   "t": "p",
+   "md": "`<li>` are unstyled and inlined."
+  },
+  {
+   "t": "p",
+   "md": "`<a>` are underlined only on `:hover`."
+  },
+  {
+   "t": "h2",
+   "text": "Link variants",
+   "id": "link-variants"
+  },
+  {
+   "t": "p",
+   "md": "You can use `.secondary`, `.contrast`, and `.outline` classes (not available in the [class-less version](https://picocss.com/docs/classless))."
+  },
+  {
+   "t": "example",
+   "label": "Nav example",
+   "demo": "<article aria-label=\"Nav example\" class=\"component\"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a class=\"contrast\" data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a class=\"contrast\" data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li><a class=\"contrast\" data-discover=\"true\" href=\"/docs/nav\">Products</a></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\" class=\"contrast\">About</a></li>\n    <li><a href=\"#\" class=\"contrast\">Services</a></li>\n    <li><a href=\"#\" class=\"contrast\">Products</a></li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "example",
+   "label": "Nav example",
+   "demo": "<article aria-label=\"Nav example\" class=\"component\"><nav><ul><li><a aria-label=\"Menu\" class=\"secondary\" data-discover=\"true\" href=\"/docs/nav\"><svg class=\"icon-menu\" fill=\"none\" height=\"1rem\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\" width=\"100%\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 6l16 0\"></path><path d=\"M4 12l16 0\"></path><path d=\"M4 18l16 0\"></path></svg></a></li></ul><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a aria-label=\"Twitter\" class=\"secondary\" data-discover=\"true\" href=\"/docs/nav\"><svg class=\"icon-x\" height=\"1rem\" viewbox=\"0 0 512 512\" width=\"100%\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z\"></path></svg></a></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><a href=\"#\" class=\"secondary\">...</a></li>\n  </ul>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\" class=\"secondary\">...</a></li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "h2",
+   "text": "Buttons",
+   "id": "buttons"
+  },
+  {
+   "t": "p",
+   "md": "You can use `<button>` inside `<li>`."
+  },
+  {
+   "t": "p",
+   "md": "Button sizes automatically match link size and margin."
+  },
+  {
+   "t": "example",
+   "label": "Nav example",
+   "demo": "<article aria-label=\"Nav example\" class=\"component\"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li><button class=\"secondary\">Products</button></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\">About</a></li>\n    <li><a href=\"#\">Services</a></li>\n    <li><button class=\"secondary\">Products</button></li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "h2",
+   "text": "Dropdowns",
+   "id": "dropdowns"
+  },
+  {
+   "t": "p",
+   "md": "You can use [dropdowns](https://picocss.com/docs/dropdown) inside Nav."
+  },
+  {
+   "t": "example",
+   "label": "Dropdowns inside nav",
+   "demo": "<article aria-label=\"Dropdowns inside nav\" class=\"component\"><nav><ul><li><strong>Acme Corp</strong></li></ul><ul><li><a class=\"secondary\" data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li><details class=\"dropdown\"><summary>Account</summary><ul dir=\"rtl\"><li><a data-discover=\"true\" href=\"/docs/nav\">Profile</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Settings</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Security</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Logout</a></li></ul></details></li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav>\n  <ul>\n    <li><strong>Acme Corp</strong></li>\n  </ul>\n  <ul>\n    <li><a href=\"#\" class=\"secondary\">Services</a></li>\n    <li>\n      <details class=\"dropdown\">\n        <summary>\n          Account\n        </summary>\n        <ul dir=\"rtl\">\n          <li><a href=\"#\">Profile</a></li>\n          <li><a href=\"#\">Settings</a></li>\n          <li><a href=\"#\">Security</a></li>\n          <li><a href=\"#\">Logout</a></li>\n        </ul>\n      </details>\n    </li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "h2",
+   "text": "Vertical stacking",
+   "id": "vertical-stacking"
+  },
+  {
+   "t": "p",
+   "md": "Inside `<aside>`, navs items are stacked vertically."
+  },
+  {
+   "t": "example",
+   "label": "Vertical nav example",
+   "demo": "<article aria-label=\"Vertical nav example\" class=\"component\"><aside><nav><ul><li><a data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Products</a></li></ul></nav></aside></article>",
+   "lang": "html",
+   "code": "<aside>\n  <nav>\n    <ul>\n      <li><a href=\"#\">About</a></li>\n      <li><a href=\"#\">Services</a></li>\n      <li><a href=\"#\">Products</a></li>\n    </ul>\n  </nav>\n</aside>"
+  },
+  {
+   "t": "h2",
+   "text": "Breadcrumb",
+   "id": "breadcrumb"
+  },
+  {
+   "t": "p",
+   "md": "With `<nav aria-label=\"breadcrumb\">`, you can turn a nav into a breadcrumb."
+  },
+  {
+   "t": "example",
+   "label": "Breadcrumb example",
+   "demo": "<article aria-label=\"Breadcrumb example\" class=\"component\"><nav aria-label=\"breadcrumb\"><ul><li><a data-discover=\"true\" href=\"/docs/nav\">Home</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li>Design</li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav aria-label=\"breadcrumb\">\n  <ul>\n    <li><a href=\"#\">Home</a></li>\n    <li><a href=\"#\">Services</a></li>\n    <li>Design</li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "p",
+   "md": "You can change the divider with a local CSS custom property `--pico-nav-breadcrumb-divider`."
+  },
+  {
+   "t": "example",
+   "label": "Breadcrumb example",
+   "demo": "<article aria-label=\"Breadcrumb example\" class=\"component\"><nav aria-label=\"breadcrumb\" style=\"--pico-nav-breadcrumb-divider:'✨'\"><ul><li><a data-discover=\"true\" href=\"/docs/nav\">Home</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li><li>Design</li></ul></nav></article>",
+   "lang": "html",
+   "code": "<nav\n  aria-label=\"breadcrumb\"\n  style=\"--pico-nav-breadcrumb-divider: '✨';\"\n>\n  <ul>\n    <li><a href=\"#\">Home</a></li>\n    <li><a href=\"#\">Services</a></li>\n    <li>Design</li>\n  </ul>\n</nav>"
+  },
+  {
+   "t": "h2",
+   "text": "Overflow",
+   "id": "overflow"
+  },
+  {
+   "t": "p",
+   "md": "The `<nav>` component uses `overflow: visible;` on the container and negative margins on children to provide a nice `::focus-visible` style for links on keyboard navigation while keeping the content aligned horizontally."
+  },
+  {
+   "t": "example",
+   "label": "Overflow example",
+   "demo": "<article aria-label=\"Overflow example\" class=\"component\"><nav aria-label=\"overflow\"><ul><li><a data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li></ul><ul><li><a data-discover=\"true\" href=\"/docs/nav\">Products</a></li></ul></nav><nav aria-label=\"overflow-with-focus\"><ul><li><a class=\"focused\" data-discover=\"true\" href=\"/docs/nav\">About</a></li><li><a data-discover=\"true\" href=\"/docs/nav\">Services</a></li></ul><ul><li><a class=\"focused\" data-discover=\"true\" href=\"/docs/nav\">Products</a></li></ul></nav></article>",
+   "lang": "html",
+   "code": ""
+  }
+ ]
+}

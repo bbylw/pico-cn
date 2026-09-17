@@ -1,0 +1,80 @@
+---
+title: v2 有哪些新特性？
+chapter: 关于
+lead: Pico v2.0 带来更好的无障碍支持、基于 SASS 的更简单定制、完整的调色板、全新的分组组件，以及 20 套预编译配色方案，通过 CDN 即可获得总计超过 100 种组合。
+toc:
+  - { id: new-look-and-feel, text: 全新观感, depth: 2 }
+  - { id: easier-customisation, text: 定制更简单, depth: 2 }
+  - { id: color-palette, text: 调色板, depth: 2 }
+  - { id: better-breakpoints, text: 更好的断点, depth: 2 }
+  - { id: group-component, text: 分组组件, depth: 2 }
+  - { id: conditional-styling, text: 条件样式, depth: 2 }
+  - { id: version-picker, text: 版本选择器, depth: 2 }
+  - { id: breaking-changes, text: 破坏性变更, depth: 2 }
+  - { id: css-vars, text: CSS 变量, depth: 3 }
+  - { id: scss-files, text: SCSS 文件, depth: 3 }
+  - { id: buttons, text: 按钮, depth: 3 }
+  - { id: table, text: 表格, depth: 3 }
+  - { id: dropdowns, text: 下拉菜单, depth: 3 }
+  - { id: grid, text: 栅格, depth: 3 }
+---
+
+<h2 id="new-look-and-feel">全新观感</h2>
+
+所有颜色都经过重新精心手工定义，呈现出对比更强、更中性（少一些蓝调）的观感。
+
+默认配色方案的可访问性大幅提升。大多数颜色现已符合 WCAG 2.1 AAA 标准，部分柔和的次要颜色符合 WCAG 2.1 AA 标准。
+
+焦点状态在一致性和对比度上均有改进，间距也做了缩减，整体风格更利落、更中性。
+
+<h2 id="easier-customisation">定制更简单</h2>
+
+我们重构了所有 `.scss` 文件，方便你通过 [SASS](/docs/sass/) 编译自己版本的 Pico。现在所有模块都可以使用 [@use](https://sass-lang.com/documentation/at-rules/use) 启用或禁用。
+
+我们新增了更多 [CSS 变量](/docs/css-variables/)，总数已超过 130 个，可以轻松打造独特的观感，提升设计灵活性。
+
+<h2 id="color-palette">调色板</h2>
+
+Pico v2 附带 [380 个手工调配的颜色](/docs/colors/)，帮助你个性化自己的品牌设计系统。这些颜色可以导入任意 `.scss` 文件，并提供了一份包含全部颜色工具类的新样式表。
+
+<h2 id="better-breakpoints">更好的断点</h2>
+
+我们更新了[断点](/docs/container/)，使其匹配标准设备的宽度，并为更大的屏幕新增了断点。
+
+<h2 id="group-component">分组组件</h2>
+
+借助[分组](/docs/group/)（`role="group"`），你现在可以水平堆叠表单元素和按钮。
+
+<h2 id="conditional-styling">条件样式</h2>
+
+[条件样式](/docs/conditional/) 是一项强大的功能，允许你通过将元素包裹在 `.pico` 容器中选择性地应用样式，非常适合混合风格的环境。这种方式将样式限定在指定区域内，在无缝组合多个样式表或组件时尤其有用。
+
+<h2 id="version-picker">版本选择器</h2>
+
+试试[版本选择器](/docs/version-picker/)，它通过 CDN 为所有 Pico 版本提供 20 套预编译配色方案，组合总数超过 100 种。
+
+<h2 id="breaking-changes">破坏性变更</h2>
+
+<h3 id="css-vars">CSS 变量</h3>
+
+所有 [CSS 自定义属性](/docs/css-variables/) 都带有 `pico-` 前缀，以避免与其他 CSS 框架或你自己的变量冲突。我们还新增了 CSS 变量，并按照统一的 `{component}-{state}-{property}` 模式重命名了部分变量。
+
+<h3 id="scss-files">SCSS 文件</h3>
+
+我们重命名并移动了大量 `.scss` 文件。如果你导入了 Pico 模块，需要更新你的路径。
+
+<h3 id="buttons">按钮</h3>
+
+[按钮](/docs/button/) 默认不再是 `width: 100%;`。只有表单按钮保持全宽，以与其他表单元素保持一致。
+
+<h3 id="table">表格</h3>
+
+`.striped` 类现在用于[表格](/docs/table/)的斑马纹样式。
+
+<h3 id="dropdowns">下拉菜单</h3>
+
+[手风琴](/docs/accordion/)仍然是无类的，而[下拉菜单](/docs/dropdown/)现在需要 `.dropdown`。我们还移除了允许在导航中通过嵌套列表实现下拉菜单的实验性语法。
+
+<h3 id="grid">栅格</h3>
+
+[栅格](/docs/grid/)的列现在会在小设备上（`<768px`）折叠。

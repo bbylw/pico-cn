@@ -1,0 +1,103 @@
+---
+title: 按钮
+chapter: 内容
+lead: 按钮使用原生 <code>&lt;button&gt;</code> 标签，无需 <code>.classes</code> 即可获得默认样式。
+toc:
+  - { id: variants, text: 变体, depth: 2 }
+  - { id: form-buttons, text: 表单按钮, depth: 2 }
+  - { id: disabled, text: 禁用, depth: 2 }
+  - { id: role-button, text: 角色按钮, depth: 2 }
+  - { id: usage-with-group, text: 配合分组使用, depth: 2 }
+---
+
+import Ex from "../../components/Ex.astro";
+
+<Ex
+  html={`<article aria-label="Button example" class="component"><button>Button</button></article>`}
+  code={`<button>Button</button>`}
+  lang="html"
+  label="Button example"
+/>
+
+<h2 id="variants">变体</h2>
+
+按钮自带 `.secondary` 和 `.contrast` 样式（在[无类版本](/docs/classless/)中不可用）。
+
+<Ex
+  html={`<article aria-label="Button colors example" class="component"><div class="grid"><button class="secondary">Secondary</button><button class="contrast">Contrast</button></div></article>`}
+  code={`<button class="secondary">Secondary</button>
+<button class="contrast">Contrast</button>`}
+  lang="html"
+  label="Button colors example"
+/>
+
+它们还带有经典的描边样式（在[无类版本](/docs/classless/)中不可用）。
+
+<Ex
+  html={`<article aria-label="Buttons outline example" class="component"><div class="grid"><button class="outline">Primary</button><button class="outline secondary">Secondary</button><button class="outline contrast">Contrast</button></div></article>`}
+  code={`<button class="outline">Primary</button>
+<button class="outline secondary">Secondary</button>
+<button class="outline contrast">Contrast</button>`}
+  lang="html"
+  label="Buttons outline example"
+/>
+
+<h2 id="form-buttons">表单按钮</h2>
+
+`type="submit"` 和 `type="button"` 的 input 同样会显示为按钮。所有表单按钮默认都是 `width: 100%;`，以与其他表单元素保持一致。
+
+<Ex
+  html={`<article aria-label="Input buttons example" class="component"><input type="submit"/><input type="button" value="Input"/></article>`}
+  code={`<input type="submit">
+<input type="button" value="Input">`}
+  lang="html"
+  label="Input buttons example"
+/>
+
+reset input 默认使用次要样式。
+
+<Ex
+  html={`<article aria-label="Reset input example" class="component"><input type="reset"/></article>`}
+  code={`<input type="reset">`}
+  lang="html"
+  label="Reset input example"
+/>
+
+<h2 id="disabled">禁用</h2>
+
+按钮带有禁用样式。
+
+<Ex
+  html={`<article aria-label="Disabled buttons example" class="component"><div class="grid"><button disabled="">Disabled</button><button class="secondary" disabled="">Disabled</button><button class="contrast" disabled="">Disabled</button></div></article>`}
+  code={`<button disabled>Disabled</button>
+<button class="secondary" disabled>Disabled</button>
+<button class="contrast" disabled>Disabled</button>`}
+  lang="html"
+  label="Disabled buttons example"
+/>
+
+<h2 id="role-button">角色按钮</h2>
+
+带有 `role="button"` 的可点击元素会被渲染为按钮。
+
+<Ex
+  html={`<article aria-label="Role button example" class="component"><div role="button" tabindex="0">Div as button</div></article>`}
+  code={`<div role="button" tabindex="0">Div as a button</div>`}
+  lang="html"
+  label="Role button example"
+/>
+
+<h2 id="usage-with-group">配合分组使用</h2>
+
+你可以将 `role="group"` 与按钮一起使用。参见[分组](/docs/group/)。
+
+<Ex
+  html={`<article aria-label="Group example" class="component"><div role="group"><button>Button</button><button>Button</button><button>Button</button></div></article>`}
+  code={`<div role="group">
+  <button>Button</button>
+  <button>Button</button>
+  <button>Button</button>
+</div>`}
+  lang="html"
+  label="Group example"
+/>

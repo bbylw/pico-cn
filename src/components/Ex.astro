@@ -1,0 +1,33 @@
+---
+import Code from "astro/components/Code.astro";
+interface Props {
+  /** 要渲染为实时示例的 HTML */
+  html: string;
+  /** 示例源码；省略则只渲染示例 */
+  code?: string;
+  lang?: string;
+  /** 示例的无障碍标签（英文原文，供翻译注明） */
+  label?: string;
+}
+const { html, code, lang = "html", label } = Astro.props;
+const src = (code ?? "").replace(/^\n+/, "").replace(/\s+$/, "");
+const aria = label || "示例";
+---
+
+<figure class="example" aria-label={aria}>
+  <div class="demo" set:html={html}></div>
+  {
+    src && (
+      <details class="code-box">
+        <summary>查看代码</summary>
+        <Code code={src} lang={lang} theme={{ light: "vitesse-light", dark: "vitesse-dark" }} />
+      </details>
+    )
+  }
+</figure>
+
+<style>
+  figure.example {
+    margin-block: 1.4rem;
+  }
+</style>

@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "slug": "brand",
+  "chapter": "About",
+  "title": "Brand",
+  "lead": "Pico CSS brand assets and usage guidelines.",
+  "url": "https://picocss.com/docs/brand"
+ },
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Logo",
+   "id": "logo"
+  },
+  {
+   "t": "p",
+   "md": "These assets are provided for use in situations like articles and video tutorials. Please do not use the logo in any way that could be confusing for customers or imply any affiliation with Pico CSS."
+  },
+  {
+   "t": "p",
+   "md": "Do not modify the logo and make sure it has enough spacing."
+  },
+  {
+   "t": "raw",
+   "html": "<div class=\"grid\"><article data-theme=\"light\"><a download=\"\" href=\"/build/_assets/pico-logo-light-OKNA7EES.svg\"><img alt=\"Pico CSS logo\" src=\"/build/_assets/pico-logo-light-OKNA7EES.svg\"/></a><footer><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-logo-light-OKNA7EES.svg\" role=\"button\">SVG</a><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-logo-light-I3BYP3V5.png\" role=\"button\">PNG</a></footer></article><article data-theme=\"dark\"><a download=\"\" href=\"/build/_assets/pico-logo-dark-XCR6IJWC.svg\"><img alt=\"Pico CSS logo\" src=\"/build/_assets/pico-logo-dark-XCR6IJWC.svg\"/></a><footer><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-logo-dark-XCR6IJWC.svg\" role=\"button\">SVG</a><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-logo-dark-E4VKKVAT.png\" role=\"button\">PNG</a></footer></article></div>"
+  },
+  {
+   "t": "h2",
+   "text": "Icon",
+   "id": "icon"
+  },
+  {
+   "t": "p",
+   "md": "If the situation prevents otherwise, the icon mark may be used instead of the full logo."
+  },
+  {
+   "t": "raw",
+   "html": "<div class=\"grid\"><article data-theme=\"light\"><a download=\"\" href=\"/build/_assets/pico-mark-light-E4V54OAB.svg\"><img alt=\"Pico CSS icon\" src=\"/build/_assets/pico-mark-light-E4V54OAB.svg\"/></a><footer><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-mark-light-E4V54OAB.svg\" role=\"button\">SVG</a><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-mark-light-UDJTJFFW.png\" role=\"button\">PNG</a></footer></article><article data-theme=\"dark\"><a download=\"\" href=\"/build/_assets/pico-mark-dark-W5OEFAUA.svg\"><img alt=\"Pico CSS icon\" src=\"/build/_assets/pico-mark-dark-W5OEFAUA.svg\"/></a><footer><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-mark-dark-W5OEFAUA.svg\" role=\"button\">SVG</a><a class=\"secondary\" download=\"\" href=\"/build/_assets/pico-mark-dark-R5DOC5U7.png\" role=\"button\">PNG</a></footer></article></div>"
+  },
+  {
+   "t": "h2",
+   "text": "Name",
+   "id": "name"
+  },
+  {
+   "t": "p",
+   "md": "When referring to Pico CSS, the correct brand name is “Pico CSS”. You can also use “Pico” or “Pico ✨” if you prefer."
+  },
+  {
+   "t": "p",
+   "md": "The CSS stylesheet can be referred as “pico.css”. However, please avoid using “PicoCss”, “PicoCSS”, “Pico.css”, or “pico”."
+  },
+  {
+   "t": "h2",
+   "text": "Usage agreement",
+   "id": "usage-agreement"
+  },
+  {
+   "t": "p",
+   "md": "Pico CSS brand name and logo are protected under intellectual property law."
+  },
+  {
+   "t": "p",
+   "md": "You can use the Pico CSS name as part of the name of your open-source and non-commercial project, such as “Pico-React”, but using the name in commercial projects without permission is not allowed."
+  },
+  {
+   "t": "p",
+   "md": "You cannot use the Pico CSS logo for open or closed source projects, but you’re welcome to use it in articles or documentation as long as proper credit is given."
+  },
+  {
+   "t": "p",
+   "md": "The use of the Pico CSS brand name and logo on merchandise, such as t-shirts or stickers, requires explicit written consent."
+  }
+ ]
+}

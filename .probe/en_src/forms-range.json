@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "slug": "forms-range",
+  "chapter": "Forms",
+  "title": "Range",
+  "lead": "Create a slider control with `<input type=\"range\">`.",
+  "url": "https://picocss.com/docs/forms-range"
+ },
+ "blocks": [
+  {
+   "t": "example",
+   "label": "Range examples",
+   "demo": "<article aria-label=\"Range examples\" class=\"component\"><label>Brightness<input type=\"range\"/></label><label>Contrast<input type=\"range\" value=\"40\"/></label></article>",
+   "lang": "html",
+   "code": "<label>\n  Brightness\n  <input type=\"range\" />\n</label>\n\n<label>\n  Contrast\n  <input type=\"range\" value=\"40\" />\n</label>"
+  }
+ ]
+}

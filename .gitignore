@@ -1,0 +1,11 @@
+# 依赖与产物
+node_modules/
+dist/
+.astro/
+
+# 验收工件
+.shots/
+
+# 抓取原始 HTML（体积大；保留 .probe/en_src/*.json 作为翻译源）
+.probe/en/
+.probe/*.html
