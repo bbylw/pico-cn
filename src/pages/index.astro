@@ -16,9 +16,10 @@ const npmCmd = "npm install @picocss/pico";
   <main class="container home" id="top">
     <!-- 1 · Hero：左文案 / 右真实组件预览 -->
     <section class="home-hero" aria-label="介绍">
+      <div class="container home-hero-grid">
       <div class="home-hero-copy">
-        <p class="home-kicker"><span class="home-kicker-dot" aria-hidden="true"></span>v2.1.1 · 语义化 CSS 框架 · 中文文档</p>
-        <h1>写 HTML，<br />就够了。</h1>
+        <p class="home-kicker"><span class="home-kicker-dot" aria-hidden="true"></span>PICO-CN DOCS · V2.1.1 · 中文文档</p>
+        <h1>写 <code>HTML</code>，<br />就够了。</h1>
         <p class="home-lead">
           Pico 为原生标签提供开箱即用的响应式样式与明暗模式。零依赖，一行 CSS 即可起步。
         </p>
@@ -59,12 +60,21 @@ const npmCmd = "npm install @picocss/pico";
           <div class="browser-grid" aria-hidden="true">
             <span></span><span></span><span></span>
           </div>
-          <progress value="68" max="100">68%</progress>
-          <blockquote>“它像加强版的 reset：先有好默认，再做精定制。”<footer><cite>— 本站译者注</cite></footer></blockquote>
+          <div class="browser-toggles">
+            <label><input type="checkbox" role="switch" checked /> 深色模式</label>
+            <label><input type="checkbox" checked /> 记住我</label>
+          </div>
+          <input type="range" value="68" aria-label="滑块示例" />
+          <details class="browser-acc">
+            <summary>手风琴：原生 details，零 JS</summary>
+            <p>卡片、弹窗、提示条同理，开箱即用。</p>
+          </details>
         </div>
+        <p class="browser-foot">以上全部由原生 HTML 渲染，可直接交互试试</p>
         <span class="browser-chip chip-a">classless 可用</span>
         <span class="browser-chip chip-b">20 套预编译主题</span>
       </figure>
+      </div>
     </section>
 
     <!-- 2 · 安装：CDN / NPM / Sass 三页签单窗口 -->
@@ -107,30 +117,38 @@ const npmCmd = "npm install @picocss/pico";
         <article class="bento bento-wide" data-reveal>
           <h3>20 套配色，开箱即换</h3>
           <p>预编译调色板走 CDN 引入，Indigo 为默认，组合超过 100 种。</p>
+          <div class="bento-demo">
           <div class="bento-swatches" aria-hidden="true">
             <span class="pico-background-red-500"></span><span class="pico-background-pink-500"></span><span class="pico-background-fuchsia-500"></span><span class="pico-background-purple-500"></span><span class="pico-background-violet-500"></span><span class="pico-background-indigo-500"></span><span class="pico-background-blue-500"></span><span class="pico-background-azure-500"></span><span class="pico-background-cyan-500"></span><span class="pico-background-jade-500"></span><span class="pico-background-green-500"></span><span class="pico-background-lime-500"></span><span class="pico-background-yellow-500"></span><span class="pico-background-amber-500"></span><span class="pico-background-pumpkin-500"></span><span class="pico-background-orange-500"></span>
           </div>
           <div class="bento-scale" aria-hidden="true" title="Indigo 50–950">
             <span class="pico-background-indigo-50"></span><span class="pico-background-indigo-100"></span><span class="pico-background-indigo-200"></span><span class="pico-background-indigo-300"></span><span class="pico-background-indigo-400"></span><span class="pico-background-indigo-500"></span><span class="pico-background-indigo-600"></span><span class="pico-background-indigo-700"></span><span class="pico-background-indigo-800"></span><span class="pico-background-indigo-900"></span><span class="pico-background-indigo-950"></span>
           </div>
+          </div>
           <a href={`${base}docs/colors/`}>查看颜色 →</a>
         </article>
         <article class="bento" data-reveal style="--d:.06s">
           <h3>明暗模式跟手</h3>
           <p>跟随系统偏好，顶栏可手动钉住选择，首帧写入防闪烁。</p>
+          <div class="bento-demo">
           <div class="bento-theme" aria-hidden="true"><span class="lt">浅</span><span class="dk">深</span></div>
+          </div>
           <a href={`${base}docs/color-schemes/`}>配色方案 →</a>
         </article>
         <article class="bento" data-reveal style="--d:.12s">
           <h3>容器与栅格</h3>
           <p>居中容器、流式区块与 12 列栅格，各断点自动适配。</p>
+          <div class="bento-demo">
           <div class="bento-cols" aria-hidden="true"><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span class="f"></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
           <a href={`${base}docs/grid/`}>栅格文档 →</a>
         </article>
         <article class="bento bento-wide" data-reveal style="--d:.18s">
           <h3>语义排版，自带层级</h3>
           <p>标题、引用、表格、代码无需类名，行高与中文回退已调好。</p>
+          <div class="bento-demo">
           <p class="bento-type" aria-hidden="true"><strong>Aa</strong> 标题 / 正文 / <code>code</code> / <kbd>⌘ K</kbd></p>
+          </div>
           <a href={`${base}docs/typography/`}>排版文档 →</a>
         </article>
       </div>
@@ -143,22 +161,23 @@ const npmCmd = "npm install @picocss/pico";
       <div class="home-editor" data-reveal>
         <div class="home-editor-code">
           <div class="home-window-bar">
+            <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <span>index.html</span>
             <button type="button" class="home-copy" data-copy={`<!doctype html>\n<html lang="zh">\n  <head>\n    <meta charset="utf-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <meta name="color-scheme" content="light dark">\n    <link rel="stylesheet" href="${cdn}">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class="container">\n      <h1>Hello world!</h1>\n    </main>\n  </body>\n</html>`} aria-label="复制起步模板">复制模板</button>
           </div>
-<pre><code><span class="tk-p">&lt;!doctype html&gt;</span>
-<span class="tk-p">&lt;html</span> <span class="tk-a">lang</span>=<span class="tk-s">"zh"</span><span class="tk-p">&gt;</span>
-  <span class="tk-p">&lt;head&gt;</span>
-    <span class="tk-p">&lt;meta</span> <span class="tk-a">charset</span>=<span class="tk-s">"utf-8"</span><span class="tk-p">&gt;</span>
-    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"viewport"</span> <span class="tk-a">content</span>=<span class="tk-s">"width=device-width, initial-scale=1"</span><span class="tk-p">&gt;</span>
-    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"color-scheme"</span> <span class="tk-a">content</span>=<span class="tk-s">"light dark"</span><span class="tk-p">&gt;</span>
-    <span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"…/pico.min.css"</span><span class="tk-p">&gt;</span>
-    <span class="tk-p">&lt;title&gt;</span>Hello world!<span class="tk-p">&lt;/title&gt;</span>
-  <span class="tk-p">&lt;/head&gt;</span>
-  <span class="tk-p">&lt;body&gt;</span>
-    <span class="tk-p">&lt;main</span> <span class="tk-a">class</span>=<span class="tk-s">"container"</span><span class="tk-p">&gt;</span>…<span class="tk-p">&lt;/main&gt;</span>
-  <span class="tk-p">&lt;/body&gt;</span>
-<span class="tk-p">&lt;/html&gt;</span></code></pre>
+<pre class="code-lines"><code><span class="cl"><span class="tk-p">&lt;!doctype html&gt;</span></span>
+<span class="cl"><span class="tk-p">&lt;html</span> <span class="tk-a">lang</span>=<span class="tk-s">"zh"</span><span class="tk-p">&gt;</span></span>
+<span class="cl">  <span class="tk-p">&lt;head&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">charset</span>=<span class="tk-s">"utf-8"</span><span class="tk-p">&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"viewport"</span> <span class="tk-a">content</span>=<span class="tk-s">"width=device-width, initial-scale=1"</span><span class="tk-p">&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"color-scheme"</span> <span class="tk-a">content</span>=<span class="tk-s">"light dark"</span><span class="tk-p">&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"…/pico.min.css"</span><span class="tk-p">&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;title&gt;</span>Hello world!<span class="tk-p">&lt;/title&gt;</span></span>
+<span class="cl">  <span class="tk-p">&lt;/head&gt;</span></span>
+<span class="cl">  <span class="tk-p">&lt;body&gt;</span></span>
+<span class="cl">    <span class="tk-p">&lt;main</span> <span class="tk-a">class</span>=<span class="tk-s">"container"</span><span class="tk-p">&gt;</span>…<span class="tk-p">&lt;/main&gt;</span></span>
+<span class="cl">  <span class="tk-p">&lt;/body&gt;</span></span>
+<span class="cl"><span class="tk-p">&lt;/html&gt;</span></span></code></pre>
         </div>
         <div class="home-editor-demo">
           <p class="demo-label">实时效果</p>
@@ -182,12 +201,12 @@ const npmCmd = "npm install @picocss/pico";
       <h2>按需直达文档</h2>
       <p class="home-sub">39 页中文文档，与官方 URL 一一对应，锚点保留英文 slug。</p>
       <div class="home-docgrid">
-        <div data-reveal><h3>入门</h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a><span class="new-badge">新</span></li></ul></div>
-        <div data-reveal style="--d:.05s"><h3>定制</h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a><span class="new-badge">新</span></li></ul></div>
-        <div data-reveal style="--d:.1s"><h3>布局</h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a><span class="new-badge">新</span></li></ul></div>
-        <div data-reveal style="--d:.15s"><h3>内容</h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
-        <div data-reveal style="--d:.2s"><h3>表单</h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
-        <div data-reveal style="--d:.25s"><h3>组件</h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
+        <div class="doc-group" data-reveal><h3><a href={`${base}docs/`}>入门</a><span class="doc-count">共 6 页</span></h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a><span class="new-badge">新</span></li></ul></div>
+        <div class="doc-group" data-reveal style="--d:.05s"><h3><a href={`${base}docs/css-variables/`}>定制</a><span class="doc-count">共 3 页</span></h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a><span class="new-badge">新</span></li></ul></div>
+        <div class="doc-group" data-reveal style="--d:.1s"><h3><a href={`${base}docs/container/`}>布局</a><span class="doc-count">共 4 页</span></h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a><span class="new-badge">新</span></li></ul></div>
+        <div class="doc-group" data-reveal style="--d:.15s"><h3><a href={`${base}docs/typography/`}>内容</a><span class="doc-count">共 4 页</span></h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
+        <div class="doc-group" data-reveal style="--d:.2s"><h3><a href={`${base}docs/forms/`}>表单</a><span class="doc-count">共 8 页</span></h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
+        <div class="doc-group" data-reveal style="--d:.25s"><h3><a href={`${base}docs/accordion/`}>组件</a><span class="doc-count">共 9 页</span></h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
       </div>
     </section>
 
@@ -202,22 +221,37 @@ const npmCmd = "npm install @picocss/pico";
   </main>
 
   <footer class="site-footer">
-    <nav class="container">
-      <ul>
-        <li><a class="secondary" href={`${base}docs/`}>文档</a></li>
-        <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
-        <li><a class="secondary" href="https://picocss.com" rel="noopener external" target="_blank">官网</a></li>
-        <li><a class="secondary" href="#top">回到顶部 ↑</a></li>
-      </ul>
-      <ul>
-        <li>
-          <small>
-            中文翻译自 <a href="https://picocss.com" rel="noopener external">picocss.com</a>，
-            遵循 <a href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external">MIT 许可证</a>。
-          </small>
-        </li>
-      </ul>
-    </nav>
+    <div class="container foot-grid">
+      <div class="foot-brand">
+        <p class="foot-logo">Pico <span>中文文档</span></p>
+        <p>面向语义化 HTML 的极简 CSS 框架，39 页官方文档中文翻译。</p>
+        <p><span class="ver-chip">v2.1.1 · Indigo</span></p>
+      </div>
+      <nav aria-label="文档分组">
+        <strong>文档</strong>
+        <ul>
+          <li><a class="secondary" href={`${base}docs/`}>入门</a></li>
+          <li><a class="secondary" href={`${base}docs/css-variables/`}>定制</a></li>
+          <li><a class="secondary" href={`${base}docs/container/`}>布局</a></li>
+          <li><a class="secondary" href={`${base}docs/typography/`}>内容</a></li>
+          <li><a class="secondary" href={`${base}docs/forms/`}>表单</a></li>
+          <li><a class="secondary" href={`${base}docs/accordion/`}>组件</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="资源">
+        <strong>资源</strong>
+        <ul>
+          <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
+          <li><a class="secondary" href="https://picocss.com" rel="noopener external" target="_blank">官网</a></li>
+          <li><a class="secondary" href="https://github.com/picocss/pico/blob/master/LICENSE.md" rel="noopener external" target="_blank">MIT 许可证</a></li>
+          <li><a class="secondary" href="#top">回到顶部 ↑</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container foot-base">
+      <small>中文翻译自 <a href="https://picocss.com" rel="noopener external">picocss.com</a>，遵循 MIT 许可证。</small>
+      <small>© 2026 · 纯静态构建</small>
+    </div>
   </footer>
 </Base>
 
@@ -308,25 +342,32 @@ const npmCmd = "npm install @picocss/pico";
     .scroll-progress { animation: scrollgrow linear both; animation-timeline: scroll(); }
     @keyframes scrollgrow { to { transform: scaleX(1); } }
   }
+  /* 全幅 hero：破 container 出血，内容用内层 container 对齐 */
   .home-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: 2.5rem;
-    align-items: center;
-    padding-block: 3.5rem 2.5rem;
     position: relative;
+    margin-inline: calc(50% - 50vw);
+    padding-block: 5rem 4rem;
+    border-bottom: 1px solid var(--home-ring);
+    overflow: hidden;
   }
   .home-hero::before {
     content: "";
     position: absolute;
-    inset: -1rem -2rem auto;
-    height: 340px;
-    z-index: -1;
+    inset: 0;
     background:
-      linear-gradient(var(--home-ring) 1px, transparent 1px) 0 0 / 100% 32px,
-      linear-gradient(90deg, var(--home-ring) 1px, transparent 1px) 0 0 / 32px 100%;
-    opacity: 0.35;
-    mask-image: radial-gradient(70% 90% at 30% 20%, black 30%, transparent 75%);
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"),
+      linear-gradient(var(--home-ring) 1px, transparent 1px) 0 0 / 100% 34px,
+      linear-gradient(90deg, var(--home-ring) 1px, transparent 1px) 0 0 / 34px 100%;
+    opacity: 0.4;
+    mask-image: radial-gradient(75% 100% at 50% 0%, black 25%, transparent 78%);
+    pointer-events: none;
+  }
+  .home-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 3rem;
+    align-items: center;
+    position: relative;
   }
   .home-hero::after {
     content: "";
@@ -343,28 +384,42 @@ const npmCmd = "npm install @picocss/pico";
   .home-kicker {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
+    gap: 0.55rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
     color: var(--pico-muted-color);
     border: 1px solid var(--home-ring);
     border-radius: 999px;
-    padding: 0.28rem 0.8rem;
-    margin: 0 0 1rem;
-    background-color: color-mix(in srgb, var(--pico-card-background-color) 70%, transparent);
+    padding: 0.32rem 0.85rem;
+    margin: 0 0 1.2rem;
+    background-color: color-mix(in srgb, var(--pico-card-background-color) 78%, transparent);
   }
-  .home-kicker-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pico-primary); }
-  .home-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 0.9rem; text-wrap: balance; }
-  .home-lead { font-size: 1.12rem; color: var(--pico-color-grey-600); max-width: 44ch; margin-bottom: 1.4rem; }
+  .home-kicker-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pico-primary); flex: none; }
+  .home-hero h1 { font-size: clamp(3rem, 7.2vw, 5.4rem); line-height: 1.04; letter-spacing: -0.04em; margin-bottom: 1.1rem; text-wrap: balance; }
+  .home-hero h1 code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.62em;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--pico-primary);
+    background: color-mix(in srgb, var(--pico-primary) 13%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pico-primary) 38%, transparent);
+    padding: 0.06em 0.3em;
+    border-radius: 0.22em;
+    white-space: nowrap;
+  }
+  .home-lead { font-size: 1.2rem; color: var(--pico-color-grey-600); max-width: 42ch; margin-bottom: 1.8rem; }
   html[data-theme="dark"] .home-lead { color: var(--pico-color-grey-400); }
-  .home-cta { margin-bottom: 1.6rem; }
-  .home-cta [role="button"] { transition: transform 0.15s ease, box-shadow 0.2s ease; }
+  .home-cta { margin-bottom: 2rem; }
+  .home-cta [role="button"] { font-size: 1.02rem; padding: 0.85rem 1.7rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
   .home-cta [role="button"]:first-child { box-shadow: 0 14px 30px -16px color-mix(in srgb, var(--pico-primary) 70%, transparent); }
   .home-cta [role="button"]:hover { text-decoration: none; }
   .home-cta [role="button"]:active { transform: translateY(1px) scale(0.99); }
-  .home-meta { list-style: none; padding: 1rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--home-ring); }
-  .home-meta li { display: grid; gap: 0.1rem; }
-  .home-meta strong { font-size: 1.02rem; }
+  .home-meta { list-style: none; padding: 1.4rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; border-top: 2px solid var(--pico-color); }
+  .home-meta li { display: grid; gap: 0.15rem; }
+  .home-meta strong { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .home-meta span { font-size: 0.8rem; color: var(--pico-muted-color); }
   @media (min-width: 768px) {
     .home-meta li + li { border-left: 1px solid var(--home-ring); padding-left: 1rem; }
@@ -374,9 +429,9 @@ const npmCmd = "npm install @picocss/pico";
     position: relative;
     margin: 0;
     border: 1px solid var(--home-ring);
-    border-radius: calc(var(--pico-border-radius) + 6px);
+    border-radius: calc(var(--pico-border-radius) + 10px);
     background: var(--pico-card-background-color);
-    box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--pico-primary) 30%, transparent);
+    box-shadow: 0 40px 90px -40px color-mix(in srgb, var(--pico-primary) 45%, transparent), 0 4px 18px -8px rgba(0,0,0,0.18);
     overflow: visible;
   }
   .browser-bar, .home-window-bar {
@@ -396,14 +451,20 @@ const npmCmd = "npm install @picocss/pico";
   }
   .browser-live { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; color: var(--pico-primary); white-space: nowrap; }
   .browser-live i { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: #30a46c; }
-  .browser-body { padding: 1.25rem 1.25rem 1.4rem; display: grid; gap: 0.9rem; }
-  .browser-body hgroup { margin: 0; } .browser-body hgroup h3 { margin-bottom: 0.2rem; } .browser-body hgroup p { margin: 0; color: var(--pico-muted-color); font-size: 0.9rem; }
-  .browser-body blockquote { margin: 0; font-size: 0.88rem; }
-  .browser-body progress { margin: 0; }
+  .browser-body { padding: 1.35rem 1.35rem 1.5rem; display: grid; gap: 1rem; }
+  .browser-body hgroup { margin: 0; } .browser-body hgroup h3 { margin-bottom: 0.2rem; font-size: 1.3rem; } .browser-body hgroup p { margin: 0; color: var(--pico-muted-color); font-size: 0.9rem; }
+  .browser-toggles { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  .browser-toggles label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.86rem; margin: 0; cursor: pointer; }
+  .browser-toggles input { margin: 0; }
+  .browser-body input[type="range"] { margin: 0; }
+  .browser-acc { margin: 0; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.7rem 1rem; }
+  .browser-acc summary { margin: 0; font-weight: 600; font-size: 0.9rem; }
+  .browser-acc p { margin: 0.5rem 0 0; font-size: 0.86rem; color: var(--pico-muted-color); }
   .browser-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .browser-row button.small { padding: 0.35rem 0.7rem; font-size: 0.82rem; margin: 0; }
   .browser-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.5rem; }
   .browser-grid span { height: 2.2rem; border-radius: var(--pico-border-radius); background: color-mix(in srgb, var(--pico-primary) 14%, var(--pico-card-background-color)); border: 1px solid var(--home-ring); }
+  .browser-foot { margin: 0; padding: 0.7rem 1.2rem; border-top: 1px solid var(--home-ring); font-size: 0.78rem; color: var(--pico-muted-color); text-align: center; }
   .browser-chip {
     position: absolute; font-size: 0.75rem; font-weight: 600;
     background: var(--pico-card-background-color);
@@ -431,9 +492,12 @@ const npmCmd = "npm install @picocss/pico";
   .home-npm { display: inline-flex; align-items: center; gap: 0.6rem; background: none; border: 1px dashed var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.35rem 0.6rem; cursor: pointer; color: inherit; font-size: 0.84rem; }
   .home-npm span { font-size: 0.76rem; color: var(--pico-primary); font-weight: 600; }
   .home-install-links { font-size: 0.85rem; color: var(--pico-muted-color); }
-  /* 通用节标题：纵向堆叠，不用左右分栏 */
-  .home-why, .home-start, .home-map { padding-block: 2.8rem 0.5rem; }
-  .home-why h2, .home-start h2, .home-map h2, .home-final h2 { margin-bottom: 0.5rem; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+  /* 章节节奏：纵向堆叠标题，大字号 + 方块标识 + 分隔线 */
+  .home-install { padding-block: 3rem 0.5rem; }
+  .home-why, .home-start, .home-map, .home-final { padding-block: 4.5rem 0.5rem; border-top: 1px solid var(--home-ring); margin-top: 4rem; }
+  .home-why h2, .home-start h2, .home-map h2, .home-final-inner h2 { margin-bottom: 0.6rem; font-size: clamp(1.9rem, 3.2vw, 2.5rem); letter-spacing: -0.02em; }
+  .home-why h2::before, .home-start h2::before, .home-map h2::before { content: ""; display: inline-block; width: 0.5em; height: 0.5em; background: var(--pico-primary); border-radius: 3px; margin-right: 0.45em; vertical-align: baseline; }
+  .home-sub { font-size: 1.05rem; }
   .home-sub { color: var(--pico-color-grey-600); max-width: 62ch; margin-bottom: 1.4rem; }
   html[data-theme="dark"] .home-sub { color: var(--pico-color-grey-400); }
   .home-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
@@ -444,8 +508,10 @@ const npmCmd = "npm install @picocss/pico";
   .bento h3 { margin: 0; font-size: 1.02rem; } .bento p { margin: 0; font-size: 0.9rem; color: var(--pico-color-grey-600); }
   html[data-theme="dark"] .bento p { color: var(--pico-color-grey-400); }
   .bento a { font-size: 0.88rem; font-weight: 600; }
-  .bento-swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .bento-swatches span { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
+  .bento-swatches { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .bento-swatches span { width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.14); transition: transform 0.15s ease; }
+  .bento-swatches span:hover { transform: scale(1.18); }
+  .bento-demo { background: color-mix(in srgb, var(--pico-primary) 6%, var(--pico-background-color)); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.95rem 1rem; display: grid; gap: 0.7rem; }
   .bento-scale { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 0.25rem; }
   .bento-scale span { height: 1.5rem; border-radius: 6px; border: 1px solid rgba(0,0,0,0.1); }
   .bento-theme { display: flex; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; font-size: 0.82rem; font-weight: 600; }
@@ -459,22 +525,47 @@ const npmCmd = "npm install @picocss/pico";
   /* 起步编辑器 */
   .home-editor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; background: var(--pico-card-background-color); }
   .home-editor-code { border-right: 1px solid var(--home-ring); min-width: 0; }
-  .home-editor-code pre { margin: 0; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.7; }
+  .home-editor-code pre { margin: 0; padding: 1rem 1.2rem 1rem 0.6rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.75; }
+  .code-lines { counter-reset: ln; }
+  .code-lines .cl { display: block; padding-left: 2.8rem; position: relative; white-space: pre; }
+  .code-lines .cl::before { counter-increment: ln; content: counter(ln); position: absolute; left: 0; width: 2rem; text-align: right; color: var(--pico-muted-color); opacity: 0.5; user-select: none; }
   .home-editor-demo { padding: 1.2rem; display: grid; gap: 0.8rem; align-content: start; }
   .demo-label { margin: 0; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; color: var(--pico-muted-color); }
   /* 文档地图 */
-  .home-docgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; border-top: 1px solid var(--home-ring); padding-top: 1.4rem; }
-  .home-docgrid h3 { font-size: 0.85rem; letter-spacing: 0.06em; color: var(--pico-muted-color); margin: 0 0 0.5rem; }
+  .home-docgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--home-ring); padding-top: 1.4rem; }
+  .doc-group { background: var(--pico-card-background-color); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.1rem 1.2rem; margin: 0; transition: border-color 0.2s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+  .doc-group:hover { border-color: color-mix(in srgb, var(--pico-primary) 40%, var(--home-ring)); transform: translateY(-2px); }
+  @media (hover: none) { .doc-group:hover { transform: none; } }
+  .doc-group h3 { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; font-size: 1rem; margin: 0 0 0.6rem; }
+  .doc-group h3 a { color: var(--pico-color); text-decoration: none; }
+  .doc-group h3 a:hover { color: var(--pico-primary); }
+  .doc-count { font-size: 0.74rem; font-weight: 400; letter-spacing: 0; color: var(--pico-muted-color); white-space: nowrap; }
   .home-docgrid ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; }
-  .home-docgrid a { font-weight: 500; transition: color 0.15s ease, padding-left 0.2s ease; }
-  .home-docgrid a:hover { color: var(--pico-primary); padding-left: 2px; text-decoration: none; }
+  .home-docgrid a { font-weight: 500; font-size: 1.02rem; transition: color 0.15s ease; }
+  .home-docgrid a::after { content: " →"; opacity: 0; display: inline-block; transform: translateX(-5px); transition: opacity 0.2s ease, transform 0.2s ease; }
+  .home-docgrid a:hover { color: var(--pico-primary); text-decoration: none; }
+  .home-docgrid a:hover::after { opacity: 1; transform: none; }
   .home-docgrid .new-badge { vertical-align: 1px; }
   .home-final { padding-block: 3.5rem 1rem; }
-  .home-final-inner { position: relative; overflow: hidden; text-align: center; border: 1px solid var(--home-ring); border-radius: calc(var(--pico-border-radius) + 8px); background: var(--pico-card-background-color); padding: 3rem 1.5rem; }
-  .home-final-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--pico-primary) 16%, transparent), transparent 70%); pointer-events: none; }
-  html[data-theme="dark"] .home-final-inner::before { background: radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--pico-primary) 26%, transparent), transparent 70%); }
+  .home-final-inner { position: relative; overflow: hidden; text-align: center; border: 1px solid transparent; border-radius: calc(var(--pico-border-radius) + 8px); background: var(--pico-primary); color: var(--pico-primary-inverse); padding: 4rem 1.5rem; }
+  .home-final-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 110% at 50% 0%, rgba(255,255,255,0.16), transparent 70%); pointer-events: none; }
   .home-final-inner > * { position: relative; }
-  .site-footer nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .home-final-inner h2 { color: inherit; }
+  .home-final-inner p { color: inherit; opacity: 0.88; }
+  .home-final-inner a[role="button"] { background: var(--pico-primary-inverse); border-color: transparent; color: var(--pico-primary); font-size: 1.02rem; padding: 0.85rem 1.7rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+  .home-final-inner a[role="button"]:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -14px rgba(0,0,0,0.45); }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; padding-bottom: 1.5rem; }
+  .foot-brand p { font-size: 0.88rem; color: var(--pico-muted-color); margin: 0.45rem 0; }
+  .foot-logo { font-size: 1.1rem !important; font-weight: 800; letter-spacing: -0.01em; color: var(--pico-color) !important; }
+  .foot-logo span { font-weight: 400; color: var(--pico-muted-color); }
+  .ver-chip { display: inline-block; font-size: 0.72rem; font-weight: 700; color: var(--pico-muted-color); border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.12rem 0.65rem; }
+  .site-footer nav { display: block; }
+  .site-footer nav strong { display: block; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--pico-muted-color); margin-bottom: 0.65rem; }
+  .site-footer nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  .site-footer nav ul li { padding: 0; margin: 0; }
+  .site-footer nav ul li a { padding: 0; }
+  .foot-base { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--home-ring); padding-top: 1.2rem; }
+  .foot-base small { color: var(--pico-muted-color); }
   /* 入场 */
   html.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); transition-delay: var(--d, 0s); }
   html.js [data-reveal].is-in { opacity: 1; transform: none; }
@@ -493,14 +584,14 @@ const npmCmd = "npm install @picocss/pico";
     @keyframes pulse { 50% { opacity: 0.4; } }
   }
   @media (max-width: 1023px) {
-    .home-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .home-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
     .chip-a { left: 0.6rem; } .home-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .bento-wide { grid-column: span 2; } .home-docgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
-    .home-hero { padding-block: 2.2rem 1.5rem; }
+    .home-hero { padding-block: 3rem 2.5rem; }
     .home-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .home-bento, .home-editor, .home-docgrid { grid-template-columns: minmax(0, 1fr); }
+    .home-bento, .home-editor, .home-docgrid, .foot-grid { grid-template-columns: minmax(0, 1fr); }
     .bento-wide { grid-column: span 1; }
     .home-editor-code { border-right: none; border-bottom: 1px solid var(--home-ring); }
     .chip-a, .chip-b { display: none; }

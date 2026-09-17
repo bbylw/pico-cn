@@ -3,6 +3,11 @@
 /* 颜色工具类（pico-background-* / pico-color-*），供色彩页与首页色带使用 */
 @import "@picocss/pico/css/pico.colors.min.css";
 
+/* 全幅出血区（首页 hero）可能因滚动条宽度产生横向溢出；clip 不创建滚动容器，不影响 sticky 侧栏 */
+html, body {
+  overflow-x: clip;
+}
+
 /* ---------- 中文字体回退 ---------- */
 :root {
   --pico-font-family-sans-serif:
