@@ -7,7 +7,7 @@ const { id } = Astro.props;
 const idx = DOCS_FLAT.findIndex((i) => i.id === id);
 const prev = idx > 0 ? DOCS_FLAT[idx - 1] : undefined;
 const next = idx >= 0 && idx < DOCS_FLAT.length - 1 ? DOCS_FLAT[idx + 1] : undefined;
-const href = (i: string) => (i === "quickstart" ? "/docs/" : `/docs/${i}/`);
+const href = (i: string) => (i === "quickstart" ? `${import.meta.env.BASE_URL}docs/` : `${import.meta.env.BASE_URL}docs/${i}/`);
 ---
 
 {

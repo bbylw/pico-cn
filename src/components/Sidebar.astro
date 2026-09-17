@@ -15,7 +15,7 @@ const { current } = Astro.props;
           {g.items.map((i) => (
             <li>
               <a
-                href={`/docs/${i.id === "quickstart" ? "" : i.id}/`}
+                href={`${import.meta.env.BASE_URL}docs/${i.id === "quickstart" ? "" : i.id}/`}
                 class="secondary"
                 aria-current={i.id === current ? "page" : undefined}
               >

@@ -6,15 +6,15 @@ const PICO_VERSION = "2.1.1";
   <nav>
     <ul>
       <li>
-        <a href="/" aria-label="Home">
-          <img src="/img/logo-light.svg" alt="Pico CSS" class="logo logo-light" height="24" />
-          <img src="/img/logo-dark.svg" alt="Pico CSS" class="logo logo-dark" height="24" />
+        <a href={import.meta.env.BASE_URL} aria-label="Home">
+          <img src={`${import.meta.env.BASE_URL}img/logo-light.svg`} alt="Pico CSS" class="logo logo-light" height="24" />
+          <img src={`${import.meta.env.BASE_URL}img/logo-dark.svg`} alt="Pico CSS" class="logo logo-dark" height="24" />
           <span class="vmark">v{PICO_VERSION}</span>
         </a>
       </li>
     </ul>
     <ul>
-      <li><a href="/docs/" class="secondary">文档</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}docs/`} class="secondary">文档</a></li>
       <li>
         <a href="https://github.com/picocss/pico" class="secondary" rel="noopener external" target="_blank" aria-label="GitHub 仓库">GitHub</a>
       </li>

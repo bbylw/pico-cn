@@ -73,10 +73,11 @@ src/
 
 ## 部署
 
-纯静态站点（`astro build` → `dist/`），任意静态托管均可：GitHub Pages、Cloudflare Pages、Netlify、Vercel。
+已部署 GitHub Pages：<https://bbylw.github.io/pico-cn/>（main 分支，`.github/workflows/deploy.yml`：bun install → astro build → upload-pages-artifact → deploy-pages）。
 
-- 构建命令 `bun run build`，输出目录 `dist/`
-- 若部署到非根路径，在 `astro.config.mjs` 增加 `base: "/<repo>"` 并同步 `site`
+- 项目页子路径部署，`astro.config.mjs` 钉 `base: "/pico-cn/"`（BASE_URL 拼接站点内链与资产）；换自定义域名根路径部署时清空 base 并同步 `site`
+- 页面内官方示例 demo 的 `href="/docs/..."` 保持英文源原样（忠实呈现），不参与 base 改写
+- `.shots/` 验收脚本的本地静态服务器会自动剥离 `/pico-cn` 前缀（dist 产物为根结构，Pages 负责子路径映射）
 - 无服务端依赖，不需要任何运行时 API
 
 ## 许可

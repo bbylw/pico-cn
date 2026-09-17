@@ -25,7 +25,7 @@ import Ex from "../components/Ex.astro";
         }
       </div>
       <p class="cta-row">
-        <a href="/docs/" role="button">阅读文档</a>
+        <a href={`${import.meta.env.BASE_URL}docs/`} role="button">阅读文档</a>
         <a href="https://github.com/picocss/pico" class="secondary outline" role="button" rel="noopener external" target="_blank">GitHub</a>
       </p>
     </section>
@@ -34,7 +34,7 @@ import Ex from "../components/Ex.astro";
       <h2>12 行起步</h2>
       <p>手动安装或走 CDN，把 <code>pico.min.css</code> 挂进 <code>&lt;head&gt;</code>，剩下的交给语义标签：</p>
       <Ex
-        html={`<main class="container" style="padding:0;max-width:none"><hgroup><h1>Hello world!</h1><h2>语义即样式</h2></hgroup><p>这是一段普通的 <a href="/docs/">HTML</a>。表单、表格、卡片、模态框，全部开箱可用。</p><form><input type="search" placeholder="搜索…"><button>搜索</button></form></main>`}
+        html={`<main class="container" style="padding:0;max-width:none"><hgroup><h1>Hello world!</h1><h2>语义即样式</h2></hgroup><p>这是一段普通的 <a href="/pico-cn/docs/">HTML</a>。表单、表格、卡片、模态框，全部开箱可用。</p><form><input type="search" placeholder="搜索…"><button>搜索</button></form></main>`}
         code={`<!doctype html>
 <html lang="zh">
   <head>
@@ -53,7 +53,7 @@ import Ex from "../components/Ex.astro";
         lang="html"
         label="起步模板"
       />
-      <p><a href="/docs/">查看完整文档 →</a></p>
+      <p><a href={`${import.meta.env.BASE_URL}docs/`}>查看完整文档 →</a></p>
     </section>
 
     <section aria-label="核心特性">
@@ -91,7 +91,7 @@ import Ex from "../components/Ex.astro";
   <footer class="site-footer">
     <nav>
       <ul>
-        <li><a class="secondary" href="/docs/">文档</a></li>
+        <li><a class="secondary" href={`${import.meta.env.BASE_URL}docs/`}>文档</a></li>
         <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
       </ul>
       <ul>
