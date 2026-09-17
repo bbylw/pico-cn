@@ -1,7 +1,10 @@
 ---
 import Base from "../layouts/Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import Ex from "../components/Ex.astro";
+
+const base = import.meta.env.BASE_URL;
+const cdn = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css";
+const npmCmd = "npm install @picocss/pico";
 ---
 
 <Base
@@ -9,90 +12,183 @@ import Ex from "../components/Ex.astro";
   desc="极简、轻量的起步套件，以语义化语法为先，让每个 HTML 元素默认就具备响应式与优雅的样式。"
 >
   <SiteHeader />
-  <main class="container">
-    <section class="hero">
-      <h1>写 HTML，就够了。</h1>
-      <p class="lead">
-        Pico 是面向语义化 HTML 的极简 CSS 框架：每个元素开箱即是响应式、优雅的样式，不堆类名、不绑框架。引入一行 CSS，开始写文档。
-      </p>
-      <div class="color-strip" aria-hidden="true">
-        {
-          [
-            "red", "pink", "fuchsia", "purple", "violet", "indigo", "blue", "azure",
-            "cyan", "jade", "green", "lime", "yellow", "amber", "pumpkin", "orange",
-            "sand", "grey", "zinc", "slate",
-          ].map((c) => <span class={`pico-background-${c}-500`}></span>)
-        }
+  <main class="container home">
+    <!-- 1 · Hero：左文案 / 右真实组件预览 -->
+    <section class="home-hero" aria-label="介绍">
+      <div class="home-hero-copy">
+        <p class="home-kicker"><span class="home-kicker-dot" aria-hidden="true"></span>v2.1.1 · 语义化 CSS 框架 · 中文文档</p>
+        <h1>写 HTML，<br />就够了。</h1>
+        <p class="home-lead">
+          Pico 为原生标签提供开箱即用的响应式样式与明暗模式。零依赖，一行 CSS 即可起步。
+        </p>
+        <div class="cta-row home-cta">
+          <a href={`${base}docs/`} role="button">阅读文档</a>
+          <a href="https://github.com/picocss/pico" role="button" class="secondary outline" rel="noopener external" target="_blank">GitHub</a>
+        </div>
+        <ul class="home-meta">
+          <li><strong>约 15 KB</strong><span>gzip 轻量</span></li>
+          <li><strong>零依赖</strong><span>无 JS 运行时</span></li>
+          <li><strong>双模式</strong><span>浅色 / 深色</span></li>
+          <li><strong>MIT</strong><span>开放许可</span></li>
+        </ul>
       </div>
-      <p class="cta-row">
-        <a href={`${import.meta.env.BASE_URL}docs/`} role="button">阅读文档</a>
-        <a href="https://github.com/picocss/pico" class="secondary outline" role="button" rel="noopener external" target="_blank">GitHub</a>
-      </p>
+
+      <figure class="browser" aria-label="Pico 实时组件预览">
+        <figcaption class="browser-bar">
+          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser-url">picocss.ndjp.net/docs/</span>
+          <span class="browser-live"><i aria-hidden="true"></i>实时渲染</span>
+        </figcaption>
+        <div class="browser-body">
+          <hgroup>
+            <h3>Hello world!</h3>
+            <p>语义即样式：标题、链接、表单开箱可用。</p>
+          </hgroup>
+          <form role="search" onsubmit="return false">
+            <fieldset role="group">
+              <input type="search" name="q" placeholder="搜索文档…" aria-label="搜索文档" />
+              <input type="submit" value="搜索" />
+            </fieldset>
+          </form>
+          <div class="browser-row">
+            <button class="small">主要按钮</button>
+            <button class="small secondary">次要</button>
+            <button class="small contrast outline">对比</button>
+          </div>
+          <div class="browser-grid" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <progress value="68" max="100">68%</progress>
+          <blockquote>“它像加强版的 reset：先有好默认，再做精定制。”<footer><cite>— 本站译者注</cite></footer></blockquote>
+        </div>
+        <span class="browser-chip chip-a">classless 可用</span>
+        <span class="browser-chip chip-b">20 套预编译主题</span>
+      </figure>
     </section>
 
-    <section aria-label="起步示例">
-      <h2>12 行起步</h2>
-      <p>手动安装或走 CDN，把 <code>pico.min.css</code> 挂进 <code>&lt;head&gt;</code>，剩下的交给语义标签：</p>
-      <Ex
-        html={`<main class="container" style="padding:0;max-width:none"><hgroup><h1>Hello world!</h1><h2>语义即样式</h2></hgroup><p>这是一段普通的 <a href="/pico-cn/docs/">HTML</a>。表单、表格、卡片、模态框，全部开箱可用。</p><form><input type="search" placeholder="搜索…"><button>搜索</button></form></main>`}
-        code={`<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <title>Hello world!</title>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Hello world!</h1>
-    </main>
-  </body>
-</html>`}
-        lang="html"
-        label="起步模板"
-      />
-      <p><a href={`${import.meta.env.BASE_URL}docs/`}>查看完整文档 →</a></p>
+    <!-- 2 · 安装条：单一窗口 + 内联分支 -->
+    <section class="home-install" aria-label="安装">
+      <div class="home-window" data-reveal>
+        <div class="home-window-bar">
+          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>一行引入，即刻起步</span>
+          <button type="button" class="home-copy" data-copy={cdn} aria-label="复制 CDN 链接">复制</button>
+        </div>
+        <pre class="home-code"><code><span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"{cdn}"</span><span class="tk-p">&gt;</span></code></pre>
+        <div class="home-install-foot">
+          <button type="button" class="home-npm" data-copy={npmCmd} aria-label="复制 NPM 命令"><code>{npmCmd}</code><span>复制</span></button>
+          <span class="home-install-links">
+            <a href={`${base}docs/`}>手动安装</a> ·
+            <a href={`${base}docs/sass/`}>Sass 定制</a> ·
+            <a href={`${base}docs/version-picker/`}>版本选择器</a>
+          </span>
+        </div>
+      </div>
     </section>
 
-    <section aria-label="核心特性">
+    <!-- 3 · 为什么是 Pico：非对称 bento，4 格对 4 点 -->
+    <section class="home-why" aria-label="核心特性">
       <h2>恰到好处的一切</h2>
-      <p>Pico 是「加强版 HTML 重置」，也是构建干净、轻量设计系统的起点。</p>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>轻类且语义化</h3>
-          <p>仅凭 CSS 即可获得出色样式，几乎不需要 class。</p>
+      <p class="home-sub">Pico 是「加强版 HTML 重置」，也是干净设计系统的起点：先给好默认，再留足定制空间。</p>
+      <div class="home-bento">
+        <article class="bento bento-wide" data-reveal>
+          <h3>20 套配色，开箱即换</h3>
+          <p>预编译调色板走 CDN 引入，Indigo 为默认，组合超过 100 种。</p>
+          <div class="bento-swatches" aria-hidden="true">
+            <span class="pico-background-red-500"></span><span class="pico-background-pink-500"></span><span class="pico-background-fuchsia-500"></span><span class="pico-background-purple-500"></span><span class="pico-background-violet-500"></span><span class="pico-background-indigo-500"></span><span class="pico-background-blue-500"></span><span class="pico-background-azure-500"></span><span class="pico-background-cyan-500"></span><span class="pico-background-jade-500"></span><span class="pico-background-green-500"></span><span class="pico-background-lime-500"></span><span class="pico-background-yellow-500"></span><span class="pico-background-amber-500"></span><span class="pico-background-pumpkin-500"></span><span class="pico-background-orange-500"></span>
+          </div>
+          <a href={`${base}docs/colors/`}>查看颜色 →</a>
         </article>
-        <article class="feature-card">
-          <h3>全面响应式</h3>
-          <p>容器、栅格、排版在各断点自动适配。</p>
+        <article class="bento" data-reveal>
+          <h3>明暗模式跟手</h3>
+          <p>跟随系统偏好，顶栏可手动钉住选择，首帧写入防闪烁。</p>
+          <div class="bento-theme" aria-hidden="true"><span class="lt">浅</span><span class="dk">深</span></div>
+          <a href={`${base}docs/color-schemes/`}>配色方案 →</a>
         </article>
-        <article class="feature-card">
-          <h3>浅色或深色模式</h3>
-          <p>跟随系统偏好开箱即用，也可手动切换。</p>
+        <article class="bento" data-reveal>
+          <h3>容器与栅格</h3>
+          <p>居中容器、流式区块与 12 列栅格，各断点自动适配。</p>
+          <div class="bento-cols" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <a href={`${base}docs/grid/`}>栅格文档 →</a>
         </article>
-        <article class="feature-card">
-          <h3>20 套配色主题</h3>
-          <p>预编译调色板 CDN 直接引用，组合超过 100 种。</p>
-        </article>
-        <article class="feature-card">
-          <h3>轻松定制</h3>
-          <p>CSS 变量与 Sass 两条路线定制主题与组件。</p>
-        </article>
-        <article class="feature-card">
-          <h3>性能优化</h3>
-          <p>压缩后约 15 KB（gzip），零依赖、零 JavaScript。</p>
+        <article class="bento bento-wide" data-reveal>
+          <h3>语义排版，自带层级</h3>
+          <p>标题、引用、表格、代码无需类名，行高与中文回退已调好。</p>
+          <p class="bento-type" aria-hidden="true">Aa 标题 / 正文 / <code>code</code> / <kbd>⌘ K</kbd></p>
+          <a href={`${base}docs/typography/`}>排版文档 →</a>
         </article>
       </div>
+    </section>
+
+    <!-- 4 · 12 行起步：代码与预览左右对照 -->
+    <section class="home-start" aria-label="起步示例">
+      <h2>12 行起步</h2>
+      <p class="home-sub">把 <code>pico.min.css</code> 挂进 <code>&lt;head&gt;</code>，剩下的交给语义标签。</p>
+      <div class="home-editor" data-reveal>
+        <div class="home-editor-code">
+          <div class="home-window-bar">
+            <span>index.html</span>
+            <button type="button" class="home-copy" data-copy={`<!doctype html>\n<html lang="zh">\n  <head>\n    <meta charset="utf-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <meta name="color-scheme" content="light dark">\n    <link rel="stylesheet" href="${cdn}">\n    <title>Hello world!</title>\n  </head>\n  <body>\n    <main class="container">\n      <h1>Hello world!</h1>\n    </main>\n  </body>\n</html>`} aria-label="复制起步模板">复制模板</button>
+          </div>
+<pre><code><span class="tk-p">&lt;!doctype html&gt;</span>
+<span class="tk-p">&lt;html</span> <span class="tk-a">lang</span>=<span class="tk-s">"zh"</span><span class="tk-p">&gt;</span>
+  <span class="tk-p">&lt;head&gt;</span>
+    <span class="tk-p">&lt;meta</span> <span class="tk-a">charset</span>=<span class="tk-s">"utf-8"</span><span class="tk-p">&gt;</span>
+    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"viewport"</span> <span class="tk-a">content</span>=<span class="tk-s">"width=device-width, initial-scale=1"</span><span class="tk-p">&gt;</span>
+    <span class="tk-p">&lt;meta</span> <span class="tk-a">name</span>=<span class="tk-s">"color-scheme"</span> <span class="tk-a">content</span>=<span class="tk-s">"light dark"</span><span class="tk-p">&gt;</span>
+    <span class="tk-p">&lt;link</span> <span class="tk-a">rel</span>=<span class="tk-s">"stylesheet"</span> <span class="tk-a">href</span>=<span class="tk-s">"…/pico.min.css"</span><span class="tk-p">&gt;</span>
+    <span class="tk-p">&lt;title&gt;</span>Hello world!<span class="tk-p">&lt;/title&gt;</span>
+  <span class="tk-p">&lt;/head&gt;</span>
+  <span class="tk-p">&lt;body&gt;</span>
+    <span class="tk-p">&lt;main</span> <span class="tk-a">class</span>=<span class="tk-s">"container"</span><span class="tk-p">&gt;</span>…<span class="tk-p">&lt;/main&gt;</span>
+  <span class="tk-p">&lt;/body&gt;</span>
+<span class="tk-p">&lt;/html&gt;</span></code></pre>
+        </div>
+        <div class="home-editor-demo">
+          <p class="demo-label">实时效果</p>
+          <div style="padding:0;max-width:none">
+            <hgroup><h3>Hello world!</h3><p>语义即样式</p></hgroup>
+            <p>这是一段普通的 <a href={`${base}docs/`}>HTML</a>。表单、表格、卡片开箱可用。</p>
+            <form role="search" onsubmit="return false">
+              <fieldset role="group">
+                <input type="search" placeholder="搜索…" aria-label="搜索" />
+                <input type="submit" value="搜索" />
+              </fieldset>
+            </form>
+          </div>
+          <a href={`${base}docs/forms/`}>表单文档 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · 文档地图：分组直达 -->
+    <section class="home-map" aria-label="文档地图">
+      <h2>按需直达文档</h2>
+      <p class="home-sub">39 页中文文档，与官方 URL 一一对应，锚点保留英文 slug。</p>
+      <div class="home-docgrid">
+        <div data-reveal><h3>入门</h3><ul><li><a href={`${base}docs/`}>快速开始</a></li><li><a href={`${base}docs/classless/`}>无类版本</a></li><li><a href={`${base}docs/conditional/`}>条件样式</a></li></ul></div>
+        <div data-reveal><h3>定制</h3><ul><li><a href={`${base}docs/css-variables/`}>CSS 变量</a></li><li><a href={`${base}docs/sass/`}>Sass</a></li><li><a href={`${base}docs/colors/`}>颜色</a></li></ul></div>
+        <div data-reveal><h3>布局</h3><ul><li><a href={`${base}docs/container/`}>容器</a></li><li><a href={`${base}docs/grid/`}>栅格</a></li><li><a href={`${base}docs/overflow-auto/`}>溢出自动</a></li></ul></div>
+        <div data-reveal><h3>内容</h3><ul><li><a href={`${base}docs/typography/`}>排版</a></li><li><a href={`${base}docs/button/`}>按钮</a></li><li><a href={`${base}docs/table/`}>表格</a></li></ul></div>
+        <div data-reveal><h3>表单</h3><ul><li><a href={`${base}docs/forms/`}>概览</a></li><li><a href={`${base}docs/forms/input/`}>输入框</a></li><li><a href={`${base}docs/forms/select/`}>下拉选择</a></li></ul></div>
+        <div data-reveal><h3>组件</h3><ul><li><a href={`${base}docs/modal/`}>模态框</a></li><li><a href={`${base}docs/card/`}>卡片</a></li><li><a href={`${base}docs/nav/`}>导航</a></li></ul></div>
+      </div>
+    </section>
+
+    <!-- 6 · 收尾：单一意图 -->
+    <section class="home-final" data-reveal aria-label="开始">
+      <h2>从第一行语义标签开始</h2>
+      <p>中文翻译遵循 MIT 许可，与上游文档结构保持同步。</p>
+      <p><a href={`${base}docs/`} role="button">阅读文档</a></p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <nav>
+    <nav class="container">
       <ul>
-        <li><a class="secondary" href={`${import.meta.env.BASE_URL}docs/`}>文档</a></li>
+        <li><a class="secondary" href={`${base}docs/`}>文档</a></li>
         <li><a class="secondary" href="https://github.com/picocss/pico" rel="noopener external" target="_blank">GitHub</a></li>
+        <li><a class="secondary" href="https://picocss.com" rel="noopener external" target="_blank">官网</a></li>
       </ul>
       <ul>
         <li>
@@ -106,8 +202,202 @@ import Ex from "../components/Ex.astro";
   </footer>
 </Base>
 
+<script>
+  const root = document.documentElement;
+  root.classList.add("js");
+  // 复制按钮
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const el = btn as HTMLElement;
+      const text = el.getAttribute("data-copy") || "";
+      const label = el.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      el.textContent = "已复制 ✓";
+      el.setAttribute("data-done", "true");
+      window.setTimeout(() => {
+        el.textContent = label;
+        el.removeAttribute("data-done");
+      }, 1400);
+    });
+  });
+  // 滚动显现（无 JS 时默认可见）
+  const items = Array.from(document.querySelectorAll("[data-reveal]"));
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          (e.target as HTMLElement).classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.12 }
+    );
+    items.forEach((el) => io.observe(el));
+  } else {
+    items.forEach((el) => (el as HTMLElement).classList.add("is-in"));
+  }
+</script>
+
 <style>
-  .cta-row a:first-child {
-    display: inline-block;
+  .home { --home-ring: var(--pico-muted-border-color); }
+  .home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 2.5rem;
+    align-items: center;
+    padding-block: 3.5rem 2.5rem;
+    position: relative;
+  }
+  .home-hero::before {
+    content: "";
+    position: absolute;
+    inset: -1rem -2rem auto;
+    height: 340px;
+    z-index: -1;
+    background:
+      linear-gradient(var(--home-ring) 1px, transparent 1px) 0 0 / 100% 32px,
+      linear-gradient(90deg, var(--home-ring) 1px, transparent 1px) 0 0 / 32px 100%;
+    opacity: 0.35;
+    mask-image: radial-gradient(70% 90% at 30% 20%, black 30%, transparent 75%);
+  }
+  .home-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--pico-muted-color);
+    border: 1px solid var(--home-ring);
+    border-radius: 999px;
+    padding: 0.28rem 0.8rem;
+    margin: 0 0 1rem;
+    background-color: color-mix(in srgb, var(--pico-card-background-color) 70%, transparent);
+  }
+  .home-kicker-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pico-primary); }
+  .home-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .home-lead { font-size: 1.12rem; color: var(--pico-color-grey-600); max-width: 44ch; margin-bottom: 1.4rem; }
+  html[data-theme="dark"] .home-lead { color: var(--pico-color-grey-400); }
+  .home-cta { margin-bottom: 1.6rem; }
+  .home-meta { list-style: none; padding: 1rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--home-ring); }
+  .home-meta li { display: grid; gap: 0.1rem; }
+  .home-meta strong { font-size: 1.02rem; }
+  .home-meta span { font-size: 0.8rem; color: var(--pico-muted-color); }
+  /* 浏览器预览 */
+  .browser {
+    position: relative;
+    margin: 0;
+    border: 1px solid var(--home-ring);
+    border-radius: calc(var(--pico-border-radius) + 6px);
+    background: var(--pico-card-background-color);
+    box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--pico-primary) 30%, transparent);
+    overflow: visible;
+  }
+  .browser-bar, .home-window-bar {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--home-ring);
+    font-size: 0.82rem; color: var(--pico-muted-color);
+  }
+  .browser-dots { display: inline-flex; gap: 0.35rem; }
+  .browser-dots i { width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--pico-muted-border-color); display: block; }
+  .browser-dots i:first-child { background: #e5484d; } .browser-dots i:nth-child(2) { background: #f5a524; } .browser-dots i:nth-child(3) { background: #30a46c; }
+  .browser-url {
+    flex: 1; text-align: center; font-size: 0.78rem;
+    background: var(--pico-background-color);
+    border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.2rem 0.8rem;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .browser-live { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; color: var(--pico-primary); white-space: nowrap; }
+  .browser-live i { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: #30a46c; }
+  .browser-body { padding: 1.25rem 1.25rem 1.4rem; display: grid; gap: 0.9rem; }
+  .browser-body hgroup { margin: 0; } .browser-body hgroup h3 { margin-bottom: 0.2rem; } .browser-body hgroup p { margin: 0; color: var(--pico-muted-color); font-size: 0.9rem; }
+  .browser-body blockquote { margin: 0; font-size: 0.88rem; }
+  .browser-body progress { margin: 0; }
+  .browser-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .browser-row button.small { padding: 0.35rem 0.7rem; font-size: 0.82rem; margin: 0; }
+  .browser-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.5rem; }
+  .browser-grid span { height: 2.2rem; border-radius: var(--pico-border-radius); background: color-mix(in srgb, var(--pico-primary) 14%, var(--pico-card-background-color)); border: 1px solid var(--home-ring); }
+  .browser-chip {
+    position: absolute; font-size: 0.75rem; font-weight: 600;
+    background: var(--pico-card-background-color);
+    border: 1px solid var(--home-ring); border-radius: 999px; padding: 0.3rem 0.7rem;
+    box-shadow: 0 10px 24px -12px rgba(0,0,0,0.35);
+  }
+  .chip-a { top: -0.85rem; left: 1.2rem; } .chip-b { bottom: -0.9rem; right: 1.4rem; }
+  /* 安装窗口 */
+  .home-install { padding-block: 1rem; }
+  .home-window { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); background: var(--pico-card-background-color); overflow: hidden; }
+  .home-window-bar { justify-content: space-between; }
+  .home-copy { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.78rem; border: 1px solid var(--home-ring); border-radius: 999px; background: transparent; color: var(--pico-primary); font-weight: 600; cursor: pointer; }
+  .home-copy[data-done="true"] { color: #30a46c; border-color: #30a46c; }
+  .home-code { margin: 0; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.86rem; }
+  .tk-p { color: var(--pico-muted-color); } .tk-a { color: var(--pico-primary); } .tk-s { color: #177245; }
+  html[data-theme="dark"] .tk-s { color: #7ddf9a; }
+  .home-install-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.7rem 1rem; border-top: 1px solid var(--home-ring); }
+  .home-npm { display: inline-flex; align-items: center; gap: 0.6rem; background: none; border: 1px dashed var(--home-ring); border-radius: var(--pico-border-radius); padding: 0.35rem 0.6rem; cursor: pointer; color: inherit; font-size: 0.84rem; }
+  .home-npm span { font-size: 0.76rem; color: var(--pico-primary); font-weight: 600; }
+  .home-install-links { font-size: 0.85rem; color: var(--pico-muted-color); }
+  /* 通用节标题：纵向堆叠，不用左右分栏 */
+  .home-why, .home-start, .home-map { padding-block: 2.8rem 0.5rem; }
+  .home-why h2, .home-start h2, .home-map h2, .home-final h2 { margin-bottom: 0.5rem; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
+  .home-sub { color: var(--pico-color-grey-600); max-width: 62ch; margin-bottom: 1.4rem; }
+  html[data-theme="dark"] .home-sub { color: var(--pico-color-grey-400); }
+  .home-bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .bento { border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); padding: 1.2rem; margin: 0; background: var(--pico-card-background-color); display: grid; gap: 0.6rem; align-content: start; }
+  .bento-wide { grid-column: span 2; }
+  .bento h3 { margin: 0; font-size: 1.02rem; } .bento p { margin: 0; font-size: 0.9rem; color: var(--pico-color-grey-600); }
+  html[data-theme="dark"] .bento p { color: var(--pico-color-grey-400); }
+  .bento a { font-size: 0.88rem; font-weight: 600; }
+  .bento-swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .bento-swatches span { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
+  .bento-theme { display: flex; border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; font-size: 0.82rem; font-weight: 600; }
+  .bento-theme .lt { flex: 1; padding: 0.6rem; background: #fff; color: #111; text-align: center; }
+  .bento-theme .dk { flex: 1; padding: 0.6rem; background: #13171c; color: #f2f4f7; text-align: center; }
+  .bento-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0.4rem; }
+  .bento-cols span { height: 2rem; border-radius: 6px; background: color-mix(in srgb, var(--pico-primary) 12%, transparent); border: 1px solid var(--home-ring); }
+  .bento-type { font-size: 1rem !important; color: inherit !important; }
+  /* 起步编辑器 */
+  .home-editor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--home-ring); border-radius: var(--pico-border-radius); overflow: hidden; background: var(--pico-card-background-color); }
+  .home-editor-code { border-right: 1px solid var(--home-ring); min-width: 0; }
+  .home-editor-code pre { margin: 0; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.7; }
+  .home-editor-demo { padding: 1.2rem; display: grid; gap: 0.8rem; align-content: start; }
+  .demo-label { margin: 0; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; color: var(--pico-muted-color); }
+  /* 文档地图 */
+  .home-docgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; border-top: 1px solid var(--home-ring); padding-top: 1.4rem; }
+  .home-docgrid h3 { font-size: 0.85rem; letter-spacing: 0.06em; color: var(--pico-muted-color); margin: 0 0 0.5rem; }
+  .home-docgrid ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; }
+  .home-docgrid a { font-weight: 500; }
+  .home-final { text-align: center; padding-block: 3.5rem 1rem; }
+  .home-final p { color: var(--pico-muted-color); }
+  .site-footer nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  /* 入场 */
+  html.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  html.js [data-reveal].is-in { opacity: 1; transform: none; }
+  @media (max-width: 1023px) {
+    .home-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .chip-a { left: 0.6rem; } .home-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bento-wide { grid-column: span 2; } .home-docgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 767px) {
+    .home-hero { padding-block: 2.2rem 1.5rem; }
+    .home-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-bento, .home-editor, .home-docgrid { grid-template-columns: minmax(0, 1fr); }
+    .bento-wide { grid-column: span 1; }
+    .home-editor-code { border-right: none; border-bottom: 1px solid var(--home-ring); }
+    .chip-a, .chip-b { display: none; }
+    .browser-url { font-size: 0.7rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+    * { scroll-behavior: auto !important; }
   }
 </style>

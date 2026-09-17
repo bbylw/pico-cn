@@ -73,11 +73,12 @@ src/
 
 ## 部署
 
-已部署 GitHub Pages：<https://bbylw.github.io/pico-cn/>（main 分支，`.github/workflows/deploy.yml`：bun install → astro build → upload-pages-artifact → deploy-pages）。
+已部署 GitHub Pages 自定义域名：<https://picocss.ndjp.net>（main 分支，`.github/workflows/deploy.yml`：bun install → astro build → upload-pages-artifact → deploy-pages）。
 
-- 项目页子路径部署，`astro.config.mjs` 钉 `base: "/pico-cn/"`（BASE_URL 拼接站点内链与资产）；换自定义域名根路径部署时清空 base 并同步 `site`
+- 根路径部署，`astro.config.mjs` 只设 `site: "https://picocss.ndjp.net"`，不设 `base`（`BASE_URL` 为 `/`，站点内链与资产均为根相对路径）
+- 自定义域名绑定：`public/CNAME`（内容 `picocss.ndjp.net`，随构建进入 dist，部署后自动绑定）；DNS 侧在 ndjp.net 加一条 CNAME 记录（主机 `picocss` → `bbylw.github.io`），再在仓库 Settings → Pages 打开 Enforce HTTPS
 - 页面内官方示例 demo 的 `href="/docs/..."` 保持英文源原样（忠实呈现），不参与 base 改写
-- `.shots/` 验收脚本的本地静态服务器会自动剥离 `/pico-cn` 前缀（dist 产物为根结构，Pages 负责子路径映射）
+- `.shots/` 验收脚本的本地静态服务器保留 `/pico-cn` 前缀剥离逻辑（根部署下为无操作，保持兼容）
 - 无服务端依赖，不需要任何运行时 API
 
 ## 许可

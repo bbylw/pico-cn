@@ -3,8 +3,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  site: "https://bbylw.github.io",
-  base: "/pico-cn/",
+  site: "https://picocss.ndjp.net",
   integrations: [mdx()],
   markdown: {
     shikiConfig: {
